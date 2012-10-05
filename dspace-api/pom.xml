@@ -332,6 +332,11 @@
             <artifactId>rome-modules</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.1</version>
+        </dependency>
     </dependencies>
 
 </project>
