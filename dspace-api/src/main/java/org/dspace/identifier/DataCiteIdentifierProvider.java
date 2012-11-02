@@ -9,19 +9,23 @@
 package org.dspace.identifier;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
+import java.io.UnsupportedEncodingException;
+import java.net.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.logging.Level;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.StatusLine;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
@@ -32,6 +36,8 @@ import org.dspace.content.DCValue;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
 import org.dspace.core.Context;
+import org.dspace.identifier.ezid.EZIDRequest;
+import org.dspace.identifier.ezid.EZIDResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
@@ -46,8 +52,11 @@ public class DataCiteIdentifierProvider
 {
     private static final Logger log = LoggerFactory.getLogger(DataCiteIdentifierProvider.class);
 
-    private static final Pattern DOIpattern = Pattern.compile("doi:[\\S]+");
     private static final ContentType CONTENT_UTF8_TEXT = ContentType.create("text/plain", "UTF-8");
+
+    private static final String CFG_SHOULDER = "identifier.doi.ezid.shoulder";
+    private static final String CFG_USER = "identifier.doi.ezid.user";
+    private static final String CFG_PASSWORD = "identifier.doi.ezid.password";
 
     private static String EZID_SCHEME;
     private static String EZID_HOST;
@@ -70,7 +79,10 @@ public class DataCiteIdentifierProvider
     @Override
     public boolean supports(String identifier)
     {
-        return identifier.startsWith("doi:"); // XXX more thorough test?
+        if (null == identifier)
+            return false;
+        else
+            return identifier.startsWith("doi:"); // XXX more thorough test?
     }
 
     @Override
@@ -144,7 +156,31 @@ public class DataCiteIdentifierProvider
     public void delete(Context context, DSpaceObject dso)
             throws IdentifierException
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (!(dso instanceof Item))
+            throw new IllegalArgumentException("Unsupported type " + dso.getTypeText());
+
+        Item item = (Item)dso;
+
+        // delete from EZID
+        for (DCValue id : item.getMetadata(MD_SCHEMA_DSPACE, DSPACE_DOI_ELEMENT,
+                DSPACE_DOI_QUALIFIER, null))
+        {
+            EZIDResponse response;
+            try {
+                EZIDRequest request = new EZIDRequest(id.value);
+                response = request.delete();
+            } catch (URISyntaxException e) {
+                throw new IdentifierException("Bad URI in metadata value", e);
+            } catch (IOException e) {
+                throw new IdentifierException("Failed request to EZID", e);
+            }
+            if (!response.isSuccess())
+                throw new IdentifierException("Unable to delete " + id.value
+                        + "from DataCite:  " + response.getEZIDStatusValue());
+        }
+
+        // delete from item
+        item.clearMetadata(MD_SCHEMA_DSPACE, DSPACE_DOI_ELEMENT, DSPACE_DOI_QUALIFIER, null);
     }
 
     @Override
@@ -152,11 +188,11 @@ public class DataCiteIdentifierProvider
             throws IdentifierException
     {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
+        // TODO find metadata value == identifier
+        // TODO delete from EZID
 
-    private static final String CFG_SHOULDER = "identifier.doi.ezid.shoulder";
-    private static final String CFG_USER = "identifier.doi.ezid.user";
-    private static final String CFG_PASSWORD = "identifier.doi.ezid.password";
+        // TODO delete from item NOTE!!! can't delete single MD values!
+    }
 
     /**
      * Submit some object details and request identifiers for the object.
@@ -174,7 +210,8 @@ public class DataCiteIdentifierProvider
         String user = configurationService.getProperty(CFG_USER);
         String password = configurationService.getProperty(CFG_PASSWORD);
         if (null == user || null == password)
-            throw new IdentifierException("Unconfigured:  define " + CFG_USER + " and " + CFG_PASSWORD);
+            throw new IdentifierException("Unconfigured:  define " + CFG_USER
+                    + " and " + CFG_PASSWORD);
 
         // Address the service
 	URIBuilder mintURL = new URIBuilder();
@@ -209,38 +246,37 @@ public class DataCiteIdentifierProvider
         }
 
         // Good response?
-        StatusLine status = (StatusLine) response.getStatusLine();
-        if (HttpURLConnection.HTTP_CREATED != status.getStatusCode())
-            {
-                log.error("EZID responded:  {} {}", status.getStatusCode(),
-                        status.getReasonPhrase());
-                throw new IdentifierException("DOI not created:  " + status.getReasonPhrase());
-            }
-
-        HttpEntity responseBody = response.getEntity();
-
-        // Collect the content of the response
-        String content;
+        EZIDResponse contents;
         try {
-            content = EntityUtils.toString(responseBody, "UTF-8");
-        } catch (IOException ex) {
-            log.error(ex.getMessage());
-            throw new IdentifierException("EZID response not understood:  " + ex.getMessage());
+            contents = new EZIDResponse(response);
         } catch (ParseException ex) {
             log.error(ex.getMessage());
             throw new IdentifierException("EZID response not understood:  " + ex.getMessage());
         }
 
+        if (HttpURLConnection.HTTP_CREATED != contents.getHttpStatusCode())
+            {
+                log.error("EZID responded:  {} {}", contents.getHttpStatusCode(),
+                        contents.getHttpReasonPhrase());
+                throw new IdentifierException("DOI not created:  " + contents.getHttpReasonPhrase());
+            }
+
 	// Extract the DOI from the content blob
-	Matcher matcher = DOIpattern.matcher(content);
-	if (matcher.find())
-	    return matcher.group();
+        if (contents.isSuccess())
+        {
+            String value = contents.getEZIDStatusValue();
+            int end = value.indexOf('|'); // Following pipe is "shadow ARK"
+            if (end < 0)
+                end = value.length();
+            return value.substring(0, end).trim();
+        }
         else
             throw new IdentifierException("No DOI returned");
     }
 
     /**
      * Assemble the identifier request document, one field per line.
+     * (ANVL-style)
      * 
      * @param dso the object we want to identify.
      */
@@ -267,7 +303,15 @@ public class DataCiteIdentifierProvider
             }
         }
 
-	return bupher.toString();
+        // Body should be percent-encoded
+        String body = null;
+        try {
+            body = URLEncoder.encode(bupher.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException ex) { // XXX SNH
+            log.error(ex.getMessage());
+        } finally {
+            return body;
+        }
     }
 
     /**

@@ -12,6 +12,7 @@
 package org.dspace.identifier;
 
 import java.util.List;
+import java.util.UUID;
 import org.dspace.AbstractUnitTest;
 import org.dspace.content.Collection;
 import org.dspace.content.Community;
@@ -90,7 +91,10 @@ public class DataCiteIdentifierProviderTest
     public void testSupports_Class()
     {
         System.out.println("supports");
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         Class<? extends Identifier> identifier = DOI.class;
         boolean result = instance.supports(identifier);
@@ -104,7 +108,10 @@ public class DataCiteIdentifierProviderTest
     public void testSupports_String()
     {
         System.out.println("supports");
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         String identifier = TEST_SHOULDER;
         boolean result = instance.supports(identifier);
@@ -120,13 +127,13 @@ public class DataCiteIdentifierProviderTest
     {
         System.out.println("register");
 
-        List<DataCiteIdentifierProvider> instance
-                = (List<DataCiteIdentifierProvider>)
-                sm.getServicesByType(DataCiteIdentifierProvider.class);
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject dso = item;
 
-        String result = instance.get(0).register(context, dso);
+        String result = instance.register(context, dso);
         assertTrue("Didn't get a DOI back", result.startsWith("doi:10.5072/"));
         System.out.println(" got identifier:  " + result);
     }
@@ -138,18 +145,16 @@ public class DataCiteIdentifierProviderTest
     public void testRegister_3args()
     {
         System.out.println("register");
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
 
-        List<DataCiteIdentifierProvider> instances
-                = (List<DataCiteIdentifierProvider>)
-                sm.getServicesByType(DataCiteIdentifierProvider.class);
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject object = item;
 
-        String identifier = TEST_SHOULDER + "blarg"; // TODO a unique value
+        String identifier = TEST_SHOULDER + UUID.randomUUID();
 
-        instances.get(0).register(context, object, identifier);
+        instance.register(context, object, identifier);
     }
 
     /**
@@ -163,7 +168,9 @@ public class DataCiteIdentifierProviderTest
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject dso = item;
         String identifier = "";
@@ -178,15 +185,14 @@ public class DataCiteIdentifierProviderTest
             throws Exception
     {
         System.out.println("mint");
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject dso = item;
-        String expResult = "";
         String result = instance.mint(context, dso);
-        assertEquals(expResult, result);
+        assertNotNull("Null returned", result);
     }
 
     /**
@@ -200,7 +206,9 @@ public class DataCiteIdentifierProviderTest
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         String identifier = "";
         String[] attributes = null;
@@ -217,15 +225,14 @@ public class DataCiteIdentifierProviderTest
             throws Exception
     {
         System.out.println("lookup");
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject object = item;
-        String expResult = "";
         String result = instance.lookup(context, object);
-        assertEquals(expResult, result);
+        assertNotNull("Null returned", result);
     }
 
     /**
@@ -239,7 +246,9 @@ public class DataCiteIdentifierProviderTest
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject dso = item;
         instance.delete(context, dso);
@@ -256,7 +265,9 @@ public class DataCiteIdentifierProviderTest
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
 
-        DataCiteIdentifierProvider instance = new DataCiteIdentifierProvider();
+        DataCiteIdentifierProvider instance
+                = (DataCiteIdentifierProvider)
+                sm.getServicesByType(DataCiteIdentifierProvider.class).get(0);
 
         DSpaceObject dso = item;
         String identifier = "";
