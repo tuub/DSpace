@@ -20,9 +20,15 @@
       <relativePath>..</relativePath>
    </parent>
 
+   <properties>
+       <!-- This is the path to the root [dspace-src] directory. -->
+       <root.basedir>${basedir}/../../..</root.basedir>
+   </properties>
+
    <build>
        <filters>
-           <filter>${basedir}/../../../${filters.file}</filter>
+           <!-- Filter using the properties file defined by dspace-parent POM -->
+           <filter>${filters.file}</filter>
        </filters>
       <plugins>
 
@@ -33,7 +39,7 @@
                <archiveClasses>false</archiveClasses>
                <webResources>
                   <resource>
-                     <filtering>false</filtering>
+                     <filtering>true</filtering>
                      <directory>${basedir}/src/main/webapp</directory>
                      <includes>
                         <include>WEB-INF/web.xml</include>
