@@ -131,5 +131,5 @@ public abstract class IdentifierProvider {
      * @param object to be identified.
      * @param identifier to be created.
      */
-    public abstract void register(Context context, DSpaceObject object, String identifier);
+    public abstract void register(Context context, DSpaceObject object, String identifier) throws IdentifierException;
 }
