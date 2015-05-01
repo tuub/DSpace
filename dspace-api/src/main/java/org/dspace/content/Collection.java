@@ -9,6 +9,7 @@ package org.dspace.content;
 
 import org.apache.log4j.Logger;
 import org.dspace.app.util.AuthorizeUtil;
+import org.dspace.app.util.CollectionDropDown;
 import org.dspace.authorize.AuthorizeConfiguration;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.AuthorizeManager;
@@ -1767,7 +1768,12 @@ public class Collection extends DSpaceObject
     public static class CollectionComparator implements Comparator<Collection> {
         @Override
         public int compare(Collection collection1, Collection collection2) {
-            return collection1.getName().compareTo(collection2.getName());
+            try {
+                return CollectionDropDown.collectionPath(collection1).compareTo(CollectionDropDown.collectionPath(collection2));
+            }
+            catch (SQLException e) {
+                return 0;
+            }
         }
     }
 
