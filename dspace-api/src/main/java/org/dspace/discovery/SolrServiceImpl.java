@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -60,6 +61,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.params.*;
 import org.apache.solr.common.util.NamedList;
 import org.apache.solr.handler.extraction.ExtractingParams;
+import org.dspace.authorize.AuthorizeManager;
 import org.dspace.content.Bitstream;
 import org.dspace.content.Bundle;
 import org.dspace.content.Collection;
@@ -1560,6 +1562,51 @@ public class SolrServiceImpl implements SearchService, IndexingService {
         return value;
     }
 
+    /**
+     * Helper method to create a SOLR Query that includes all items of
+     * communities and collections a user may administrate.
+     * If a user has the appropriate rights to administrate communities and/or
+     * collections we want to look up all contents of those communities and/or
+     * collections, ignoring the read policies of the items (e.g. to list all
+     * private items of communities/collections the user administrate). This
+     * method returns a SOLR query to filter for items that belongs to those
+     * communities/collections only.
+     *
+     * @param context
+     * @return
+     * @throws SQLException
+     */
+    public static String createLocationQueryForAdministrableItems(Context context)
+            throws SQLException
+    {
+        StringBuilder locationQuery = new StringBuilder();
+        locationQuery.append("location:( ");
+        boolean hasCommunities = false;
+        List<Collection> allCollections = new ArrayList<Collection>();
+        Community[] communities = AuthorizeManager.getAllCommunitiesEPersonCanAdministrate(context);
+        Collection[] collections = AuthorizeManager.getAllCollectionEPersonCanAdministrate(context);
+        allCollections.addAll(Arrays.asList(collections));
+        for (int i = 0; i < communities.length; i++) {
+            locationQuery.append("m").append(communities[i].getID());
+            if (i != (communities.length - 1)) {
+                locationQuery.append(" OR ");
+            }
+            allCollections.addAll(Arrays.asList(communities[i].getAllCollections()));
+        }
+        Iterator<Collection> collIter = allCollections.iterator();
+        if (communities.length > 0 && allCollections.size() > 0) {
+            locationQuery.append(" OR ");
+        }
+        while (collIter.hasNext()) {
+            locationQuery.append("l").append(collIter.next().getID());
+            if (collIter.hasNext()) {
+                locationQuery.append(" OR ");
+            }
+        }
+        locationQuery.append(")");
+        return locationQuery.toString();
+    }
+    
     //******** SearchService implementation
     @Override
     public DiscoverResult search(Context context, DiscoverQuery query) throws SearchServiceException
@@ -1600,7 +1647,6 @@ public class SolrServiceImpl implements SearchService, IndexingService {
                 return new DiscoverResult();
             }
             SolrQuery solrQuery = resolveToSolrQuery(context, discoveryQuery, includeUnDiscoverable);
-
 
             QueryResponse queryResponse = getSolr().query(solrQuery);
             return retrieveResult(context, discoveryQuery, queryResponse);

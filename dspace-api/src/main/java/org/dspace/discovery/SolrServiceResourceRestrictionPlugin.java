@@ -59,14 +59,27 @@ public class SolrServiceResourceRestrictionPlugin implements SolrServiceIndexPlu
 
     @Override
     public void additionalSearchParameters(Context context, DiscoverQuery discoveryQuery, SolrQuery solrQuery) {
-    	try {
-            if(!AuthorizeManager.isAdmin(context)){
-            	StringBuilder resourceQuery = new StringBuilder();
+    	try
+        {
+            EPerson currentUser = context.getCurrentUser();
+            
+            if(!AuthorizeManager.isAdmin(context))
+            {
+                StringBuilder resourceQuery = new StringBuilder();
                 //Always add the anonymous group id to the query
                 resourceQuery.append("read:(g0");
-                EPerson currentUser = context.getCurrentUser();
-                if(currentUser != null){
+                
+                if(currentUser != null)
+                {
                     resourceQuery.append(" OR e").append(currentUser.getID());
+                    
+                    //Retrieve all the groups the current user is a member of !
+                    Set<Integer> groupIds = Group.allMemberGroupIDs(context, currentUser);
+                    
+                    for (Integer groupId : groupIds) 
+                    {
+                        resourceQuery.append(" OR g").append(groupId);
+                    }
                 }
 
                 //Retrieve all the groups the current user is a member of !
@@ -76,11 +89,19 @@ public class SolrServiceResourceRestrictionPlugin implements SolrServiceIndexPlu
                 }
 
                 resourceQuery.append(")");
-                
+                if(AuthorizeManager.isCommunityAdmin(context) 
+                        || AuthorizeManager.isCollectionAdmin(context))
+                {
+                    resourceQuery.append(" OR ");
+                    resourceQuery.append(SolrServiceImpl.createLocationQueryForAdministrableItems(context));
+                }
                 solrQuery.addFilterQuery(resourceQuery.toString());
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) 
+        {
             log.error(LogManager.getHeader(context, "Error while adding resource policy information to query", ""), e);
         }
     }
+    
 }

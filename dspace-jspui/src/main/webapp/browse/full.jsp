@@ -34,17 +34,37 @@
     String layoutNavbar = "default";
     boolean withdrawn = false;
     boolean privateitems = false;
-	if (request.getAttribute("browseWithdrawn") != null)
-	{
-	    layoutNavbar = "admin";
-        urlFragment = "dspace-admin/withdrawn";
+
+    // Is the logged in user an admin or community admin or cllection admin
+    Boolean admin = (Boolean)request.getAttribute("is.admin");
+    boolean isAdmin = (admin == null ? false : admin.booleanValue());
+
+    Boolean communityAdmin = (Boolean)request.getAttribute("is.communityAdmin");
+    boolean isCommunityAdmin = (communityAdmin == null ? false : communityAdmin.booleanValue());
+
+    Boolean collectionAdmin = (Boolean)request.getAttribute("is.collectionAdmin");
+    boolean isCollectionAdmin = (collectionAdmin == null ? false : collectionAdmin.booleanValue());
+    
+    if (request.getAttribute("browseWithdrawn") != null)
+    {
+        layoutNavbar = "admin";
+        urlFragment = "tools/withdrawn";
         withdrawn = true;
-    }
-	else if (request.getAttribute("browsePrivate") != null)
-	{
-	    layoutNavbar = "admin";
-        urlFragment = "dspace-admin/privateitems";
+
+        if(!isAdmin && (isCommunityAdmin || isCollectionAdmin))
+        {
+            layoutNavbar = "community-or-collection-admin";
+        }
+    } else if (request.getAttribute("browsePrivate") != null)
+    {
+        layoutNavbar = "admin";
+        urlFragment = "tools/privateitems";
         privateitems = true;
+
+        if(!isAdmin && (isCommunityAdmin || isCollectionAdmin))
+        {
+            layoutNavbar = "community-or-collection-admin";
+        }
     }
 
 	// First, get the browse info object

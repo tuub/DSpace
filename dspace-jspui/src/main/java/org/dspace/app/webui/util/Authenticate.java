@@ -286,10 +286,15 @@ public class Authenticate
         context.setCurrentUser(eperson);
         
         boolean isAdmin = false;
-        
+        boolean isCommunityAdmin = false;
+        boolean isCollectionAdmin = false;
+                
         try
         {
+            //check if user is a system admin or a collection/community admin.
             isAdmin = AuthorizeManager.isAdmin(context);
+            isCommunityAdmin = AuthorizeManager.isCommunityAdmin(context);
+            isCollectionAdmin = AuthorizeManager.isCollectionAdmin(context);
         }
         catch (SQLException se)
         {
@@ -298,6 +303,8 @@ public class Authenticate
         finally 
         {
             request.setAttribute("is.admin", Boolean.valueOf(isAdmin));
+            request.setAttribute("is.communityAdmin", Boolean.valueOf(isCommunityAdmin));
+            request.setAttribute("is.collectionAdmin", Boolean.valueOf(isCollectionAdmin));
         }
 
         // We store the current user in the request as an EPerson object...

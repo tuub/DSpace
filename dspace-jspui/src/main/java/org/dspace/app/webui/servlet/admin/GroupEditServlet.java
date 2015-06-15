@@ -9,6 +9,7 @@ package org.dspace.app.webui.servlet.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.dspace.app.webui.servlet.DSpaceServlet;
@@ -286,10 +288,32 @@ public class GroupEditServlet extends DSpaceServlet
             SQLException, AuthorizeException
     {
         Group[] groups = Group.findAll(c, Group.NAME);
-
-        // if( groups == null ) { System.out.println("groups are null"); }
-        // else System.out.println("# of groups: " + groups.length);
-        request.setAttribute("groups", groups);
+        List<Group> AdminGroups = null;
+        boolean isAdmin = AuthorizeManager.isAdmin(c);
+        boolean isCommunityAdmin = AuthorizeManager.isCommunityAdmin(c);
+        boolean isCollectionAdmin = AuthorizeManager.isCollectionAdmin(c);
+        
+        // In case the user is a community or collection admin, only the groups
+        // the user is allowed to change should listed
+        if(!isAdmin && (isCommunityAdmin || isCollectionAdmin))
+        {
+            AdminGroups = new ArrayList<Group>();
+            
+            for(Group group: groups)
+            {
+                if(AuthorizeManager.authorizeActionBoolean(c, group, Constants.WRITE) ||
+                   AuthorizeManager.authorizeActionBoolean(c, group, Constants.ADD))
+                {
+                    AdminGroups.add(group);
+                }
+            }
+            request.setAttribute("groups", AdminGroups.toArray(new Group[0]));
+        }
+        // All groups are shown to the System admin
+        else
+        {
+            request.setAttribute("groups", groups);
+        }
 
         JSPManager.showJSP(request, response, "/tools/group-list.jsp");
         c.complete();

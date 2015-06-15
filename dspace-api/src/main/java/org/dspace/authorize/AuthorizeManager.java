@@ -481,7 +481,184 @@ public class AuthorizeManager
             return Group.isMember(c, 1);
         }
     }
+    
+    
+    /**
+     * Check to see if the current user is a Community Admin. Always return
+     * <code>true</code> if the current user is admin of at least one community
+     *
+     * @param c current context
+     * @return <code>true</code> if user is a community admin
+     *
+     */
+    public static boolean isCommunityAdmin(Context c) throws SQLException
+    {
+        EPerson e = c.getCurrentUser();
+        if (e != null)
+        {
+            Community[] allCommunities = Community.findAll(c);
+            for (Community community : allCommunities)
+            {
+                if (AuthorizeManager.authorizeActionBoolean(c, community, 
+                        Constants.ADMIN))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Check to see if the current user is a Collection Admin. Always return
+     * <code>true</code> if the current user is admin of at least one community
+     *
+     * @param c current context
+     * @return <code>true</code> if user is a collection admin
+     *  
+     */
+    public static boolean isCollectionAdmin(Context c) throws SQLException 
+    {   EPerson e = c.getCurrentUser();
+        if (e != null) 
+        {
+            Collection[] allCollections = Collection.findAll(c);
+            for (Collection collection : allCollections)
+            {
+                if (AuthorizeManager.authorizeActionBoolean(c, collection,
+                        Constants.ADMIN))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public static Community[] getAllCommunitiesEPersonCanAdministrate(Context c) throws SQLException
+    {
+        if (c.getCurrentUser() == null)
+        {
+            return new Community[0];
+        }
+        
+        if (isAdmin(c))
+        {
+           return Community.findAll(c);
+        }
+        
+        // prepare query
+        // to filter in JOIN and WHERE clause by eperson_id is a dirty optimization
+        String query = "SELECT distinct r.resource_id FROM resourcepolicy AS r, epersongroup2eperson AS e, group2group AS g "
+                     + "WHERE ((e.eperson_id = ? OR r.eperson_id = ?) AND r.epersongroup_id = e.eperson_group_id "
+                            + "OR (e.eperson_id = ? and g.child_id = e.eperson_group_id AND  r.epersongroup_id = g.parent_id )"
+                            + ")"
+                     + "AND resource_type_id = ? "
+                     + "AND action_id = ? ";
+        // prepare parameter
+        int epersonId = c.getCurrentUser().getID();
+        
+        TableRowIterator tri = DatabaseManager.query(c, query, 
+                epersonId, epersonId, epersonId, Constants.COMMUNITY, Constants.ADMIN);
+        
+        List<Community> communities = new ArrayList<Community>();
 
+        try
+        {
+            while (tri.hasNext())
+            {
+                TableRow row = tri.next();
+
+                // First check the cache
+                Community fromCache = (Community) c.fromCache(
+                        Community.class, row.getIntColumn("resource_id"));
+
+                if (fromCache != null)
+                {
+                    communities.add(fromCache);
+                }
+                else
+                {
+                    communities.add(Community.find(c, row.getIntColumn("resource_id")));
+                }
+            }
+        }
+        finally
+        {
+            // close the TableRowIterator to free up resources
+            if (tri != null)
+            {
+                tri.close();
+            }
+        }
+
+        Community[] communityArray = new Community[communities.size()];
+        communityArray = (Community[]) communities.toArray(communityArray);
+
+        return communityArray;
+    }
+
+    public static Collection[] getAllCollectionEPersonCanAdministrate(Context c) throws SQLException
+    {
+        if (c.getCurrentUser() == null)
+        {
+            return new Collection[0];
+        }
+        
+        if (isAdmin(c))
+        {
+           return Collection.findAll(c);
+        }
+        
+        // prepare query
+        // to filter in JOIN and WHERE clause by eperson_id is a dirty optimization
+        String query = "SELECT distinct r.resource_id FROM resourcepolicy AS r, epersongroup2eperson AS e, group2group AS g "
+                     + "WHERE ((e.eperson_id = ? OR r.eperson_id = ?) AND r.epersongroup_id = e.eperson_group_id "
+                            + "OR (e.eperson_id = ? and g.child_id = e.eperson_group_id AND  r.epersongroup_id = g.parent_id )"
+                            + ")"
+                     + "AND resource_type_id = ? "
+                     + "AND action_id = ? ";
+        // prepare parameter
+        int epersonId = c.getCurrentUser().getID();
+        
+        TableRowIterator tri = DatabaseManager.query(c, query,
+                epersonId, epersonId, epersonId, Constants.COLLECTION, Constants.ADMIN);
+        
+        List<Collection> collections = new ArrayList<Collection>();
+
+        try
+        {
+            while (tri.hasNext())
+            {
+                TableRow row = tri.next();
+
+                // First check the cache
+                Collection fromCache = (Collection) c.fromCache(
+                        Collection.class, row.getIntColumn("resource_id"));
+
+                if (fromCache != null)
+                {
+                    collections.add(fromCache);
+                }
+                else
+                {
+                    collections.add(Collection.find(c, row.getIntColumn("resource_id")));
+                }
+            }
+        }
+        finally
+        {
+            // close the TableRowIterator to free up resources
+            if (tri != null)
+            {
+                tri.close();
+            }
+        }
+
+        Collection[] collectionArray = new Collection[collections.size()];
+        collectionArray = (Collection[]) collections.toArray(collectionArray);
+
+        return collectionArray;
+    }
     ///////////////////////////////////////////////
     // policy manipulation methods
     ///////////////////////////////////////////////

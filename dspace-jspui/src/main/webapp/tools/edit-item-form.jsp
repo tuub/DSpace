@@ -66,7 +66,24 @@
     // Is the logged in user an admin of the item
     Boolean itemAdmin = (Boolean)request.getAttribute("admin_button");
     boolean isItemAdmin = (itemAdmin == null ? false : itemAdmin.booleanValue());
+
+    // Is the logged in user an admin or community admin or cllection admin
+    Boolean admin = (Boolean)request.getAttribute("is.admin");
+    boolean isAdmin = (admin == null ? false : admin.booleanValue());
     
+    Boolean communityAdmin = (Boolean)request.getAttribute("is.communityAdmin");
+    boolean isCommunityAdmin = (communityAdmin == null ? false : communityAdmin.booleanValue());
+    
+    Boolean collectionAdmin = (Boolean)request.getAttribute("is.collectionAdmin");
+    boolean isCollectionAdmin = (collectionAdmin == null ? false : collectionAdmin.booleanValue());
+    
+    String naviAdmin = "admin";
+    
+    if(!isAdmin && (isCommunityAdmin || isCollectionAdmin))
+    {
+        naviAdmin = "community-or-collection-admin";
+    }
+
     Boolean policy = (Boolean)request.getAttribute("policy_button");
     boolean bPolicy = (policy == null ? false : policy.booleanValue());
     
@@ -201,7 +218,7 @@
 </c:set>
 
 <dspace:layout style="submission" titlekey="jsp.tools.edit-item-form.title"
-               navbar="admin"
+               navbar="<%= naviAdmin %>"
                locbar="link"
                parenttitlekey="jsp.administer"
                parentlink="/dspace-admin"

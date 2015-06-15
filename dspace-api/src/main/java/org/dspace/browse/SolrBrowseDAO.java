@@ -7,12 +7,15 @@
  */
 package org.dspace.browse;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
+import org.dspace.authorize.AuthorizeManager;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
 import org.dspace.core.Constants;
@@ -25,11 +28,13 @@ import org.dspace.discovery.DiscoverResult.FacetResult;
 import org.dspace.discovery.DiscoverResult.SearchDocument;
 import org.dspace.discovery.SearchService;
 import org.dspace.discovery.SearchServiceException;
+import org.dspace.discovery.SolrServiceImpl;
 import org.dspace.discovery.configuration.DiscoveryConfigurationParameters;
+import org.dspace.eperson.EPerson;
 import org.dspace.utils.DSpace;
 
 /**
- * 
+ *
  * @author Andrea Bollini (CILEA)
  * @author Adán Román Ruiz at arvo.es (bugfix)
  * @author Panagiotis Koutsourakis (National Documentation Centre) (bugfix)
@@ -139,7 +144,7 @@ public class SolrBrowseDAO implements BrowseDAO
     private boolean itemsDiscoverable = true;
 
     private boolean showFrequencies;
-    
+
     private DiscoverResult getSolrResponse() throws BrowseException
     {
         if (sResponse == null)
@@ -189,8 +194,8 @@ public class SolrBrowseDAO implements BrowseDAO
             }
             try
             {
-				sResponse = searcher.search(context, query, itemsWithdrawn
-						|| !itemsDiscoverable);
+                sResponse = searcher.search(context, query, itemsWithdrawn
+                        || !itemsDiscoverable);
             }
             catch (SearchServiceException e)
             {
@@ -208,7 +213,23 @@ public class SolrBrowseDAO implements BrowseDAO
         }
         else if (!itemsDiscoverable)
         {
-            query.addFilterQueries("discoverable:false");    
+            query.addFilterQueries("discoverable:false");
+            try
+            {
+                // community collection admins should be able to find undiscoverable
+                // items, but only for the communities/collections they are admin of
+                EPerson currentUser = context.getCurrentUser();
+
+                if (!AuthorizeManager.isAdmin(context)
+                        && (AuthorizeManager.isCommunityAdmin(context) || AuthorizeManager.isCollectionAdmin(context)))
+                {
+                    query.addFilterQueries(SolrServiceImpl.createLocationQueryForAdministrableItems(context));
+                }
+            }
+            catch (SQLException ex)
+            {
+                log.error(ex);
+            }
         }
     }
 
@@ -405,7 +426,7 @@ public class SolrBrowseDAO implements BrowseDAO
     @Override
     public void setEnableBrowseFrequencies(boolean enableBrowseFrequencies)
     {
-        showFrequencies = enableBrowseFrequencies;        
+        showFrequencies = enableBrowseFrequencies;
     }
 
     /*

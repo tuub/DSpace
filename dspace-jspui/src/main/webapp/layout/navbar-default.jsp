@@ -35,10 +35,16 @@
     // Is anyone logged in?
     EPerson user = (EPerson) request.getAttribute("dspace.current.user");
 
-    // Is the logged in user an admin
+    // Is the logged in user an admin or community admin or cllection admin
     Boolean admin = (Boolean)request.getAttribute("is.admin");
     boolean isAdmin = (admin == null ? false : admin.booleanValue());
-
+    
+    Boolean communityAdmin = (Boolean)request.getAttribute("is.communityAdmin");
+    boolean isCommunityAdmin = (communityAdmin == null ? false : communityAdmin.booleanValue());
+    
+    Boolean collectionAdmin = (Boolean)request.getAttribute("is.collectionAdmin");
+    boolean isCollectionAdmin = (collectionAdmin == null ? false : collectionAdmin.booleanValue());
+    
     // Get the current page, minus query string
     String currentPage = UIUtil.getOriginalURL(request);
     int c = currentPage.indexOf( '?' );
@@ -165,7 +171,7 @@
                <li><a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a></li>
 
 		<%
-		  if (isAdmin)
+		  if (isAdmin || isCommunityAdmin || isCollectionAdmin)
 		  {
 		%>
 			   <li class="divider"></li>  

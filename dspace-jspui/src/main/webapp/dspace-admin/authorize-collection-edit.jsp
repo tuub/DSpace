@@ -48,10 +48,27 @@
     Collection collection = (Collection) request.getAttribute("collection");
     List<ResourcePolicy> policies =
         (List<ResourcePolicy>) request.getAttribute("policies");
+       
+    // Is the logged in user an admin or community admin or cllection admin
+    Boolean admin = (Boolean)request.getAttribute("is.admin");
+    boolean isAdmin = (admin == null ? false : admin.booleanValue());
+    
+    Boolean communityAdmin = (Boolean)request.getAttribute("is.communityAdmin");
+    boolean isCommunityAdmin = (communityAdmin == null ? false : communityAdmin.booleanValue());
+    
+    Boolean collectionAdmin = (Boolean)request.getAttribute("is.collectionAdmin");
+    boolean isCollectionAdmin = (collectionAdmin == null ? false : collectionAdmin.booleanValue());
+    
+    String naviAdmin = "admin";
+    
+    if(!isAdmin && (isCommunityAdmin || isCollectionAdmin))
+    {
+        naviAdmin = "community-or-collection-admin";
+    }
 %>
 
 <dspace:layout style="submission" titlekey="jsp.dspace-admin.authorize-collection-edit.title"
-               navbar="admin"
+               navbar="<%= naviAdmin %>"
                locbar="link"
                parenttitlekey="jsp.administer"
                parentlink="/dspace-admin"
