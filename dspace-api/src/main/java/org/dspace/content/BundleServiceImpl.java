@@ -115,7 +115,7 @@ public class BundleServiceImpl extends DSpaceObjectServiceImpl<Bundle> implement
         Bitstream target = null;
 
         for (Bitstream bitstream : bundle.getBitstreams()) {
-            if (name.equals(bitstream.getName())) {
+            if (name.equals(bitstreamService.getName(bitstream))) {
                 target = bitstream;
                 break;
             }
@@ -381,7 +381,7 @@ public class BundleServiceImpl extends DSpaceObjectServiceImpl<Bundle> implement
                 + bundle.getID()));
 
         context.addEvent(new Event(Event.DELETE, Constants.BUNDLE, bundle.getID(),
-                bundle.getName(), getIdentifiers(context, bundle)));
+                this.getName(bundle), getIdentifiers(context, bundle)));
 
         // Remove bitstreams
         Iterator<Bitstream> bitstreams = bundle.getBitstreams().iterator();
