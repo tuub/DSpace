@@ -109,6 +109,9 @@
             -->
             <xsl:element name="publisher">
                 <xsl:choose>
+                    <xsl:when test="//dspace:field[@mdschema='dc' and @element='publisher' and @qualifier='name']">
+                        <xsl:value-of select="//dspace:field[@mdschema='dc' and @element='publisher' and @qualifier='name'][1]" />
+                    </xsl:when>
                     <xsl:when test="//dspace:field[@mdschema='dc' and @element='publisher']">
                         <xsl:value-of select="//dspace:field[@mdschema='dc' and @element='publisher'][1]" />
                     </xsl:when>
@@ -494,6 +497,23 @@
                     <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
                     <xsl:when test="string(text())='Working Paper'">Text</xsl:when>
                     <xsl:when test="string(text())='Other'">Other</xsl:when>
+
+                    <!-- TU Berlin specific document types -->
+                    <xsl:when test="string(text())='Book Part'">Text</xsl:when>
+                    <xsl:when test="string(text())='Conference Object'">Text</xsl:when>
+                    <xsl:when test="string(text())='Conference Proceedings'">Text</xsl:when>
+                    <xsl:when test="string(text())='Doctoral Thesis'">Text</xsl:when>
+                    <xsl:when test="string(text())='Master Thesis'">Text</xsl:when>
+                    <xsl:when test="string(text())='Multimedia'">InteractiveResource</xsl:when>
+                    <xsl:when test="string(text())='Periodical'">Text</xsl:when>
+                    <xsl:when test="string(text())='Periodical Part'">Text</xsl:when>
+                    <xsl:when test="string(text())='Habilitation'">Text</xsl:when>
+                    <xsl:when test="string(text())='Report'">Text</xsl:when>
+                    <xsl:when test="string(text())='Research Paper'">Text</xsl:when>
+                    <xsl:when test="string(text())='Generic Research Data'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Audio'">Sound</xsl:when>
+                    <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
+
                     <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
