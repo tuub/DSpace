@@ -136,6 +136,7 @@
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterType" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
@@ -184,6 +185,10 @@
                             <property name="snippets" value="5"/>
                         </bean>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dc.type"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.contributor.author"/>
                             <property name="snippets" value="5"/>
                         </bean>
@@ -208,6 +213,7 @@
                 <property name="similarityMetadataFields">
                     <list>
                         <value>dc.title</value>
+                        <value>dc.type</value>
                         <value>dc.contributor.author</value>
                         <value>dc.creator</value>
                         <value>dc.subject</value>
@@ -243,6 +249,7 @@
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterType" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
@@ -258,6 +265,7 @@
                 <property name="sortFields">
                     <list>
                         <ref bean="sortTitle" />
+                        <ref bean="sortType" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
@@ -278,6 +286,10 @@
                     <list>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.title"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="dc.type"/>
                             <property name="snippets" value="5"/>
                         </bean>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
@@ -403,6 +415,15 @@
         </property>
     </bean>
 
+    <bean id="searchFilterType" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="type"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.type</value>
+            </list>
+        </property>
+    </bean>
+
     <bean id="searchFilterAuthor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="author"/>
         <property name="metadataFields">
@@ -455,6 +476,10 @@
     <!--Sort properties-->
     <bean id="sortTitle" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
         <property name="metadataField" value="dc.title"/>
+    </bean>
+
+    <bean id="sortType" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.type"/>
     </bean>
 
     <bean id="sortDateIssued" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
