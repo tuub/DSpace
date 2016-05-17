@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DC.CONTRIBUTOR.AUTHOR -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>author</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Author(s)</label>
+    <input-type>name</input-type>
+    <hint>Enter the name(s) of the author(s).</hint>
+    <required>You have to enter the name(s) of the author(s).</required>
+    <type-bind>Multimedia</type-bind>
+</field>
+
+<!-- DC.CONTRIBUTOR.OTHER -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Other Contributor(s)</label>
+    <input-type>name</input-type>
+    <hint>Enter the name(s) of other contributor(s).</hint>
+    <required></required>
+    <type-bind>Multimedia</type-bind>
+</field>
+
+<!-- DC.DESCRIPTION.ABSTRACT-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier>abstract</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Abstract</label>
+    <input-type>textarea</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter an abstract. Please use "Add more" if you want to enter abstracts in other languages.</hint>
+    <required></required>
+    <type-bind>Multimedia</type-bind>
+</field>
+
+<!-- DC.IDENTIFIER.OTHER-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>identifier</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Project ID</label>
+    <input-type>onebox</input-type>
+    <hint>You may enter the Project ID of the TU project that produced the data.</hint>
+    <required></required>
+    <type-bind>Multimedia</type-bind>
+</field>

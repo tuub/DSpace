@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DC.TYPE (as workaround) -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>type</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Type</label>
+    <input-type value-pairs-name="publication_types">dropdown</input-type>
+    <hint>Enter the type of the work.</hint>
+    <required>You have to provide at least one type.</required>
+    <type-bind>Article,Book,Book Part,Conference Object,Conference Proceedings,Doctoral Thesis,Habilitation,Image,Master Thesis,Multimedia,Periodical,Periodical Part,Preprint,Report,Research Paper</type-bind>
+    <visibility>workflow</visibility>
+</field>
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>type</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Type</label>
+    <input-type value-pairs-name="research_data_types">dropdown</input-type>
+    <hint>Enter the type of the work.</hint>
+    <required>You have to provide at least one type.</required>
+    <type-bind>Generic Research Data, Audio, Video, Software</type-bind>
+    <visibility>workflow</visibility>
+</field>
+
+<!-- DC.TITLE -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>title</dc-element>
+    <repeatable>false</repeatable>
+    <label>Title</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter the title.</hint>
+    <required>You have to provide at least one title.</required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.TITLE.SUBTITLE -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>title</dc-element>
+    <dc-qualifier>subtitle</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Subtitle</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter a subtitle.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.LANGUAGE.ISO -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>language</dc-element>
+    <dc-qualifier>iso</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Language</label>
+    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+    <hint>Enter the language(s) of the work.</hint>
+    <required>You have to provide at least one language.</required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.DATE.ISSUED -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>date</dc-element>
+    <dc-qualifier>issued</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Date of first publication</label>
+    <input-type>date</input-type>
+    <hint>Enter the date of the first publication (year required).</hint>
+    <required>You have to enter an issue date.</required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.RELATION -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>relation</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Relations</label>
+    <input-type value-pairs-name="common_relations">qualdrop_value</input-type>
+    <hint>
+        If the item has any relations to other DOIs in DepositOnce, please enter them here. Use the "Reference" relation for connected publications. Use the "Supplement" relation for connected research data.
+    </hint>
+    <required></required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.RIGHTS.URI -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>rights</dc-element>
+    <dc-qualifier>uri</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Creative Commons license</label>
+    <input-type value-pairs-name="common_licenses">dropdown</input-type>
+    <hint>Choose a Creative Commons license for your work.</hint>
+    <required></required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.RIGHTS -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>rights</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Other open content license</label>
+    <input-type>onebox</input-type>
+    <hint>Enter an open content license for your work, e.g. GPL, MIT etc.</hint>
+    <required></required>
+    <type-bind>Generic Research Data, Audio, Video, Software</type-bind>
+</field>
+
+<!-- DC.RIGHTS.OTHER -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>rights</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Rights to use</label>
+    <input-type value-pairs-name="copyright">dropdown</input-type>
+    <hint>If no Creative Commons license or other Open Content license was entered please choose “German Copyright Law”.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+</field>
+
+<!-- DC.SUBJECT.OTHER (as workaround) -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>subject</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Keywords</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Please enter up to five keywords in German as well as in English. Please enter separate keywords by using "Add More".</hint>
+    <required>You have to enter some keywords.</required>
+    <type-bind>Article,Book,Book Part,Conference Object,Conference Proceedings,Doctoral Thesis,Habilitation,Image,Master Thesis,Multimedia,Periodical,Periodical Part,Preprint,Report,Research Paper</type-bind>
+</field>
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>subject</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Keywords</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter some keywords. Please enter separate keywords by using "Add More".</hint>
+    <required>You have to enter keywords.</required>
+    <type-bind>Generic Research Data, Audio, Video, Software</type-bind>
+</field>
+
+<!-- TUB.DESCRIPTION.INTERNAL -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier>internal</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Internal note</label>
+    <input-type>textarea</input-type>
+    <hint>You may enter a note to the repository team, this note will not be displayed publicly.</hint>
+    <required></required>
+    <type-bind></type-bind>
+</field>
+
+<!-- DC.DESCRIPTION -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Public Description</label>
+    <input-type>textarea</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter a description, this note will be displayed publicly.</hint>
+    <required></required>
+    <type-bind></type-bind>
+    <visibility>workflow</visibility>
+</field>
