@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DC.TITLE.TRANSLATED -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>title</dc-element>
+    <dc-qualifier>translated</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Translated title</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter German translation if your conference contribution is written in English et vice versa.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.TITLE.TRANSLATEDSUBTITLE -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>title</dc-element>
+    <dc-qualifier>translatedsubtitle</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Translated subtitle</label>
+    <input-type>onebox</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter German translation of your subtitle if your conference contribution is written in English et vice versa.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.CONTRIBUTOR.AUTHOR-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>author</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Author(s)</label>
+    <input-type>name</input-type>
+    <hint>Enter the name(s) of the author(s).</hint>
+    <required>You have to enter the name(s) of the author(s).</required>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.CONTRIBUTOR.OTHER-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>other</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Other contributor(s)</label>
+    <input-type>name</input-type>
+    <hint>Enter the name(s) of other contributor(s).</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+    <visibility>workflow</visibility>
+</field>
+
+<!-- DC.CONTRIBUTOR.ORGANISATION -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>organisation</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Contributing institution</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name(s) of the creating/contributing institution.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+    <visibility>workflow</visibility>
+</field>
+
+<!-- DC.DESCRIPTION.ABSTRACT-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier>abstract</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Abstract</label>
+    <input-type>textarea</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter a German and an English abstract. Please use "Add more" to enter abstracts in other languages.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.DESCRIPTION.TABLEOFCONTENTS -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier>tableofcontents</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Table of contents</label>
+    <input-type>textarea</input-type>
+    <language value-pairs-name="common_iso_languages">true</language>
+    <hint>Enter the table of contents.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+    <visibility>workflow</visibility>
+</field>
+
+<!-- DC.SUBJECT.DDC -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>subject</dc-element>
+    <dc-qualifier>ddc</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>DDC Class</label>
+    <input-type>onebox</input-type>
+    <hint>The Dewey Decimal Classification (DDC) is the international most widely used classification. Enter appropriate DDC Class(es) below.</hint>
+    <required>You have to enter a DDC Class.</required>
+    <vocabulary>ddc</vocabulary>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.IDENTIFIER -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>identifier</dc-element>
+    <dc-qualifier></dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Identifier(s)</label>
+    <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+    <hint>If the Conference Object has any identification numbers or codes associated with it, please enter the types and the actual numbers or codes below.</hint>
+    <required></required>
+	<type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.PROCEEDINGSTITLE -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>proceedingstitle</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Proceedings title</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the title of the proceedings.</hint>
+    <required></required>
+    <visibility></visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.DOI -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>doi</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Publisher DOI</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the DOI provided by the original publisher.</hint>
+    <required></required>
+    <visibility></visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.EDITOR -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>editor</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Editor(s)</label>
+    <input-type>name</input-type>
+    <hint>Enter the name(s) of the proceeding's editor(s).</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.VOLUME -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>volume</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Volume (year)</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the volume year of the proceedings (if the proceedings are part of a series).</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.NUMBER -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>number</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Volume (part of multivolume book)</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the volume number of the proceedings (if the proceedings consist of several volumes).</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.PAGESTART -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>pagestart</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>First page</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the Conference Object's first page.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.PAGEEND -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>pageend</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Last page</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the Conference Object's last page.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.ARTICLEid -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>articlenumber</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Article ID</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the Conference Object's ID.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.ORIGINALPUBLISHERNAME -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>originalpublishername</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Name of the original publisher</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name of original publisher.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DCTERMS.bibliographicCitation.ORIGINALPUBLISHERPLACE -->
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>bibliographicCitation</dc-element>
+    <dc-qualifier>originalpublisherplace</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Place of original publisher</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the place of the original publisher.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- TUB.SERIES.NAME -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>series</dc-element>
+    <dc-qualifier>name</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Name of the series</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name of the series.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- TUB.SERIES.ISSUENUMBER -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>series</dc-element>
+    <dc-qualifier>issuenumber</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Issue of the series</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the issue number of the series.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+	<visibility>workflow</visibility>
+</field>
+
+<!-- DC.DESCRIPTION.SPONSORSHIP-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+     <dc-qualifier>sponsorship</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Sponsor or funder information</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name of the sponsor or funder, and/or project/grant name or ID. Please use the following syntax if applicable: EC/FP7/12345/EU/ProjectName/ProjectAcronym. Please separate multiple entries by semicolon.</hint>
+    <required></required>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- DC.TYPE.VERSION -->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>type</dc-element>
+    <dc-qualifier>version</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Version</label>
+    <input-type value-pairs-name="type_versions">dropdown</input-type>
+    <hint>Choose the type of version. For type "Conference Object" choose either "Accepted Version" for postprints, "Published Version" for the publisher PDF or "Updated Version" for any version of the Conference Object that has been updated since its first publication.</hint>
+    <required>You have to choose the type of the published version.</required>
+    <visibility>workflow</visibility>
+	<type-bind>Conference Object</type-bind>
+</field>
+
+<!-- TUB.PUBLISHER.UNIVERSITYORINSTITUTION -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>publisher</dc-element>
+    <dc-qualifier>universityorinstitution</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Name of the publishing institution</label>
+    <input-type value-pairs-name="publishing_institution">dropdown</input-type>
+    <hint>The publishing institution is either  "Technische Universität Berlin" or "Universitätsverlag der TU Berlin".</hint>
+    <required>You have to choose whether TU Berlin or Universitätsverlag is publishing this item.</required>
+     <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- TUB.ACCESSRIGHTS.DNB -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>accessrights</dc-element>
+    <dc-qualifier>dnb</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Access rights DNB</label>
+    <input-type value-pairs-name="accessrights_dnb">dropdown</input-type>
+    <hint>Choose which rights the German National Library (DNB) has to display archived items.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
+
+<!-- TUB.ACCESSRIGHTS.openAIRE -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>accessrights</dc-element>
+    <dc-qualifier>openaire</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Access rights OpenAIRE</label>
+    <input-type value-pairs-name="accessrights_openaire">dropdown</input-type>
+    <hint>Choose the access rights for this item for OpenAIRE harvesting.</hint>
+    <required></required>
+    <visibility>workflow</visibility>
+    <type-bind>Conference Object</type-bind>
+</field>
