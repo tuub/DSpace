@@ -10,12 +10,11 @@
 #
 # See org.dspace.core.Email for information on the format of this file.
 #
-Subject: Feedback Form Information
+Subject: [DepositOnce] Feedbak
 
 Comments:
 
 {6}
-
 
 Date: {0}
 Email: {1}

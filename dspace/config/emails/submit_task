@@ -6,7 +6,7 @@
 # {3}  Description of task
 # {4}  link to 'my DSpace' page 
 #
-Subject: DSpace: You have a new task
+Subject: [DepositOnce] New Task
 
 A new item has been submitted:
 
@@ -16,9 +16,11 @@ Submitted by: {2}
 
 {3}
 
-To claim this task, please visit your "My DSpace"
+To claim this task, please visit your "My Deposits"
 page:  {4}
 
-Many thanks!
+If you need technical assistance, please email
+team@example.org
 
-DSpace
+Thank you!
+The DepositOnce Team

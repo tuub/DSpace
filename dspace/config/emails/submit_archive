@@ -4,7 +4,7 @@
 # {1}  Name of collection
 # {2}  handle 
 #
-Subject: DSpace: Submission Approved and Archived 
+Subject: [DepositOnce] Submission Approved and Archived 
 
 You submitted: {0}
 
@@ -14,8 +14,11 @@ Your submission has been accepted and archived in DSpace,
 and it has been assigned the following identifier:
 {2}
 
-Please use this identifier when citing your submission.
+Your DOI will be added within the next hour. Please use
+it when citing your submission.
 
-Many thanks!
+If you need technical assitance, please email
+team@example.org
 
-DSpace
+Thank you!
+The DepositOnce Team
