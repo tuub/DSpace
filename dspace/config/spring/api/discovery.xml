@@ -88,6 +88,36 @@
                         <value>dc.description.provenance</value>
                     </list>
                 </entry>
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>tub.description.internal</value>
+                    </list>
+                </entry>
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>tub.subject.rvk</value>
+                    </list>
+                </entry>
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>tub.accessrights.dnb</value>
+                    </list>
+                </entry>
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>tub.accessrights.openaire</value>
+                    </list>
+                </entry>
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>tub.rights.pod</value>
+                    </list>
+                </entry>
             </map>
         </property>
     </bean>
