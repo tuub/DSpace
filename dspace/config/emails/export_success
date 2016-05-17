@@ -5,14 +5,17 @@
 #
 # See org.dspace.core.Email for information on the format of this file.
 #
-Subject: DSpace - Item export requested is ready for download
-The item export you requested from the repository is now ready for download.
+Subject: [DepositOnce] Exported item is ready for download
+The item export you requested from DepositOnce is ready for download.
 
 You may download the compressed file using the following link:
 {0}
 
 This file will remain available for at least {1} hours.  
 
+If you need technical assitance, please email
+team@example.org
 
-The DSpace Team
+Thank You!
+The DepositOnce Team
 
