@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+DDC eng
+-->
+
+<node id="ddc_en" label="DDC English">
+	<isComposedBy>
+		<node id="0" label="000 Computer science, information science, general works">
+			<isComposedBy>
+				<node id="00" label="000 Computer science, information science, general works">
+					<isComposedBy>
+						<node id="000" label="000 Computer science, information science, general works" />
+						<node id="001" label="001 Knowledge" />
+						<node id="002" label="002 The book" />
+						<node id="003" label="003 Systems" />
+						<node id="004" label="004 Computer science" />
+						<node id="005" label="005 Computer programming, programs, data" />
+						<node id="006" label="006 Special computer methods" />
+					</isComposedBy>
+				</node>
+				<node id="01" label="010 Bibliographies">
+					<isComposedBy>
+						<node id="010" label="010 Bibliography" />
+						<node id="011" label="011 Bibliographies" />
+						<node id="012" label="012 Bibliographies of individuals" />
+						<node id="014" label="014 Bibliographies of anonymous and pseudonymous works" />
+						<node id="015" label="015 Bibliographies of works from specific places" />
+						<node id="016" label="016 Bibliographies of works from specific subjects" />
+						<node id="017" label="017 General subject catalogues" />
+						<node id="018" label="018 Catalogues arranged by author, date, etc." />
+						<node id="019" label="019 Dictionary catalogues" />
+					</isComposedBy>
+				</node>
+				<node id="02" label="020 Library and information sciences">
+					<isComposedBy>
+						<node id="020" label="020 Library and information sciences" />
+						<node id="021" label="021 Library relationships" />
+						<node id="022" label="022 Administration of physical plant" />
+						<node id="023" label="023 Personnel management" />
+						<node id="025" label="025 Library operations" />
+						<node id="026" label="026 Libraries for specific subjects" />
+						<node id="027" label="027 General libraries" />
+						<node id="028" label="028 Reading and use of other information media" />
+					</isComposedBy>
+				</node>
+				<node id="03" label="030 Encyclopaedias and books of facts">
+					<isComposedBy>
+						<node id="030" label="030 General encyclopaedic works" />
+						<node id="031" label="031 Encyclopaedias in American English" />
+						<node id="032" label="032 Encyclopaedias in English" />
+						<node id="033" label="033 Encyclopaedias in German and Dutch" />
+						<node id="034" label="034 Encyclopaedias in French, Occitan and Catalan" />
+						<node id="035" label="035 Encyclopaedias in Italian, Romanian and Rhaeto-Romanic" />
+						<node id="036" label="036 Encyclopaedias in Spanish and Portuguese" />
+						<node id="037" label="037 Encyclopaedias in Slavic languages" />
+						<node id="038" label="038 Encyclopaedias in Scandinavian languages" />
+						<node id="039" label="039 Encyclopaedias in other languages" />	
+					</isComposedBy>
+				</node>
+				<node id="05" label="050 Magazines, journals and serials">
+					<isComposedBy>
+						<node id="050" label="050 General serial publications" />
+						<node id="051" label="051 Serials in American English" />
+						<node id="052" label="052 Serials in English" />
+						<node id="053" label="053 Serials in German and Dutch" />
+						<node id="054" label="054 Serials in French, Occitan and Catalan" />
+						<node id="055" label="055 Serials in Italian, Romanian and Rhaeto-Romanic" />
+						<node id="056" label="056 Serials in Spanish and Portuguese" />
+						<node id="057" label="057 Serials in Slavic languages" />
+						<node id="058" label="058 Serials in Scandinavian languages" />
+						<node id="059" label="059 Serials in other languages" />
+					</isComposedBy>
+				</node>
+				<node id="06" label="060 Associations, organisations and museums">
+					<isComposedBy>
+						<node id="060" label="060 General organisations and museum science" />
+						<node id="061" label="061 organisations in North America" />
+						<node id="062" label="062 organisations in British Isles; in England" />
+						<node id="063" label="063 organisations in central Europe; in Germany" />
+						<node id="064" label="064 organisations in France and Monaco" />
+						<node id="065" label="065 organisations in Italy and adjacent islands" />
+						<node id="066" label="066 organisations in Iberian Peninsula and adjacent islands" />
+						<node id="067" label="067 organisations in eastern Europe; in Russia" />
+						<node id="068" label="068 organisations in other geographic areas" />
+						<node id="069" label="069 Museum science" />
+					</isComposedBy>
+				</node>
+				<node id="07" label="070 News media, journalism and publishing">
+					<isComposedBy>
+						<node id="070" label="070 News media, journalism and publishing" />
+						<node id="071" label="071 Journalism and newspapers in North America" />
+						<node id="072" label="072 Journalism and newspapers in British Isles; in England" />
+						<node id="073" label="073 Journalism and newspapers in central Europe; in Germany" />
+						<node id="074" label="074 Journalism and newspapers in France and Monaco" />
+						<node id="075" label="075 Journalism and newspapers in Italy and adjacent islands" />
+						<node id="076" label="076 Journalism and newspapers in Iberian Peninsula and adjacent islands" />
+						<node id="077" label="077 Journalism and newspapers in eastern Europe; in Russia" />
+						<node id="078" label="078 Journalism and newspapers in Scandinavia" />
+						<node id="079" label="079 Journalism and newspapers in other geographic areas" />
+					</isComposedBy>
+				</node>
+				<node id="08" label="080 General collections, quotations">
+					<isComposedBy>
+						<node id="080" label="080 General collections, quotations" />
+						<node id="081" label="081 Collections in American English" />
+						<node id="082" label="082 Collections in English" />
+						<node id="083" label="083 Collections in German and Dutch" />
+						<node id="084" label="084 Collections in French, Occitan and Catalan" />
+						<node id="085" label="085 Collections in Italian, Romanian and Rhaeto-Romanic" />
+						<node id="086" label="086 Collections in Spanish and Portuguese" />
+						<node id="087" label="087 Collections in Slavic languages" />
+						<node id="088" label="088 Collections in Scandinavian languages" />
+						<node id="089" label="089 Collections in other languages" />
+					</isComposedBy>
+				</node>
+				<node id="09" label="090 Manuscripts and rare books">
+					<isComposedBy>
+						<node id="090" label="090 Manuscripts, rare books" />
+						<node id="091" label="091 Manuscripts" />
+						<node id="092" label="092 Block books" />
+						<node id="093" label="093 Incunabula" />
+						<node id="094" label="094 Printed books" />
+						<node id="095" label="095 Books notable for bindings" />
+						<node id="096" label="096 Books notable for illustrations" />
+						<node id="097" label="097 Books notable for ownership or origin" />
+						<node id="098" label="098 Prohibited works, forgeries, hoaxes" />
+						<node id="099" label="099 Books notable for format" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="1" label="100 Philosophy and psychology">
+			<isComposedBy>
+				<node id="10" label="100 Philosophy and psychology">
+					<isComposedBy>
+						<node id="100" label="100 Philosophy and psychology" />
+						<node id="101" label="101 Theory of philosophy" />
+						<node id="102" label="102 Miscellany" />
+						<node id="103" label="103 Dictionaries and encyclopaedias" />
+						<node id="105" label="105 Serial publications" />
+						<node id="106" label="106 organisations and management" />
+						<node id="107" label="107 Education, research and related topics" />
+						<node id="108" label="108 Treatments by groups of people" />
+						<node id="109" label="109 Historical treatments, treatments of multiple individuals" />
+					</isComposedBy>
+				</node>
+				<node id="11" label="110 Metaphysics">
+					<isComposedBy>
+						<node id="110" label="110 Metaphysics" />
+						<node id="111" label="111 Ontology" />
+						<node id="113" label="113 Cosmology" />
+						<node id="114" label="114 Space" />
+						<node id="115" label="115 Time" />
+						<node id="116" label="116 Change" />
+						<node id="117" label="117 Structure" />
+						<node id="118" label="118 Force and energy" />
+						<node id="119" label="119 Number and quantity" />
+					</isComposedBy>
+				</node>
+				<node id="12" label="120 Epistemology">
+					<isComposedBy>
+						<node id="120" label="120 Epistemology, causation, and humankind" />
+						<node id="121" label="121 Epistemology" />
+						<node id="122" label="122 Causation" />
+						<node id="123" label="123 Determinism and indeterminism" />
+						<node id="124" label="124 Teleology" />
+						<node id="126" label="126 The self" />
+						<node id="127" label="127 The unconscious and the subconscious" />
+						<node id="128" label="138 Humankind" />
+						<node id="129" label="129 Origin and destiny of individual souls" />
+					</isComposedBy>
+				</node>
+				<node id="13" label="130 Parapsychology and occultism">
+					<isComposedBy>
+						<node id="130" label="130 Parapsychology and occultism" />
+						<node id="131" label="131 Parapsychological and occult methods" />
+						<node id="133" label="133 Specific topics in parapsychology and occultism" />
+						<node id="135" label="135 Dreams and mysteries" />
+						<node id="137" label="137 Divinatory graphology" />
+						<node id="138" label="138 Physiognomy" />
+						<node id="139" label="139 Phrenology" />
+					</isComposedBy>
+				</node>
+				<node id="14" label="140 Philosophical schools of thought">
+					<isComposedBy>
+						<node id="140" label="140 Specific philosophical schools and viewpoints" />
+						<node id="141" label="141 Idealism and related systems" />
+						<node id="142" label="142 Critical philosophy" />
+						<node id="143" label="143 Bergsonism and intuitionism" />
+						<node id="144" label="144 Humanism and related systems" />
+						<node id="145" label="145 Sensationalism" />
+						<node id="146" label="146 Naturalism and related systems" />
+						<node id="147" label="147 Pantheism and related systems" />
+						<node id="148" label="148 Eclecticism, liberalism, and traditionalism" />
+						<node id="149" label="149 Other philosophical systems" />
+					</isComposedBy>
+				</node>
+				<node id="15" label="150 Psychology">
+					<isComposedBy>
+						<node id="150" label="150 Psychology" />
+						<node id="152" label="152 Sensory perception, movement, emotions, and physiological drives" />
+						<node id="153" label="153 Conscious mental processes and intelligence" />
+						<node id="154" label="154 Subconscious and altered states" />
+						<node id="155" label="155 Differential and developmental psychology" />
+						<node id="156" label="156 Comparative psychology" />
+						<node id="158" label="158 Applied psychology" />
+					</isComposedBy>
+				</node>
+				<node id="16" label="160 Logic">
+					<isComposedBy>
+						<node id="160" label="160 Logic" />
+						<node id="161" label="161 Induction" />
+						<node id="162" label="162 Deduction" />
+						<node id="165" label="165 Fallacies and sources of error" />
+						<node id="166" label="166 Syllogisms" />
+						<node id="167" label="167 Hypotheses" />
+						<node id="168" label="168 Argument and persuasion" />
+						<node id="169" label="169 Analogy" />
+					</isComposedBy>
+				</node>
+				<node id="17" label="170 Ethics">
+					<isComposedBy>
+						<node id="170" label="170 Ethics" />
+						<node id="171" label="171 Ethical systems" />
+						<node id="172" label="172 Political ethics" />
+						<node id="173" label="173 Ethics of family relationships" />
+						<node id="174" label="174 Occupational ethics" />
+						<node id="175" label="175 Ethics of recreation and leisure" />
+						<node id="176" label="176 Ethics of sex and reproduction" />
+						<node id="177" label="177 Ethics of social relations" />
+						<node id="178" label="178 Ethics of consumption" />
+						<node id="179" label="179 Other ethical norms" />
+					</isComposedBy>
+				</node>
+				<node id="18" label="180 Ancient, medieval, and Eastern philosophy">
+					<isComposedBy>
+						<node id="180" label="180 Ancient, medieval, eastern philosophy" />
+						<node id="181" label="181 Eastern philosophy" />
+						<node id="182" label="182 Pre-Socratic Greek philosophies" />
+						<node id="183" label="183 Socratic and related Greek philosophies" />
+						<node id="184" label="184 Platonic philosophy" />
+						<node id="185" label="185 Aristotelian philosophy" />
+						<node id="186" label="186 Skeptic and Neoplatonic philosophies" />
+						<node id="187" label="187 Epicurean philosophy" />
+						<node id="188" label="188 Stoic philosophy" />
+						<node id="189" label="189 Medieval Western philosophy" />
+					</isComposedBy>
+				</node>
+				<node id="19" label="190 Modern Western philosophy">
+					<isComposedBy>
+						<node id="190" label="190 Modern Western philosophy" />
+						<node id="191" label="191 Philosophy of the United States and Canada" />
+						<node id="192" label="192 Philosophy of the British Isles" />
+						<node id="193" label="193 Philosophy of Germany and Austria" />
+						<node id="194" label="194 Philosophy of France" />
+						<node id="195" label="195 Philosophy of Italy" />
+						<node id="196" label="196 Philosophy of Spain and Portugal" />
+						<node id="197" label="197 Philosophy of Russia and the former Soviet Union" />
+						<node id="198" label="198 Philosophy of Scandinavia" />
+						<node id="199" label="199 Philosophy in other geographic areas" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="2" label="200 Religion">
+			<isComposedBy>
+				<node id="20" label="200 Religion">
+					<isComposedBy>
+						<node id="200" label="200 Religion" />
+						<node id="201" label="201 Religious mythology, social doctrines" />
+						<node id="202" label="202 Doctrines" />
+						<node id="203" label="203 Public worship and other practices" />
+						<node id="204" label="204 Religious experience, life, practice" />
+						<node id="205" label="205 Religious ethics" />
+						<node id="206" label="206 Leaders and organisation" />
+						<node id="207" label="207 Missions and religious education" />
+						<node id="208" label="208 Sources" />
+						<node id="209" label="209 Sects and reform movements" />
+					</isComposedBy>
+				</node>
+				<node id="21" label="210 Philosophy and theory of religion">
+					<isComposedBy>
+						<node id="210" label="210 Philosophy and theory of religion" />
+						<node id="211" label="211 Concepts of God" />
+						<node id="212" label="212 Existence, ways of knowing God, attributes of God" />
+						<node id="213" label="213 Creation" />
+						<node id="214" label="214 Theodicy" />
+						<node id="215" label="215 Science and religion" />
+						<node id="218" label="218 Humankind" />
+					</isComposedBy>
+				</node>
+				<node id="22" label="220 The Bible">
+					<isComposedBy>
+						<node id="220" label="220 Bible" />
+						<node id="221" label="221 Old Testament (Tanakh)" />
+						<node id="222" label="222 Historical books of Old Testament" />
+						<node id="223" label="223 Poetic books of Old Testament" />
+						<node id="224" label="224 Prophetic books of Old Testament" />
+						<node id="225" label="225 New Testament" />
+						<node id="226" label="226 Gospels and Acts" />
+						<node id="227" label="227 Epistles" />
+						<node id="228" label="228 Johannes-Revelation (Apocalypse)" />
+						<node id="229" label="229 Apocrypha and pseudepigrapha" />
+					</isComposedBy>
+				</node>
+				<node id="23" label="230 Christianity and Christian theology">
+					<isComposedBy>
+						<node id="230" label="230 Christianity and Christian theology" />
+						<node id="231" label="231 God" />
+						<node id="232" label="232 Jesus Christ and his family" />
+						<node id="233" label="233 Humankind" />
+						<node id="234" label="234 Salvation and grace" />
+						<node id="235" label="235 Spiritual beings" />
+						<node id="236" label="236 Eschatology" />
+						<node id="238" label="238 confessions of faith and catechisms" />
+						<node id="239" label="239 Apologetics and polemics" />
+					</isComposedBy>
+				</node>
+				<node id="24" label="240 Christian practice and observance">
+					<isComposedBy>
+						<node id="240" label="240 Christian practice and observance" />
+						<node id="241" label="241 Christian ethics" />
+						<node id="242" label="242 Devotional literature" />
+						<node id="243" label="243 Evangelistic writings for individuals" />
+						<node id="246" label="246 Use of art in Christianity" />
+						<node id="247" label="247 Church furnishings and related articles" />
+						<node id="248" label="248 Christian experience, practice, life" />
+						<node id="249" label="249 Christian observances in family life" />
+					</isComposedBy>
+				</node>
+				<node id="25" label="250 Christian orders and local church">
+					<isComposedBy>
+						<node id="250" label="250 Christian orders and local church" />
+						<node id="251" label="251 Homiletics" />
+						<node id="252" label="252 Texts of sermons" />
+						<node id="253" label="253 Pastoral theology" />
+						<node id="254" label="254 Parish administration" />
+						<node id="255" label="255 Religious congregations and orders" />
+						<node id="259" label="259 Pastoral care of families, of specific groups of people" />
+					</isComposedBy>
+				</node>
+				<node id="26" label="260 Christian organisation, social work, religious practice">
+					<isComposedBy>
+						<node id="260" label="260 Social and ecclesiastical theology" />
+						<node id="261" label="261 Social theology" />
+						<node id="262" label="262 ecclesiastical theology" />
+						<node id="263" label="263 Days, times, places of religious observance" />
+						<node id="264" label="264 Public worship" />
+						<node id="265" label="265 Sacraments, other rites and acts" />
+						<node id="266" label="266 Missions" />
+						<node id="267" label="267 Associations for religious work" />
+						<node id="268" label="268 Religious education" />
+						<node id="269" label="269 Spiritual renewal" />
+					</isComposedBy>
+				</node>
+				<node id="27" label="270 History of Christianity">
+					<isComposedBy>
+						<node id="270" label="270 History of Christianity, church history" />
+						<node id="271" label="271 Religious congregations and orders in church history" />
+						<node id="272" label="272 Persecutions in church history" />
+						<node id="273" label="273 Doctrinal controversies and heresies" />
+						<node id="274" label="274 Christianity in Europe" />
+						<node id="275" label="275 Christianity in Asia" />
+						<node id="276" label="276 Christianity in Africa" />
+						<node id="277" label="277 Christianity in North America" />
+						<node id="278" label="278 Christianity in South America" />
+						<node id="279" label="279 History of Christianity in other areas" />
+					</isComposedBy>
+				</node>
+				<node id="28" label="280 Christian denominations">
+					<isComposedBy>
+						<node id="280" label="280 Denominations and sects of Christian church" />
+						<node id="281" label="281 Early church and Eastern churches" />
+						<node id="282" label="282 Roman Catholic Church" />
+						<node id="283" label="283 Anglican churches" />
+						<node id="284" label="284 Protestant denominations of Continental origin" />
+						<node id="285" label="285 Presbyterian churches, Reformed churches, Congregational churches" />
+						<node id="286" label="286 Baptist, Restoration Movement, Adventist churches" />
+						<node id="287" label="287 Methodist churches, churches related to Methodism" />
+						<node id="289" label="289 Other denominations and sects" />
+					</isComposedBy>
+				</node>
+				<node id="29" label="290 Other religions">
+					<isComposedBy>
+						<node id="290" label="290 Other religions" />
+						<node id="292" label="292 Greek and Roman religion" />
+						<node id="293" label="293 Germanic religion" />
+						<node id="294" label="294 Religions of Indic origin" />
+						<node id="295" label="295 Zoroastrianism" />
+						<node id="296" label="296 Judaism" />
+						<node id="297" label="297 Islam, Bábism and Bahá'í Faith" />
+						<node id="299" label="299 Religions not provided for elsewhere" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="3" label="300 Social sciences">
+			<isComposedBy>
+				<node id="30" label="300 Social sciences, sociology and anthropology">
+					<isComposedBy>
+						<node id="300" label="300 Social sciences" />
+						<node id="301" label="301 Sociology and anthropology" />
+						<node id="302" label="302 Social interaction" />
+						<node id="303" label="303 Social processes" />
+						<node id="304" label="304 Factors affecting social behaviour" />
+						<node id="305" label="305 Groups of people" />
+						<node id="306" label="306 Culture and institutions" />
+						<node id="307" label="307 Communities" />
+					</isComposedBy>
+				</node>
+				<node id="31" label="310 Statistics">
+					<isComposedBy>
+						<node id="310" label="310 Collections of general statistics" />
+						<node id="314" label="314 General statistics of Europe" />
+						<node id="315" label="315 General statistics of Asia" />
+						<node id="316" label="316 General statistics of Africa" />
+						<node id="317" label="317 General statistics of North America" />
+						<node id="318" label="318 General statistics of South America" />
+						<node id="319" label="319 General statistics of other areas" />
+					</isComposedBy>
+				</node>
+				<node id="32" label="320 Political science">
+					<isComposedBy>
+						<node id="320" label="320 Political science" />
+						<node id="321" label="321 Systems of governments and states" />
+						<node id="322" label="322 Relation of state to organized groups and their members" />
+						<node id="323" label="323 Civil and political rights" />
+						<node id="324" label="324 The political process" />
+						<node id="325" label="325 International migration and colonization" />
+						<node id="326" label="326 Slavery and emancipation" />
+						<node id="327" label="327 International relations" />
+						<node id="328" label="328 The legislative process" />
+					</isComposedBy>
+				</node>
+				<node id="33" label="330 Economics">
+					<isComposedBy>
+						<node id="330" label="330 Economics" />
+						<node id="331" label="331 Labour economics" />
+						<node id="332" label="332 Financial economics" />
+						<node id="333" label="333 Economics of land and energy" />
+						<node id="334" label="334 Cooperatives" />
+						<node id="335" label="335 Socialism and related systems" />
+						<node id="336" label="336 Public finance" />
+						<node id="337" label="337 International economics" />
+						<node id="338" label="338 Production" />
+						<node id="339" label="339 Macroeconomics and related topics" />
+					</isComposedBy>
+				</node>
+				<node id="34" label="340 Law">
+					<isComposedBy>
+						<node id="340" label="340 Law" />
+						<node id="341" label="341 Law of nations" />
+						<node id="342" label="342 Constitutional and administrative law" />
+						<node id="343" label="343 Military, tax and commerce law" />
+						<node id="344" label="344 Labour, social service, education, cultural law" />
+						<node id="345" label="345 Criminal law" />
+						<node id="346" label="346 Private law" />
+						<node id="347" label="347 Procedure and courts" />
+						<node id="348" label="348 Laws, regulations, cases" />
+						<node id="349" label="349 Law of specific jurisdictions and areas" />
+					</isComposedBy>
+				</node>
+				<node id="35" label="350 Public administration and military science">
+					<isComposedBy>
+						<node id="350" label="350 Public administration and military science" />
+						<node id="351" label="351 Public administration" />
+						<node id="352" label="352 General considerations of public administration" />
+						<node id="353" label="353 Specific fields of public administration" />
+						<node id="354" label="354 Public administration of economy and environment" />
+						<node id="355" label="355 Military science" />
+						<node id="356" label="356 Foot forces and warfare" />
+						<node id="357" label="357 Mounted forces and warfare" />
+						<node id="358" label="358 Air and other specialized forces" />
+						<node id="359" label="359 Sea forces and warfare" />
+					</isComposedBy>
+				</node>
+				<node id="36" label="360 Social problems and social services">
+					<isComposedBy>
+						<node id="360" label="360 Social problems and services; associations" />
+						<node id="361" label="361 Social problems and services in general" />
+						<node id="362" label="362 Social problems of and services to groups of people" />
+						<node id="363" label="363 Other social problems and services" />
+						<node id="364" label="364 Criminology" />
+						<node id="365" label="365 Penal and related institutions" />
+						<node id="366" label="366 Associations and societies" />
+						<node id="367" label="367 General clubs" />
+						<node id="368" label="368 Insurance" />
+						<node id="369" label="369 Different kinds of Associations" />
+					</isComposedBy>
+				</node>
+				<node id="37" label="370 Education">
+					<isComposedBy>
+						<node id="370" label="370 Education" />
+						<node id="371" label="371 Schools and their activities; special education" />
+						<node id="372" label="372 Primary education" />
+						<node id="373" label="373 Secondary education" />
+						<node id="374" label="374 Adult education" />
+						<node id="375" label="375 Curricula" />
+						<node id="378" label="378 Higher education" />
+						<node id="379" label="379 Public policy issues in education" />
+					</isComposedBy>
+				</node>
+				<node id="38" label="380 Commerce, communications, and transportation">
+					<isComposedBy>
+						<node id="380" label="380 Commerce, communications, transportation" />
+						<node id="381" label="381 Commerce (Trade)" />
+						<node id="382" label="382 International commerce" />
+						<node id="383" label="383 Postal communication" />
+						<node id="384" label="384 Communications" />
+						<node id="385" label="385 Railroad transportation" />
+						<node id="386" label="386 Inland waterway and ferry transportation" />
+						<node id="387" label="387 Water, air, space transportation" />
+						<node id="388" label="388 Transportation; ground transportation" />
+						<node id="389" label="389 Metrology and standardisation" />
+					</isComposedBy>
+				</node>
+				<node id="39" label="390 Customs, etiquette, and folklore">
+					<isComposedBy>
+						<node id="390" label="390 Customs, etiquette, folklore" />
+						<node id="391" label="391 Costume and personal appearance" />
+						<node id="392" label="392 Customs of life cycle and domestic life" />
+						<node id="393" label="393 Death customs" />
+						<node id="394" label="394 General customs" />
+						<node id="395" label="395 Etiquette (Manners)" />
+						<node id="398" label="398 Folklore" />
+						<node id="399" label="399 Customs of war and diplomacy" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="4" label="400 Language">
+			<isComposedBy>
+				<node id="40" label="400 Language">
+					<isComposedBy>
+						<node id="400" label="400 Language" />
+						<node id="401" label="401 Philosophy and theory" />
+						<node id="402" label="402 Miscellany" />
+						<node id="403" label="403 Dictionaries, encyclopaedias" />
+						<node id="404" label="404 Special topics of language" />
+						<node id="405" label="405 Serial publications" />
+						<node id="406" label="406 organisations and management" />
+						<node id="407" label="407 Education, research, related topics" />
+						<node id="408" label="408 Treatment by groups of people" />
+						<node id="409" label="409 Geographic treatment and biography" />
+					</isComposedBy>
+				</node>
+				<node id="41" label="410 Linguistics">
+					<isComposedBy>
+						<node id="410" label="410 Linguistics" />
+						<node id="411" label="411 Writing systems" />
+						<node id="412" label="412 Etymology" />
+						<node id="413" label="413 Dictionaries" />
+						<node id="414" label="414 Phonology and phonetics" />
+						<node id="415" label="415 Grammar" />
+						<node id="417" label="417 Dialectology and historical linguistics" />
+						<node id="418" label="418 Standard usage, prescriptive linguistics" />
+						<node id="419" label="419 Sign languages" />
+					</isComposedBy>
+				</node>
+				<node id="42" label="420 English and Old English languages">
+					<isComposedBy>
+						<node id="420" label="420 English and Old English" />
+						<node id="421" label="421 Writing system and phonology of standard English" />
+						<node id="422" label="422 Etymology of standard English" />
+						<node id="423" label="423 English dictionaries" />
+						<node id="425" label="425 English grammar" />
+						<node id="427" label="427 Variations of English, Middle English" />
+						<node id="428" label="428 Standard English usage" />
+						<node id="429" label="429 Old English (Anglo-Saxon)" />
+					</isComposedBy>
+				</node>
+				<node id="43" label="430 Germanic languages, German">
+					<isComposedBy>
+						<node id="430" label="430 Germanic languages; German" />
+						<node id="431" label="431 Writing systems, phonology of standard German" />
+						<node id="432" label="432 Etymology of standard German" />
+						<node id="433" label="433 German dictionaries" />
+						<node id="435" label="435 German grammar" />
+						<node id="437" label="437 Variations of German" />
+						<node id="438" label="438 Standard German usage" />
+						<node id="439" label="439 Other Germanic languages" />
+					</isComposedBy>
+				</node>
+				<node id="44" label="440 Romance languages, French">
+					<isComposedBy>
+						<node id="440" label="440 Romance languages, French" />
+						<node id="441" label="441 Writing systems, phonology of standard French" />
+						<node id="442" label="442 Etymology of standard French" />
+						<node id="443" label="443 French dictionaries" />
+						<node id="445" label="445 French grammar" />
+						<node id="447" label="447 Variations of French" />
+						<node id="448" label="448 Standard French usage" />
+						<node id="449" label="449 Occitan Catalan, Franco-Provençal" />
+					</isComposedBy>
+				</node>
+				<node id="45" label="450 Italian, Romanian, Rhaetian">
+					<isComposedBy>
+						<node id="450" label="450 Italian, Romanian, Rhaetian" />
+						<node id="451" label="451 Writing systems, phonology of standard Italian" />
+						<node id="452" label="452 Etymology of standard Italian" />
+						<node id="453" label="453 Italian dictionaries" />
+						<node id="455" label="455 Italian grammar" />
+						<node id="457" label="457 Variations of Italian" />
+						<node id="458" label="458 Standard Italian usage" />
+						<node id="459" label="459 Romanian, Rhaetian" />
+					</isComposedBy>
+				</node>
+				<node id="46" label="460 Spanish, Portuguese">
+					<isComposedBy>
+						<node id="460" label="460 Spanish, Portuguese" />
+						<node id="461" label="461 Writing systems, phonology of standard Spanish" />
+						<node id="462" label="462 Etymology of standard Spanish" />
+						<node id="463" label="463 Spanish dictionaries" />
+						<node id="465" label="465 Spanish grammar" />
+						<node id="467" label="467 Variations of Spanish" />
+						<node id="468" label="468 Standard Spanish usage" />
+						<node id="469" label="469 Portuguese" />
+					</isComposedBy>
+				</node>
+				<node id="47" label="470 Latin and Italic languages">
+					<isComposedBy>
+						<node id="470" label="470 Italic languages; Latin" />
+						<node id="471" label="471 Writing systems, phonology of classical Latin" />
+						<node id="472" label="472 Etymology of classical Latin" />
+						<node id="473" label="473 Dictionaries of classical Latin" />
+						<node id="475" label="475 Grammar of classical Latin" />
+						<node id="477" label="477 Old, postclassical, Ecclesiastical, Vulgar Latin " />
+						<node id="478" label="478 Classical Latin usage" />
+						<node id="479" label="479 Other Italic languages" />
+					</isComposedBy>
+				</node>
+				<node id="48" label="480 Hellenic languages, classical Greek">
+					<isComposedBy>
+						<node id="480" label="480 Hellenic languages, classical Greek" />
+						<node id="481" label="481 Writing systems, phonology of classical Greek" />
+						<node id="482" label="482 Etymology of classical Greek" />
+						<node id="483" label="483 Dictionaries of classical Greek" />
+						<node id="485" label="485 Grammar of classical Greek" />
+						<node id="487" label="487 Preclassical and Medieval Greek" />
+						<node id="488" label="488 Classical Greek usage" />
+						<node id="489" label="489 Other Hellenic languages, Modern Greek" />
+					</isComposedBy>
+				</node>
+				<node id="49" label="490 Other languages">
+					<isComposedBy>
+						<node id="490" label="490 Other languages" />
+						<node id="491" label="491 East Indo-European and Celtic languages" />
+						<node id="492" label="492 Afro-Asiatic languages; Semitic Languages" />
+						<node id="493" label="493 Non-Semitic Afro-Asiatic languages" />
+						<node id="494" label="494 Altic, Uralic, Hyperborean, Dravidian languages" />
+						<node id="495" label="495 Languages of East and Southeast Asia" />
+						<node id="496" label="496 African languages" />
+						<node id="497" label="497 North American native languages" />
+						<node id="498" label="498 South American native languages" />
+						<node id="499" label="499 Austronesian languages, miscellaneous languages" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="5" label="500 Science and mathematics">
+			<isComposedBy>
+				<node id="50" label="500 Science and mathematics">
+					<isComposedBy>	
+						<node id="500" label="500 Science and mathematics" />
+						<node id="501" label="501 Philosophy and theory" />
+						<node id="502" label="502 Miscellany" />
+						<node id="503" label="503 Dictionaries, encyclopaedias" />
+						<node id="505" label="505 Serial publications" />
+						<node id="506" label="506 organisations and management" />
+						<node id="507" label="507 Education, research, related topics" />
+						<node id="508" label="508 Natural history" />
+						<node id="509" label="509 History, geographic treatment, biography" />
+					</isComposedBy>
+				</node>
+				<node id="51" label="510 Mathematics">
+					<isComposedBy>	
+						<node id="510" label="510 Mathematics" />
+						<node id="511" label="511 General principles of mathematics" />
+						<node id="512" label="512 Algebra" />
+						<node id="513" label="513 Arithmetic" />
+						<node id="514" label="514 Topology" />
+						<node id="515" label="515 Analysis" />
+						<node id="516" label="516 Geometry" />
+						<node id="518" label="518 Numerical Analysis" />
+						<node id="519" label="519 Probabilities and applied mathematics" />
+					</isComposedBy>
+				</node>
+				<node id="52" label="520 Astronomy">
+					<isComposedBy>
+						<node id="520" label="520 Astronomy and allied sciences" />
+						<node id="521" label="521 Celestial mechanics" />
+						<node id="522" label="522 Techniques, equipment, materials" />
+						<node id="523" label="523 Specific celestial bodies and phenomena" />
+						<node id="525" label="525 Earth (Astronomical geography)" />
+						<node id="526" label="526 Mathematical geography" />
+						<node id="527" label="527 Celestial navigation" />
+						<node id="528" label="528 Ephemerides" />
+						<node id="529" label="529 Chronology" />
+					</isComposedBy>
+				</node>
+				<node id="53" label="530 Physics">
+					<isComposedBy>
+						<node id="530" label="530 Physics" />
+						<node id="531" label="531 Classical mechanics" />
+						<node id="532" label="532 Fluid mechanics" />
+						<node id="533" label="533 Pneumatics (Gas mechanics)" />
+						<node id="534" label="534 Sound and related vibrations" />
+						<node id="535" label="535 Light, infrared and ultraviolet phenomena" />
+						<node id="536" label="536 Heat" />
+						<node id="537" label="537 Electricity and electronics" />
+						<node id="538" label="538 Magnetism" />
+						<node id="539" label="539 Modern physics" />
+					</isComposedBy>
+				</node>
+				<node id="54" label="540 Chemistry">
+					<isComposedBy>
+						<node id="540" label="540 Chemistry and allied sciences" />
+						<node id="541" label="541 Psycial chemistry" />
+						<node id="542" label="542 Techniques, equipment and materials" />
+						<node id="543" label="543 Analytical chemistry" />
+						<node id="546" label="546 Inorganic chemistry" />
+						<node id="547" label="547 Organic chemistry" />
+						<node id="548" label="548 Crystallography" />
+						<node id="549" label="549 Mineralogy" />
+					</isComposedBy>
+				</node>
+				<node id="55" label="550 Earth sciences, geology">
+					<isComposedBy>
+						<node id="550" label="550 Earth sciences" />
+						<node id="551" label="551 Geology, hydrology and meteorology" />
+						<node id="552" label="552 Petrology" />
+						<node id="553" label="553 Economic geology" />
+						<node id="554" label="554 Earth sciences of Europe" />
+						<node id="555" label="555 Earth sciences of Asia" />
+						<node id="556" label="556 Earth sciences of Africa" />
+						<node id="557" label="557 Earth sciences of North America" />
+						<node id="558" label="558 Earth sciences of South America" />
+						<node id="559" label="559 Earth sciences of other areas" />
+					</isComposedBy>
+				</node>
+				<node id="56" label="560 Fossils and prehistoric life">
+					<isComposedBy>
+						<node id="560" label="560 Palaeontology, palaeozoology" />
+						<node id="561" label="561 Palaeobotany, fossil microorganisms" />
+						<node id="562" label="562 Fossil invertebrates" />
+						<node id="563" label="563 Fossil marine and seashore invertebrates" />
+						<node id="564" label="564 Fossil mollusks and molluscoids" />
+						<node id="565" label="565 Fossil arthropods" />
+						<node id="566" label="566 Fossil chordates" />
+						<node id="567" label="567 Fossil cold-blooded vertebrates; fossil fishes" />
+						<node id="568" label="568 Fossil birds" />
+						<node id="569" label="569 Fossil mammals" />
+					</isComposedBy>
+				</node>
+				<node id="57" label="570 Life sciences, biology">
+					<isComposedBy>
+						<node id="570" label="570 Life sciences, biology" />
+						<node id="571" label="571 Physiology and related subjects" />
+						<node id="572" label="572 Biochemistry" />
+						<node id="573" label="573 Specific physiological systems in animals" />
+						<node id="575" label="575 Specific parts of and systems in plants" />
+						<node id="576" label="576 Genetics and evolution" />
+						<node id="577" label="577 Ecology" />
+						<node id="578" label="578 Natural history of organisms" />
+						<node id="579" label="579 Microorganisms, fungi and algae" />
+					</isComposedBy>
+				</node>
+				<node id="58" label="580 Plants (Botany)">
+					<isComposedBy>
+						<node id="580" label="580 Plants (Botany)" />
+						<node id="581" label="581 Specific topics in natural history" />
+						<node id="582" label="582 Plants noted for characteristics and flowers" />
+						<node id="583" label="583 Dicotyledons" />
+						<node id="584" label="584 Monocotyledons" />
+						<node id="585" label="585 Gymnosperms, conifers" />
+						<node id="586" label="586 Seedless plants" />
+						<node id="587" label="587 Vascular seedless plants" />
+						<node id="588" label="588 Bryophytes" />
+					</isComposedBy>
+				</node>
+				<node id="59" label="590 Animals (Zoology)">
+					<isComposedBy>
+						<node id="590" label="590 Animals (Zoology)" />
+						<node id="591" label="591 Specific topics in natural history" />
+						<node id="592" label="592 Invertebrates" />
+						<node id="593" label="593 Marine and seashore invertebrates" />
+						<node id="594" label="594 Mollusks and molluscoids" />
+						<node id="595" label="595 Arthropods" />
+						<node id="596" label="596 Chordates" />
+						<node id="597" label="597 Cold-blooded vertebrates, fishes" />
+						<node id="598" label="598 Birds" />
+						<node id="599" label="599 Mammals" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="6" label="600 Technology, Medicine, applied science">
+			<isComposedBy>
+				<node id="60" label="600 Technology, Medicine, applied science">
+					<isComposedBy>
+						<node id="600" label="600 Technology, Medicine, applied science" />
+						<node id="601" label="601 Philosophy and theory" />
+						<node id="602" label="602 Miscellany" />
+						<node id="603" label="603 Dictionaries and encyclopedias" />
+						<node id="604" label="604 Special topics" />
+						<node id="605" label="605 Serial publications" />
+						<node id="606" label="606 Organisations" />
+						<node id="607" label="607 Education, research and related topics" />
+						<node id="608" label="608 Inventions and patents" />
+						<node id="609" label="609 History, geographic treatment, biography" />
+					</isComposedBy>
+				</node>
+			<node id="61" label="610 Medicine and health">
+					<isComposedBy>
+						<node id="610" label="610 Medicine and health" />
+						<node id="611" label="611 Human anatomy, cytology and histology" />
+						<node id="612" label="612 Human physiology" />
+						<node id="613" label="613 Personal health and safety" />
+						<node id="614" label="614 Incidence and prevention of disease" />
+						<node id="615" label="615 Pharmacology and therapeutics" />
+						<node id="616" label="616 Diseases" />
+						<node id="617" label="617 Surgery and related medical specialties" />
+						<node id="618" label="618 Gynecology, obstetrics, pediatrics and geriatrics" />
+					</isComposedBy>
+				</node>
+			<node id="62" label="620 Engineering and allied operations">
+					<isComposedBy>
+						<node id="620" label="620 Engineering and allied operations" />
+						<node id="621" label="621 Applied physics" />
+						<node id="622" label="622 Mining and related operations" />
+						<node id="623" label="623 Military and nautical engineering" />
+						<node id="624" label="624 Civil engineering" />
+						<node id="625" label="625 Engineering of railroads and roads" />
+						<node id="627" label="627 Hydraulic engineering" />
+						<node id="628" label="628 Sanitary and municipal engineering" />
+						<node id="629" label="629 Other branches of engineering" />
+					</isComposedBy>
+				</node>
+			<node id="63" label="630 Agriculture and related technologies">
+					<isComposedBy>
+						<node id="630" label="630 Agriculture and related technologies" />
+						<node id="631" label="631 Techniques, equipment and materials" />
+						<node id="632" label="632 Plant injuries, diseases and pests" />
+						<node id="633" label="633 Field and plantation crops" />
+						<node id="634" label="634 Orchards, fruits and forestry" />
+						<node id="635" label="635 Garden crops (Horticulture)" />
+						<node id="636" label="636 Animal husbandry" />
+						<node id="637" label="637 Processing dairy and related products" />
+						<node id="638" label="638 Insect culture" />
+						<node id="639" label="639 Hunting, fishing and conservation" />
+					</isComposedBy>
+				</node>
+			<node id="64" label="640 Home and family management">
+					<isComposedBy>
+						<node id="640" label="640 Home and family management" />
+						<node id="641" label="641 Food and drink" />
+						<node id="642" label="642 Meals and table service" />
+						<node id="643" label="643 Housing and household equipment" />
+						<node id="644" label="644 Household utilities" />
+						<node id="645" label="645 Household furnishings" />
+						<node id="646" label="646 Sewing, clothing and personal living" />
+						<node id="647" label="647 Management of public households" />
+						<node id="648" label="648 Housekeeping" />
+						<node id="649" label="649 Child rearing and home care of people" />
+					</isComposedBy>
+				</node>
+			<node id="65" label="650 Management and auxiliary services">
+					<isComposedBy>
+						<node id="650" label="650 Management and auxiliary services" />
+						<node id="651" label="651 Office services" />
+						<node id="652" label="652 Processes of written communication" />
+						<node id="653" label="653 Shorthand" />
+						<node id="657" label="657 Accounting" />
+						<node id="658" label="658 General management" />
+						<node id="659" label="659 Advertising and public relations" />
+					</isComposedBy>
+				</node>
+			<node id="66" label="660 Chemical engineering">
+					<isComposedBy>
+						<node id="660" label="660 Chemical engineering" />
+						<node id="661" label="661 Industrial chemicals" />
+						<node id="662" label="662 Explosives, fuels and related products" />
+						<node id="663" label="633 Beverage technology" />
+						<node id="664" label="664 Food technology" />
+						<node id="665" label="665 Industrial oils, fats, waxes and gases" />
+						<node id="666" label="666 Ceramic and allied technologies" />
+						<node id="667" label="667 Cleaning, colour and coating technologies" />
+						<node id="668" label="668 Technology of other organic products" />
+						<node id="669" label="669 Metallurgy" />
+					</isComposedBy>
+				</node>
+			<node id="67" label="670 Manufacturing">
+					<isComposedBy>
+						<node id="670" label="670 Manufacturing" />
+						<node id="671" label="671 Metalworking and primary metal products" />
+						<node id="672" label="672 Iron, steel and other iron alloys" />
+						<node id="673" label="673 Nonferrous metals" />
+						<node id="674" label="674 Lumber processing, wood products and cork" />
+						<node id="675" label="675 Leather and fur processing" />
+						<node id="676" label="676 Pulp and paper technology" />
+						<node id="677" label="677 Textiles" />
+						<node id="678" label="678 Elastomers and elastomer products" />
+						<node id="679" label="679 Other products of specific materials" />
+					</isComposedBy>
+				</node>
+			<node id="68" label="680 Manufacture for specific uses">
+					<isComposedBy>
+						<node id="680" label="680 Manufacture for specific uses" />
+						<node id="681" label="681 Precision instruments and other devices" />
+						<node id="682" label="682 Small forge work (Blacksmithing)" />
+						<node id="683" label="683 Hardware and household appliances" />
+						<node id="684" label="684 Furnishings and home workshops" />
+						<node id="685" label="685 Leather, fur goods and related products" />
+						<node id="686" label="686 Printing and related activities" />
+						<node id="687" label="687 Clothing and accessories" />
+						<node id="688" label="688 Other final products and packaging" />
+					</isComposedBy>
+				</node>
+			<node id="69" label="690 Buildings">
+					<isComposedBy>
+						<node id="690" label="690 Buildings" />
+						<node id="691" label="691 Building materials" />
+						<node id="692" label="692 Auxiliary construction practices" />
+						<node id="693" label="693 Specific materials and purposes" />
+						<node id="694" label="694 Wood construction and carpentry" />
+						<node id="695" label="695 Roof covering" />
+						<node id="696" label="696 Utilities" />
+						<node id="697" label="697 Heating, ventilating and air-conditioning" />
+						<node id="698" label="698 Detail finishing" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="7" label="700 Arts &amp; recreation">
+			<isComposedBy>
+				<node id="70" label="700 The arts">
+					<isComposedBy>
+						<node id="700" label="700 The arts; fine and decorative arts" />
+						<node id="701" label="701 Philosophy of fine and decorative arts" />
+						<node id="702" label="702 Miscellany of fine and decorative arts" />
+						<node id="703" label="703 Dictionaries of fine and decorative arts" />
+						<node id="704" label="704 Special topics in fine and decorative arts" />
+						<node id="705" label="705 Serial publications of fine and decorative arts" />
+						<node id="706" label="706 Organisations and management" />
+						<node id="707" label="707 Education, research and related topics" />
+						<node id="708" label="708 Galleries, museums and private collections" />
+						<node id="709" label="709 Historical, geographic and persons treatment" />
+					</isComposedBy>
+				</node>
+				<node id="71" label="710 Civic and landscape art">
+					<isComposedBy>
+						<node id="710" label="710 Civic and landscape art" />
+						<node id="711" label="711 Area planning" />
+						<node id="712" label="712 Landscape architecture" />
+						<node id="713" label="713 Landscape architecture of trafficways" />
+						<node id="714" label="714 Water features" />
+						<node id="715" label="715 Woody plants in landscape architecture" />
+						<node id="716" label="716 Herbaceous plants in landscape architecture" />
+						<node id="717" label="717 Structures in landscape architecture" />
+						<node id="718" label="718 Landscape design of cemeteries" />
+						<node id="719" label="719 Natural landscapes" />
+					</isComposedBy>
+				</node>
+				<node id="72" label="720 Architecture">
+					<isComposedBy>
+						<node id="720" label="720 Architecture" />
+						<node id="721" label="721 Architectural structure" />
+						<node id="722" label="722 Architecture to ca. 300" />
+						<node id="723" label="723 Architecture from ca. 300 to 1399" />
+						<node id="724" label="724 Architecture from 1400" />
+						<node id="725" label="725 Public structures" />
+						<node id="726" label="726 Buildings for religious and related purposes" />
+						<node id="727" label="727 Buildings for education and research" />
+						<node id="728" label="728 Residential and related buildings" />
+						<node id="729" label="729 Design and decoration" />
+					</isComposedBy>
+				</node>
+				<node id="73" label="730 Plastic arts, sculpture, metalwork">
+					<isComposedBy>
+						<node id="730" label="730 Plastic arts, sculpture" />
+						<node id="731" label="731 Processes, forms and subjects of sculpture" />
+						<node id="732" label="732 Sculpture to ca. 500" />
+						<node id="733" label="733 Greek, Etruscan and Roman sculpture" />
+						<node id="734" label="734 Sculpture from ca. 500 to 1399" />
+						<node id="735" label="735 Sculpture from 1400" />
+						<node id="736" label="736 Carving and carvings" />
+						<node id="737" label="737 Numismatics and sigillography" />
+						<node id="738" label="738 Ceramic arts" />
+						<node id="739" label="739 Art metalwork" />
+					</isComposedBy>
+				</node>
+				<node id="74" label="740 Drawing and decorative arts">
+					<isComposedBy>
+						<node id="740" label="740 Drawing and decorative arts" />
+						<node id="741" label="741 Drawing and drawings" />
+						<node id="742" label="742 Perspective" />
+						<node id="743" label="743 Drawing and drawings by subject" />
+						<node id="745" label="745 Decorative arts" />
+						<node id="746" label="746 Textile arts" />
+						<node id="747" label="747 Interior decoration" />
+						<node id="748" label="748 Glass" />
+						<node id="749" label="749 Furniture and accessories" />
+					</isComposedBy>
+				</node>
+				<node id="75" label="750 Painting">
+					<isComposedBy>
+						<node id="750" label="750 Painting and paintings" />
+						<node id="751" label="751 Techniques, equipment, materials and forms" />
+						<node id="752" label="752 Colour" />
+						<node id="753" label="753 Symbolism, allegory, mythology and legend" />
+						<node id="754" label="754 Genre paintings" />
+						<node id="755" label="755 Religion" />
+						<node id="757" label="757 Human figures" />
+						<node id="758" label="758 Other subjects" />
+						<node id="759" label="759 Historical, geographic and persons treatment" />
+					</isComposedBy>
+				</node>
+				<node id="76" label="760 Graphic arts, printmaking and prints">
+					<isComposedBy>
+						<node id="760" label="760 Graphic arts, printmaking and prints" />
+						<node id="761" label="761 Relief processes (Block printing)" />
+						<node id="763" label="763 Lithographic processes" />
+						<node id="764" label="764 Chromolithography and serigraphy" />
+						<node id="765" label="765 Metal engraving" />
+						<node id="766" label="766 Mezzotinting, aquatinting and related processes" />
+						<node id="767" label="767 Etching and drypoint" />
+						<node id="769" label="769 Prints" />
+					</isComposedBy>
+				</node>
+				<node id="77" label="770 Photography and computer art">
+					<isComposedBy>
+						<node id="770" label="770 Photography, photographs and computer art" />
+						<node id="771" label="771 Techniques, equipment and materials" />
+						<node id="772" label="772 Metallic salt processes" />
+						<node id="773" label="773 Pigment processes of printing" />
+						<node id="774" label="774 Holography" />
+						<node id="775" label="775 Digital photography" />
+						<node id="776" label="776 Computer art (Digital art)" />
+						<node id="778" label="778 Fields and kinds of photography" />
+						<node id="779" label="779 Photographs" />
+					</isComposedBy>
+				</node>
+				<node id="78" label="780 Music">
+					<isComposedBy>
+						<node id="780" label="780 Music" />
+						<node id="781" label="781 General principles and musical forms" />
+						<node id="782" label="782 Vocal music" />
+						<node id="783" label="783 Music for single voices; the voice" />
+						<node id="784" label="784 Instruments and instrumental ensembles" />
+						<node id="785" label="785 Ensembles with one instrument per part" />
+						<node id="786" label="786 Keyboard and other instruments" />
+						<node id="787" label="787 Stringed instruments" />
+						<node id="788" label="788 Wind instruments" />
+					</isComposedBy>
+				</node>
+				<node id="79" label="790 Recreational and performing arts">
+					<isComposedBy>
+						<node id="790" label="790 Recreational and performing arts" />
+						<node id="791" label="791 Public performances, radio and film" />
+						<node id="792" label="792 Stage presentations" />
+						<node id="793" label="793 Indoor games and amusements" />
+						<node id="794" label="794 Indoor games of skill" />
+						<node id="795" label="795 Games of chance" />
+						<node id="796" label="796 Athletic and outdoor sports and games" />
+						<node id="797" label="797 Aquatic and air sports" />
+						<node id="798" label="798 Equestrian sports and animal racing" />
+						<node id="799" label="799 Fishing, hunting and shooting" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="8" label="800 Literature">
+			<isComposedBy>
+				<node id="80" label="800 Literature, rhetoric, literature science">
+					<isComposedBy>
+						<node id="800" label="800 Literature and rhetoric" />
+						<node id="801" label="801 Philosophy and theory" />
+						<node id="802" label="802 Miscellany" />
+						<node id="803" label="803 Dictionaries and encyclopaedias" />
+						<node id="805" label="805 Serial publications" />
+						<node id="806" label="806 Organization and management" />
+						<node id="807" label="807 Education, research and related topics" />
+						<node id="808" label="808 Rhetoric and collections of literature" />
+						<node id="809" label="809 History, description and criticism" />
+					</isComposedBy>
+				</node>
+				<node id="81" label="810 American literature in English">
+					<isComposedBy>
+						<node id="810" label="810 American literature in English" />
+						<node id="811" label="811 American poetry in English" />
+						<node id="812" label="812 American drama in English" />
+						<node id="813" label="813 American fiction in English" />
+						<node id="814" label="814 American essays in English" />
+						<node id="815" label="815 American speeches in English" />
+						<node id="816" label="816 American letters in English" />
+						<node id="817" label="817 American humour and satire in English" />
+						<node id="818" label="818 American miscellaneous writings" />
+					</isComposedBy>
+				</node>
+				<node id="82" label="820 English and Old English literatures">
+					<isComposedBy>
+						<node id="820" label="820 English and Old English literatures" />
+						<node id="821" label="821 English poetry" />
+						<node id="822" label="822 English drama" />
+						<node id="823" label="823 English fiction" />
+						<node id="824" label="824 English essays" />
+						<node id="825" label="825 English speeches" />
+						<node id="826" label="826 English letters" />
+						<node id="827" label="827 English humour and satire" />
+						<node id="828" label="828 English miscellaneous writings" />
+						<node id="829" label="829 Old English (Anglo-Saxon) literature" />
+					</isComposedBy>
+				</node>
+				<node id="83" label="830 Germanic literatures">
+					<isComposedBy>
+						<node id="830" label="830 Germanic literatures" />
+						<node id="831" label="831 German poetry" />
+						<node id="832" label="832 German drama" />
+						<node id="833" label="833 German fiction" />
+						<node id="834" label="834 German essays" />
+						<node id="835" label="835 German speeches" />
+						<node id="836" label="836 German letters" />
+						<node id="837" label="837 German humour and satire" />
+						<node id="838" label="838 German miscellaneous writings" />
+						<node id="839" label="839 Other Germanic literatures" />
+					</isComposedBy>
+				</node>
+				<node id="84" label="840 French literatures">
+					<isComposedBy>
+						<node id="840" label="840 French literatures" />
+						<node id="841" label="841 French poetry" />
+						<node id="842" label="842 French drama" />
+						<node id="843" label="843 French fiction" />
+						<node id="844" label="844 French essays" />
+						<node id="845" label="845 French speeches" />
+						<node id="846" label="846 French letters" />
+						<node id="847" label="847 French humour and satire" />
+						<node id="848" label="848 French miscellaneous writings" />
+						<node id="849" label="849 Occitan and Catalan literatures" />
+					</isComposedBy>
+				</node>
+		<node id="85" label="850 Italian, Romanian and Rhaeto-Romanic literatures">
+					<isComposedBy>	
+						<node id="850" label="850 Italian, Romanian and Rhaeto-Romanic literatures" />
+						<node id="851" label="851 Italian poetry" />
+						<node id="852" label="852 Italian drama" />
+						<node id="853" label="853 Italian fiction" />
+						<node id="854" label="854 Italian essays" />
+						<node id="855" label="855 Italian speeches" />
+						<node id="856" label="856 Italian letters" />
+						<node id="857" label="857 Italian humour and satire" />
+						<node id="858" label="858 Italian miscellaneous writings" />
+						<node id="859" label="859 Romanian and Rhaeto-Romanic literatures" />
+					</isComposedBy>
+				</node>
+				<node id="86" label="860 Spanish &amp; Portuguese literatures">
+					<isComposedBy>
+						<node id="860" label="860 Spanish &amp; Portuguese literatures" />
+						<node id="861" label="861 Spanish poetry" />
+						<node id="862" label="862 Spanish drama" />
+						<node id="863" label="863 Spanish fiction" />
+						<node id="864" label="864 Spanish essays" />
+						<node id="865" label="865 Spanish speeches" />
+						<node id="866" label="866 Spanish letters" />
+						<node id="867" label="867 Spanish humour and satire" />
+						<node id="868" label="868 Spanish miscellaneous writings" />
+						<node id="869" label="869 Portuguese literatures" />
+					</isComposedBy>
+				</node>
+				<node id="87" label="870 Latin and Italic literatures">
+					<isComposedBy>
+						<node id="870" label="870 Latin and Italic literatures" />
+						<node id="871" label="871 Latin poetry" />
+						<node id="872" label="872 Latin dramatic poetry and drama" />
+						<node id="873" label="873 Latin epic poetry and fiction" />
+						<node id="874" label="874 Latin lyric poetry" />
+						<node id="875" label="875 Latin speeches" />
+						<node id="876" label="876 Latin letters" />
+						<node id="877" label="877 Latin humor and satire" />
+						<node id="878" label="878 Latin miscellaneous writings" />
+						<node id="879" label="879 Literatures of other Italic languages" />
+					</isComposedBy>
+				</node>
+				<node id="88" label="880 Hellenic literatures, Classical Greek literatures">
+					<isComposedBy>
+						<node id="880" label="880 Hellenic literatures, Classical Greek literatures" />
+						<node id="881" label="881 Classical Greek poetry" />
+						<node id="882" label="882 Classical Greek dramatic poetry &amp; drama" />
+						<node id="883" label="883 Classical Greek epic poetry and fiction" />
+						<node id="884" label="884 Classical Greek lyric poetry" />
+						<node id="885" label="885 Classical Greek speeches" />
+						<node id="886" label="886 Classical Greek letters" />
+						<node id="887" label="887 Classical Greek humour and satire" />
+						<node id="888" label="888 Classical Greek miscellaneous writings" />
+						<node id="889" label="889 Modern Greek literature" />
+					</isComposedBy>
+				</node>
+				<node id="89" label="890 Literatures of other languages">
+					<isComposedBy>
+						<node id="890" label="890 Literatures of other languages" />
+						<node id="891" label="891 East Indo-European &amp; Celtic literatures" />
+						<node id="892" label="892 Afro-Asiatic literatures; Semitic literatures" />
+						<node id="893" label="893 Non-Semitic Afro-Asiatic literatures" />
+						<node id="894" label="894 Altaic, Uralic, Hyperborean and Dravidian" />
+						<node id="895" label="895 Literatures of East and Southeast Asia" />
+						<node id="896" label="896 African literatures" />
+						<node id="897" label="897 North American native literatures" />
+						<node id="898" label="898 South American native literatures" />
+						<node id="899" label="899 Austronesian and other literatures" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="9" label="900 History and geography">
+			<isComposedBy>
+				<node id="90" label="900 History and geography">
+					<isComposedBy>
+						<node id="900" label="900 History and geography" />
+						<node id="901" label="901 Philosophy and theory" />
+						<node id="902" label="902 Miscellany" />
+						<node id="903" label="903 Dictionaries and encyclopaedias" />
+						<node id="904" label="904 Collected accounts of events" />
+						<node id="905" label="905 Serial publications" />
+						<node id="906" label="906 Organisations and management" />
+						<node id="907" label="907 Education, research and related topics" />
+						<node id="908" label="908 Groups of people" />
+						<node id="909" label="909 World history" />
+					</isComposedBy>
+				</node>
+				<node id="91" label="910 Geography and travel">
+					<isComposedBy>			
+						<node id="910" label="910 Geography and travel" />
+						<node id="911" label="911 Historical geography" />
+						<node id="912" label="912 Atlases, maps, charts and plans" />
+						<node id="913" label="913 Geography of and travel in ancient world" />
+						<node id="914" label="914 Geography of and travel in Europe" />
+						<node id="915" label="915 Geography of and travel in Asia" />
+						<node id="916" label="916 Geography of and travel in Africa" />
+						<node id="917" label="917 Geography of and travel in North America" />
+						<node id="918" label="918 Geography of and travel in South America" />
+						<node id="919" label="919 Geography of and travel in other areas" />
+					</isComposedBy>
+				</node>
+				<node id="92" label="920 Biography, genealogy &amp; insignia">
+					<isComposedBy>
+						<node id="920" label="920 Biography, genealogy &amp; insignia" />
+						<node id="929" label="929 Genealogy, names &amp; insignia" />
+					</isComposedBy>
+				</node>
+				<node id="93" label="930 History of ancient world to ca. 499, Archaeology">
+					<isComposedBy>
+						<node id="930" label="930 History of ancient world to ca. 499, Archaeology" />
+						<node id="931" label="931 History of China to 420" />
+						<node id="932" label="932 History of Egypt to 640" />
+						<node id="933" label="933 History of Palestine to 70" />
+						<node id="934" label="934 History of India to 647" />
+						<node id="935" label="935 History of Mesopotamia &amp; Iranian Plateau to 637" />
+						<node id="936" label="936 History of Europe north &amp; west of Italy to ca. 499" />
+						<node id="937" label="937 History of Italy &amp; adjacent territories to 476" />
+						<node id="938" label="938 History of Greece to 323" />
+						<node id="939" label="939 History of other parts of ancient world to ca. 640" />
+					</isComposedBy>
+				</node>
+				<node id="94" label="940 History of Europe">
+					<isComposedBy>
+						<node id="940" label="940 History of Europe" />
+						<node id="941" label="941 History of the British Isles" />
+						<node id="942" label="942 History of England and Wales" />
+						<node id="943" label="943 History of Central Europe; Germany" />
+						<node id="944" label="944 History of France &amp; Monaco" />
+						<node id="945" label="945 History of Italian Peninsula &amp; adjacent islands" />
+						<node id="946" label="946 History of Iberian Peninsula &amp; adjacent islands" />
+						<node id="947" label="947 History of Eastern Europe; Russia" />
+						<node id="948" label="948 History of Scandinavia" />
+						<node id="949" label="949 History of other parts of Europe950" />
+					</isComposedBy>
+				</node>
+				<node id="95" label="950 History of Asia; Far East">
+					<isComposedBy>
+						<node id="950" label="950 History of Asia; Far East" />
+						<node id="951" label="951 History of China &amp; adjacent areas" />
+						<node id="952" label="952 History of Japan" />
+						<node id="953" label="953 History of Arabian Peninsula &amp; adjacent areas" />
+						<node id="954" label="954 History of South Asia; India" />
+						<node id="955" label="955 History of Iran" />
+						<node id="956" label="956 History of Middle East (Near East)" />
+						<node id="957" label="957 History of Siberia (Asiatic Russia)" />
+						<node id="958" label="958 History of Central Asia" />
+						<node id="959" label="959 History of Southeast Asia" />
+					</isComposedBy>
+				</node>
+				<node id="96" label="960 History of Africa">
+					<isComposedBy>
+						<node id="960" label="960 History of Africa" />
+						<node id="961" label="961 History of Tunisia &amp; Libya" />
+						<node id="962" label="962 History of Egypt &amp; Sudan" />
+						<node id="963" label="963 History of Ethiopia &amp; Eritrea" />
+						<node id="964" label="964 History of Northwest African coast &amp; offshore islands" />
+						<node id="965" label="965 History of Algeria" />
+						<node id="966" label="966 History of West Africa &amp; offshore islands" />
+						<node id="967" label="967 History of Central Africa &amp; offshore islands" />
+						<node id="968" label="968 History of Southern Africa; Republic of South Africa" />
+						<node id="969" label="969 History of the South Indian Ocean islands" />
+					</isComposedBy>
+				</node>
+				<node id="97" label="970 History of North America">
+					<isComposedBy>
+						<node id="970" label="970 History of North America" />
+						<node id="971" label="971 History of Canada" />
+						<node id="972" label="972 History of Middle America; Mexico" />
+						<node id="973" label="973 History of the United States" />
+						<node id="974" label="974 History of the Northeastern United States" />
+						<node id="975" label="975 History of the Southeastern United States" />
+						<node id="976" label="976 History of the South central United States" />
+						<node id="977" label="977 History of the North central United States" />
+						<node id="978" label="978 History of the Western United States" />
+						<node id="979" label="979 History of the Great Basin &amp; Pacific Slope region" />
+					</isComposedBy>
+				</node>
+				<node id="98" label="980 History of South America">
+					<isComposedBy>
+						<node id="980" label="980 History of South America" />
+						<node id="981" label="981 History of Brazil" />
+						<node id="982" label="982 History of Argentina" />
+						<node id="983" label="983 History of Chile" />
+						<node id="984" label="984 History of Bolivia" />
+						<node id="985" label="985 History of Peru" />
+						<node id="986" label="986 History of Columbia and Ecuador" />
+						<node id="987" label="987 History of Venezuela" />
+						<node id="988" label="988 History of Guiana" />
+						<node id="989" label="989 History of Paraguay and Uruguay" />
+					</isComposedBy>
+				</node>
+				<node id="99" label="990 History of  other areas">
+					<isComposedBy>
+						<node id="990" label="990 History of other areas" />
+						<node id="993" label="993 History of New Zealand" />
+						<node id="994" label="994 History of Australia" />
+						<node id="995" label="995 History of Melanesia and New Guinea" />
+						<node id="996" label="996 History of other parts of Pacific; Polynesia" />
+						<node id="997" label="997 History of the Atlantic Ocean islands" />
+						<node id="998" label="998 History of the Arctic islands and Antarctica" />
+						<node id="999" label="999 History of extraterrestrial worlds" />
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+	</isComposedBy>
+	<hasNote>Note: Dewey Decimal Classification Categories</hasNote>
+</node>
