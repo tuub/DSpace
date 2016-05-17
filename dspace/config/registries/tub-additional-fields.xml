@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - tub-aditional-fields.xml
+  - Version: 1.0
+  - 
+  - Date: 2015/11/05
+  - 
+  - This file contains the definition to install all adititional meta data 
+  - fields that are not part of DSpace out of the box but used by Techniche 
+  - Universität Berlin. This contains additional Dublin Core fields as well as 
+  - the meta data schema tub with its fields.
+  - 
+  -     <dc-type>
+  -     <schema></schema>
+  -     <element></element>
+  -     <qualifier></qualifier>
+  -     <scope-note></scope-note>
+  - </dc-type>
+  -->
+
+
+<dspace-dc-types>
+    
+    <dspace-header>
+        <title>TUB additional meta data fields</title>
+        <contributor.author>Fabian Fürste</contributor.author>
+        <contributor.author>Michaela Voigt</contributor.author>
+        <contributor.author>Pascal-Nicolas Becker</contributor.author>
+        <date.created>2015/11/05</date.created>
+        <description>
+            Revision 1.0 pnb
+            initial additional meta data fields for Technische Universität
+            Berlin.
+        </description>
+        <description>
+            Revision 1.1 fab
+            moved bibliographiccitation from dc to dcterms
+            moved opus ids to tub schema
+        </description>
+        <description.version>1.1</description.version>
+    </dspace-header>
+    
+    <dc-schema>
+        <name>dc</name>
+        <namespace>http://dublincore.org/documents/dcmi-terms/</namespace>
+    </dc-schema>
+
+    <dc-schema>
+        <name>dcterms</name>
+        <namespace>http://purl.org/dc/terms/</namespace>
+    </dc-schema>
+    
+    <dc-schema>
+        <name>tub</name>
+        <namespace>http://depositonce.tu-berlin.de/metadata/tub</namespace>
+    </dc-schema>
+    
+    <!-- DC -->
+    <dc-type>
+        <schema>dc</schema>
+        <element>contributor</element>
+        <qualifier>grantor</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>contributor</element>
+        <qualifier>organisation</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>contributor</element>
+        <qualifier>referee</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>contributor</element>
+        <qualifier>submitter</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>date</element>
+        <qualifier>accepted</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>date</element>
+        <qualifier>modified</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+    
+    <dc-type>
+        <schema>dc</schema>
+        <element>description</element>
+        <qualifier>edition</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>identifier</element>
+        <qualifier>eissn</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>identifier</element>
+        <qualifier>urn</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>identifier</element>
+        <qualifier>doi</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>identifier</element>
+        <qualifier>pmid</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>publisher</element>
+        <qualifier>name</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>publisher</element>
+        <qualifier>place</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>rights</element>
+        <qualifier>other</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>title</element>
+        <qualifier>subtitle</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>title</element>
+        <qualifier>translated</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>title</element>
+        <qualifier>translatedsubtitle</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>type</element>
+        <qualifier>version</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <!-- DCTERMS -->
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>articlenumber</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>issue</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>number</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>originalpublishername</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>pagestart</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>pageend</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>volume</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>originalpublisherplace</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>doi</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>journaltitle</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>booktitle</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>proceedingstitle</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dcterms</schema>
+        <element>bibliographicCitation</element>
+        <qualifier>editor</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <!-- TUB -->
+    <dc-type>
+        <schema>tub</schema>
+        <element>identifier</element>
+        <qualifier>opus3</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>identifier</element>
+        <qualifier>opus4</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>accessrights</element>
+        <qualifier>dnb</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>accessrights</element>
+        <qualifier>openaire</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>description</element>
+        <qualifier>internal</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>publisher</element>
+        <qualifier>universityorinstitution</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>rights</element>
+        <qualifier>pod</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>series</element>
+        <qualifier>issuenumber</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>series</element>
+        <qualifier>name</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>tub</schema>
+        <element>subject</element>
+        <qualifier>rvk</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+</dspace-dc-types>
