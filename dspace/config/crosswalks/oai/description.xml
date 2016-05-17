@@ -1,6 +1,27 @@
-<oai-identifier xmlns="http://www.openarchives.org/OAI/2.0/oai-identifier" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai-identifier http://www.openarchives.org/OAI/2.0/oai-identifier.xsd">
-<scheme>oai</scheme>
-<repositoryIdentifier>${dspace.hostname}</repositoryIdentifier>
-<delimiter>:</delimiter>
-<sampleIdentifier>oai:${dspace.hostname}:${handle.prefix}/1234</sampleIdentifier>
-</oai-identifier>
+
+			<eprints
+			 xmlns="http://www.openarchives.org/OAI/1.1/eprints"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/eprints
+			 http://www.openarchives.org/OAI/1.1/eprints.xsd">
+				<content>
+					<URL>https://depositonce.tu-berlin.de/</URL>
+					<text>DepositOnce is the institutional repository of Technische Universität Berlin.
+                                              It provides access to both open access publications and research data of 
+                                              members of Technische Universität Berlin.</text>
+				</content>
+				<metadataPolicy><text>Anyone may access the metadata free of charge. The metadata may be re-used in any medium without prior permission for not-for-profit purposes and re-sold commercially.</text></metadataPolicy>
+				<dataPolicy />
+			</eprints>
+		</description>
+		<description>
+				<rightsManifest
+				xmlns="http://www.openarchives.org/OAI/2.0/rights/" 
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/rights/ 
+						    http://www.openarchives.org/OAI/2.0/rightsManifest.xsd"
+				appliesTo="http://www.openarchives.org/OAI/2.0/entity#metadata">
+					<rights>
+					    <rightsReference ref="http://creativecommons.org/publicdomain/zero/1.0/"/>
+					</rights>
+				</rightsManifest>

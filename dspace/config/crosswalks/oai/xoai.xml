@@ -9,8 +9,8 @@
 
 	Developed by DSpace @ Lyncode <dspace@lyncode.com>
  -->
-<Configuration indented="false" maxListIdentifiersSize="100" maxListRecordsSize="100"
-               maxListSetsSize="100" stylesheet="static/style.xsl"
+<Configuration indented="false" maxListIdentifiersSize="200" maxListRecordsSize="200"
+               maxListSetsSize="200" stylesheet="static/style.xsl"
                xmlns="http://www.lyncode.com/XOAIConfiguration">
 
     <Contexts>
@@ -19,17 +19,19 @@
             <Filter ref="defaultFilter"/>
 
             <Format ref="oaidc"/>
+            <Format ref="qdc"/>
             <Format ref="mets"/>
-            <Format ref="xoai"/>
+            <Format ref="mods"/>
+            <Format ref="marc"/>
+            <Format ref="ore"/>
             <Format ref="didl"/>
             <Format ref="dim"/>
-            <Format ref="ore"/>
+            <!-- Deactivated mappings:
+            <Format ref="xoai"/>
             <Format ref="rdf"/>
             <Format ref="etdms"/>
-            <Format ref="mods"/>
-            <Format ref="qdc"/>
-            <Format ref="marc"/>
             <Format ref="uketd_dc"/>
+            -->
             <!--<Format ref="junii2" />-->
             <Description>
                 This is the default context of the DSpace OAI-PMH data provider.
