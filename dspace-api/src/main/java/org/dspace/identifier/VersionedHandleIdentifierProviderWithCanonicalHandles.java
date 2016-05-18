@@ -81,6 +81,12 @@ public class VersionedHandleIdentifierProviderWithCanonicalHandles extends Ident
             return true;
         }
         
+        String outOfUrl = retrieveHandleOutOfUrl(identifier);
+        if(outOfUrl != null)
+        {
+            return true;
+        }
+        
         return false;
     }
 
@@ -390,8 +396,15 @@ public class VersionedHandleIdentifierProviderWithCanonicalHandles extends Ident
         if (!url.contains("/")) return null;
 
         String[] splitUrl = url.split("/");
-
-        return splitUrl[splitUrl.length - 2] + "/" + splitUrl[splitUrl.length - 1];
+        
+        if (splitUrl.length >= 2)
+        {
+            if (getPrefix().equals(splitUrl[splitUrl.length -2]))
+            {
+                return splitUrl[splitUrl.length - 2] + "/" + splitUrl[splitUrl.length - 1];
+            }
+        }
+        return null;
     }
 
     /**

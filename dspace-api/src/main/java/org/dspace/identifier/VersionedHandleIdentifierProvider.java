@@ -85,14 +85,10 @@ public class VersionedHandleIdentifierProvider extends IdentifierProvider {
             return true;
         }
         
-        try {
-            String outOfUrl = retrieveHandleOutOfUrl(identifier);
-            if(outOfUrl != null)
-                {
-                    return true;
-                }
-        } catch (SQLException e) {
-            log.error(e.getMessage(), e);
+        String outOfUrl = retrieveHandleOutOfUrl(identifier);
+        if(outOfUrl != null)
+        {
+            return true;
         }
         
         return false;
@@ -345,14 +341,21 @@ public class VersionedHandleIdentifierProvider extends IdentifierProvider {
         }
     }
 
-    public static String retrieveHandleOutOfUrl(String url) throws SQLException
+    public static String retrieveHandleOutOfUrl(String url)
     {
         // We can do nothing with this, return null
         if (!url.contains("/")) return null;
 
         String[] splitUrl = url.split("/");
-
-        return splitUrl[splitUrl.length - 2] + "/" + splitUrl[splitUrl.length - 1];
+        
+        if (splitUrl.length >= 2)
+        {
+            if (getPrefix().equals(splitUrl[splitUrl.length -2]))
+            {
+                return splitUrl[splitUrl.length - 2] + "/" + splitUrl[splitUrl.length - 1];
+            }
+        }
+        return null;
     }
 
     /**
