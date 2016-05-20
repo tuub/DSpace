@@ -26,11 +26,9 @@
            The VersionedHandleIdentifierProvider creates a new versioned
            handle for every new version.
            -->
-    <!--
     <bean id="org.dspace.identifier.HandleIdentifierProvider" class="org.dspace.identifier.VersionedHandleIdentifierProvider" scope="singleton">
         <property name="configurationService" ref="org.dspace.services.ConfigurationService"/>
     </bean>
-    -->
     <!--
            The VersionedHandleIdentifierProviderWithCanonicalHandles
            preserves the first handle for every new version. Whenever
@@ -66,7 +64,6 @@
             ref="org.dspace.identifier.doi.DOIConnector" />
     </bean>
     -->
-    <!--
     <bean id="org.dspace.identifier.DOIIdentifierProvider"
         class="org.dspace.identifier.VersionedDOIIdentifierProvider"
         scope="singleton">
@@ -75,7 +72,6 @@
         <property name="DOIConnector"
             ref="org.dspace.identifier.doi.DOIConnector" />
     </bean>
-    -->
     
     <!-- The DOIConnector will handle the API calls to your DOI registration
          agency for the DOIIdentifierProvider. If your registration agency
@@ -96,6 +92,16 @@
         <property name='disseminationCrosswalkName' value="DataCite" />
     </bean>
     -->
+    <bean id="org.dspace.identifier.doi.DOIConnector"
+        class="org.dspace.identifier.doi.SerializedDataCiteConnector"
+        scope="singleton">
+        <property name='DATACITE_SCHEME' value='https'/>
+        <property name='DATACITE_HOST' value='mds.datacite.org'/>
+        <property name='DATACITE_DOI_PATH' value='/doi/' />
+        <property name='DATACITE_METADATA_PATH' value='/metadata/' />
+        <property name='disseminationCrosswalkName' value="DataCite" />
+        <property name='outputDirectory' value='/var/doi/commands' />
+    </bean>
 
     <!-- Provider to mint and register DOIs using EZID as the registrar.
     -->
