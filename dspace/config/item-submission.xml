@@ -88,6 +88,20 @@
        <workflow-editable>false</workflow-editable>
      </step>
      
+	 <step id="privacy-statements">
+         <heading>Privacy Statements</heading>
+         <processing-class>org.dspace.submit.step.PrivacyStatementsStep</processing-class>
+         <jspui-binding>org.dspace.app.webui.submit.step.JSPPrivacyStatementsStep</jspui-binding>
+       <workflow-editable>false</workflow-editable>
+     </step>
+
+	 <step id="type-selection">
+         <heading>Type Selection</heading>
+         <processing-class>org.dspace.submit.step.TypeSelectionStep</processing-class>
+         <jspui-binding>org.dspace.app.webui.submit.step.JSPTypeSelectionStep</jspui-binding>
+       <workflow-editable>false</workflow-editable>
+     </step>
+
 	 <!-- Uncomment this to make available the bibliographic import from external source - note ONLY for JSPUI -->     
 	 <!-- <step id="collection">
        <heading></heading> can specify heading, if you want it to appear in Progress Bar
@@ -178,6 +192,8 @@
    
    <!--This "traditional" process defines the DEFAULT item submission process-->
    <submission-process name="traditional">
+     <step id="privacy-statements" />
+     <step id="type-selection" />
      
      <!--Uncommment to display the SAMPLE step as your first step-->
      <!--<step id="sample"/>-->
@@ -227,6 +243,7 @@
        -->
 
       <!--Step 4 will be to Upload the item -->
+      <!-- commented out in preference for the embargo upload
       <step>
         <heading>submit.progressbar.upload</heading>
         <processing-class>org.dspace.submit.step.UploadStep</processing-class>
@@ -234,10 +251,10 @@
 		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
         <workflow-editable>true</workflow-editable>
       </step>
+      -->
       
 
-       <!-- Step 4 Upload Item with Embargo Features
-            to enable this step, please make sure to comment-out the previous step "UploadStep"  
+       <!-- Step 4 Upload Item with Embargo Features -->
        <step>
            <heading>submit.progressbar.upload</heading>
            <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
@@ -245,7 +262,6 @@
            <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
            <workflow-editable>true</workflow-editable>
        </step>
-       -->
 
  	  <!--Step 5 will be to Verify/Review everything -->
  	  <step>
