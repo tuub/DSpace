@@ -100,20 +100,6 @@
     <visibility>workflow</visibility>
 </field>
 
-<!-- DC.SUBJECT.DDC -->
-<field>
-    <dc-schema>dc</dc-schema>
-    <dc-element>subject</dc-element>
-    <dc-qualifier>ddc</dc-qualifier>
-    <repeatable>true</repeatable>
-    <label>DDC Class</label>
-    <input-type>onebox</input-type>
-    <hint>The Dewey Decimal Classification (DDC) is the international most widely used classification. Enter appropriate DDC Class(es) below.</hint>
-    <required>You have to enter a DDC Class.</required>
-    <vocabulary>ddc</vocabulary>
-    <type-bind>Conference Object</type-bind>
-</field>
-
 <!-- DC.IDENTIFIER -->
 <field>
     <dc-schema>dc</dc-schema>
