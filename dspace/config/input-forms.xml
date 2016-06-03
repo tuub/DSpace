@@ -2,8 +2,8 @@
 
 <!DOCTYPE input-forms SYSTEM "input-forms.dtd" [
     <!ENTITY all SYSTEM "document-types/all.xml">
-
     <!ENTITY research_data SYSTEM "document-types/research_data.xml">
+    <!ENTITY textual_data SYSTEM "document-types/textual_data.xml">
     <!ENTITY audio SYSTEM "document-types/audio.xml">
     <!ENTITY image SYSTEM "document-types/image.xml">
     <!ENTITY software SYSTEM "document-types/software.xml">
@@ -68,6 +68,7 @@
 
         <!-- Research Data Document Types -->
         &research_data;
+        &textual_data;
         &audio;
         &image;
         &software;
