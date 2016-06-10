@@ -71,22 +71,21 @@
     CommunityService communityService = ContentServiceFactory.getInstance().getCommunityService();
 %>
 
-<dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
+<dspace:layout locbar="off" titlekey="jsp.home.title" feedData="<%= feedData %>">
 
     <div class="row">
         <div class="text-center">
             <img class="logo" src="<%= request.getContextPath() %>/image/logo-do.png" />
-            <br/><br/><div style="margin-left: 0px; font-size: 22px;"><fmt:message key="jsp.home.brand.heading" /></div><br/>
+            <div class="brand-heading"><fmt:message key="jsp.home.brand.heading" /></div>
         </div>
     </div>
-    <br/><br/>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form method="get" role="search" action="<%= request.getContextPath() %>/simple-search" class="" scope="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="<fmt:message key="jsp.search.form.placeholder"/>" name="query" id="tequery" value="" />
                     <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Search</button>
                     </div>
                 </div>
             </form>
