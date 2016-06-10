@@ -62,7 +62,6 @@
 
 <%!
 
-
     JsonArray makeCommunitiesToJsonArray(HttpServletRequest request,List<Community> communities, Map collectionMap, Map subcommunityMap, ItemCounter ic)
     throws ItemCountException
     {
@@ -91,57 +90,56 @@
     JsonArray buildSubCommunitiesJsonArray(HttpServletRequest request,Community c, Map collectionMap, Map subcommunityMap, ItemCounter ic)
     throws ItemCountException
     {
-        Collection[] coll = (Collection[]) collectionMap.get(c.getID());
-        Community[] comm = (Community[]) subcommunityMap.get(c.getID());
-        // JsonArray communityJson = new JsonArray();
-        JsonArray jsonSubCArray = new JsonArray();
+        List<Community> communities = (List<Community>) subcommunityMap.get(c.getID().toString());
+        List<Collection> collections = (List<Collection>) collectionMap.get(c.getID().toString());
+        JsonArray output = new JsonArray();
 
-        if (comm != null && comm.length > 0)
+        if (communities != null && communities.size() > 0)
         {
-            for(int j = 0; j < comm.length; j++)
+            for(Community comm : communities)
             {
-                JsonObject commJson = new JsonObject();
-                JsonObject jsonCommunityUrl = new JsonObject();
+                JsonObject community = new JsonObject();
+                JsonObject community_url = new JsonObject();
 
                 /* Community Universitätsbibliothek */
-                jsonCommunityUrl.addProperty("href", request.getContextPath() + "/handle/" + comm[j].getHandle());
-                String linkText = comm[j].getName();
+                community_url.addProperty("href", request.getContextPath() + "/handle/" + comm.getHandle());
+                String linkText = comm.getName();
                 if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
                 {
-                    linkText += " (" + ic.getCount(comm[j]) + ")";
+                    linkText += " (" + ic.getCount(comm) + ")";
                 }
-                commJson.addProperty("text", linkText);
+                community.addProperty("text", linkText);
 
-                commJson.add("a_attr", jsonCommunityUrl);
-                /*commJson.addProperty("url", request.getContextPath() + "/handle/" + comm[j].getHandle());*/
+                community.add("a_attr", community_url);
+                /*commJson.addProperty("url", request.getContextPath() + "/handle/" + comm.getHandle());*/
 
-                commJson.add("children",buildSubCommunitiesJsonArray(request,comm[j],collectionMap, subcommunityMap, ic));
-                jsonSubCArray.add(commJson);
+                community.add("children",buildSubCommunitiesJsonArray(request, comm, collectionMap, subcommunityMap, ic));
+                output.add(community);
             }
         }
-        if (coll != null && coll.length > 0)
+        if (collections != null && collections.size() > 0)
         {
-            for(int k = 0; k < coll.length; k++)
+            for(Collection coll : collections)
             {
-                JsonObject collJson = new JsonObject();
-                JsonObject jsonCollectionUrl = new JsonObject();
+                JsonObject collection = new JsonObject();
+                JsonObject collection_url = new JsonObject();
 
-                jsonCollectionUrl.addProperty("href", request.getContextPath() + "/handle/" + coll[k].getHandle());
+                collection_url.addProperty("href", request.getContextPath() + "/handle/" + coll.getHandle());
 
-                String linkText = coll[k].getName();
+                String linkText = coll.getName();
                 linkText = linkText.replaceAll("^[A-Za-z0-9äöüÄÖÜß,\\s\\-]+\\s{1}-\\s+", "").trim();
 
                 if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
                 {
-                    linkText += " (" + ic.getCount(coll[k]) + ")";
+                    linkText += " (" + ic.getCount(coll) + ")";
                 }
-                collJson.addProperty("text", linkText);
+                collection.addProperty("text", linkText);
 
-                collJson.add("a_attr", jsonCollectionUrl);
-                jsonSubCArray.add(collJson);
+                collection.add("a_attr", collection_url);
+                output.add(collection);
             }
         }
-        return jsonSubCArray;//communityJson;
+        return output;//communityJson;
     }
 
 
@@ -157,23 +155,8 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/jstree3/themes/proton/style.css" type="text/css" />
 
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
     var communityData = <% out.println(makeCommunitiesToJsonArray( request, communities,  collectionMap,  subcommunityMap, ic).toString()); %>;
-
-    /*
-
-    $('#communityTree').easytree( {
-        data: communityData,
-        allowActivate: false,
-        enableDnd: false,
-        disableIcons: true,
-        ordering: 'ordered ASC',
-        slidingTime: 100,
-        minOpenLevels: 1
-    });
-
-    */
-
     $('#communityTree').jstree({
         'core' : {
             'themes': {
@@ -217,30 +200,38 @@ $(document).ready(function(){
 });
 </script>
 
-<%
-    if (admin_button)
-    {
-%>
-<dspace:sidebar>
-			<div class="panel panel-warning">
-			<div class="panel-heading">
-				<fmt:message key="jsp.admintools"/>
-				<span class="pull-right">
-					<dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>"><fmt:message key="jsp.adminhelp"/></dspace:popup>
-				</span>
-			</div>
-			<div class="panel-body">
+<% if (admin_button) { %>
+    <dspace:sidebar>
+    	<div class="panel panel-warning">
+        	<div class="panel-heading">
+        		<fmt:message key="jsp.admintools"/>
+        		<span class="pull-right">
+        			<dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>">
+                        <fmt:message key="jsp.adminhelp"/>
+                    </dspace:popup>
+        		</span>
+        	</div>
+        	<div class="panel-body">
                 <form method="post" action="<%=request.getContextPath()%>/dspace-admin/edit-communities">
                     <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_CREATE_COMMUNITY%>" />
-					<input class="btn btn-default" type="submit" name="submit" value="<fmt:message key="jsp.community-list.create.button"/>" />
+        			<input class="btn btn-default" type="submit" name="submit" value="<fmt:message key="jsp.community-list.create.button"/>" />
                 </form>
             </div>
-</dspace:sidebar>
-<%
-    }
-%>
-	<h1><fmt:message key="jsp.community-list.title"/></h1>
-	<p><fmt:message key="jsp.community-list.text1"/></p>
+        </div>
+    </dspace:sidebar>
+<% } %>
 
+<div class="col-md-12" id="collection-list">
+
+    <h1><fmt:message key="jsp.community-list.title"/></h1>
+    <p><fmt:message key="jsp.community-list.text1"/></p>
+
+
+    <button class="btn btn-default" id="expandTree">Expand</button>
+    <button class="btn btn-default" id="collapseTree">Collapse</button>
+    <br/><br/>
+    <div id="communityTree"></div>
+
+</div>
 
 </dspace:layout>
