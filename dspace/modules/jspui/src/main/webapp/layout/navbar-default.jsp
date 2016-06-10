@@ -105,9 +105,9 @@
                     <fmt:param><%= navbarUserName %></fmt:param>
                 </fmt:message>
             </a>
-            (<a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
+            ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
             <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
-                <span class="glyphicon glyphicon-off"></span></a>)
+                <span class="glyphicon glyphicon-power-off"></span></a> )
 
         <% } else { %>
             <span class="glyphicon glyphicon-user"></span>
@@ -125,7 +125,7 @@
 <nav class="navbar navbar-default navbar-collapse" id="main-navbar">
     <div class="container">
         <a href="<%= request.getContextPath() %>/" class="navbar-brand navbar-right">
-            <img src="<%= request.getContextPath() %>/image/logo-do.png" alt="DepositOnce" class="thumb" title="DepositOnce" style="height: 38px; padding-top: 6px;" />
+            <img src="<%= request.getContextPath() %>/image/logo-do.png" alt="DepositOnce" class="header-logo" title="DepositOnce" style="height: 38px; padding-top: 6px;" />
         </a>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -135,7 +135,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="http://www.tu-berlin.de" target="_blank" class="navbar-brand navbar-right">
-                <img src="<%= request.getContextPath() %>/image/logo-tu.png" alt="TU Berlin" class="thumb" title="TU Berlin" style="height: 45px;" />
+                <img src="<%= request.getContextPath() %>/image/logo-tu.png" alt="TU Berlin" class="header-logo" title="TU Berlin" style="height: 45px;" />
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -197,9 +197,15 @@
                     </ul>
                 </li>
                 <!-- PUBLISH -->
-                <li class="text-center">
-                    <a href="<%= request.getContextPath() %>/mydspace">
+                <li class="text-center <%= currentPage.endsWith("/submit")? "active" : "" %>">
+                    <a href="<%= request.getContextPath() %>/submit">
                         <i class="glyphicon glyphicon-upload" aria-hidden="true"></i><fmt:message key="jsp.layout.navbar-default.publish"/>
+                    </a>
+                </li>
+                <!-- MY DEPOSITS -->
+                <li class="text-center <%= currentPage.endsWith("/mydspace")? "active" : "" %>"">
+                    <a href="<%= request.getContextPath() %>/mydspace">
+                        <i class="glyphicon glyphicon-file-text" aria-hidden="true"></i><fmt:message key="jsp.layout.navbar-default.users"/>
                     </a>
                 </li>
                 <!-- LANGUAGE -->

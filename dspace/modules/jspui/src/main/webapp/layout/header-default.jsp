@@ -95,11 +95,15 @@
     <body class="undernavigation">
 
         <a class="sr-only" href="#content">Skip navigation</a>
-        <header class="navbar navbar-fixed-top">
+        <header class="navbar navbar-inverse navbar-fixed-top">
             <% if (!navbar.equals("off")) { %>
-                <dspace:include page="<%= navbar %>" />
+                <div class="container">
+                    <dspace:include page="<%= navbar %>" />
+                </div>
             <% } else { %>
-                <dspace:include page="/layout/navbar-minimal.jsp" />
+                <div class="container">
+                    <dspace:include page="/layout/navbar-minimal.jsp" />
+                </div>
             <% } %>
         </header>
 

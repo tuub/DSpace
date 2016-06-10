@@ -76,7 +76,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     /************************************************************************
     * Extra Bottom Paddings for all tables
     ************************************************************************/
-    $('table tr').css('padding-bottom', '20px');
+    //$('table tr').css('padding-bottom', '10px');
 
     /************************************************************************
     * Add <thead> wrapper to tables with <th>
@@ -101,6 +101,17 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     $('h1, h3').replaceWith(function(){
         return $("<h2 />").append( $(this).text() );
     });
+
+    /************************************************************************
+    * Remove all Well-Container
+    ************************************************************************/
+    $('.well').removeClass('well');
+
+    /************************************************************************
+    * Remove all paddings in nested containers
+    ************************************************************************/
+    //$('.container>.container').addClass('nopadding');
+
 
     /************************************************************************
     * Move Help Buttons beside to the right & hide (for now)
@@ -285,6 +296,8 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     ************************************************************************/
     $('td.metadataFieldValue').each( function(){
         var pattern = /^10\.[0-9]+\/[0-9a-zA-Z-]+/;
+
+        console.log( pattern );
 
         if( pattern.test( $(this).text() ) ) {
             $(this).wrapInner( '<a href="https://dx.doi.org/' + $(this).text() + '" target="_blank"></a>');
