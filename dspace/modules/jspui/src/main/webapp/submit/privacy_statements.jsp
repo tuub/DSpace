@@ -22,7 +22,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"
     prefix="fmt" %>
- 
+
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 
 <%@ page import="org.dspace.core.Context" %>
@@ -33,17 +33,17 @@
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
-<style type="text/css">    
+<style type="text/css">
     .privacy-statement label {
         font-weight: normal !important;
     }
-    
+
 	.privacy-statement h1,
     .privacy-statement h2,
     .privacy-statement h3,
     .privacy-statement h4,
     .privacy-statement h5,
-    .privacy-statement h6    
+    .privacy-statement h6
     {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -54,7 +54,7 @@
     request.setAttribute("LanguageSwitch", "hide");
 
     // Obtain DSpace context
-    Context context = UIUtil.obtainContext(request);    
+    Context context = UIUtil.obtainContext(request);
 
 	//get submission information object
     SubmissionInfo subInfo = SubmissionController.getSubmissionInfo(context, request);
@@ -64,7 +64,7 @@
 
 <dspace:layout style="submission"
 			   locbar="off"
-               navbar="off"
+               navbar="default"
                titlekey="jsp.submit.progressbar.privacy-statements"
                nocache="true">
 
@@ -76,11 +76,11 @@
             <fmt:message key="jsp.submit.privacy-statements.title" />
             <span class="pull-right"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") +\"#license\"%>"><fmt:message key="jsp.morehelp"/></dspace:popup></span>
         </h1>
-	
+
         <p>
             <fmt:message key="jsp.submit.privacy-statements.info1"/>
-        </p>    
-        
+        </p>
+
         <% if (request.getAttribute("privacy_statements_rejected") != null) { %>
             <div class="alert alert-warning">
                 <fmt:message key="jsp.submit.privacy-statements.error"/>
@@ -90,11 +90,11 @@
         <%
         String[] statements = PrivacyStatementsStep.loadPrivacyStatements();
         %>
-        <% for (int i=0; i<statements.length ; i++) { %>                    
+        <% for (int i=0; i<statements.length ; i++) { %>
             <div class="checkbox-inline privacy-statement">
                 <label>
                     <input type="checkbox" name="privacy_statements" value="privacy_statement_<%=i%>" autocomplete="on" />
-                    <%=statements[i]%>
+                    <%= statements[i] %>
                 </label>
             </div>
             <br/>
@@ -102,7 +102,7 @@
 
         <%-- Hidden fields needed for SubmissionController servlet to know which step is next--%>
         <%= SubmissionController.getSubmissionParameters(context, request) %>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
