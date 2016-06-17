@@ -64,7 +64,7 @@
     Boolean submit_b      = (Boolean)request.getAttribute("can_submit_button");
     boolean submit_button = (submit_b == null ? false : submit_b.booleanValue());
 
-	// get the browse indices
+    // get the browse indices
     BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
 
     CollectionService collectionService = ContentServiceFactory.getInstance().getCollectionService();
@@ -117,20 +117,61 @@
     <div class="well">
         <div class="row">
             <div class="col-md-8">
+                <%= community.getName() %>
                 <h2>
                     <%= name %>
-                    <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
+                    <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
                         <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.collection-home.display-statistics"/>
                     </a>
-                </h2>
+
                 <% if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
-                    <%= ic.getCount(collection) %> <fmt:message key="jsp.layout.navbar-admin.items"/>
+                    <small><%= ic.getCount(collection) %> <fmt:message key="jsp.layout.navbar-admin.items"/></small>
                 <% } %>
+                </h2>
+
+                <% if(feedEnabled) { %>
+                    <%
+                    String[] fmts = feedData.substring(5).split(",");
+                    String icon = null;
+                    int width = 0;
+                    %>
+                    <% for (int j = 0; j < fmts.length; j++) { %>
+                        <%
+                        if ("rss_1.0".equals(fmts[j])) {
+                            icon = "rss1.gif";
+                            width = 80;
+                        } else if ("rss_2.0".equals(fmts[j])) {
+                            icon = "rss2.gif";
+                            width = 80;
+                        } else {
+                            icon = "rss.gif";
+                            width = 36;
+                        }
+                        %>
+                        <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= collection.getHandle() %>">
+                            <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
+                        </a>
+                    <% } %>
+                <% } %>
+                <form method="get" action="">
+                    <% if (loggedIn && subscribed) { %>
+                        <!--<fmt:message key="jsp.collection-home.subscribed"/>-->
+                        <input class="btn btn-sm btn-warning" type="submit" name="submit_unsubscribe" value="<fmt:message key="jsp.collection-home.unsub"/>" />
+                        <small>
+                            <a href="<%= request.getContextPath() %>/subscribe">
+                                <fmt:message key="jsp.collection-home.info"/>
+                            </a>
+                        </small>
+                    <% } else { %>
+                        <!--<fmt:message key="jsp.collection-home.subscribe.msg"/>-->
+                        <input class="btn btn-sm btn-success" type="submit" name="submit_subscribe" value="<fmt:message key="jsp.collection-home.subscribe"/>" />
+                    <% } %>
+                </form>
             </div>
-		    <!--<small><fmt:message key="jsp.collection-home.heading1"/></small>-->
+            <!--<small><fmt:message key="jsp.collection-home.heading1"/></small>-->
             <%  if (logo != null) { %>
                 <div class="col-md-4">
-                	<img class="img-responsive pull-right" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
+                    <img class="img-responsive pull-right" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
                 </div>
             <% 	} %>
         </div>
@@ -142,59 +183,8 @@
         <%= copyright %>
     </p>
 
-
-    <%  if (submit_button) { %>
-        <form class="form-group" action="<%= request.getContextPath() %>/submit" method="post">
-            <input type="hidden" name="collection" value="<%= collection.getID() %>" />
-			<input class="btn btn-success col-md-12" type="submit" name="submit" value="<fmt:message key="jsp.collection-home.submit.button"/>" />
-        </form>
-    <% } %>
-    <form class="well" method="get" action="">
-        <% if (loggedIn && subscribed) { %>
-            <small>
-                <fmt:message key="jsp.collection-home.subscribed"/>
-                <a href="<%= request.getContextPath() %>/subscribe">
-                    <fmt:message key="jsp.collection-home.info"/>
-                </a>
-            </small>
-            <input class="btn btn-sm btn-warning" type="submit" name="submit_unsubscribe" value="<fmt:message key="jsp.collection-home.unsub"/>" />
-        <% } else { %>
-            <small>
-                <fmt:message key="jsp.collection-home.subscribe.msg"/>
-            </small>
-    		<input class="btn btn-sm btn-info" type="submit" name="submit_subscribe" value="<fmt:message key="jsp.collection-home.subscribe"/>" />
-        <% } %>
-
-        <% if(feedEnabled) { %>
-            <span class="pull-right">
-                <%
-        	    String[] fmts = feedData.substring(5).split(",");
-                String icon = null;
-                int width = 0;
-                %>
-                <% for (int j = 0; j < fmts.length; j++) { %>
-                    <%
-            		if ("rss_1.0".equals(fmts[j])) {
-                        icon = "rss1.gif";
-                        width = 80;
-            		} else if ("rss_2.0".equals(fmts[j])) {
-                        icon = "rss2.gif";
-                        width = 80;
-                    } else {
-        	            icon = "rss.gif";
-                        width = 36;
-                    }
-                    %>
-                    <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= collection.getHandle() %>">
-                        <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
-                    </a>
-                <% } %>
-        	</span>
-        <% } %>
-    </form>
-
     <div class="row">
-    	<%@ include file="discovery/static-tagcloud-facet.jsp" %>
+        <%@ include file="discovery/static-tagcloud-facet.jsp" %>
     </div>
 
     <% if (show_items) { %>
@@ -223,16 +213,17 @@
     <%-- give us the top report on what we are looking at --%>
     <fmt:message var="bi_name" key="<%= bi_name_key %>"/>
     <fmt:message var="so_name" key="<%= so_name_key %>"/>
-    <div class="browse_range">
-        <fmt:message key="jsp.collection-home.content.range">
-            <fmt:param value="${bi_name}"/>
-            <fmt:param value="${so_name}"/>
-            <fmt:param value="<%= Integer.toString(bi.getStart()) %>"/>
-            <fmt:param value="<%= Integer.toString(bi.getFinish()) %>"/>
-            <fmt:param value="<%= Integer.toString(bi.getTotal()) %>"/>
-        </fmt:message>
-    </div>
-
+    <% if( false ) { %>
+        <div class="browse_range">
+            <fmt:message key="jsp.collection-home.content.range">
+                <fmt:param value="${bi_name}"/>
+                <fmt:param value="${so_name}"/>
+                <fmt:param value="<%= Integer.toString(bi.getStart()) %>"/>
+                <fmt:param value="<%= Integer.toString(bi.getFinish()) %>"/>
+                <fmt:param value="<%= Integer.toString(bi.getTotal()) %>"/>
+            </fmt:message>
+        </div>
+        <% } %>
     <%--  do the top previous and next page links --%>
     <div class="prev-next-links">
         <% if (bi.hasPrevPage()) { %>
@@ -273,6 +264,23 @@
 <% } %>
 
 <dspace:sidebar>
+
+    <% if (submit_button) { %>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <fmt:message key="jsp.layout.navbar-default.publish"/>
+                </div>
+                <div class="panel-body">
+                    <form action="<%= request.getContextPath() %>/submit" method="post">
+                        <input type="hidden" name="collection" value="<%= collection.getID() %>" />
+                        <input class="btn btn-success col-md-12" type="submit" name="submit" value="<fmt:message key="jsp.collection-home.submit.button"/>" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
     <% if(admin_button || editor_button ) { %>
         <div class="col-md-12">
             <div class="panel panel-warning">
@@ -362,13 +370,13 @@
         <% for (int i = 0; i < items.size(); i++) { %>
             <%
             List<MetadataValue> dcv = itemService.getMetadata(items.get(i), "dc", "title", null, Item.ANY);
-	        String displayTitle = "Untitled";
-			if (dcv != null) {
-				if (dcv.size() > 0) {
+            String displayTitle = "Untitled";
+            if (dcv != null) {
+                if (dcv.size() > 0) {
                     displayTitle = Utils.addEntities(dcv.get(0).getValue());
-				}
-			}
-			%>
+                }
+            }
+            %>
             <p class="recentItem">
                 <a href="<%= request.getContextPath() %>/handle/<%= items.get(i).getHandle() %>">
                     <%= displayTitle %>
@@ -380,8 +388,8 @@
     <%= sidebar %>
 
     <%
-    	int discovery_panel_cols = 12;
-    	int discovery_facet_cols = 12;
+        int discovery_panel_cols = 12;
+        int discovery_facet_cols = 12;
     %>
     <%@ include file="discovery/static-sidebar-facet.jsp" %>
 
