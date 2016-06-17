@@ -1,3 +1,5 @@
+/*@import url(https://fonts.googleapis.com/css?family=Fjalla+One);*/
+
 * {
     outline: 0px #336699 solid;
 }
@@ -26,6 +28,25 @@ main {
     border-top: 1px solid #000;
 }
 /* -------------------------------------------------- */
+
+
+.well {
+    padding: 0;
+    border: 0;
+    /* border-radius: 0; */
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-size: 22px;
+    /*
+    font-family: 'Fjalla One', sans-serif;
+    */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 
 body.undernavigation {
     padding-top: 65px;
@@ -89,9 +110,11 @@ body.undernavigation {
     display: none;
 }
 
+/*
 h5 {
     font-size: 25px;
 }
+*/
 
 
 .top-buffer { margin-top:20px; }
@@ -217,17 +240,17 @@ button, html input[type="button"], input[type="reset"], input[type="submit"], a.
 }
 
 .btn-xl {
-	padding: 15px 22px;
-	font-size: 24px;
-	line-height: 1.33;
-	border-radius: 6px
+    padding: 15px 22px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 6px
 }
 
 .btn-square {
-	/*padding: 35px 75px;*/
-	font-size: 24px;
-	line-height: 1.33;
-	border-radius: 6px
+    /*padding: 35px 75px;*/
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 6px
 }
 
 footer a:first-of-type {
@@ -389,6 +412,16 @@ ul.navbar-right .dropdown-menu .glyphicon {
     background-color: #fff;
 }
 
+/*
+.selectpicker li a span {
+    color: #000;
+}
+
+.selectpicker li.selected.active:not(.disabled) a span {
+    color: #fff;
+}
+*/
+
 .no-link {
     text-decoration: none;
 }
@@ -461,4 +494,34 @@ and (max-width: 767px)
     list-style: none;
     background-color: #fff;
     border-radius: 4px;
+}
+
+.submitProgressButtonDone {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.submitProgressButtonCurrent {
+    color: #000;
+    background-color: #CCC;
+    border-color: #4cae4c;
+}
+
+#browse_navigation {
+    margin-bottom: 20px;
+}
+
+#browse_controls {
+    margin-bottom: 20px;
+}
+
+/*
+.col-md-3 .list-group-item {
+    font-size: 12px;
+}
+*/
+
+.label-required::after {
+    content: " *"; color: firebrick;
 }
