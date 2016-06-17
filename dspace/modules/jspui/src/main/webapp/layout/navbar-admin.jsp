@@ -28,8 +28,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%
-	// Is anyone logged in?
-	EPerson user = (EPerson) request.getAttribute("dspace.current.user");
+    // Is anyone logged in?
+    EPerson user = (EPerson) request.getAttribute("dspace.current.user");
 
     // Is the logged in user an admin
     Boolean admin = (Boolean)request.getAttribute("is.admin");
@@ -77,10 +77,13 @@
                     <fmt:param><%= navbarUserName %></fmt:param>
                 </fmt:message>
             </a>
-            (<a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
+            ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
             <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
-                <span class="glyphicon glyphicon-off"></span></a>)
-
+                <span class="glyphicon glyphicon-power-off"></span></a> )
+            &nbsp;|&nbsp;
+            <a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a>
+            &nbsp;|&nbsp;
+            <a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a>
         <% } else { %>
             <span class="glyphicon glyphicon-user"></span>
             <a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.sign"/></a>
