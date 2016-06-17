@@ -98,14 +98,16 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     /************************************************************************
     * All H1s to H2s
     ************************************************************************/
+    /*
     $('h1, h3').replaceWith(function(){
         return $("<h2 />").append( $(this).text() );
     });
-
+    */
+    
     /************************************************************************
     * Remove all Well-Container
     ************************************************************************/
-    $('.well').removeClass('well');
+    //$('.well').removeClass('well');
 
     /************************************************************************
     * Remove all paddings in nested containers
@@ -297,8 +299,6 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     $('td.metadataFieldValue').each( function(){
         var pattern = /^10\.[0-9]+\/[0-9a-zA-Z-]+/;
 
-        console.log( pattern );
-
         if( pattern.test( $(this).text() ) ) {
             $(this).wrapInner( '<a href="https://dx.doi.org/' + $(this).text() + '" target="_blank"></a>');
         }
@@ -310,22 +310,22 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     var $ddcField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'DDC Class:'; }).next();
     if( $ddcField.length > 0 )
     {
-    	var ddcFieldEntries = $ddcField.html().split('<br>');
+        var ddcFieldEntries = $ddcField.html().split('<br>');
 
-    	var ddcLinks = Array();
-    	var ddcString = String();
+        var ddcLinks = Array();
+        var ddcString = String();
 
-    	if( ddcFieldEntries.length > 0 )
-    	{
-        	ddcFieldEntries.forEach(function(ddcFieldEntry) {
-            	var ddcValue = ddcFieldEntry.split('::').slice(-1)[0];
-            	ddcLinks.push( ddcValue );
-        	});
-    	}
-    	ddcLinks.forEach(function(ddcLink) {
-        	ddcString += ddcLink + '<br/>';
-    	});
-    	$ddcField.html( ddcString );
+        if( ddcFieldEntries.length > 0 )
+        {
+            ddcFieldEntries.forEach(function(ddcFieldEntry) {
+                var ddcValue = ddcFieldEntry.split('::').slice(-1)[0];
+                ddcLinks.push( ddcValue );
+            });
+        }
+        ddcLinks.forEach(function(ddcLink) {
+            ddcString += ddcLink + '<br/>';
+        });
+        $ddcField.html( ddcString );
     }
 
     /************************************************************************
@@ -421,7 +421,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     $('input.btn').not('.btn-link').filter( function() { return this.name.match(/clear/); } ).removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default');
 
     // All Link Buttons To Default State
-    $('a.btn').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default').css('font-weight', 'normal');
+    $('a.btn').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default btn-xs').css('font-weight', 'normal');
 
     /************************************************************************
     * Smaller Buttons
