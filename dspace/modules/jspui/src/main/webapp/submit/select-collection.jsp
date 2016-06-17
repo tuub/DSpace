@@ -35,6 +35,8 @@
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="java.util.UUID" %>
 
+<%@ page import="org.dspace.content.Collection" %>
+<%@ page import="org.dspace.app.util.CollectionDropDown" %>
 
 <!-- Added -->
 
