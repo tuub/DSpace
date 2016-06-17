@@ -57,10 +57,10 @@
     Boolean remove_b = (Boolean)request.getAttribute("remove_button");
     boolean remove_button = (remove_b == null ? false : remove_b.booleanValue());
 
-	// get the browse indices
+    // get the browse indices
     BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
-	CommunityService comServ = ContentServiceFactory.getInstance().getCommunityService();
-	CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
+    CommunityService comServ = ContentServiceFactory.getInstance().getCommunityService();
+    CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
     // Put the metadata values into guaranteed non-null variables
     String name = comServ.getMetadata(community, "name");
     String intro = comServ.getMetadata(community, "introductory_text");
@@ -90,7 +90,7 @@
             <div class="col-md-8">
                 <h2>
                     <%= name %>
-                    <a class="statisticsLink btn btn-info" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
+                    <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
                         <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.community-home.display-statistics"/>
                     </a>
                 </h2>
@@ -100,7 +100,7 @@
             </div>
             <%  if (logo != null) { %>
                 <div class="col-md-4">
-                	<img class="img-responsive" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
+                    <img class="img-responsive" alt="Logo" src="<%= request.getContextPath() %>/retrieve/<%= logo.getID() %>" />
                 </div>
             <% } %>
         </div>
@@ -111,7 +111,7 @@
     <p class="copyrightText">
         <%= copyright %>
     </p>
-	<div class="row">
+    <div class="row">
         <% if (rs != null  && rs.count() > 0) { %>
             <div class="col-md-8">
                 <div class="panel panel-primary">
@@ -130,13 +130,13 @@
                                     if ("rss_1.0".equals(fmts[j])) {
                                         icon = "rss1.gif";
                                         width = 80;
-                            		} else if ("rss_2.0".equals(fmts[j])) {
+                                    } else if ("rss_2.0".equals(fmts[j])) {
                                         icon = "rss2.gif";
                                         width = 80;
                                     } else {
                                         icon = "rss.gif";
                                         width = 36;
-                            	    }
+                                    }
                                     %>
                                     <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= community.getHandle() %>">
                                         <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
                                     <%
-        	                        first = false;
+                                    first = false;
                                     %>
                                 <% } %>
                             </div>
@@ -193,7 +193,7 @@
     </div>
 
     <div class="row">
-    	<%@ include file="discovery/static-tagcloud-facet.jsp" %>
+        <%@ include file="discovery/static-tagcloud-facet.jsp" %>
     </div>
 
 
@@ -357,12 +357,12 @@
             </div>
         </div>
 
-		<%= sidebar %>
+        <%= sidebar %>
 
-		<%
-			int discovery_panel_cols = 12;
-			int discovery_facet_cols = 12;
-		%>
-		<%@ include file="discovery/static-sidebar-facet.jsp" %>
+        <%
+            int discovery_panel_cols = 12;
+            int discovery_facet_cols = 12;
+        %>
+        <%@ include file="discovery/static-sidebar-facet.jsp" %>
   </dspace:sidebar>
 </dspace:layout>
