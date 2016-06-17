@@ -19,13 +19,13 @@
 
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 
-<dspace:layout navbar="default" locbar="off" titlekey="jsp.login.password.title" nocache="true">
+<dspace:layout navbar="default" locbar="on" titlekey="jsp.login.password.title" nocache="true">
     <div class="container col-md-5 col-md-offset-4">
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
             <div class="panel-heading"><fmt:message key="jsp.login.password.heading"/>
             <span class="pull-right"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") + \"#login\"%>"><fmt:message key="jsp.help"/></dspace:popup></span>
             </div>
-    	    <dspace:include page="/components/login-form.jsp" />
+            <dspace:include page="/components/login-form.jsp" />
         </div>
     </div>
 </dspace:layout>
