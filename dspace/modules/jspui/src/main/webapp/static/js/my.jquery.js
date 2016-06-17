@@ -103,7 +103,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
         return $("<h2 />").append( $(this).text() );
     });
     */
-    
+
     /************************************************************************
     * Remove all Well-Container
     ************************************************************************/
@@ -459,7 +459,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     * On-Site Feedback Form via Tooltipster
     * IS DONE ON-SITE IN COMMUNITY-LIST.JSP SINCE WE NEED THE JSON DATA
     ************************************************************************/
-    /*
+
     $("#feedback").click(function(e) {
         if( $(".tooltipster-base").css('display') == 'none' )
         {
@@ -487,14 +487,14 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
             });
         }
     });
-    */
+
 
     /************************************************************************
     * DataTables plugin (https://www.datatables.net)
     * Finds tables in document, adds a filter input to top.
     ************************************************************************/
     $('table.with-filter').has('thead th').each(function(){
-        if( $(this).find('tr').length > 5)
+        if( $(this).find('tr').length > 1)
         {
             $(this).DataTable({
                 "bSort" : false,
