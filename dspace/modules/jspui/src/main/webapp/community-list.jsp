@@ -143,8 +143,8 @@
     }
 
 
-	CommunityService comServ = ContentServiceFactory.getInstance().getCommunityService();
-	CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
+    CommunityService comServ = ContentServiceFactory.getInstance().getCommunityService();
+    CollectionService colServ = ContentServiceFactory.getInstance().getCollectionService();
 
 
 %>
@@ -202,26 +202,26 @@ $(document).ready(function() {
 
 <% if (admin_button) { %>
     <dspace:sidebar>
-    	<div class="panel panel-warning">
-        	<div class="panel-heading">
-        		<fmt:message key="jsp.admintools"/>
-        		<span class="pull-right">
-        			<dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <fmt:message key="jsp.admintools"/>
+                <span class="pull-right">
+                    <dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.site-admin\")%>">
                         <fmt:message key="jsp.adminhelp"/>
                     </dspace:popup>
-        		</span>
-        	</div>
-        	<div class="panel-body">
+                </span>
+            </div>
+            <div class="panel-body">
                 <form method="post" action="<%=request.getContextPath()%>/dspace-admin/edit-communities">
                     <input type="hidden" name="action" value="<%=EditCommunitiesServlet.START_CREATE_COMMUNITY%>" />
-        			<input class="btn btn-default" type="submit" name="submit" value="<fmt:message key="jsp.community-list.create.button"/>" />
+                    <input class="btn btn-default" type="submit" name="submit" value="<fmt:message key="jsp.community-list.create.button"/>" />
                 </form>
             </div>
         </div>
     </dspace:sidebar>
 <% } %>
 
-<div class="col-md-12" id="collection-list">
+<div id="collection-list">
 
     <h1><fmt:message key="jsp.community-list.title"/></h1>
     <p><fmt:message key="jsp.community-list.text1"/></p>
