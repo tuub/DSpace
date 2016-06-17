@@ -70,14 +70,9 @@
         }
     }
 
-
-
-
-
-
     // get the browse indices
 
-	BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
+    BrowseIndex[] bis = BrowseIndex.getBrowseIndices();
     BrowseInfo binfo = (BrowseInfo) request.getAttribute("browse.info");
     String browseCurrent = "";
     if (binfo != null)
@@ -88,7 +83,7 @@
         if (bix.isMetadataIndex() || bix.getSortOption() == binfo.getSortOption())
         {
             if (bix.getName() != null)
-    			browseCurrent = bix.getName();
+                browseCurrent = bix.getName();
         }
     }
  // get the locale languages
@@ -108,7 +103,10 @@
             ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
             <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
                 <span class="glyphicon glyphicon-power-off"></span></a> )
-
+            &nbsp;|&nbsp;
+            <a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a>
+            &nbsp;|&nbsp;
+            <a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a>
         <% } else { %>
             <span class="glyphicon glyphicon-user"></span>
             <a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.sign"/></a>
