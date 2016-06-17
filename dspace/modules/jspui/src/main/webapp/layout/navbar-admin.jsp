@@ -90,7 +90,7 @@
         <% } %>
         &nbsp;|&nbsp;
         <span class="glyphicon glyphicon-comment"></span>
-        <a href="<%= request.getContextPath() %>/feedback" id="feedback" target="_blank">
+        <a href="<%= request.getContextPath() %>/feedback" id="feedback" target="_blank" class="tooltipstered">
             <fmt:message key="jsp.layout.footer-default.feedback"/>
         </a>
     </div>
