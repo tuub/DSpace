@@ -60,6 +60,8 @@ int copyrightYear = DCDate.getCurrent().getYear();
 <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" type="text/css" />
 
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.min.css"/>
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.js"></script>
 
 </body>
 </html>
