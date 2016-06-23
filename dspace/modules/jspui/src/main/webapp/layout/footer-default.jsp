@@ -51,6 +51,12 @@ int copyrightYear = DCDate.getCurrent().getYear();
 <!--<script type='text/javascript' src="<%= request.getContextPath() %>/static/js/jquery/jquery-1.7.2.min.js"></script>-->
 
 
+
+
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/tooltipster/js/jquery.tooltipster.js"></script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/tooltipster.css" type="text/css" />
+<link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/themes/tooltipster-light.css" type="text/css" />
+
 <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" type="text/css" />
 
