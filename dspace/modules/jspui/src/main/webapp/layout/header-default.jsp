@@ -26,7 +26,7 @@
 
 <%
     String title = (String) request.getAttribute("dspace.layout.title");
-    String navbar = (String) request.getAttribute("dspace.layout.navbar");
+    String navbar = (String) request.getAttribute("dspace.layout.navbar");    
     boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
 
     String siteName = ConfigurationManager.getProperty("dspace.name");
@@ -95,15 +95,11 @@
     <body class="undernavigation">
 
         <a class="sr-only" href="#content">Skip navigation</a>
-        <header class="navbar navbar-inverse navbar-fixed-top">
+        <header class="navbar navbar-fixed-top">
             <% if (!navbar.equals("off")) { %>
-                <div class="container">
-                    <dspace:include page="<%= navbar %>" />
-                </div>
+                <dspace:include page="<%= navbar %>" />
             <% } else { %>
-                <div class="container">
-                    <dspace:include page="/layout/navbar-minimal.jsp" />
-                </div>
+                <dspace:include page="/layout/navbar-minimal.jsp" />
             <% } %>
         </header>
 
