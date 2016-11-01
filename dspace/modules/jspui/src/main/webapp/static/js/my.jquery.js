@@ -333,7 +333,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     ************************************************************************/
     var $ccLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Creative Commons License:'; }).next();
     var ccLicenseUri = $ccLicenseUriField.text();
-    if( ccLicenseUri !== null )
+    if( ccLicenseUri !== null && ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org") >= 0)
     {
         //TESTED ALSO WITH: ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
         //ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
