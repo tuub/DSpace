@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE input-forms SYSTEM "input-forms.dtd" [
-    <!ENTITY all SYSTEM "document-types/all.xml">
-    <!ENTITY research_data SYSTEM "document-types/research_data.xml">
-    <!ENTITY textual_data SYSTEM "document-types/textual_data.xml">
-    <!ENTITY audio SYSTEM "document-types/audio.xml">
-    <!ENTITY image SYSTEM "document-types/image.xml">
-    <!ENTITY software SYSTEM "document-types/software.xml">
-    <!ENTITY video SYSTEM "document-types/video.xml">
-    <!ENTITY article SYSTEM "document-types/article.xml">
-    <!ENTITY book SYSTEM "document-types/book.xml">
-    <!ENTITY book_part SYSTEM "document-types/book_part.xml">
-    <!ENTITY conference_object SYSTEM "document-types/conference_object.xml">
-    <!ENTITY conference_proceedings SYSTEM "document-types/conference_proceedings.xml">
-    <!ENTITY doctoral_thesis SYSTEM "document-types/doctoral_thesis.xml">
-    <!ENTITY habilitation SYSTEM "document-types/habilitation.xml">
-    <!ENTITY master_thesis SYSTEM "document-types/master_thesis.xml">
-    <!ENTITY multimedia SYSTEM "document-types/multimedia.xml">
-    <!ENTITY periodical SYSTEM "document-types/periodical.xml">
-    <!ENTITY periodical_part SYSTEM "document-types/periodical_part.xml">
-    <!ENTITY preprint SYSTEM "document-types/preprint.xml">
-    <!ENTITY report SYSTEM "document-types/report.xml">
-    <!ENTITY research_paper SYSTEM "document-types/research_paper.xml">
+    <!ENTITY all SYSTEM "document-types/all.ent">
+    <!ENTITY article SYSTEM "document-types/article.ent">
+    <!ENTITY audio SYSTEM "document-types/audio.ent">
+    <!ENTITY book SYSTEM "document-types/book.ent">
+    <!ENTITY book_part SYSTEM "document-types/book_part.ent">
+    <!ENTITY conference_object SYSTEM "document-types/conference_object.ent">
+    <!ENTITY conference_proceedings SYSTEM "document-types/conference_proceedings.ent">
+    <!ENTITY doctoral_thesis SYSTEM "document-types/doctoral_thesis.ent">
+    <!ENTITY habilitation SYSTEM "document-types/habilitation.ent">
+    <!ENTITY image SYSTEM "document-types/image.ent">
+    <!ENTITY master_thesis SYSTEM "document-types/master_thesis.ent">
+    <!ENTITY multimedia SYSTEM "document-types/multimedia.ent">
+    <!ENTITY periodical SYSTEM "document-types/periodical.ent">
+    <!ENTITY periodical_part SYSTEM "document-types/periodical_part.ent">
+    <!ENTITY preprint SYSTEM "document-types/preprint.ent">
+    <!ENTITY report SYSTEM "document-types/report.ent">
+    <!ENTITY research_paper SYSTEM "document-types/research_paper.ent">
+    <!ENTITY research_data SYSTEM "document-types/research_data.ent">
+    <!ENTITY software SYSTEM "document-types/software.ent">
+    <!ENTITY textual_data SYSTEM "document-types/textual_data.ent">
+    <!ENTITY video SYSTEM "document-types/video.ent">
 ]>
 
 <input-forms>
