@@ -81,6 +81,7 @@
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/themes/tooltipster-light.css" type="text/css" />
 
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/css/bootstrap-select.min.css" type="text/css" />
 
         <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.min.css"/>
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.js"></script>
