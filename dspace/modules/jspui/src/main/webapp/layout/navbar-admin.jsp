@@ -72,27 +72,26 @@
     <div class="topbar container">
         <!-- LOGIN / USER -->
         <% if (user != null) { %>
-            <a href="<%= request.getContextPath() %>/mydspace">
-                <fmt:message key="jsp.layout.navbar-default.loggedin">
-                    <fmt:param><%= navbarUserName %></fmt:param>
-                </fmt:message>
-            </a>
-            ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
-            <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
-                <span class="glyphicon glyphicon-power-off"></span></a> )
+            <% if (false) { %>
+                <a href="<%= request.getContextPath() %>/mydspace">
+                    <fmt:message key="jsp.layout.navbar-default.loggedin">
+                        <fmt:param><%= navbarUserName %></fmt:param>
+                    </fmt:message>
+                </a>
+                ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
+                <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
+                    <span class="glyphicon glyphicon-power-off"></span></a> )
+            <% } %>
+            <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>"><i class="glyphicon glyphicon-power-off"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.logout"/></span></a>
             &nbsp;|&nbsp;
-            <a href="<%= request.getContextPath() %>/subscribe"><fmt:message key="jsp.layout.navbar-default.receive"/></a>
+            <a class="no-link" href="<%= request.getContextPath() %>/subscribe" title="<fmt:message key="jsp.layout.navbar-default.receive"/>"><i class="glyphicon glyphicon-flash"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.receive"/></span></a>
             &nbsp;|&nbsp;
-            <a href="<%= request.getContextPath() %>/profile"><fmt:message key="jsp.layout.navbar-default.edit"/></a>
+            <a class="no-link" href="<%= request.getContextPath() %>/profile" title="<fmt:message key="jsp.layout.navbar-default.edit"/>"><i class="glyphicon glyphicon-user"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.edit"/></span></a>
         <% } else { %>
-            <span class="glyphicon glyphicon-user"></span>
-            <a href="<%= request.getContextPath() %>/mydspace"><fmt:message key="jsp.layout.navbar-default.sign"/></a>
+            <a class="no-link" href="<%= request.getContextPath() %>/mydspace" title="<fmt:message key="jsp.layout.navbar-default.sign"/>"><i class="glyphicon glyphicon-user"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.sign"/></span></a>
         <% } %>
         &nbsp;|&nbsp;
-        <span class="glyphicon glyphicon-comment"></span>
-        <a href="<%= request.getContextPath() %>/feedback" id="feedback" target="_blank" class="tooltipstered">
-            <fmt:message key="jsp.layout.footer-default.feedback"/>
-        </a>
+        <a class="no-link" href="<%= request.getContextPath() %>/feedback" id="feedback" target="_blank" class="tooltipstered" title="<fmt:message key="jsp.layout.footer-default.feedback"/>"><i class="glyphicon glyphicon-comment"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.footer-default.feedback"/></span></a>
     </div>
 </div>
 
