@@ -26,7 +26,7 @@
 
 <%
     String title = (String) request.getAttribute("dspace.layout.title");
-    String navbar = (String) request.getAttribute("dspace.layout.navbar");    
+    String navbar = (String) request.getAttribute("dspace.layout.navbar");
     boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
 
     String siteName = ConfigurationManager.getProperty("dspace.name");
@@ -75,6 +75,17 @@
         <script type='text/javascript' src='<%= request.getContextPath() %>/static/js/holder.js'></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/utils.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/choice-support.js"> </script>
+
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/tooltipster/js/jquery.tooltipster.js"></script>
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/tooltipster.css" type="text/css" />
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/themes/tooltipster-light.css" type="text/css" />
+
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/js/bootstrap-select.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.min.css"/>
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.js"></script>
+
+
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/my.jquery.js"></script>
         <dspace:include page="/layout/google-analytics-snippet.jsp" />
 
