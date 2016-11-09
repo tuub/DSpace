@@ -50,9 +50,7 @@
 
     <h1>
         <fmt:message key="jsp.submit.select-collection.heading"/>
-        <dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") + \"#choosecollection\"%>">
-            <fmt:message key="jsp.morehelp"/>
-        </dspace:popup>
+        <dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") + \"#choosecollection\"%>"><fmt:message key="jsp.morehelp"/></dspace:popup>
     </h1>
 
 
