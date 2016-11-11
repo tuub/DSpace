@@ -92,26 +92,29 @@
         </div>
     </div>
 
-    <div class="row">
-        <% if (submissions != null && submissions.count() > 0) { %>
-            <% if(feedEnabled) {
-    	    	String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
-    	    	String icon = null;
-    	    	int width = 0;
-    	    	for (int j = 0; j < fmts.length; j++) {
-    	    		if ("rss_1.0".equals(fmts[j])) {
-    	    		   icon = "rss1.gif";
-    	    		   width = 80;
-    	    		} else if ("rss_2.0".equals(fmts[j])) {
-    	    		   icon = "rss2.gif";
-    	    		   width = 80;
-    	    		} else {
-    	    	       icon = "rss.gif";
-    	    	       width = 36;
-    	    	    } %>
-    	            <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" /></a>
-    	        <% } %>
-    	    <% } %>
-        <% } %>
-    </div>
+    <% // It might seem odd, but that is the simples way to prevent home.jsp from adding the rss buttons.
+    if (false) { %>
+        <div class="row">
+            <% if (submissions != null && submissions.count() > 0) { %>
+                <% if(feedEnabled) {
+                    String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
+                    String icon = null;
+                    int width = 0;
+                    for (int j = 0; j < fmts.length; j++) {
+                        if ("rss_1.0".equals(fmts[j])) {
+                           icon = "rss1.gif";
+                           width = 80;
+                        } else if ("rss_2.0".equals(fmts[j])) {
+                           icon = "rss2.gif";
+                           width = 80;
+                        } else {
+                           icon = "rss.gif";
+                           width = 36;
+                        } %>
+                        <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" /></a>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+    <%}%>
 </dspace:layout>
