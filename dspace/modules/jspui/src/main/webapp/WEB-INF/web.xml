@@ -484,6 +484,11 @@
     <servlet-class>org.dspace.app.webui.servlet.OpusMigrationServlet</servlet-class>
   </servlet>
   
+  <servlet>
+    <servlet-name>reset-accounts</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.admin.ResetAccountsServlet</servlet-class>
+  </servlet>
+
   <!-- Servlet Mappings -->
 
   <servlet-mapping>
@@ -831,6 +836,11 @@
     <url-pattern>/opus3-tuberlin/*</url-pattern>
   </servlet-mapping>
   
+  <servlet-mapping>
+    <servlet-name>reset-accounts</servlet-name>
+    <url-pattern>/tools/reset-accounts</url-pattern>
+  </servlet-mapping>
+
   <!-- Icon MIME type -->
   <mime-mapping>
     <extension>ico</extension>

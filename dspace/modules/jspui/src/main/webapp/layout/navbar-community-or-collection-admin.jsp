@@ -140,6 +140,9 @@
                         <li>
                             <a href="<%= request.getContextPath() %>/tools/authorize"><fmt:message key="jsp.layout.navbar-admin.authorization"/></a>
                         </li>
+                        <li>
+                            <a href="<%= request.getContextPath() %>/tools/reset-accounts"><fmt:message key="jsp.layout.navbar-admin.reset-accounts"/></a>
+                        </li>
                     </ul>
                 </li>
                 <li class="text-center <%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>">
