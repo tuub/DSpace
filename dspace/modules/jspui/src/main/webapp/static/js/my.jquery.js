@@ -333,21 +333,46 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     ************************************************************************/
     var $ccLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Creative Commons License:'; }).next();
     var ccLicenseUri = $ccLicenseUriField.text();
-    if( ccLicenseUri !== null && ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org") >= 0)
-    {
-        //TESTED ALSO WITH: ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
-        //ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
-        var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/licenses/").join("");
-        if( ccLicenseInfo.slice(-1) == '/') {
-            ccLicenseInfo.slice(0, -1);
-        }
-        var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
-        var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
-        $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
-            return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
-        });
-        $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
-    };
+    if( ccLicenseUri !== null) {
+        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org") >= 0)
+        {
+            //TESTED ALSO WITH: ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
+            //ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
+            var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/licenses/").join("");
+            if( ccLicenseInfo.slice(-1) == '/') {
+                ccLicenseInfo.slice(0, -1);
+            }
+            var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
+            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
+            $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
+                return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
+            });
+            $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
+        };
+
+		if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/publicdomain/") >= 0)
+		{
+			var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/publicdomain/").join("");
+			if( ccLicenseInfo.slice(-1) == '/') {
+				ccLicenseInfo.slice(0, -1);
+			}
+			var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
+			// Override Public Domain Mark
+			if (ccLicenseString.toLowerCase().indexOf(" mark ") >= 0) {
+				ccLicenseString = 'Public Domain Mark';
+			}
+			var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
+			// Override Public Domain Mark
+			if (ccLicenseImage.toLowerCase().indexOf("mark") >= 0) {
+				ccLicenseImage = 'https://licensebuttons.net/p/88x31.png';
+			}
+			$ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
+				return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
+			});
+			$ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
+
+		}
+    }
 
 
     var $ocLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Open Content License:'; }).next();
