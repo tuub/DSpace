@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -426,8 +427,14 @@ public class ResetAccountsServlet extends DSpaceServlet
     private void initElements(Context context)
             throws UnsupportedEncodingException, SQLException
     {
-        String property = configurationService.getProperty("reset-accounts.admin.emails");
         adminAccounts.clear();
+        adminAccounts.addAll(Arrays.asList(configurationService.getArrayProperty("reset-accounts.admin.emails")));
+        if (adminAccounts == null || adminAccounts.isEmpty())
+        {
+            log.warn("Unable to load users allowed to reset accounts.");
+            adminAccounts = new ArrayList<String>();
+        }
+
         List<EPerson> admins = groupService.allMembers(context, groupService.findByName(context, Group.ADMIN));
         if (admins != null)
         {
@@ -439,25 +446,9 @@ public class ResetAccountsServlet extends DSpaceServlet
                 }
             }
         }
-        if (property != null)
-        {
-            for (String admin : property.split(","))
-            {
-                adminAccounts.add(admin.trim());
-            }
-        } else {
-            log.warn("Unable to load users allowed to reset accounts.");
-        }
         
-        property = configurationService.getProperty("reset-accounts.dummy.accounts");
         resetableAccounts.clear();
-        if (property != null)
-        {
-            for (String email : property.split(","))
-            {
-                resetableAccounts.add(URLDecoder.decode(email, "UTF-8").trim());
-            }
-        }
+        resetableAccounts.addAll(Arrays.asList(configurationService.getArrayProperty("reset-accounts.dummy.accounts")));
         if (resetableAccounts.isEmpty())
         {
             log.warn("Unable to load resetable accounts.");
