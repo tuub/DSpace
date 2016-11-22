@@ -13,15 +13,3 @@
 				<metadataPolicy><text>Anyone may access the metadata free of charge. The metadata may be re-used in any medium without prior permission for not-for-profit purposes and re-sold commercially.</text></metadataPolicy>
 				<dataPolicy />
 			</eprints>
-		</description>
-		<description>
-				<rightsManifest
-				xmlns="http://www.openarchives.org/OAI/2.0/rights/" 
-				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-				xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/rights/ 
-						    http://www.openarchives.org/OAI/2.0/rightsManifest.xsd"
-				appliesTo="http://www.openarchives.org/OAI/2.0/entity#metadata">
-					<rights>
-					    <rightsReference ref="http://creativecommons.org/publicdomain/zero/1.0/"/>
-					</rights>
-				</rightsManifest>
