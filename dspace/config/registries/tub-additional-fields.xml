@@ -149,6 +149,34 @@
 
     <dc-type>
         <schema>dc</schema>
+        <element>relation</element>
+        <qualifier>references</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>relation</element>
+        <qualifier>isrequiredby</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>relation</element>
+        <qualifier>issupplementedby</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
+        <element>relation</element>
+        <qualifier>issupplementto</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
+    <dc-type>
+        <schema>dc</schema>
         <element>rights</element>
         <qualifier>other</qualifier>
         <scope-note></scope-note>
