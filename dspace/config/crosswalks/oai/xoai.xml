@@ -9,7 +9,7 @@
 
 	Developed by DSpace @ Lyncode <dspace@lyncode.com>
  -->
-<Configuration indented="false" maxListIdentifiersSize="200" maxListRecordsSize="200"
+<Configuration indented="true" maxListIdentifiersSize="200" maxListRecordsSize="200"
                maxListSetsSize="200" stylesheet="static/style.xsl"
                xmlns="http://www.lyncode.com/XOAIConfiguration">
 
