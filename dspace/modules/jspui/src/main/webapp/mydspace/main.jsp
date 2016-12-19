@@ -36,6 +36,8 @@
 <%@ page import="org.dspace.core.Utils" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
 <%@ page import="org.dspace.eperson.Group"   %>
+<%@ page import="org.dspace.content.Item"   %>
+<%@ page import="org.dspace.content.MetadataSchema"   %>
 <%@ page import="org.dspace.workflowbasic.BasicWorkflowItem" %>
 <%@ page import="java.util.List" %>
 <%@page import="org.dspace.app.itemimport.BatchUpload"%>
@@ -96,6 +98,7 @@
                 <table class="table with-filter" align="center" summary="Table listing owned tasks">
                     <tr>
                         <th id="t1" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.task"/></th>
+                        <th id="t1X" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.type"/></th>
                         <th id="t2" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.item"/></th>
                         <th id="t3" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.subto"/></th>
                         <th id="t4" class="oddRowEvenCol"><fmt:message key="jsp.mydspace.main.subby"/></th>
@@ -109,11 +112,14 @@
                     %>
                     <% for (int i = 0; i < owned.size(); i++) { %>
                         <%
-                        String title = owned.get(i).getItem().getName();
+                        Item item = owned.get(i).getItem();
+                        String title = item.getName();
+                        String type = item.getItemService()
+                            .getMetadataFirstValue(item, MetadataSchema.DC_SCHEMA, "type", null, Item.ANY);
                         if (StringUtils.isBlank(title)) {
                             title = LocaleSupport.getLocalizedMessage(pageContext,"jsp.general.untitled");
                         }
-                        EPerson submitter = owned.get(i).getItem().getSubmitter();
+                        EPerson submitter = item.getSubmitter();
                         %>
                         <tr>
                             <td headers="t1" class="<%= row %>RowOddCol">
@@ -127,6 +133,7 @@
                         }
                         %>
                 </td>
+                <td headers="t1X" class="<%= row %>RowEvenCol"><%= Utils.addEntities(type) %></td>
                 <td headers="t2" class="<%= row %>RowEvenCol"><%= Utils.addEntities(title) %></td>
                 <td headers="t3" class="<%= row %>RowOddCol"><%= owned.get(i).getCollection().getName() %></td>
                 <td headers="t4" class="<%= row %>RowEvenCol"><a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a></td>
@@ -162,6 +169,7 @@
     <table class="table with-filter" align="center" summary="Table listing the tasks in the pool">
         <tr>
             <th id="t6" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.task"/></th>
+            <th id="t6X" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.type"/></th>
             <th id="t7" class="oddRowEvenCol"><fmt:message key="jsp.mydspace.main.item"/></th>
             <th id="t8" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.subto"/></th>
             <th id="t9" class="oddRowEvenCol"><fmt:message key="jsp.mydspace.main.subby"/></th>
@@ -175,12 +183,14 @@
 
         for (int i = 0; i < pooled.size(); i++)
         {
-            String title =
-                pooled.get(i).getItem().getName();
+            Item item = pooled.get(i).getItem();
+            String title = item.getName();
+            String type = item.getItemService()
+                .getMetadataFirstValue(item, MetadataSchema.DC_SCHEMA, "type", null, Item.ANY);
             if (StringUtils.isBlank(title)) {
                 title = LocaleSupport.getLocalizedMessage(pageContext,"jsp.general.untitled");
             }
-            EPerson submitter = pooled.get(i).getItem().getSubmitter();
+            EPerson submitter = item.getSubmitter();
 %>
         <tr>
                     <td headers="t6" class="<%= row %>RowOddCol">
@@ -193,6 +203,7 @@
             }
 %>
                     </td>
+                    <td headers="t6X" class="<%= row %>RowOddCol"><%= Utils.addEntities(type) %></td>
                     <td headers="t7" class="<%= row %>RowEvenCol"><%= Utils.addEntities(title) %></td>
                     <td headers="t8" class="<%= row %>RowOddCol"><%= pooled.get(i).getCollection().getName() %></td>
                     <td headers="t9" class="<%= row %>RowEvenCol"><a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a></td>
@@ -227,6 +238,7 @@
         <tr>
             <th class="oddRowOddCol">&nbsp;</th>
             <th id="t10" class="oddRowEvenCol"><fmt:message key="jsp.mydspace.main.subby"/></th>
+            <th id="t10X" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.type"/></th>
             <th id="t11" class="oddRowOddCol"><fmt:message key="jsp.mydspace.main.elem1"/></th>
             <th id="t12" class="oddRowEvenCol"><fmt:message key="jsp.mydspace.main.elem2"/></th>
             <th id="t13" class="oddRowOddCol">&nbsp;</th>
@@ -246,12 +258,14 @@
 
         for (int i = 0; i < workspaceItems.size(); i++)
         {
-            String title =
-                workspaceItems.get(i).getItem().getName();
+            Item item = workspaceItems.get(i).getItem();
+            String title = item.getName();
+            String type = item.getItemService()
+                    .getMetadataFirstValue(item, MetadataSchema.DC_SCHEMA, "type", null, Item.ANY);
             if (StringUtils.isBlank(title)) {
                 title = LocaleSupport.getLocalizedMessage(pageContext,"jsp.general.untitled");
             }
-            EPerson submitter = workspaceItems.get(i).getItem().getSubmitter();
+            EPerson submitter = item.getSubmitter();
 %>
         <tr>
             <td class="<%= row %>RowOddCol">
@@ -263,6 +277,7 @@
             <td headers="t10" class="<%= row %>RowEvenCol">
                 <a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a>
             </td>
+            <td headers="t10X" class="<%= row %>RowOddCol"><%= Utils.addEntities(type) %></td>
             <td headers="t11" class="<%= row %>RowOddCol"><%= Utils.addEntities(title) %></td>
             <td headers="t12" class="<%= row %>RowEvenCol"><%= workspaceItems.get(i).getCollection().getName() %></td>
             <td headers="t13" class="<%= row %>RowOddCol">
