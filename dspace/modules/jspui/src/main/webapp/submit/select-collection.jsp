@@ -45,6 +45,7 @@
 %>
 
 <dspace:layout style="submission" locbar="off"
+               navbar="default"
                titlekey="jsp.submit.select-collection.title"
                nocache="true">
 

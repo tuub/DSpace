@@ -123,6 +123,7 @@ if( types != null )
 
 <dspace:layout style="submission"
                locbar="off"
+               navbar="default"
                titlekey="jsp.submit.progressbar.type-selection"
                nocache="true">
 
