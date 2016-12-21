@@ -160,7 +160,7 @@
     <repeatable>true</repeatable>
     <label>RVK subject keywords</label>
     <input-type>onebox</input-type>
-    <hint>Enter appropriate RVK subject keywords below. Please visit http://rvk.uni-regensburg.de/index.php/regensburger-verbundklassifikation-online?view=rvko</hint>
+    <hint>Enter appropriate RVK subject keywords below. Please visit http://rvk.uni-regensburg.de/index.php/regensburger-verbundklassifikation-online</hint>
     <required></required>
     <type-bind>Doctoral Thesis</type-bind>
 </field>

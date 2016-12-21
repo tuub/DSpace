@@ -12,6 +12,7 @@
     <!ENTITY habilitation SYSTEM "document-types/habilitation.ent">
     <!ENTITY image SYSTEM "document-types/image.ent">
     <!ENTITY master_thesis SYSTEM "document-types/master_thesis.ent">
+    <!ENTITY model SYSTEM "document-types/model.ent">
     <!ENTITY multimedia SYSTEM "document-types/multimedia.ent">
     <!ENTITY periodical SYSTEM "document-types/periodical.ent">
     <!ENTITY periodical_part SYSTEM "document-types/periodical_part.ent">
@@ -35,9 +36,9 @@
  <!-- collection which does not appear in this map will be associated with -->
  <!-- the mapping for handle "default".                                    -->
 
- <form-map>
-   <name-map collection-handle="default" form-name="traditional" />
- </form-map>
+    <form-map>
+        <name-map collection-handle="default" form-name="traditional" />
+    </form-map>
 
  <!-- The form-definitions map lays out the detailed definition of all the -->
  <!-- submission forms. Each separate form set has a unique name as an     -->
@@ -55,59 +56,56 @@
  <!-- qualifier name, a repeatable flag, and a text string whose presence  -->
  <!-- serves as a 'this field is required' flag.                           -->
 
- <form-definitions>
+    <form-definitions>
+        <form name="traditional">
+            <page number="1">
+                &all;
+            </page>
 
-   <form name="traditional">
-     <page number="1">
+            <page number="2">
 
-       &all;
+                <!-- Research Data Document Types -->
+                &audio;
+                &image;
+                &model;
+                &research_data;
+                &software;
+                &textual_data;
+                &video;
 
-     </page>
+                <!-- Publication Document Types -->
+                &article;
+                &book;
+                &book_part;
+                &conference_object;
+                &conference_proceedings;
+                &doctoral_thesis;
+                &habilitation;
+                &master_thesis;
+                &multimedia;
+                &periodical;
+                &periodical_part;
+                &preprint;
+                &report;
+                &research_paper;
 
-     <page number="2">
-
-        <!-- Research Data Document Types -->
-        &research_data;
-        &textual_data;
-        &audio;
-        &image;
-        &software;
-        &video;
-
-        <!-- Publication Document Types -->
-        &article;
-        &book;
-        &book_part;
-        &conference_object;
-        &conference_proceedings;
-        &doctoral_thesis;
-        &habilitation;
-        &master_thesis;
-        &multimedia;
-        &periodical;
-        &periodical_part;
-        &preprint;
-        &report;
-        &research_paper;
-
-     </page>
-   </form>
-
-   <form name="one">
-     <page number="1">
-       <field>
-         <dc-schema>dc</dc-schema>
-         <dc-element>contributor</dc-element>
-         <dc-qualifier>author</dc-qualifier>
-         <repeatable>true</repeatable>
-         <label>One: Authors</label>
-         <input-type>name</input-type>
-         <hint>Enter the names of the authors of this item below.</hint>
-         <required></required>
-       </field>
-      </page>
-    </form>
- </form-definitions>
+            </page>
+        </form>
+        <form name="one">
+            <page number="1">
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>One: Authors</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the names of the authors of this item below.</hint>
+                    <required></required>
+                </field>
+            </page>
+        </form>
+    </form-definitions>
 
 
  <!-- form-value-pairs populate dropdown and qualdrop-value lists.          -->
@@ -176,9 +174,13 @@
             <displayed-value>Creative Commons Attribution NonCommercial ShareAlike 4.0 (CC BY-NC-SA) </displayed-value>
             <stored-value>https://creativecommons.org/licenses/by-nc-sa/4.0/</stored-value>
         </pair>
-       <pair>
+        <pair>
             <displayed-value>Creative Commons Attribution NonCommercial NoDerivatives 4.0 (CC BY-NC-ND)</displayed-value>
             <stored-value>https://creativecommons.org/licenses/by-nc-nd/4.0/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Creative Commons Zero 1.0 (CC0)</displayed-value>
+            <stored-value>https://creativecommons.org/publicdomain/zero/1.0/</stored-value>
         </pair>
     </value-pairs>
 
@@ -248,7 +250,7 @@
         -->
     </value-pairs>
 
-   <value-pairs value-pairs-name="publication_types" dc-term="type">
+    <value-pairs value-pairs-name="publication_types" dc-term="type">
         <pair>
             <displayed-value>Article</displayed-value>
             <stored-value>Article</stored-value>
@@ -272,10 +274,6 @@
         <pair>
             <displayed-value>Doctoral Thesis</displayed-value>
             <stored-value>Doctoral Thesis</stored-value>
-        </pair>
-        <pair>
-            <displayed-value>Image</displayed-value>
-            <stored-value>Image</stored-value>
         </pair>
         <pair>
             <displayed-value>Master Thesis</displayed-value>
@@ -329,87 +327,99 @@
             <stored-value>Video</stored-value>
         </pair>
         <pair>
+            <displayed-value>Image</displayed-value>
+            <stored-value>Image</stored-value>
+        </pair>
+        <pair>
             <displayed-value>Software</displayed-value>
             <stored-value>Software</stored-value>
         </pair>
-   </value-pairs>
+        <pair>
+            <displayed-value>3D Model</displayed-value>
+            <stored-value>3D Model</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Software</displayed-value>
+            <stored-value>Software</stored-value>
+        </pair>
+    </value-pairs>
 
-   <value-pairs value-pairs-name="type_versions" dc-term="type">
-     <pair>
-       <displayed-value>Draft</displayed-value>
-       <stored-value>draft</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Submitted Version</displayed-value>
-       <stored-value>submittedVersion</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Accepted Version</displayed-value>
-       <stored-value>acceptedVersion</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Published Version</displayed-value>
-       <stored-value>publishedVersion</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Updated Version</displayed-value>
-       <stored-value>updatedVersion</stored-value>
-     </pair>
-   </value-pairs>
+    <value-pairs value-pairs-name="type_versions" dc-term="type">
+        <pair>
+            <displayed-value>Draft</displayed-value>
+            <stored-value>draft</stored-value>
+        </pair>
+        <pair>
+           <displayed-value>Submitted Version</displayed-value>
+           <stored-value>submittedVersion</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Accepted Version</displayed-value>
+            <stored-value>acceptedVersion</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Published Version</displayed-value>
+            <stored-value>publishedVersion</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Updated Version</displayed-value>
+            <stored-value>updatedVersion</stored-value>
+        </pair>
+    </value-pairs>
 
-   <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
-     <pair>
-       <displayed-value>N/A</displayed-value>
-       <stored-value></stored-value>
-     </pair>
-     <pair>
-       <displayed-value>English</displayed-value>
-       <stored-value>en</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>German</displayed-value>
-       <stored-value>de</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Chinese</displayed-value>
-       <stored-value>zh</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>French</displayed-value>
-       <stored-value>fr</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Italian</displayed-value>
-       <stored-value>it</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Japanese</displayed-value>
-       <stored-value>ja</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Persian</displayed-value>
-       <stored-value>fa</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Polish</displayed-value>
-       <stored-value>pl</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Portuguese</displayed-value>
-       <stored-value>pt</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>Spanish</displayed-value>
-       <stored-value>es</stored-value>
-     </pair>
-     <pair>
-       <displayed-value>(Other)</displayed-value>
-       <stored-value>und</stored-value>
-     </pair>
-   </value-pairs>
+    <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
+        <pair>
+            <displayed-value>N/A</displayed-value>
+            <stored-value></stored-value>
+        </pair>
+        <pair>
+            <displayed-value>English</displayed-value>
+            <stored-value>en</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>German</displayed-value>
+            <stored-value>de</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Chinese</displayed-value>
+            <stored-value>zh</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>French</displayed-value>
+            <stored-value>fr</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Italian</displayed-value>
+            <stored-value>it</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Japanese</displayed-value>
+            <stored-value>ja</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Persian</displayed-value>
+            <stored-value>fa</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Polish</displayed-value>
+            <stored-value>pl</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Portuguese</displayed-value>
+            <stored-value>pt</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Spanish</displayed-value>
+            <stored-value>es</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>(Other)</displayed-value>
+            <stored-value>und</stored-value>
+        </pair>
+    </value-pairs>
 
- <!-- take care of this later: drop down w/ 1 item doesn't make sense. in 99% of cases the value will always be "TU Berlin" but in minority of cases there's an exception that we need to handle... we can probably solve this w/ default values in item templates for collections -->
-   <value-pairs value-pairs-name="granting_organisation" dc-term="contributor">
+    <!-- take care of this later: drop down w/ 1 item doesn't make sense. in 99% of cases the value will always be "TU Berlin" but in minority of cases there's an exception that we need to handle... we can probably solve this w/ default values in item templates for collections -->
+    <value-pairs value-pairs-name="granting_organisation" dc-term="contributor">
         <pair>
             <displayed-value>TU Berlin</displayed-value>
             <stored-value>Technische Universität Berlin</stored-value>
@@ -476,6 +486,6 @@
         </pair>
      </value-pairs>
 
-   </form-value-pairs>
+    </form-value-pairs>
 
 </input-forms>
