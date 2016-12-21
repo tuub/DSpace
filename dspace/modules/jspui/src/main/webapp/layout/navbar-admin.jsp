@@ -167,7 +167,7 @@
                 </li>
                 <li class="text-center <%= currentPage.endsWith("/statistics")? "active" : "" %>"">
                     <a href="<%= request.getContextPath() %>/statistics">
-                        <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i>
+                        <i class="glyphicon glyphicon-stats" aria-hidden="true"></i>
                         <fmt:message key="jsp.layout.navbar-admin.statistics"/>
                     </a>
                 </li>

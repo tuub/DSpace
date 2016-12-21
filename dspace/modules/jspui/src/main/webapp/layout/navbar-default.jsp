@@ -103,9 +103,9 @@
                 </a>
                 ( <a href="<%= request.getContextPath() %>/logout"><fmt:message key="jsp.layout.navbar-default.logout"/></a>
                 <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>">
-                    <span class="glyphicon glyphicon-power-off"></span></a> )
+                    <span class="glyphicon glyphicon-off"></span></a> )
             <% } %>
-            <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>"><i class="glyphicon glyphicon-power-off"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.logout"/></span></a>
+            <a class="no-link" href="<%= request.getContextPath() %>/logout" title="<fmt:message key="jsp.layout.navbar-default.logout"/>"><i class="glyphicon glyphicon-off"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.logout"/></span></a>
             &nbsp;|&nbsp;
             <a class="no-link" href="<%= request.getContextPath() %>/subscribe" title="<fmt:message key="jsp.layout.navbar-default.receive"/>"><i class="glyphicon glyphicon-flash"></i><span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.receive"/></span></a>
             &nbsp;|&nbsp;
@@ -139,9 +139,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- HOME -->
                 <li class="text-center <%= currentPage.endsWith("/home.jsp")? "active" : "" %>">
-                    <a href="<%= request.getContextPath() %>/">
+                    <a href="<%= request.getContextPath() %>/" title="<fmt:message key="jsp.layout.navbar-default.home"/>">
                         <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
-                        <fmt:message key="jsp.layout.navbar-default.home"/>
+                        <span class="hidden-xs"> <fmt:message key="jsp.layout.navbar-default.home"/></span>
                     </a>
                 </li>
                 <!-- SEARCH -->
@@ -202,7 +202,7 @@
                 <!-- MY DEPOSITS -->
                 <li class="text-center <%= currentPage.endsWith("/mydspace")? "active" : "" %>"">
                     <a href="<%= request.getContextPath() %>/mydspace">
-                        <i class="glyphicon glyphicon-file-text" aria-hidden="true"></i><fmt:message key="jsp.layout.navbar-default.users"/>
+                        <i class="glyphicon glyphicon-th" aria-hidden="true"></i><fmt:message key="jsp.layout.navbar-default.users"/>
                     </a>
                 </li>
                 <!-- LANGUAGE -->
