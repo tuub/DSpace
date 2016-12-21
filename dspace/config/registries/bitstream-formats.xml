@@ -742,4 +742,31 @@
       <extension>epub</extension>
     </bitstream-type>
 
+    <bitstream-type>
+        <mimetype>application/step</mimetype>
+        <short_description>STEP</short_description>
+        <description>STEP</description>
+        <support_level>1</support_level>
+        <internal>false</internal>
+        <extension>step</extension>
+    </bitstream-type>
+
+    <bitstream-type>
+        <mimetype>application/sla</mimetype>
+        <short_description>STL</short_description>
+        <description>STL</description>
+        <support_level>1</support_level>
+        <internal>false</internal>
+        <extension>stl</extension>
+    </bitstream-type>
+
+    <bitstream-type>
+        <mimetype>application/octet-stream</mimetype>
+        <short_description>VTK</short_description>
+        <description>VTK</description>
+        <support_level>1</support_level>
+        <internal>false</internal>
+        <extension>vtk</extension>
+    </bitstream-type>
+
 </dspace-bitstream-types>
