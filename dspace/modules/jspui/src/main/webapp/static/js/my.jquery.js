@@ -18,33 +18,6 @@ jQuery.fn.extend({
 
 var headID = document.getElementsByTagName("head")[0];
 
-var tooltipsterJS = document.createElement("script");
-tooltipsterJS.type = "text/javascript";
-tooltipsterJS.src = "static/js/vendor/tooltipster/js/jquery.tooltipster.js";
-
-var tooltipsterCSS = document.createElement("link");
-tooltipsterCSS.type = "text/css";
-tooltipsterCSS.rel = "stylesheet";
-tooltipsterCSS.src = "static/js/vendor/tooltipster/css/tooltipster.css";
-
-var tablesorterJS = document.createElement("script");
-tablesorterJS.type = "text/javascript";
-tablesorterJS.src = "static/js/vendor/tablesorter/jquery.tablesorter.min.js";
-
-var tablesorterCSS = document.createElement("link");
-tablesorterCSS.type = "text/css";
-tablesorterCSS.rel = "stylesheet";
-tablesorterCSS.src = "static/js/vendor/tablesorter/themes/blue/style.css";
-
-var easytreeJS = document.createElement("script");
-easytreeJS.type = "text/javascript";
-easytreeJS.src = "static/js/vendor/easytree/jquery.easytree.min.js";
-
-var easytreeCSS = document.createElement("link");
-easytreeCSS.type = "text/css";
-easytreeCSS.rel = "stylesheet";
-easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
-
 +function ($) {
 
   'use strict';
@@ -107,7 +80,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     /************************************************************************
     * Remove all Well-Container
     ************************************************************************/
-    //$('.well').removeClass('well');
+    $('.well').removeClass('well');
 
     /************************************************************************
     * Remove all paddings in nested containers
@@ -224,6 +197,33 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Spanish";
                         break;
+                    case "zh":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Chinese";
+                        break;
+                    case "it":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Italian";
+                        break;
+                    case "ja":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Japanese";
+                        break;
+                    case "fa":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Persian";
+                        break;
+                    case "pl":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Polish";
+                    case "pt":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Portugese";
+                        break;
+                    case "und":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Other";
+                        break;
                     default:
                         languageCodeReplacer += $languageCode.html();
                 };
@@ -242,7 +242,8 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).remove();
     };
 
-    /************************************************************************
+
+      /************************************************************************
     * Adjust Type Version Labels (not used)
     ************************************************************************/
     var $typeVersion = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Version of published item:'; }).next();
@@ -417,6 +418,10 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     * Button Colors based on values in their name/id attributes
     ************************************************************************/
 
+    // All Buttons To Default State
+    $('input.btn').not('.btn-link').not('.btn-success').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default');
+
+    /*
     $('input.btn').not('.btn-link').removeClass (function (index, css) { return (css.match (/(^|\s)col-\S+/g) || []).join(' ') });
     $('input.btn-info').removeClass('btn-info').addClass('btn-default');
 
@@ -444,6 +449,7 @@ easytreeCSS.src = "static/js/vendor/easytree/skin-depositonce/ui.easytree.css";
     $('input.btn').not('.btn-link').filter( function() { return this.name.match(/own/); } ).removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default');
     $('input.btn').not('.btn-link').filter( function() { return this.name.match(/return/); } ).removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default');
     $('input.btn').not('.btn-link').filter( function() { return this.name.match(/clear/); } ).removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default');
+    */
 
     // All Link Buttons To Default State
     $('a.btn').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default btn-xs').css('font-weight', 'normal');
