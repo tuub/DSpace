@@ -39,6 +39,9 @@
 <%@ page import="org.dspace.services.ConfigurationService" %>
 <%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
+<%@ page import="org.dspace.content.MetadataSchema" %>
+<%@ page import="java.util.ArrayList" %>
+
 
 <%
     // Retrieve attributes
@@ -81,6 +84,9 @@
     }
 
     ItemCounter ic = new ItemCounter(UIUtil.obtainContext(request));
+
+    List<Item> items = rs.getRecentSubmissions();
+    boolean first = true;
 %>
 
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
@@ -111,86 +117,91 @@
     <p class="copyrightText">
         <%= copyright %>
     </p>
+    <!-- RECENT SUBMISSIONS TO THIS COMMUNITY -->
     <div class="row">
-        <% if (rs != null  && rs.count() > 0) { %>
-            <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div id="recent-submissions-carousel" class="panel-heading carousel slide">
-                        <%-- Recently Submitted items --%>
-                        <h3>
-                            <fmt:message key="jsp.community-home.recentsub"/>
-                            <% if(feedEnabled) { %>
-                                <%
-                                String[] fmts = feedData.substring(5).split(",");
-                                String icon = null;
-                                int width = 0;
-                                %>
-                                <% for (int j = 0; j < fmts.length; j++) { %>
-                                    <%
-                                    if ("rss_1.0".equals(fmts[j])) {
-                                        icon = "rss1.gif";
-                                        width = 80;
-                                    } else if ("rss_2.0".equals(fmts[j])) {
-                                        icon = "rss2.gif";
-                                        width = 80;
-                                    } else {
-                                        icon = "rss.gif";
-                                        width = 36;
-                                    }
-                                    %>
-                                    <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= community.getHandle() %>">
-                                        <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
-                                    </a>
-                                <% } %>
-                            <% } %>
-                        </h3>
-
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <fmt:message key="jsp.community-home.recentsub"/>
+                </div>
+                <div class="panel-body">
+                    <% for (int i = 0; i < items.size(); i++) { %>
                         <%
-                        List<Item> items = rs.getRecentSubmissions();
-                        boolean first = true;
+                        Item item = items.get(i);
+                        /* Get title */
+                        String title = item.getName();
+                        String displayTitle = "Untitled";
+                        if (StringUtils.isNotBlank(title)) {
+                            displayTitle = Utils.addEntities(title);
+                        }
+                        /* Get authors */
+                        List<MetadataValue> authors = item.getItemService()
+                                .getMetadata(item, MetadataSchema.DC_SCHEMA, "contributor", "author", Item.ANY);
+                        List<String> authorList = new ArrayList();
+                        for( int j=0 ; j < authors.size(); j++ )
+                        {
+                            authorList.add(authors.get(j).getValue());
+                        }
+                        /* Get publication date */
+                        String publicationDate = item.getItemService()
+                                .getMetadataFirstValue(item, MetadataSchema.DC_SCHEMA, "date", "issued", Item.ANY);
+                        /* Get abstract */
+                        String description = item.getItemService()
+                                .getMetadataFirstValue(item, MetadataSchema.DC_SCHEMA, "description", "abstract", Item.ANY);
                         %>
-                        <% if(items!=null && items.size() > 0) { %>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <% for (int i = 0; i < items.size(); i++) { %>
-                                    <%
-                                    String title = items.get(i).getName();
-                                    String displayTitle = "Untitled";
-                                    if (StringUtils.isNotBlank(title)) {
-                                        displayTitle = Utils.addEntities(title);
-                                    }
-                                    %>
-                                    <div style="padding-bottom: 50px; min-height: 200px;" class="item <%= first?"active":""%>">
-                                        <div style="padding-left: 80px; padding-right: 80px; display: inline-block;">
-                                            <%= StringUtils.abbreviate(displayTitle, 400) %>
-                                            <a href="<%= request.getContextPath() %>/handle/<%=items.get(i).getHandle() %>" class="btn btn-success">See</a>
-                                        </div>
-                                    </div>
-                                    <%
-                                    first = false;
-                                    %>
-                                <% } %>
-                            </div>
-
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#recent-submissions-carousel" data-slide="prev">
-                                <span class="icon-prev"></span>
+                        <a href="<%= request.getContextPath() %>/handle/<%= item.getHandle() %>">
+                            <strong><%= StringUtils.abbreviate(displayTitle, 400) %></strong>
+                        </a>
+                        <p>
+                            <i><%= StringUtils.join(authorList, " ; ") %></i> (<%= publicationDate %>)
+                        </p>
+                        <p>
+                            <%= StringUtils.abbreviate(description, 400) %>
+                        </p>
+                        <%
+                            first = false;
+                        %>
+                    <% } %>
+                </div>
+                <div class="panel-footer">
+                    <% if(feedEnabled) { %>
+                        <%
+                            String[] fmts = feedData.substring(5).split(",");
+                            String icon = null;
+                            int width = 0;
+                        %>
+                        <% for (int j = 0; j < fmts.length; j++) { %>
+                            <%
+                            if ("rss_1.0".equals(fmts[j])) {
+                                icon = "rss1.gif";
+                                width = 80;
+                            } else if ("rss_2.0".equals(fmts[j])) {
+                                icon = "rss2.gif";
+                                width = 80;
+                            } else {
+                                icon = "rss.gif";
+                                width = 36;
+                            }
+                            %>
+                            <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/<%= community.getHandle() %>">
+                                <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" style="margin: 3px 0 3px" />
                             </a>
-                            <a class="right carousel-control" href="#recent-submissions-carousel" data-slide="next">
-                                <span class="icon-next"></span>
-                            </a>
-                            <ol class="carousel-indicators">
-                                <li data-target="#recent-submissions-carousel" data-slide-to="0" class="active"></li>
-                                <% for (int i = 1; i < rs.count(); i++) { %>
-                                    <li data-target="#recent-submissions-carousel" data-slide-to="<%= i %>"></li>
-                                <% } %>
-                            </ol>
                         <% } %>
-                    </div>
+                    <% } %>
                 </div>
             </div>
-        <% } %>
+        </div>
+
+        <!-- COMMUNITY STATISTICS -->
+        <div id="statistics"></div>
+        <!-- /COMMUNITY STATISTICS -->
+
+        <div class="col-md-2">
+
+        </div>
     </div>
+    <!-- /RECENT SUBMISSIONS TO THIS COMMUNITY -->
+
 
     <div class="row">
         <%@ include file="discovery/static-tagcloud-facet.jsp" %>
