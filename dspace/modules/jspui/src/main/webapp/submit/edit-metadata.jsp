@@ -385,7 +385,7 @@
             dateIssued = new org.dspace.content.DCDate("");
     
          sb.append("<div class=\"row col-md-12\"><div class=\"input-group col-md-10\"><div class=\"row\">")
-			.append("<span class=\"input-group col-md-6\"><span class=\"input-group-addon\">")
+			.append("<span class=\"input-group col-md-5\"><span class=\"input-group-addon\">")
          	.append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.month"))
             .append("</span><select class=\"form-control\" name=\"")
             .append(fieldName)
@@ -416,7 +416,7 @@
          }
     
          sb.append("</select></span>")
-	            .append("<span class=\"input-group col-md-2\"><span class=\"input-group-addon\">")
+	            .append("<span class=\"input-group col-md-3\"><span class=\"input-group-addon\">")
                 .append(LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.day"))
                 .append("</span><input class=\"form-control\" type=\"text\" name=\"")
             .append(fieldName)
@@ -1461,7 +1461,7 @@
                    if(si.getJumpToField()==null || si.getJumpToField().length()==0)
                                 si.setJumpToField(fieldName);
 
-                   String req = "<div class=\"alert alert-warning\">" +
+                   String req = "<div class=\"alert alert-danger\">" +
                                                         inputs[z].getWarning() +
                                                         "<a name=\""+fieldName+"\"></a></div>";
                    out.write(req);
