@@ -130,7 +130,7 @@
                 <i class="glyphicon glyphicon-code-fork" style="margin-right: 10px; font-size: 20px;"></i>
                 <strong><fmt:message key="jsp.version.notice.new_version_head"/></strong>
                 <fmt:message key="jsp.version.notice.new_version_help"/>
-                <a href="<%= latestVersionIdentifier %>"><%= latestVersionIdentifier %></a>
+                <a style="color: #000;" href="<%= latestVersionIdentifier %>"><%= latestVersionIdentifier %></a>
             </div>
         <% } %>
 
@@ -145,7 +145,7 @@
         <div class="alert alert-success">
             <i class="glyphicon glyphicon-link" style="margin-right: 10px; font-size: 20px;"></i>
             <strong><fmt:message key="jsp.display-item.identifier"/></strong>
-            <a href="<%= preferredIdentifier %>"><%= preferredIdentifier %></a>
+            <a style="color: #000;" href="<%= preferredIdentifier %>"><%= preferredIdentifier %></a>
         </div>
 
 <%
@@ -279,9 +279,14 @@
 <%
         }
 %>
-    <a class="statisticsLink  btn btn-primary" href="<%= request.getContextPath() %>/handle/<%= handle %>/statistics"><fmt:message key="jsp.display-item.display-statistics"/></a>
+    <a class="statisticsLink btn btn-primary" href="<%= request.getContextPath() %>/handle/<%= handle %>/statistics">
+        <span class="glyphicon glyphicon-stats"></span>
+        <fmt:message key="jsp.display-item.display-statistics"/>
+    </a>
 
-    <%-- SFX Link --%>
+
+
+<%-- SFX Link --%>
 <%
     if (ConfigurationManager.getProperty("sfx.server.url") != null)
     {
