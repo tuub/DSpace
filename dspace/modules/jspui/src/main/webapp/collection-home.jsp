@@ -153,20 +153,22 @@
                         </a>
                     <% } %>
                 <% } %>
-                <form method="get" action="">
-                    <% if (loggedIn && subscribed) { %>
-                        <!--<fmt:message key="jsp.collection-home.subscribed"/>-->
-                        <input class="btn btn-sm btn-warning" type="submit" name="submit_unsubscribe" value="<fmt:message key="jsp.collection-home.unsub"/>" />
-                        <small>
-                            <a href="<%= request.getContextPath() %>/subscribe">
-                                <fmt:message key="jsp.collection-home.info"/>
-                            </a>
-                        </small>
-                    <% } else { %>
-                        <!--<fmt:message key="jsp.collection-home.subscribe.msg"/>-->
-                        <input class="btn btn-sm btn-success" type="submit" name="submit_subscribe" value="<fmt:message key="jsp.collection-home.subscribe"/>" />
-                    <% } %>
-                </form>
+                <% if(false) { %>
+                    <form method="get" action="">
+                        <% if (loggedIn && subscribed) { %>
+                            <!--<fmt:message key="jsp.collection-home.subscribed"/>-->
+                            <input class="btn btn-sm btn-warning" type="submit" name="submit_unsubscribe" value="<fmt:message key="jsp.collection-home.unsub"/>" />
+                            <small>
+                                <a href="<%= request.getContextPath() %>/subscribe">
+                                    <fmt:message key="jsp.collection-home.info"/>
+                                </a>
+                            </small>
+                        <% } else { %>
+                            <!--<fmt:message key="jsp.collection-home.subscribe.msg"/>-->
+                            <input class="btn btn-sm btn-success" type="submit" name="submit_subscribe" value="<fmt:message key="jsp.collection-home.subscribe"/>" />
+                        <% } %>
+                    </form>
+                <% } %>
             </div>
             <!--<small><fmt:message key="jsp.collection-home.heading1"/></small>-->
             <%  if (logo != null) { %>
