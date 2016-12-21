@@ -41,7 +41,8 @@
              (e.g. 'language_iso')
   -->
  <!ATTLIST value-pairs value-pairs-name CDATA #REQUIRED
-                            dc-term   CDATA #REQUIRED
+                            dc-term     CDATA #IMPLIED
+                            tub-term    CDATA #IMPLIED
  >
   
  <!ELEMENT pair (displayed-value,stored-value) >
