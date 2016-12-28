@@ -17,6 +17,9 @@
 <%@ page import="org.dspace.core.Utils" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
+<%@ page import="org.dspace.content.service.CollectionService" %>
+<%@ page import="org.dspace.content.service.ItemService" %>
 
 <%--
   -  Show Eperson unfinnished submissions
@@ -33,6 +36,7 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <%
+    ItemService itemService = ContentServiceFactory.getInstance().getItemService();
 
     request.setAttribute("LanguageSwitch", "hide");
 
@@ -71,7 +75,7 @@ navbar="<%= naviAdmin%>"
 
 
     <!-- Display workspace items if any -->
-    <% if (!workspaceItems.isEmtpy()) { %>
+    <% if (!workspaceItems.isEmpty()) { %>
     <div class="panel panel-warning">
         <div class="panel-heading">
             <fmt:message key="jsp.tools.reset.email.unfinished.submissions"/>
@@ -102,7 +106,7 @@ navbar="<%= naviAdmin%>"
             <tr>
                 <td headers="t10" class="<%= row%>RowEvenCol"><%= Utils.addEntities(submitter.getFullName())%></td>
                 <td headers="t11" class="<%= row%>RowOddCol"><%= Utils.addEntities(title)%></td>
-                <td headers="t12" class="<%= row%>RowEvenCol"><%= wsi.getCollection().getMetadata("name")%></td>
+                <td headers="t12" class="<%= row%>RowEvenCol"><%= wsi.getCollection().getName()%></td>
                 <td headers="t13" class="<%= row%>RowOddCol"><%
                 String type = itemService.getMetadataFirstValue(wsi.getItem(), "dc", "type", null, Item.ANY);
                 if (type != null)
