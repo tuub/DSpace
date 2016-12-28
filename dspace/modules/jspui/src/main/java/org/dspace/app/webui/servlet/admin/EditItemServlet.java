@@ -793,6 +793,34 @@ public class EditItemServlet extends DSpaceServlet
                 }
                 else
                 {
+                    //Update bitstreams bundle if not null and not empty
+                    String bitstreamsBundle = request.getParameter("bitstream_bundle_name_"
+                            + key);
+                    
+                    if (bitstreamsBundle != null && !bitstreamsBundle.equals("")) 
+                    {
+                        bitstreamsBundle = bitstreamsBundle.toUpperCase();
+                        String bundleName = bundle.getName();
+                        
+                        if (!bitstreamsBundle.equalsIgnoreCase(bundleName)) 
+                        {
+                            //Get all item's bundles matching that bundle name
+                            List<Bundle> itemsBundlesByName = itemService.getBundles(item, bitstreamsBundle);
+
+                            if (!itemsBundlesByName.isEmpty()) 
+                            {
+                                bundleService.addBitstream(context, itemsBundlesByName.get(0), bitstream);
+                                bundleService.removeBitstream(context, bundle, bitstream);
+                            } 
+                            else 
+                            {
+                                Bundle newBundle = bundleService.create(context, item, bitstreamsBundle);
+                                bundleService.addBitstream(context, newBundle, bitstream);
+                                bundleService.removeBitstream(context, bundle, bitstream);
+                            }
+
+                        }
+                }
                     // Update the bitstream metadata
                     String name = request.getParameter(p);
                     String source = request.getParameter("bitstream_source_"
@@ -808,12 +836,12 @@ public class EditItemServlet extends DSpaceServlet
                             bundleID + "_primary_bitstream_id");
 
                     // Empty strings become non-null
-                    if (source.equals(""))
+                    if (source != null && source.equals(""))
                     {
                         source = null;
                     }
 
-                    if (desc.equals(""))
+                    if (desc != null && desc.equals(""))
                     {
                         desc = null;
                     }
@@ -954,7 +982,7 @@ public class EditItemServlet extends DSpaceServlet
         // Complete transaction
         context.complete();
     }
-
+   
     /**
      * Process the input from the upload bitstream page
      *

@@ -552,6 +552,7 @@
                 <th id="t12" class="oddRowEvenCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem7"/></strong></th>
                 <th id="t13" class="oddRowOddCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem8"/></strong></th>
                 <th id="t14" class="oddRowEvenCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem9"/></strong></th>
+                <th id="t19" class="oddRowOddCol"><strong><fmt:message key="jsp.error.invalid-id.constants.type.1"/></strong></th>
                 <th id="t15" class="oddRowOddCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem10"/></strong></th>
                 <th id="t16" class="oddRowEvenCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem11"/></strong></th>
                 <th id="t17" class="oddRowOddCol"><strong><fmt:message key="jsp.tools.edit-item-form.elem12"/></strong></th>
@@ -602,6 +603,9 @@
                 </td>
                 <td headers="t14" class="<%= row %>RowOddCol">
                     <input class="form-control" type="text" name="bitstream_description_<%= key %>" value="<%= ((bitstream).getDescription() == null ? "" : Utils.addEntities(bitstream.getDescription())) %>"/>
+                </td>
+                <td headers="t19" class="<%= row %>RowEvenCol">
+                    <input class="form-control" type="text" name="bitstream_bundle_name_<%= key %>" value="<%= bundles.get(i).getName()%>"/>
                 </td>
                 <td headers="t15" class="<%= row %>RowEvenCol">
                     <input class="form-control" type="text" name="bitstream_format_id_<%= key %>" value="<%= bf.getID() %>" size="4"/> (<%= Utils.addEntities(bf.getShortDescription()) %>)
