@@ -41,6 +41,10 @@
 <%@ page import="org.dspace.eperson.Group"     %>
 <%@ page import="org.dspace.services.ConfigurationService" %>
 <%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
+<%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
+<%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
+<%@ page import="org.dspace.content.service.CollectionService" %>
+<%@ page import="org.dspace.content.service.ItemService" %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 
 <%
@@ -109,10 +113,6 @@
     boolean show_items = showItems != null ? showItems.booleanValue() : false;
 %>
 
-<%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
-<%@ page import="org.dspace.content.factory.ContentServiceFactory" %>
-<%@ page import="org.dspace.content.service.CollectionService" %>
-<%@ page import="org.dspace.content.service.ItemService" %>
 <dspace:layout locbar="commLink" title="<%= name %>" feedData="<%= feedData %>">
     <div class="well">
         <div class="row">
