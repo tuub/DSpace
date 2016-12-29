@@ -789,7 +789,7 @@ public class ItemTag extends TagSupport
                 out.print("/handle/");
                 out.print(collections.get(i).getHandle());
                 out.print("\">");
-                out.print(CollectionDropDown.collectionPath(context, collections.get(i)));
+                out.print(CollectionDropDown.collectionMinIdentPath(context, collections.get(i)));
                 out.print("</a><br/>");
             }
 

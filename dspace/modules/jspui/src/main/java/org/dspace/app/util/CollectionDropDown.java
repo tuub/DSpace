@@ -53,8 +53,8 @@ public class CollectionDropDown {
     
     /**
      * Get full path starting from a top-level community via subcommunities down to a collection.
+	 * The top-level community is the topmost community to be shown in the views.
      * The full path will be truncated to the specified number of characters and prepended with an ellipsis.
-     * If maxchars is not specified, the levels configuration will be used (local addition).
      *
      * @param collection
      *            Get full path for this collection
@@ -66,40 +66,34 @@ public class CollectionDropDown {
     public static String collectionPath(Context context, Collection collection, int maxchars) throws SQLException
     {
 
-		String separator = configurationService.getProperty("webui.collection.display.fullpath.separator");
-		if (StringUtils.isBlank(separator)) {
-			 separator = " > ";
-		}
-
 		String path = collection.getName();
 
-		if (configurationService.getBooleanProperty("webui.collection.display.fullpath")) {
-
+		if (configurationService.getBooleanProperty("webui.collection.display.fullpath"))
+		{
             /*
-             * Local addition: use configured level depth instead of char truncation (if no char truncation specified).
+             * Local addition: use configured level cutoff (i.e. don't show x top levels)
              */
-			int levels = configurationService.getIntProperty("webui.collection.display.fullpath.levels",
-                    Integer.MAX_VALUE);
+			int levelCutoff = configurationService.getIntProperty("webui.collection.display.fullpath.levels", 0);
 
-			if (maxchars > 0) {
-				levels = Integer.MAX_VALUE;
+			if (levelCutoff < 0)
+			{
+				levelCutoff = 0;
 			}
 
 			List<Community> collectionCommunities = communityService.getAllParents(context, collection);
 
 			LinkedList<String> communityList = new LinkedList();
 
-			if (collectionCommunities.size() > 0)
+			for (int i = 0; i < collectionCommunities.size() - levelCutoff; i++)
 			{
-				for (int i = 0; i < collectionCommunities.size() && i < levels; i++) {
-					communityList.addFirst(collectionCommunities.get(i).getName());
-				}
+				communityList.addFirst(collectionCommunities.get(i).getName());
 			}
 
 			communityList.add(collection.getName());
-			path = StringUtils.join(communityList, separator);
+			path = StringUtils.join(communityList, getSeparator());
 
-			if (maxchars > 0) {
+			if (maxchars > 0)
+			{
 				int len = path.length();
 				if (len > maxchars)
 				{
@@ -112,6 +106,66 @@ public class CollectionDropDown {
 		return path;
 
     }
+
+
+	/**
+	 * Get minimum identification path for a collection.
+	 * More precise: a specified (in the config) number of parent communities is added to the collection name.
+	 *
+	 *
+	 * @param collection
+	 *            Get full path for this collection
+	 * @return Full path to the collection (truncated)
+	 * @throws SQLException if database error
+	 */
+	public static String collectionMinIdentPath(Context context, Collection collection) throws SQLException
+	{
+
+		String path = collection.getName();
+
+		if (configurationService.getBooleanProperty("webui.collection.display.fullpath"))
+		{
+
+			int collectionDepth = configurationService.getIntProperty("webui.collection.display.fullpath.depth",
+					Integer.MAX_VALUE);
+
+			if (collectionDepth < 0)
+			{
+				collectionDepth = Integer.MAX_VALUE;
+			}
+
+			List<Community> collectionCommunities = communityService.getAllParents(context, collection);
+
+			LinkedList<String> communityList = new LinkedList();
+
+			for (int i = 0; i < collectionCommunities.size() && i < collectionDepth; i++)
+			{
+				communityList.addFirst(collectionCommunities.get(i).getName());
+			}
+
+			communityList.add(collection.getName());
+			path = StringUtils.join(communityList, getSeparator());
+
+		}
+		return path;
+
+	}
+
+	/**
+	 * Get the separator from the config.
+	 *
+	 * @return the separator string
+	 */
+	private static String getSeparator()
+	{
+		String separator = configurationService.getProperty("webui.collection.display.fullpath.separator");
+		if (StringUtils.isBlank(separator))
+		{
+			separator = " > ";
+		}
+		return separator;
+	}
+
 
 	/**
 	 * Annotates an array of collections with their respective full paths (@see #collectionPath() method in this class).
