@@ -139,7 +139,7 @@
                             </td>
                             <td><%= Utils.addEntities(type) %></td>
                             <td><%= Utils.addEntities(title) %></td>
-                            <td><%= CollectionDropDown.collectionPath(context, owned.get(i).getCollection()) %></td>
+                            <td><%= CollectionDropDown.collectionMinIdentPath(context, owned.get(i).getCollection()) %></td>
                             <td><a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a></td>
                             <td>
                                  <form action="<%= request.getContextPath() %>/mydspace" method="post">
@@ -192,7 +192,7 @@
                         </td>
                         <td><%= Utils.addEntities(type) %></td>
                         <td><%= Utils.addEntities(title) %></td>
-                        <td><%= CollectionDropDown.collectionPath(context, pooled.get(i).getCollection()) %></td>
+                        <td><%= CollectionDropDown.collectionMinIdentPath(context, pooled.get(i).getCollection()) %></td>
                         <td><a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a></td>
                         <td>
                             <form action="<%= request.getContextPath() %>/mydspace" method="post">
@@ -249,7 +249,7 @@
                         <td><%= Utils.addEntities(type) %></td>
                         <td><%= Utils.addEntities(title) %></td>
                         <td><a href="mailto:<%= submitter.getEmail() %>"><%= Utils.addEntities(submitter.getFullName()) %></a></td>
-                        <td><%= CollectionDropDown.collectionPath(context, workspaceItems.get(i).getCollection()) %></td>
+                        <td><%= CollectionDropDown.collectionMinIdentPath(context, workspaceItems.get(i).getCollection()) %></td>
                         <td>
                             <form action="<%= request.getContextPath() %>/mydspace" method="post">
                                 <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>"/>
@@ -294,7 +294,7 @@
                         </td>
                         <td><%= Utils.addEntities(type) %></td>
                         <td><%= Utils.addEntities(title) %></td>
-                        <td><%= CollectionDropDown.collectionPath(context, supervisedItems.get(i).getCollection()) %></td>
+                        <td><%= CollectionDropDown.collectionMinIdentPath(context, supervisedItems.get(i).getCollection()) %></td>
                         <td>
                             <form action="<%= request.getContextPath() %>/mydspace" method="post">
                                 <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>"/>
@@ -333,7 +333,7 @@
                         <td><%= Utils.addEntities(title) %></td>
                         <td>
                            <form action="<%= request.getContextPath() %>/mydspace" method="post">
-                               <%= CollectionDropDown.collectionPath(context, workflowItems.get(i).getCollection()) %>
+                               <%= CollectionDropDown.collectionMinIdentPath(context, workflowItems.get(i).getCollection()) %>
                                <input type="hidden" name="step" value="<%= MyDSpaceServlet.MAIN_PAGE %>" />
                                <input type="hidden" name="workflow_id" value="<%= workflowItems.get(i).getID() %>" />
                            </form>

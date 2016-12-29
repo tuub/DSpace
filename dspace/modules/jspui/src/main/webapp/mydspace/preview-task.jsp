@@ -55,7 +55,7 @@
     {
 %>
 	<p><fmt:message key="jsp.mydspace.preview-task.text1"> 
-        <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
+        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
     </fmt:message></p>
 <%
     }
@@ -63,7 +63,7 @@
     {
 %>    
 	<p><fmt:message key="jsp.mydspace.preview-task.text3"> 
-        <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
+        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
     </fmt:message></p>
 <%
     }
@@ -71,7 +71,7 @@
     {
 %>
 	<p><fmt:message key="jsp.mydspace.preview-task.text4"> 
-        <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
+        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
     </fmt:message></p>
 <%
     }
