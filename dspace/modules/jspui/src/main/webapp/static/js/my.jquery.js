@@ -288,20 +288,36 @@ var headID = document.getElementsByTagName("head")[0];
     }
 
     /************************************************************************
-    * Add URN Linkage
+    * Add URN Linking
     ************************************************************************/
     $('td.metadataFieldValue a').filter( function() { return this.text.match(/urn/); } ).each( function(){
         $(this).attr( 'href', 'http://nbn-resolving.de/' + $(this).text() );
     });
 
     /************************************************************************
-    * Add DOI Linkage
+    * Add DOI Linking
     ************************************************************************/
     $('td.metadataFieldValue').each( function(){
+        var $this = $(this);
         var pattern = /^10\.[0-9]+\/[0-9a-zA-Z-]+/;
+        var resolver = 'https://dx.doi.org/';
 
-        if( pattern.test( $(this).text() ) ) {
-            $(this).wrapInner( '<a href="https://dx.doi.org/' + $(this).text() + '" target="_blank"></a>');
+        if( pattern.test( $this.text() ) ) {i
+            var doiString = String();
+            var dois = $this.find('a');
+            if( dois.length > 0 )
+            {
+                dois.each(function() {
+                    var currentDOI = $this.attr('href');
+                    $this.attr('href', resolver + currentDOI).attr('target', '_blank');
+                });
+            } else {
+                var unlinked_dois = $this.html().split('<br>');
+                unlinked_dois.forEach(function(currentDOI){
+                    doiString += '<a href="' + resolver + currentDOI + '" target="_blank">' + currentDOI + '<br>';
+                })
+                $this.html(doiString);
+            }
         }
     });
 
@@ -335,44 +351,40 @@ var headID = document.getElementsByTagName("head")[0];
     var $ccLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Creative Commons License:'; }).next();
     var ccLicenseUri = $ccLicenseUriField.text();
     if( ccLicenseUri !== null) {
-        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org") >= 0)
+        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/licenses/") >= 0)
         {
-            //TESTED ALSO WITH: ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
-            //ccLicenseUri = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
             var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/licenses/").join("");
             if( ccLicenseInfo.slice(-1) == '/') {
                 ccLicenseInfo.slice(0, -1);
             }
             var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
-            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
+            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
             $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
                 return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
             });
             $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
         };
 
-		if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/publicdomain/") >= 0)
-		{
-			var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/publicdomain/").join("");
-			if( ccLicenseInfo.slice(-1) == '/') {
-				ccLicenseInfo.slice(0, -1);
-			}
-			var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
-			// Override Public Domain Mark
-			if (ccLicenseString.toLowerCase().indexOf(" mark ") >= 0) {
-				ccLicenseString = 'Public Domain Mark';
-			}
-			var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
-			// Override Public Domain Mark
-			if (ccLicenseImage.toLowerCase().indexOf("mark") >= 0) {
-				ccLicenseImage = 'https://licensebuttons.net/p/88x31.png';
-			}
-			$ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
-				return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
-			});
-			$ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
+        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/publicdomain/") >= 0)
+        {
+            var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/publicdomain/").join("");
+            if( ccLicenseInfo.slice(-1) == '/') {
+                ccLicenseInfo.slice(0, -1);
+            }
+            var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
+            if (ccLicenseString.toLowerCase().indexOf(" mark ") >= 0) {
+                ccLicenseString = 'Public Domain Mark';
+            }
+            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
+            if (ccLicenseImage.toLowerCase().indexOf("mark") >= 0) {
+                ccLicenseImage = 'https://licensebuttons.net/p/88x31.png';
+            }
+            $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
+                return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
+            });
+            $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
 
-		}
+        }
     }
 
 
