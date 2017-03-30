@@ -84,6 +84,24 @@
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
             </Description>
         </Context>
+
+        <!--
+            TU Berlin Context for DNB
+        -->
+        <Context baseurl="dnb" name="DNB Context">
+            <!-- There is no transformer needed for DNB, the complete logic is in the format xmetadissplus.xsl -->
+            <!--Transformer ref="dnbTransformer"/-->
+            <!-- DNB filter -->
+            <Filter ref="dnbFilter"/>
+            <!-- Just an alias, in fact it returns all items within the dnb context -->
+            <Set ref="dnbSet"/>
+            <!-- Metadata Formats -->
+            <Format ref="oaidc"/>
+            <Format ref="xMetaDissPlus"/>
+            <Description>
+                This contexts complies with DNB Guidelines, particularly xMetaDissPlus
+            </Description>
+        </Context>
     </Contexts>
 
 
@@ -174,6 +192,12 @@
             <XSLT>metadataFormats/junii2.xsl</XSLT>
             <Namespace>http://irdb.nii.ac.jp/oai</Namespace>
             <SchemaLocation>http://irdb.nii.ac.jp/oai/junii2-3-1.xsd</SchemaLocation>
+        </Format>
+        <Format id="xMetaDissPlus">
+            <Prefix>xMetaDissPlus</Prefix>
+            <XSLT>metadataFormats/xmetadissplus.xsl</XSLT>
+            <Namespace>http://www.d-nb.de/standards/xmetadissplus</Namespace>
+            <SchemaLocation>http://files.dnb.de/standards/xmetadissplus/xmetadissplus.xsd</SchemaLocation>
         </Format>
     </Formats>
 
@@ -337,6 +361,38 @@
             </Definition>
         </Filter>
 
+
+        <Filter id="dnbFilter">
+            <Definition>
+                <And>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="itemWithdrawnCondition"/>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <And>
+                            <LeftCondition>
+                                <Custom ref="tubPublicationDocumentTypeCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Not>
+                                    <Condition>
+                                        <Custom ref="dnbAccessCondition"/>
+                                    </Condition>
+                                </Not>
+                            </RightCondition>
+                        </And>
+                    </RightCondition>
+                </And>
+            </Definition>
+        </Filter>
+
         <!-- UKETD Filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is a "thesis"
@@ -450,6 +506,19 @@
             </Configuration>
         </CustomCondition>
 
+        <!-- DNB access rights condition (no items in embargo or blocked) -->
+        <CustomCondition id="dnbAccessCondition">
+            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">tub.accessrights.dnb</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>embargoed</string>
+                    <string>blocked</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
         <!-- This condition determines if an Item has a "dc.rights" field
              specifying "open access", which is required for DRIVER
              OR "openAccess", which is required by OpenAIRE. -->
@@ -498,6 +567,11 @@
         <Set id="openaireSet">
             <Spec>openaire</Spec>
             <Name>OpenAIRE</Name>
+            <!-- Just an alias -->
+        </Set>
+        <Set id="dnbSet">
+            <Spec>dnb</Spec>
+            <Name>DNB</Name>
             <!-- Just an alias -->
         </Set>
     </Sets>

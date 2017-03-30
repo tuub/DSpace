@@ -46,9 +46,35 @@
         </xsl:choose>
     </xsl:template>
 
+    <!--
+    Implementation: Claudia Jürgens, TU Dortmund
+    -->
+    <xsl:template name="replace-string">
+        <xsl:param name="text"/>
+        <xsl:param name="replace"/>
+        <xsl:param name="with"/>
+        <xsl:choose>
+            <xsl:when test="contains($text,$replace)">
+                <xsl:value-of select="substring-before($text,$replace)"/>
+                <xsl:value-of select="$with"/>
+                <xsl:call-template name="replace-string">
+                    <xsl:with-param name="text"
+                                    select="substring-after($text,$replace)"/>
+                    <xsl:with-param name="replace" select="$replace"/>
+                    <xsl:with-param name="with" select="$with"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$text"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
 
     <!-- convert iso-639-1 2 letter code to iso-639-2 bibliographic 3 letter
-    code based on http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes Date 2014-06-18 -->
+    code based on http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes Date 2014-06-18
+    Implementation: Claudia Jürgens, TU Dortmund
+    -->
 
     <xsl:template name="getThreeLetterCodeLanguage">
         <xsl:param name="lang2"/>
