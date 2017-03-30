@@ -72,13 +72,13 @@
          -->
         <Context baseurl="openaire" name="OpenAIRE Context">
             <!-- Date format, field prefixes, etc are ensured by the transformer -->
-            <Transformer ref="openaireTransformer"/>
+            <Transformer ref="tubOpenaireTransformer"/>
             <!-- OpenAIRE filter -->
-            <Filter ref="openAireFilter"/>
+            <Filter ref="tubOpenAireFilter"/>
             <!-- Just an alias, in fact it returns all items within the driver context -->
             <Set ref="openaireSet"/>
             <!-- Metadata Formats -->
-            <Format ref="oaidc"/>
+            <Format ref="oaidc_tub"/>
             <Format ref="mets"/>
             <Description>
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
@@ -88,6 +88,12 @@
 
 
     <Formats>
+        <Format id="oaidc_tub">
+            <Prefix>oai_dc</Prefix>
+            <XSLT>metadataFormats/tub_oai_dc.xsl</XSLT>
+            <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
+            <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format>
         <Format id="oaidc">
             <Prefix>oai_dc</Prefix>
             <XSLT>metadataFormats/oai_dc.xsl</XSLT>
@@ -177,6 +183,9 @@
         </Transformer>
         <Transformer id="openaireTransformer">
             <XSLT>transformers/openaire.xsl</XSLT>
+        </Transformer>
+        <Transformer id="tubOpenaireTransformer">
+            <XSLT>transformers/tub_openaire.xsl</XSLT>
         </Transformer>
     </Transformers>
 
@@ -287,6 +296,47 @@
             </Definition>
         </Filter>
 
+        <!-- TUB OpenAIRE filter.
+             Return an Item record:
+               * If a Title & Author field both exist
+               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
+               * AND a valid document type for publications exists
+             This filter is only used in the OpenAIRE context ([oai]/openaire).
+        -->
+        <Filter id="tubOpenAireFilter">
+            <Definition>
+                <And>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="itemWithdrawnCondition"/>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <And>
+                            <LeftCondition>
+                                <And>
+                                    <LeftCondition>
+                                        <Custom ref="titleExistsCondition"/>
+                                    </LeftCondition>
+                                    <RightCondition>
+                                        <Custom ref="authorExistsCondition"/>
+                                    </RightCondition>
+                                </And>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="tubPublicationDocumentTypeCondition"/>
+                            </RightCondition>
+                        </And>
+                    </RightCondition>
+                </And>
+            </Definition>
+        </Filter>
+
         <!-- UKETD Filter for records returned by OAI-PMH.
              By default, return an Item record:
                 * If it is a "thesis"
@@ -371,6 +421,31 @@
                     <string>patent</string>
                     <string>dataset</string>
                     <string>other</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+
+        <!-- TUB Condition for publications only (no research data). -->
+        <CustomCondition id="tubPublicationDocumentTypeCondition">
+            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.type</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Article</string>
+                    <string>Book</string>
+                    <string>Book Part</string>
+                    <string>Conference Object</string>
+                    <string>Conference Proceedings</string>
+                    <string>Doctoral Thesis</string>
+                    <string>Master Thesis</string>
+                    <string>Periodical</string>
+                    <string>Periodical Part</string>
+                    <string>Preprint</string>
+                    <string>Habilitation</string>
+                    <string>Report</string>
+                    <string>Research Paper</string>
+                    <string>Other</string>
                 </list>
             </Configuration>
         </CustomCondition>
