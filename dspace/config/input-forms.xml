@@ -14,7 +14,6 @@
     <!ENTITY master_thesis SYSTEM "document-types/master_thesis.ent">
     <!ENTITY model SYSTEM "document-types/model.ent">
     <!ENTITY multimedia SYSTEM "document-types/multimedia.ent">
-    <!ENTITY periodical SYSTEM "document-types/periodical.ent">
     <!ENTITY periodical_part SYSTEM "document-types/periodical_part.ent">
     <!ENTITY preprint SYSTEM "document-types/preprint.ent">
     <!ENTITY report SYSTEM "document-types/report.ent">
@@ -68,6 +67,7 @@
                 &audio;
                 &image;
                 &model;
+                &multimedia;
                 &research_data;
                 &software;
                 &textual_data;
@@ -82,8 +82,6 @@
                 &doctoral_thesis;
                 &habilitation;
                 &master_thesis;
-                &multimedia;
-                &periodical;
                 &periodical_part;
                 &preprint;
                 &report;
@@ -279,14 +277,6 @@
             <displayed-value>Master Thesis</displayed-value>
             <stored-value>Master Thesis</stored-value>
         </pair>
-        <pair>
-            <displayed-value>Multimedia</displayed-value>
-            <stored-value>Multimedia</stored-value>
-        </pair>
-        <pair>
-            <displayed-value>Periodical</displayed-value>
-            <stored-value>Periodical</stored-value>
-        </pair>
          <pair>
             <displayed-value>Periodical Part</displayed-value>
             <stored-value>Periodical Part</stored-value>
@@ -339,8 +329,8 @@
             <stored-value>3D Model</stored-value>
         </pair>
         <pair>
-            <displayed-value>Software</displayed-value>
-            <stored-value>Software</stored-value>
+            <displayed-value>Multimedia</displayed-value>
+            <stored-value>Multimedia</stored-value>
         </pair>
     </value-pairs>
 
