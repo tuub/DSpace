@@ -40,6 +40,19 @@
     <type-bind>Multimedia</type-bind>
 </field>
 
+<!-- DC.DESCRIPTION.SPONSORSHIP-->
+<field>
+    <dc-schema>dc</dc-schema>
+    <dc-element>description</dc-element>
+    <dc-qualifier>sponsorship</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Sponsor or funder information</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name of the sponsor or funder, and/or project/grant name or ID. Please use the following syntax if applicable: EC/FP7/12345/EU/ProjectName/ProjectAcronym. Please separate multiple entries by semicolon.</hint>
+    <required></required>
+    <type-bind>Multimedia</type-bind>
+</field>
+
 <!-- DC.IDENTIFIER.OTHER-->
 <field>
     <dc-schema>dc</dc-schema>
