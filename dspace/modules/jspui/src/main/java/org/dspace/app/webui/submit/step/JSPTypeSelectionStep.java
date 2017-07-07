@@ -28,11 +28,13 @@ import org.dspace.app.webui.submit.JSPStep;
 import org.dspace.app.webui.submit.JSPStepManager;
 import org.dspace.app.webui.util.JSPManager;
 import org.dspace.authorize.AuthorizeException;
+import org.dspace.content.Collection;
 import org.dspace.core.Context;
+import org.dspace.handle.factory.HandleServiceFactory;
+import org.dspace.handle.service.HandleService;
 import org.dspace.submit.step.TypeSelectionStep;
 import org.dspace.content.Item;
 import org.dspace.content.MetadataValue;
-import org.dspace.content.WorkspaceItem;
 
 /**
  * Privacy Statements servlet for DSpace JSP-UI. Handles privacy statements every
@@ -69,8 +71,10 @@ public class JSPTypeSelectionStep extends JSPStep
 {
     /** JSP which displays default license information * */
     private static final String TYPE_SELECTION_JSP = "/submit/select-type.jsp";
-    
+
     private static final Logger log = Logger.getLogger(JSPTypeSelectionStep.class);
+
+    private HandleService handleService = HandleServiceFactory.getInstance().getHandleService();
 
     /**
      * Do any pre-processing to determine which JSP (if any) is used to generate
@@ -100,7 +104,7 @@ public class JSPTypeSelectionStep extends JSPStep
             throws ServletException, IOException, SQLException,
             AuthorizeException
     {
-        prepareJSP(request, subInfo);        
+        prepareJSP(context, request, subInfo);
         JSPStepManager.showJSP(request, response, subInfo, TYPE_SELECTION_JSP);
     }
 
@@ -140,7 +144,7 @@ public class JSPTypeSelectionStep extends JSPStep
         {
             return;
         }
-        
+
         // Error Handling
         if (buttonPressed.equalsIgnoreCase(TypeSelectionStep.NEXT_BUTTON))
         {
@@ -152,11 +156,11 @@ public class JSPTypeSelectionStep extends JSPStep
             {
                 request.setAttribute("no_type_selected", true);
             }
-            prepareJSP(request, subInfo);
+            prepareJSP(context, request, subInfo);
             JSPManager.showJSP(request, response, TYPE_SELECTION_JSP);
         }
     }
-    
+
     /**
      * Return the URL path (e.g. /submit/review-metadata.jsp) of the JSP
      * which will review the information that was gathered in this Step.
@@ -179,15 +183,26 @@ public class JSPTypeSelectionStep extends JSPStep
     {
         return NO_JSP; //signing off on license does not require reviewing
     }
-    
-    void prepareJSP(HttpServletRequest request, SubmissionInfo subInfo)
+
+    void prepareJSP(Context context, HttpServletRequest request, SubmissionInfo subInfo)
     {
         Item item = subInfo.getSubmissionItem().getItem();
-        
+
         List<MetadataValue> types = item.getItemService().getMetadataByMetadataString(item, "dc.type");
         if (types != null && types.size() > 0)
         {
             request.setAttribute("existing_type_selection", types);
+        }
+
+        // Get the name of already selected collection for the submission. This decides which types to display.
+        String collectionName = null;
+        try {
+            Collection submittingCollection = (Collection) handleService.resolveToObject(
+                    context,
+                    (String) request.getSession().getAttribute("submission.config.collection"));
+            collectionName = submittingCollection.getName();
+        } catch (SQLException e) {
+            // Submission collection name could not be resolved, all types will be shown, no action here.
         }
 
         // Load the DCInputsReader that parses the inputs-form.xml file.
@@ -203,15 +218,40 @@ public class JSPTypeSelectionStep extends JSPStep
         while (pairNameIter.hasNext())
         {
             String name = pairNameIter.next();
-            for (String val : TypeSelectionStep.getPairValueNames())
+            if (includeTypeValuePair(name, collectionName))
             {
-                if (StringUtils.equalsIgnoreCase(val, name))
-                {
-                    valuePairs.put(name, dcir.getPairs(name));
-                }
+                valuePairs.put(name, dcir.getPairs(name));
             }
         }
         request.setAttribute("type_selection_pairs", valuePairs);
     }
-    
+
+    /**
+     * Decides if a value pair should be added to the value pair map.
+     * (Publications collection: only show publication types,
+     * Research data collection, only show research data types,
+     * unknown collection name, show both publication and research data types, nothing else.)
+     *
+     * @param name - the name of the value pair.
+     * @param collectionName - the name of the collection for the submission.
+     * @return true if the value pair should be added, otherwise false
+     */
+    private boolean includeTypeValuePair(String name, String collectionName)
+    {
+        if (collectionName != null && TypeSelectionStep.getCollectionTypeMap().containsKey(collectionName)) {
+            return StringUtils.equalsIgnoreCase(name, TypeSelectionStep.getCollectionTypeMap().get(collectionName));
+        }
+        else
+        {
+            for (String val : TypeSelectionStep.getPairValueNames())
+            {
+                if (StringUtils.equalsIgnoreCase(val, name))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

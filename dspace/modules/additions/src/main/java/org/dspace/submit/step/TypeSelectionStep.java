@@ -7,39 +7,24 @@
  */
 package org.dspace.submit.step;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.dspace.app.util.DCInputsReader;
-import org.dspace.app.util.DCInputsReaderException;
 
 import org.dspace.app.util.SubmissionInfo;
-import org.dspace.app.util.Util;
 import org.dspace.authorize.AuthorizeException;
-import org.dspace.content.Bitstream;
-import org.dspace.content.BitstreamFormat;
-import org.dspace.content.Bundle;
 import org.dspace.content.Item;
 import org.dspace.content.MetadataValue;
-import org.dspace.content.WorkspaceItem;
 import org.dspace.content.factory.ContentServiceFactory;
 import org.dspace.content.service.ItemService;
-import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.submit.AbstractProcessingStep;
 
@@ -78,12 +63,27 @@ public class TypeSelectionStep extends AbstractProcessingStep
     protected final static ItemService itemService = ContentServiceFactory.getInstance().getItemService();
     
     private static String[] pairValueNames = new String[] { "publication_types", "research_data_types" };
-    
+
+    private static Map<String, String> collectionTypeMap;
+    static
+    {
+        Map<String, String> tempMap = new HashMap<>();
+        tempMap.put("Publications", "publication_types");
+        tempMap.put("Research Data", "research_data_types");
+        collectionTypeMap = Collections.unmodifiableMap(tempMap);
+    }
+
     public static String[] getPairValueNames()
     {
         // TODO load from configuration
         return pairValueNames.clone();
     }
+
+    public static Map<String, String> getCollectionTypeMap()
+    {
+        return collectionTypeMap;
+    }
+
     /**
      * Do any processing of the information input by the user, and/or perform
      * step processing (if no user interaction required)
