@@ -951,11 +951,11 @@ public class EditItemServlet extends DSpaceServlet
                     //Retrieve the button key
                     String inputKey = button.replace("submit_order_", "") + "_value";
                     if(inputKey.startsWith(bundle.getID() + "_")){
-                        List<UUID> vals = Util.getUUIDParameters(request, inputKey);
-                        int idx = 0;
-                        for (UUID v : vals) {
-                            newBitstreamOrder[idx] = v;
-                            idx++;
+                        // Field contains comma-separated, ordered list of Bitstream UUIDs
+                        String[] vals = request.getParameter(inputKey).split(",");
+                        for (int i = 0; i < vals.length; i++) {
+                            String val = vals[i];
+                            newBitstreamOrder[i] = UUID.fromString(val);
                         }
                     }else{
                         newBitstreamOrder = null;
