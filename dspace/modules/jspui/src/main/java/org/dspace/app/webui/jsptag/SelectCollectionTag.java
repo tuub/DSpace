@@ -58,7 +58,7 @@ public class SelectCollectionTag extends TagSupport
         {
             HttpServletRequest hrq = (HttpServletRequest) pageContext.getRequest();
             Context context = UIUtil.obtainContext(hrq);
-            List<Collection> collections = (List<Collection>) hrq.getAttribute("collections");
+            CollectionDropDown.CollectionPathEntry[] collectionPaths = CollectionDropDown.annotateWithPaths(context, (List<Collection>) hrq.getAttribute("collections"));
 
             sb.append("<select");
             if (name != null)
@@ -81,14 +81,14 @@ public class SelectCollectionTag extends TagSupport
             if (collection == null) sb.append(" selected=\"selected\"");
             sb.append(">").append(firstOption).append("</option>\n");
 
-            for (Collection coll : collections)
+            for (CollectionDropDown.CollectionPathEntry path : collectionPaths)
             {
-                sb.append("<option value=\"").append(coll.getID()).append("\"");
-                if (collection.equals(coll.getID().toString()))
+                sb.append("<option value=\"").append(path.collection.getID()).append("\"");
+                if (collection.equals(path.collection.getID().toString()))
                 {
                     sb.append(" selected=\"selected\"");
                 }
-                sb.append(">").append(CollectionDropDown.collectionPath(context, coll)).append("</option>\n");
+                sb.append(">").append(path.path).append("</option>\n");
             }
 
             sb.append("</select>\n");
