@@ -21,6 +21,7 @@ import org.dspace.services.ConfigurationService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -352,10 +353,20 @@ public class MediaFilterServiceImpl implements MediaFilterService, InitializingB
                 + " (item: " + item.getHandle() + ")");
         }
 
-        InputStream destStream;
+        InputStream destStream = null;
         try {
             System.out.println("File: " + newName);
-            destStream = formatFilter.getDestinationStream(item, bitstreamService.retrieve(context, source), isVerbose);
+            InputStream srcStream = bitstreamService.retrieve(context, source);
+            destStream = formatFilter.getDestinationStream(item, srcStream, isVerbose);
+            if (srcStream != null)
+            {
+                try {
+                    srcStream.close();
+                } catch (IOException ex)
+                {
+                    // nothing to be done here.
+                }
+            }
             if (destStream == null) {
                 if (!isQuiet) {
                     System.out.println("SKIPPED: bitstream " + source.getID()
@@ -366,6 +377,11 @@ public class MediaFilterServiceImpl implements MediaFilterService, InitializingB
             }
         } catch (OutOfMemoryError oome) {
             System.out.println("!!! OutOfMemoryError !!!");
+            try {
+                if (destStream != null) {
+                    destStream.close();
+                }
+            } catch (IOException ex) {}
             return false;
         }
 
@@ -382,10 +398,21 @@ public class MediaFilterServiceImpl implements MediaFilterService, InitializingB
 
         Bitstream b = bitstreamService.create(context, targetBundle, destStream);
 
+        // The input stream was stored in the appropriate asset store, close it to avoid socket leaks.
+        if (destStream != null)
+        {
+            try {
+                destStream.close();
+            } catch (IOException ex)
+            {
+                // we cannot recover from not being able to close the input stream, so ignore the exception.
+            }
+        }
+
         // Now set the format and name of the bitstream
         b.setName(context, newName);
         b.setSource(context, "Written by FormatFilter " + formatFilter.getClass().getName() +
-        			" on " + DCDate.getCurrent() + " (GMT)."); 
+        			" on " + DCDate.getCurrent() + " (GMT).");
         b.setDescription(context, formatFilter.getDescription());
 
         // Find the proper format
