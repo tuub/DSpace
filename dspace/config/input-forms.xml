@@ -399,6 +399,14 @@
             <stored-value>pt</stored-value>
         </pair>
         <pair>
+            <displayed-value>Greek</displayed-value>
+            <stored-value>el</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Turkish</displayed-value>
+            <stored-value>tr</stored-value>
+        </pair>
+        <pair>
             <displayed-value>Spanish</displayed-value>
             <stored-value>es</stored-value>
         </pair>

@@ -220,6 +220,14 @@ var headID = document.getElementsByTagName("head")[0];
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Portugese";
                         break;
+                    case "el":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Greek";
+                        break;
+                    case "tr":
+                        $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
+                        languageCodeReplacer += "Turkish";
+                        break;
                     case "und":
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Other";
