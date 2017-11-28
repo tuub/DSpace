@@ -305,26 +305,26 @@
             </xsl:for-each>
 
             <!-- 16 Identifikator field handle to dc:identifier xsi:type="hdl" -->
-            <xsl:for-each
+            <!--xsl:for-each
                     select="doc:metadata/doc:element[@name='others']/doc:field[@name='handle']">
                 <dc:identifier xsi:type="hdl:hdl">
                     <xsl:value-of select="."/>
                 </dc:identifier>
-            </xsl:for-each>
+            </xsl:for-each-->
 
             <!-- 16 Identifikator field handle to dc:identifier xsi:type="doi:doi" or xsi:type="urn:nbn" -->
             <xsl:for-each
-                    select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:field[@name='uri']">
+                    select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='uri']/doc:element/doc:field[@name='value']">
                 <xsl:if test="contains(., '10.14279')">
                     <dc:identifier xsi:type="doi:doi">
-                        <xsl:value-of select="substring-after(., 'http://dx.doi.org/')"/>
+                        <xsl:value-of select="substring-after(., 'doi.org/')"/>
                     </dc:identifier>
                 </xsl:if>
-                <xsl:if test="starts-with(., 'urn:nbn')">
+                <!--xsl:if test="starts-with(., 'urn:nbn')">
                     <dc:identifier xsi:type="urn:nbn">
                         <xsl:value-of select="."/>
                     </dc:identifier>
-                </xsl:if>
+                </xsl:if-->
             </xsl:for-each>
 
             <!-- 20 Quelle der Hochschulschrift - if there is a print version, the ISBN can be referenced here: dc.identifier.isbn -->
@@ -389,6 +389,15 @@
                         <xsl:if test="doc:element[@name='pageend']/doc:element/doc:field[@name='value']">
                             <xsl:value-of select="'-'"/><xsl:value-of select="doc:element[@name='pageend']/doc:element/doc:field[@name='value']"/>
                         </xsl:if>
+                    </dc:source>
+                </xsl:for-each>
+            </xsl:if>
+
+            <!-- 20 Quelle der Hochschulschrift - Proceedings title for Conference Object -->
+            <xsl:if test="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value'] = 'Conference Object'">
+                <xsl:for-each select="doc:metadata/doc:element[@name='dcterms']/doc:element[@name='bibliographicCitation']/doc:element[@name='proceedingstitle']">
+                    <dc:source xsi:type="ddb:noScheme">
+                        <xsl:value-of select="doc:element/doc:field[@name='value']"/>
                     </dc:source>
                 </xsl:for-each>
             </xsl:if>
@@ -475,6 +484,52 @@
                 </xsl:choose>
             </xsl:for-each>
 
+            <!-- 29: identifier for series (tub.series.name / issuenumber) - only for internal series -->
+            <xsl:variable name="seriesname">
+                <xsl:value-of select="doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='name']/doc:element/doc:field[@name='value']"/>
+            </xsl:variable>
+            <!--
+                DNB demands identifier for journals, we have none in the metadata. Workaround with mapping table.
+                Unfortunately, we have in our data no distinction between series and journals, they are both in field tub.series.name.
+                To differentiate between journals and series here, it is important, that there are only journals in this list!
+            -->
+            <xsl:variable name="journalzdbid">
+                <xsl:choose>
+                    <xsl:when test="$seriesname='adreizehn'">2812679-8</xsl:when>
+                    <xsl:when test="$seriesname='Berliner Forum Gewaltprävention'">2513492-9</xsl:when>
+                    <xsl:when test="$seriesname='Die Universitätsbibliothek der Technischen Universität Berlin : in den Jahren ..'">2829623-0</xsl:when>
+                    <xsl:when test="$seriesname='Dokumente'">2807265-0</xsl:when>
+                    <xsl:when test="$seriesname='IWB : Beiträge zur Wirtschaftspolitik'">2805058-7</xsl:when>
+                    <xsl:when test="$seriesname='MSD : Masterstudium Denkmalpflege an der TU Berlin ; Jahrbuch'">2718391-9</xsl:when>
+                    <xsl:when test="$seriesname='Preprint-Reihe des Instituts für Mathematik, Technische Universität Berlin'">2814965-8</xsl:when>
+                    <xsl:when test="$seriesname='Rechenschaftsbericht / Technische Universität Berlin, Universitätsbibliothek'">2829623-0</xsl:when>
+                    <xsl:when test="$seriesname='TU intern: die Hochschulzeitung der Technischen Universität Berlin'">2672493-5</xsl:when>
+                    <xsl:when test="$seriesname='Wissen im Zentrum : Rechenschaftsbericht / Universitätsbibliothek, Technische Universität Berlin'">2829623-0</xsl:when>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:choose>
+                <!-- If there is an id for the series, it is a journal; should be displayed with Erstkat-ID and issuenumber in isPartOf, ddb::ZS-Ausgabe -->
+                <xsl:when test="$journalzdbid != ''">
+                    <dcterms:isPartOf xsi:type="ddb:Erstkat-ID">
+                        <xsl:value-of select="$journalzdbid"/>
+                    </dcterms:isPartOf>
+                    <xsl:if test="doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber']/doc:element/doc:field[@name='value']">
+                        <dcterms:isPartOf xsi:type="ddb:ZS-Ausgabe">
+                            <xsl:value-of select="doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber']/doc:element/doc:field[@name='value']"/>
+                        </dcterms:isPartOf>
+                    </xsl:if>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- If there is only a series name and issuenumber and no id, it should be displayed at length in isPartOf, ddb::noScheme -->
+                    <xsl:if test="$seriesname != '' and doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber']/doc:element/doc:field[@name='value']">
+                        <dcterms:isPartOf xsi:type="ddb:noScheme">
+                            <xsl:value-of select="$seriesname"/>
+                            <xsl:text> ; </xsl:text>
+                            <xsl:value-of select="doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber']/doc:element/doc:field[@name='value']"/>
+                        </dcterms:isPartOf>
+                    </xsl:if>
+                </xsl:otherwise>
+            </xsl:choose>
             <!-- 30: dc.relation.haspart to dcterms:hasPart -->
             <xsl:for-each
                     select="doc:metadata/doc:element[@name='dc']/doc:element[@name='relation']/doc:element[@name='haspart']/doc:element/doc:field[@name='value']">
@@ -648,11 +703,19 @@
                 </ddb:transfer>
             </xsl:for-each>
 
-            <!-- 47. Further Identifier: handle -->
+            <!-- 47. Further Identifier: urn, handle -->
+            <xsl:for-each
+                    select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element[@name='uri']/doc:element/doc:field[@name='value']">
+                <xsl:if test="starts-with(., 'urn:nbn')">
+                    <ddb:identifier ddb:type="URN">
+                        <xsl:value-of select="."/>
+                    </ddb:identifier>
+                </xsl:if>
+            </xsl:for-each>
             <xsl:for-each
                     select="doc:metadata/doc:element[@name='others']/doc:field[@name='handle']">
-                <ddb:identifier ddb:type="URL">
-                    <xsl:value-of select="concat('https://hdl.handle.net/', .)"/>
+                <ddb:identifier ddb:type="handle">
+                    <xsl:value-of select="."/>
                 </ddb:identifier>
             </xsl:for-each>
 
