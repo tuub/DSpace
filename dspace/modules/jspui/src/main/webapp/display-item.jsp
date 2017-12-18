@@ -279,12 +279,19 @@
 <%
         }
 %>
-    <a class="statisticsLink btn btn-primary" href="<%= request.getContextPath() %>/handle/<%= handle %>/statistics">
-        <span class="glyphicon glyphicon-stats"></span>
-        <fmt:message key="jsp.display-item.display-statistics"/>
-    </a>
 
-
+<%-- Statistics Link --%>
+<%
+    if (admin_button)
+    {
+%>
+        <a class="statisticsLink btn btn-primary" href="<%= request.getContextPath() %>/handle/<%= handle %>/statistics">
+            <span class="glyphicon glyphicon-stats"></span>
+            <fmt:message key="jsp.display-item.display-statistics"/>
+        </a>
+<%
+    }
+%>
 
 <%-- SFX Link --%>
 <%
