@@ -307,26 +307,22 @@ var headID = document.getElementsByTagName("head")[0];
     ************************************************************************/
     $('td.metadataFieldValue').each( function(){
         var $this = $(this);
-        var pattern = /^10\.[0-9]+\/[0-9a-zA-Z-]+/;
-        var resolver = 'https://dx.doi.org/';
+        var links = $this.children().filter('a');
+        //var pattern = /10\.[0-9]+\/[0-9a-zA-Z-]+/;
+        var pattern = /10\.[0-9.]+\/[0-9a-zA-Z-.]+/;
+        var resolver = 'https://doi.org/';
 
-        if( pattern.test( $this.text() ) ) {i
-            var doiString = String();
-            var dois = $this.find('a');
-            if( dois.length > 0 )
-            {
-                dois.each(function() {
-                    var currentDOI = $this.attr('href');
-                    $this.attr('href', resolver + currentDOI).attr('target', '_blank');
-                });
-            } else {
-                var unlinked_dois = $this.html().split('<br>');
-                unlinked_dois.forEach(function(currentDOI){
-                    doiString += '<a href="' + resolver + currentDOI + '" target="_blank">' + currentDOI + '<br>';
-                })
-                $this.html(doiString);
-            }
-        }
+        if( links.length > 0 ) {
+            links.each(function(index) {
+                var currentLink = $(this);
+                if( pattern.test(currentLink.text()) ) {
+                    /* Kick out any existing resolver parts from link, use only ours above */
+                    var currentDOI = currentLink.attr('href').replace(/(^\w+:|^)\/\/[a-z\.\/]*/, '');
+                    /* Update actual link */
+                    currentLink.attr('href', resolver + currentDOI).attr('target', '_blank').text(currentDOI);
+                };
+            });
+        };
     });
 
     /************************************************************************

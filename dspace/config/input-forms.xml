@@ -216,7 +216,6 @@
             <displayed-value>Is Format Of</displayed-value>
             <stored-value>isformatof</stored-value>
         </pair>
-        <!--
         <pair>
             <displayed-value>Is Version Of</displayed-value>
             <stored-value>isversionof</stored-value>
@@ -225,6 +224,7 @@
             <displayed-value>Has Version</displayed-value>
             <stored-value>hasversion</stored-value>
         </pair>
+        <!--
         <pair>
             <displayed-value>Is Based On</displayed-value>
             <stored-value>isbasedon</stored-value>
