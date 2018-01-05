@@ -325,29 +325,37 @@ var headID = document.getElementsByTagName("head")[0];
         };
     });
 
-    /************************************************************************
-    * Adjust DDC Display (since Configuration doesn't work)
-    ************************************************************************/
-    var $ddcField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'DDC Class:'; }).next();
-    if( $ddcField.length > 0 )
-    {
-        var ddcFieldEntries = $ddcField.html().split('<br>');
+      /************************************************************************
+       * Add Subject Linking
+       ************************************************************************/
+      var $subjectField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Subject(s):'; }).next();
+      if( $subjectField.size() > 0 )
+      {
+          var subjectsHTML = String();
+          var subjectSearchURI = baseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
+          var subjects = $subjectField.html().split('<br>');
+          subjects.forEach(function(subject) {
+              subjectsHTML += '<a href="' + subjectSearchURI + subject + '">' + subject + '</a><br/>';
+          });
+          $subjectField.html(subjectsHTML);
+      }
 
-        var ddcLinks = Array();
-        var ddcString = String();
-
-        if( ddcFieldEntries.length > 0 )
-        {
-            ddcFieldEntries.forEach(function(ddcFieldEntry) {
-                var ddcValue = ddcFieldEntry.split('::').slice(-1)[0];
-                ddcLinks.push( ddcValue );
-            });
-        }
-        ddcLinks.forEach(function(ddcLink) {
-            ddcString += ddcLink + '<br/>';
-        });
-        $ddcField.html( ddcString );
-    }
+      /************************************************************************
+       * Adjust DDC Display (since Configuration doesn't work)
+       * Add DDC Class Linking
+       ************************************************************************/
+      var $ddcClassField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'DDC Class:'; }).next();
+      if( $ddcClassField.size() > 0 )
+      {
+          var ddcClassesHTML = String();
+          var ddcClassSearchURI = baseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
+          var ddcClasses = $ddcClassField.html().split('<br>');
+          ddcClasses.forEach(function(ddcClass) {
+              var ddcValue = ddcClass.split('::').slice(-1)[0];
+              ddcClassesHTML += '<a href="' + ddcClassSearchURI + ddcClass + '">' + ddcValue + '</a><br/>';
+          });
+          $ddcClassField.html(ddcClassesHTML);
+      }
 
     /************************************************************************
     * Nicer License / DC.RIGHTS.URI Display
