@@ -152,6 +152,7 @@
             <displayed-value>N/A</displayed-value>
             <stored-value></stored-value>
         </pair>
+        <!-- Creative Commons -->
         <pair>
             <displayed-value>Creative Commons Attribution 4.0 (CC BY)</displayed-value>
             <stored-value>https://creativecommons.org/licenses/by/4.0/</stored-value>
@@ -179,6 +180,36 @@
         <pair>
             <displayed-value>Creative Commons Zero 1.0 (CC0)</displayed-value>
             <stored-value>https://creativecommons.org/publicdomain/zero/1.0/</stored-value>
+        </pair>
+        <!-- Copyright -->
+        <pair>
+            <displayed-value>In Copyright</displayed-value>
+            <stored-value>http://rightsstatements.org/vocab/InC/1.0/</stored-value>
+        </pair>
+        <!-- Software -->
+        <pair>
+            <displayed-value>Apache License 2.0</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/apache-2.0/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>BSD License (BSD-3-Clause)</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/bsd-3-clause/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>GNU General Public License 3.0 (GNU GPLv3)</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/gpl-3.0/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>GNU Lesser General Public License 3.0 (GNU LGPLv3)</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/lgpl-3.0/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>MIT License</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/mit/</stored-value>
+        </pair>
+        <pair>
+            <displayed-value>Mozilla Public License 2.0 (MPL)</displayed-value>
+            <stored-value>https://choosealicense.com/licenses/mpl-2.0/</stored-value>
         </pair>
     </value-pairs>
 
@@ -472,17 +503,6 @@
             <stored-value>closedAccess</stored-value>
         </pair>
     </value-pairs>
-
-    <value-pairs value-pairs-name="copyright" dc-term="rights">
-        <pair>
-            <displayed-value>N/A</displayed-value>
-            <stored-value></stored-value>
-        </pair>
-        <pair>
-            <displayed-value>German Copyright Law</displayed-value>
-            <stored-value>Terms of German Copyright Law</stored-value>
-        </pair>
-     </value-pairs>
 
     </form-value-pairs>
 

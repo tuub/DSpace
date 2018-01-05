@@ -101,37 +101,11 @@
     <dc-element>rights</dc-element>
     <dc-qualifier>uri</dc-qualifier>
     <repeatable>false</repeatable>
-    <label>Creative Commons license</label>
+    <label>License</label>
     <input-type value-pairs-name="common_licenses">dropdown</input-type>
-    <hint>Choose a Creative Commons license for your work.</hint>
-    <required></required>
+    <hint>Choose a license for your work.</hint>
+    <required>You have to choose a license.</required>
     <type-bind></type-bind>
-</field>
-
-<!-- DC.RIGHTS -->
-<field>
-    <dc-schema>dc</dc-schema>
-    <dc-element>rights</dc-element>
-    <dc-qualifier></dc-qualifier>
-    <repeatable>false</repeatable>
-    <label>Other open content license</label>
-    <input-type>onebox</input-type>
-    <hint>Enter an open content license for your work, e.g. GPL, MIT etc.</hint>
-    <required></required>
-    <type-bind>Audio, Generic Research Data, Image, 3D Model, Software, Textual Data, Video</type-bind>
-</field>
-
-<!-- DC.RIGHTS.OTHER -->
-<field>
-    <dc-schema>dc</dc-schema>
-    <dc-element>rights</dc-element>
-    <dc-qualifier>other</dc-qualifier>
-    <repeatable>false</repeatable>
-    <label>Rights to use</label>
-    <input-type value-pairs-name="copyright">dropdown</input-type>
-    <hint>If no Creative Commons license or other Open Content license was entered please choose “German Copyright Law”.</hint>
-    <required></required>
-    <visibility>workflow</visibility>
 </field>
 
 <!-- DC.SUBJECT.DDC -->
