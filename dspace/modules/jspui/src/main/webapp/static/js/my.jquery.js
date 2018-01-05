@@ -350,85 +350,120 @@ var headID = document.getElementsByTagName("head")[0];
     }
 
     /************************************************************************
-    * Nicer CC URI Display
+    * Nicer License / DC.RIGHTS.URI Display
     ************************************************************************/
-    var $ccLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Creative Commons License:'; }).next();
-    var ccLicenseUri = $ccLicenseUriField.text();
-    if( ccLicenseUri !== null) {
-        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/licenses/") >= 0)
-        {
-            var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/licenses/").join("");
-            if( ccLicenseInfo.slice(-1) == '/') {
-                ccLicenseInfo.slice(0, -1);
-            }
-            var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
-            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
-            $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
-                return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
-            });
-            $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
-        };
-
-        if (ccLicenseUri.toLowerCase().indexOf("https://creativecommons.org/publicdomain/") >= 0)
-        {
-            var ccLicenseInfo = ccLicenseUri.split("https://creativecommons.org/publicdomain/").join("");
-            if( ccLicenseInfo.slice(-1) == '/') {
-                ccLicenseInfo.slice(0, -1);
-            }
-            var ccLicenseString = 'Creative Commons ' + ccLicenseInfo.split('/').join(' ').toUpperCase();
-            if (ccLicenseString.toLowerCase().indexOf(" mark ") >= 0) {
-                ccLicenseString = 'Public Domain Mark';
-            }
-            var ccLicenseImage = '<img src="https://i.creativecommons.org/l/' + ccLicenseInfo.split(' ').join('/') + '88x31.png" alt="' + ccLicenseString + '" title="' + ccLicenseString + '" />';
-            if (ccLicenseImage.toLowerCase().indexOf("mark") >= 0) {
-                ccLicenseImage = 'https://licensebuttons.net/p/88x31.png';
-            }
-            $ccLicenseUriField.html(ccLicenseImage).wrapInner(function() {
-                return '<a href="' + ccLicenseUri + '" target="_blank"></a>';
-            });
-            $ccLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ccLicenseUri + '" target="_blank">' + ccLicenseString + '</a>');
-
-        }
-    }
-
-
-    var $ocLicenseUriField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Open Content License:'; }).next();
-    var ocLicenseUri = $ocLicenseUriField.text();
-
-    if( ocLicenseUri !== null )
-    {
-        if( /creativecommons/i.test(ocLicenseUri) )
-        {
-            if (/https/i.test(ocLicenseUri))
-            {
-                var ocLicenseInfo = ocLicenseUri.split("https://creativecommons.org/licenses/").join("").slice(0, -1);
-            }
-            else
-            {
-                var ocLicenseInfo = ocLicenseUri.split("http://creativecommons.org/licenses/").join("").slice(0, -1);
-            }
-
-            var ocLicenseString = 'Creative Commons ' + ocLicenseInfo.split('/').join(' ').toUpperCase();
-            var ocLicenseImage = '<img src="https://licensebuttons.net/l/' + ocLicenseInfo.split(' ').join('/') + '/88x31.png" alt="' + ocLicenseString + '" title="' + ocLicenseString + '" />';
-            $ocLicenseUriField.html(ocLicenseImage).wrapInner(function() {
-                return '<a href="' + ocLicenseUri + '" target="_blank"></a>';
-            });
-            $ocLicenseUriField.append( '&nbsp;&nbsp;&nbsp;<a href="' + ocLicenseUri + '" target="_blank">' + ocLicenseString + '</a>');
-        }
-        else
-        {
-            if( /http/i.test(ocLicenseUri) )
-            {
-                $ocLicenseUriField.html(ocLicenseUri).wrapInner(function() {
-                    return '<a href="' + ocLicenseUri + '" target="_blank"></a>';
-                });
-            }
-            else
-            {
-                $ocLicenseUriField.html(ocLicenseUri);
-            }
+    var $licenseField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'License:'; }).next();
+    var licenseUri = $licenseField.text();
+    var licenseList = {
+        'apache2': {
+          'label': 'Apache License 2.0',
+          'uri': 'https://choosealicense.com/licenses/apache-2.0/'
+        },
+        'bsd-2': {
+          'label': 'BSD License (BSD-2-Clause)',
+          'uri': 'https://choosealicense.com/licenses/bsd-2-clause/'
+        },
+        'bsd-3': {
+          'label': 'BSD License (BSD-3-Clause)',
+          'uri': 'https://choosealicense.com/licenses/bsd-3-clause/'
+        },
+        'cc': {
+          'label': 'Creative Commons',
+          'uri': 'https://creativecommons.org/licenses/'
+        },
+        'cc0': {
+          'label': 'Creative Commons Zero',
+          'uri': 'https://creativecommons.org/publicdomain/'
+        },
+        'copyright': {
+          'label': 'In Copyright',
+          'uri': 'http://rightsstatements.org/vocab/InC/1.0/'
+        },
+        'gpl-2': {
+          'label': 'GNU General Public License 2.0 (GNU GPLv2)',
+          'uri': 'https://choosealicense.com/licenses/gpl-2.0/'
+        },
+        'gpl-3': {
+          'label': 'GNU General Public License 3.0 (GNU GPLv3)',
+          'uri': 'https://choosealicense.com/licenses/gpl-3.0/'
+        },
+        'lgpl-21': {
+          'label': 'GNU Lesser General Public License 2.1 (GNU LGPLv2.1)',
+          'uri': 'https://choosealicense.com/licenses/lgpl-2.1/'
+        },
+        'lgpl-3': {
+          'label': 'GNU Lesser General Public License 3.0 (GNU LGPLv3)',
+          'uri': 'https://choosealicense.com/licenses/lgpl-3.0/'
+        },
+        'mit': {
+          'label': 'MIT License',
+          'uri': 'https://choosealicense.com/licenses/mit/'
+        },
+        'mozilla': {
+          'label': 'Mozilla Public License 2.0 (MPL)',
+          'uri': 'https://choosealicense.com/licenses/mpl-2.0/'
         }
     };
+
+    if( licenseUri !== null ) {
+        Object.keys(licenseList).forEach(function(key) {
+            var license = licenseList[key];
+            var label = license['label'];
+            var uri = license['uri'].toLowerCase();
+
+            if(licenseUri.toLowerCase().indexOf(uri) >= 0) {
+                switch(key) {
+                    case 'cc':
+                        var licenseInfo = licenseUri.split("https://creativecommons.org/licenses/").join("");
+                        if( licenseInfo.slice(-1) == '/') {
+                            licenseInfo = licenseInfo.slice(0, -1);
+                        }
+
+                        var licenseString = 'Creative Commons ' + licenseInfo.split('/').join(' ').toUpperCase();
+                        var licenseImage = '<img src="https://i.creativecommons.org/l/' + licenseInfo.split(' ').join('/') + '/88x31.png" alt="' + licenseString + '" title="' + licenseString + '" />';
+                        $licenseField.html(licenseImage).wrapInner(function() {
+                            return '<a rel="license" href="' + licenseUri + '" target="_blank"></a>';
+                        });
+                        $licenseField.append( '&nbsp;&nbsp;&nbsp;<a rel="license" href="' + licenseUri + '" target="_blank">' + licenseString + '</a>');
+                        break;
+                    case 'cc0':
+                        var licenseInfo = licenseUri.split("https://creativecommons.org/publicdomain/").join("");
+                        if( licenseInfo.slice(-1) == '/') {
+                            licenseInfo = licenseInfo.slice(0, -1);
+                        }
+                        var licenseString = 'Creative Commons ' + licenseInfo.split('/').join(' ').toUpperCase();
+                        if (licenseString.toLowerCase().indexOf(" mark ") >= 0) {
+                            licenseString = 'Public Domain Mark';
+                        }
+                        var licenseImage = '<img src="https://i.creativecommons.org/l/' + licenseInfo.split(' ').join('/') + '/88x31.png" alt="' + licenseString + '" title="' + licenseString + '" />';
+                        if (licenseImage.toLowerCase().indexOf("mark") >= 0) {
+                            licenseImage = 'https://licensebuttons.net/p/88x31.png';
+                        }
+                        $licenseField.html(licenseImage).wrapInner(function() {
+                            return '<a rel="license" href="' + licenseUri + '" target="_blank"></a>';
+                        });
+                        $licenseField.append( '&nbsp;&nbsp;&nbsp;<a rel="license" href="' + licenseUri + '" target="_blank">' + licenseString + '</a>');
+                        break;
+                    case 'copyright':
+                        var licenseInfo = licenseUri.split('http://rightsstatements.org/vocab/').join('');
+                        if( licenseInfo.slice(-1) == '/') {
+                            licenseInfo = licenseInfo.slice(0,3);
+                        }
+                        /* Logo with text */
+                        var licenseImage = '<img src="http://rightsstatements.org/files/icons/' + licenseInfo + '.Icon-Only.dark.png" style="height: 21px;">';
+                        $licenseField.html(licenseImage).wrapInner(function() {
+                            return '<a rel="license" href="' + licenseUri + '" target="_blank"></a>';
+                        });
+                        $licenseField.append( '&nbsp;&nbsp;&nbsp;<a rel="license" href="' + licenseUri + '" target="_blank">' + label + '</a>');
+                        break;
+                    default:
+                        $licenseField.html(label).wrapInner(function() {
+                            return '<a rel="license" href="' + licenseUri + '" target="_blank"></a>';
+                        });
+                }
+            }
+        });
+    }
 
     /************************************************************************
     * Button Colors based on values in their name/id attributes
