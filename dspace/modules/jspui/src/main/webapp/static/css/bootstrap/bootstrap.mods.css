@@ -441,6 +441,10 @@ img.header-logo {
     text-align: center;
 }
 
+hr.splitter {
+    border-color: #000;
+}
+
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 600px)

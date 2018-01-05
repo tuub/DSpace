@@ -290,7 +290,8 @@ var headID = document.getElementsByTagName("head")[0];
         var abstractsHTML = $abstractField.html();
         if( abstractsHTML !== null )
         {
-            abstractsHTML = abstractsHTML.split('<br>').join('<br/><br/>');
+            abstractsHTML = abstractsHTML.split("<br>").join("<hr class=\"splitter\" />");
+            abstractsHTML = abstractsHTML.replace(/\r/g, "<br/><br/>");
         }
         $abstractField.html( abstractsHTML );
     }
