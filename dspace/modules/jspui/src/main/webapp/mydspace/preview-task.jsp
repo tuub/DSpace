@@ -51,31 +51,25 @@
 	<h1><fmt:message key="jsp.mydspace.preview-task.title"/></h1>
     
 <%
+    String key = new String();
     if (workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP1POOL)
     {
-%>
-	<p><fmt:message key="jsp.mydspace.preview-task.text1"> 
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-    </fmt:message></p>
-<%
+        key = "jsp.mydspace.preview-task.text1";
     }
     else if(workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP2POOL)
     {
-%>    
-	<p><fmt:message key="jsp.mydspace.preview-task.text3"> 
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-    </fmt:message></p>
-<%
+        key = "jsp.mydspace.preview-task.text3";
     }
     else if(workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP3POOL)
     {
-%>
-	<p><fmt:message key="jsp.mydspace.preview-task.text4"> 
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-    </fmt:message></p>
-<%
+        key = "jsp.mydspace.preview-task.text4";
     }
 %>
+ <p>
+    <fmt:message key="<%= key %>">
+    <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
+    </fmt:message>
+</p>
     
     <dspace:item item="<%= item %>" />
 

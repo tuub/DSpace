@@ -34,10 +34,10 @@
 <%
     BasicWorkflowItem workflowItem =
         (BasicWorkflowItem) request.getAttribute("workflow.item");
-
-    Collection collection = workflowItem.getCollection();
+    
+    Collection collection = workflowItem.getCollection();    
     Item item = workflowItem.getItem();
-
+    
     Context context = UIUtil.obtainContext(request);
 %>
 
@@ -51,31 +51,25 @@
     <h1><fmt:message key="jsp.mydspace.perform-task.title"/></h1>
     
 <%
+    String key = new String();
     if (workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP1)
     {
-%>
-	<p><fmt:message key="jsp.mydspace.perform-task.text1">
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-         </fmt:message></p>
-<%
+        key = "jsp.mydspace.perform-task.text1";
     }
     else if (workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP2)
     {
-%>
-	<p><fmt:message key="jsp.mydspace.perform-task.text3">
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-	</fmt:message></p>
-<%
+        key = "jsp.mydspace.perform-task.text3";
     }
     else if (workflowItem.getState() == BasicWorkflowService.WFSTATE_STEP3)
     {
+        key = "jsp.mydspace.perform-task.text4";
+    } 
 %>
-	<p><fmt:message key="jsp.mydspace.perform-task.text4">
-        <fmt:param><%= CollectionDropDown.collectionMinIdentPath(context, collection) %></fmt:param>
-    </fmt:message></p>
-<%
-    }
-%>
+    <p>
+        <fmt:message key="<%= key %>">
+        <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
+        </fmt:message>
+    </p>
     
     <dspace:item item="<%= item %>" />
 
