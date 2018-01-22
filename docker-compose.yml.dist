@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  # Tomcat
+  depositonce:
+      build: ./docker/images/dspace-ubuntu/
+      image: depositonce-1000
+      user: "1000"
+      working_dir: /var/dspace
+      ports:
+        - 8080:8080
+      volumes:
+        - "./docker/volumes/dspace:/var/dspace"
+        - "./docker/volumes/dspace-data:/var/dspace-data"
+        - "./docker/volumes/tomcat-webapps:/usr/local/tomcat/webapps"
+        - "./docker/volumes/tomcat-conf:/usr/local/tomcat/conf"
+        - ".:/var/dspace-src"
+      depends_on:
+        - db
+
+  # Database
+  db:
+    build: ./docker/images/postgres/
+    volumes:
+      - "./docker/volumes/db-data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: dspace
+      POSTGRES_PASSWORD: dspace
+      POSTGRES_DB: dspace
+    #ports:
+    #  - 5432:5432
+
+  # Mail catcher
+  #mail:
+  #  image: mailhog/mailhog:v1.0.0
+  #  ports:
+  #    - 8025:8025

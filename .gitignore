@@ -39,3 +39,7 @@ META-INF/
 
 ##Mac noise
 .DS_Store
+
+# Docker
+/docker/volumes
+/docker-compose.yml
