@@ -8,7 +8,7 @@ DEPONCE_SERVICE="depositonce"
 
 function usage {
     echo "Usage: $0 [-u]"
-    echo "  -u     Do update_code"
+    echo "  -u     Do update clean_backups"
     echo "Calling this without options will install with fresh_install."
 }
 
@@ -17,7 +17,7 @@ ANT_TARGET="fresh_install"
 while getopts u opt; do
     case $opt in
         u)
-            ANT_TARGET="update_code"
+            ANT_TARGET="update clean_backups"
         ;;
         h|*)
             usage
