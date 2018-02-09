@@ -132,8 +132,17 @@ public class SubscribeServlet extends DSpaceServlet
             HttpServletResponse response, boolean updated)
             throws ServletException, IOException, SQLException
     {
+        // Select collection for the current logged-in user subscriptions load very slow on large repositories
+        // Set the context mode to READ_ONLY. This will tell the database that, none update will take place
+        // For more information, see the context.setMode(...) method
+        Context.Mode originalMode = context.getCurrentMode();
+        context.setMode(Context.Mode.READ_ONLY);
+        
         // collections the currently logged in user can subscribe to
         List<Collection> avail = subscribeService.getAvailableSubscriptions(context);
+        
+        // Set the context mode to the original mode
+        context.setMode(originalMode);
         
         // Subscribed collections
         List<Subscription> subs = subscribeService.getSubscriptions(context, context
