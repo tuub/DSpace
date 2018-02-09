@@ -32,10 +32,10 @@ set -x # show commands
 
 #docker-compose up -d
 
-docker-compose run -T "$DEPONCE_SERVICE" bash -c "
+docker-compose run --rm -T "$DEPONCE_SERVICE" bash -c "
     cd /var/dspace-src/dspace/target/dspace-installer
     ant $ANT_TARGET"
-docker-compose run -T "$DEPONCE_SERVICE" bash -c "
+docker-compose run --rm -T "$DEPONCE_SERVICE" bash -c "
     rm -rf /usr/local/tomcat/webapps/*
     ln -sf /var/dspace/webapps/* /usr/local/tomcat/webapps/"
 
