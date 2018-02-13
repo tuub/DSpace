@@ -1,5 +1,5 @@
-// Testing Environment
-baseUrl = location.protocol + '//' + location.host + '/' + location.href.split( '/' )[3] + '/';
+// BaseURI for correct Subject Linking
+var itemPageBaseUrl  = location.href.split( 'handle/' )[0];
 
 jQuery.fn.extend({
     hasClasses: function( selector ) {
@@ -332,7 +332,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $subjectField.size() > 0 )
       {
           var subjectsHTML = String();
-          var subjectSearchURI = baseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
+          var subjectSearchURI = itemPageBaseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
           var subjects = $subjectField.html().split('<br>');
           subjects.forEach(function(subject) {
               subjectsHTML += '<a href="' + subjectSearchURI + subject + '">' + subject + '</a><br/>';
@@ -348,7 +348,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $ddcClassField.size() > 0 )
       {
           var ddcClassesHTML = String();
-          var ddcClassSearchURI = baseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
+          var ddcClassSearchURI = itemPageBaseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
           var ddcClasses = $ddcClassField.html().split('<br>');
           ddcClasses.forEach(function(ddcClass) {
               var ddcValue = ddcClass.split('::').slice(-1)[0];
