@@ -442,7 +442,7 @@ img.header-logo {
 }
 
 hr.splitter {
-    border-color: #000;
+    border-color: #ddd;
 }
 
 @media only screen

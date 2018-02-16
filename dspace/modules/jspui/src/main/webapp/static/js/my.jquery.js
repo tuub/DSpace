@@ -297,6 +297,20 @@ var headID = document.getElementsByTagName("head")[0];
     }
 
     /************************************************************************
+    * Adjust Notes Display
+    ************************************************************************/
+    var $notesField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Notes:'; }).next();
+    if( $notesField.size() > 0 )
+    {
+      var notesHTML = $notesField.html();
+      if( notesHTML !== null )
+      {
+          notesHTML = notesHTML.replace(/\r/g, "<br/>");
+      }
+      $notesField.html( notesHTML );
+    }
+
+    /************************************************************************
     * Add URN Linking
     ************************************************************************/
     $('td.metadataFieldValue a').filter( function() { return this.text.match(/urn/); } ).each( function(){
