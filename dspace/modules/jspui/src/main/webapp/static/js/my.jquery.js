@@ -473,7 +473,7 @@ var headID = document.getElementsByTagName("head")[0];
                             licenseInfo = licenseInfo.slice(0,3);
                         }
                         /* Logo with text */
-                        var licenseImage = '<img src="http://rightsstatements.org/files/icons/' + licenseInfo + '.Icon-Only.dark.png" style="height: 21px;">';
+                        var licenseImage = '<img src="' + itemPageBaseUrl + '/image/' + licenseInfo + '.Icon-Only.dark.png" style="height: 21px;">';
                         $licenseField.html(licenseImage).wrapInner(function() {
                             return '<a rel="license" href="' + licenseUri + '" target="_blank"></a>';
                         });
