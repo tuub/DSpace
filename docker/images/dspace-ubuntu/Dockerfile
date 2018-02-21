@@ -13,6 +13,7 @@ RUN apt-get update \
         wget \
         locales \
         imagemagick \
+        ghostscript \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && locale-gen en_US.UTF-8
