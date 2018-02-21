@@ -3,8 +3,16 @@ FROM ubuntu:16.04
 ARG userid=1000
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
+# install tools
 RUN apt-get update \
-    && apt-get install -y openjdk-8-jdk git ant maven acl wget locales \
+    && apt-get install -y \
+        openjdk-8-jdk \
+        git ant maven \
+        acl \
+        wget \
+        locales \
+        imagemagick \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && locale-gen en_US.UTF-8
@@ -18,6 +26,7 @@ ENV CATALINA_HOME="/usr/local/tomcat" \
     TOMCAT_MINOR_VERSION=7.0.82 \
     APACHE_MIRROR="https://archive.apache.org/dist"
 
+# install Tomcat
 RUN wget -q --no-check-certificate "${APACHE_MIRROR}/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz" -O /tmp/tomcat.tgz \
     && tar xzf /tmp/tomcat.tgz -C /tmp \
     && mv /tmp/apache-tomcat-${TOMCAT_MINOR_VERSION} $CATALINA_HOME \
