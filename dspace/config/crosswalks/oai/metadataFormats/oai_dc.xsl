@@ -32,6 +32,11 @@
 						<xsl:text> : </xsl:text>
 						<xsl:value-of select="../../doc:element[@name='subtitle']/doc:element/doc:field[@name='value']"/>
 					</xsl:if>
+					<!-- Hack for TU intern, see DEPONCE-92 -->
+					<xsl:if test="starts-with(., 'TU intern: die Hochschulzeitung')">
+						<xsl:text> ; </xsl:text>
+						<xsl:value-of select="../../../../doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber']/doc:element/doc:field[@name='value']"/>
+					</xsl:if>
 				</dc:title>
 			</xsl:for-each>
 			<!-- dc.title.translated (and, if applicable, translated subtitle)-->
