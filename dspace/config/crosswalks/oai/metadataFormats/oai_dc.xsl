@@ -21,16 +21,30 @@
 	<xsl:template match="/">
 		<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" 
 			xmlns:dc="http://purl.org/dc/elements/1.1/" 
-			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-			<!-- dc.title -->
+
+			<!-- dc.title (and, if applicable, subtitle) -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:field[@name='value']">
-				<dc:title><xsl:value-of select="." /></dc:title>
+				<dc:title>
+					<xsl:value-of select="." />
+					<xsl:if test="../../doc:element[@name='subtitle']/doc:element/doc:field[@name='value']">
+						<xsl:text> : </xsl:text>
+						<xsl:value-of select="../../doc:element[@name='subtitle']/doc:element/doc:field[@name='value']"/>
+					</xsl:if>
+				</dc:title>
 			</xsl:for-each>
-			<!-- dc.title.* -->
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element/doc:element/doc:field[@name='value']">
-				<dc:title><xsl:value-of select="." /></dc:title>
+			<!-- dc.title.translated (and, if applicable, translated subtitle)-->
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='title']/doc:element[@name='translated']/doc:element/doc:field[@name='value']">
+				<dc:title>
+					<xsl:value-of select="." />
+					<xsl:if test="../../../doc:element[@name='translatedsubtitle']/doc:element/doc:field[@name='value']">
+						<xsl:text> : </xsl:text>
+						<xsl:value-of select="../../../doc:element[@name='translatedsubtitle']/doc:element/doc:field[@name='value']"/>
+					</xsl:if>
+				</dc:title>
 			</xsl:for-each>
+
 			<!-- dc.creator -->
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='creator']/doc:element/doc:field[@name='value']">
 				<dc:creator><xsl:value-of select="." /></dc:creator>
