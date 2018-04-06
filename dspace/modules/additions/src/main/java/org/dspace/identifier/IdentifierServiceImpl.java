@@ -58,6 +58,16 @@ public class IdentifierServiceImpl implements IdentifierService {
            p.setParentService(this);
        }
    }
+   
+    @Override
+    public void mint(Context context, DSpaceObject dso) throws IdentifierException, SQLException, AuthorizeException {
+        for (IdentifierProvider service : providers)
+        {
+            service.mint(context, dso);
+        }
+        //Update our item
+        contentServiceFactory.getDSpaceObjectService(dso).update(context, dso);
+    }
 
     /**
      * Reserves identifiers for the item

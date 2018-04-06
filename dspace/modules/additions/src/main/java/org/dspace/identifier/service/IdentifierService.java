@@ -26,6 +26,18 @@ import java.util.List;
  * @author Ben Bosman (ben at atmire dot com)
  */
 public interface IdentifierService {
+    
+    /**
+     * Create an identifier for a given DSpaceObject if it doesn't exit,
+     * do nothing otherwise.
+     *
+     * @param context
+     * @param dso object to be named.
+     * @throws org.dspace.authorize.AuthorizeException
+     * @throws IdentifierException if identifier error
+     * @throws java.sql.SQLException
+     */
+    void mint(Context context, DSpaceObject dso) throws AuthorizeException, IdentifierException, SQLException;
 
     /**
      * Get an identifier for a given object which is assignment-compatible

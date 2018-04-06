@@ -232,6 +232,19 @@
         <workflow-editable>true</workflow-editable>
       </step>
 
+      <!-- This are additional steps, which can be added after any submission step.
+           This will add identifiers to the item during submission process. -->
+      <step>
+          <processing-class>org.dspace.submit.step.MintIdentifiersStep</processing-class>
+          <workflow-editable>false</workflow-editable>
+      </step>
+      <step>
+          <heading>submit.progressbar.showidentifiers</heading>
+          <processing-class>org.dspace.submit.step.ShowIdentifiersStep</processing-class>
+          <jspui-binding>org.dspace.app.webui.submit.step.JSPShowIdentifiersStep</jspui-binding>
+          <workflow-editable>true</workflow-editable>
+      </step> 
+      
        <!--Step 3 will be to Manage Item access.
        <step>
            <heading>submit.progressbar.access</heading>

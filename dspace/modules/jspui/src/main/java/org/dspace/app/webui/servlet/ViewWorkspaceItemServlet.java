@@ -28,6 +28,14 @@ import org.dspace.content.service.WorkspaceItemService;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.core.LogManager;
+import org.dspace.handle.factory.HandleServiceFactory;
+import org.dspace.handle.service.HandleService;
+import org.dspace.identifier.DOI;
+import org.dspace.identifier.factory.IdentifierServiceFactory;
+import org.dspace.identifier.service.DOIService;
+import org.dspace.identifier.service.IdentifierService;
+import org.dspace.services.ConfigurationService;
+import org.dspace.services.factory.DSpaceServicesFactory;
 
 /**
  * Class to deal with viewing workspace items during the authoring process.
@@ -45,6 +53,14 @@ public class ViewWorkspaceItemServlet
 
     private final transient WorkspaceItemService workspaceItemService
              = ContentServiceFactory.getInstance().getWorkspaceItemService();
+    private final transient IdentifierService identifierService 
+             = IdentifierServiceFactory.getInstance().getIdentifierService();
+    private final transient DOIService doiService 
+             = IdentifierServiceFactory.getInstance().getDOIService();
+    private final transient HandleService handleService 
+             = HandleServiceFactory.getInstance().getHandleService();
+    private final transient ConfigurationService configurationService 
+             = DSpaceServicesFactory.getInstance().getConfigurationService();
 
     @Override
     protected void doDSGet(Context c,
@@ -108,6 +124,39 @@ public class ViewWorkspaceItemServlet
             displayAll = true;
         }
         
+        // lookup if we have a DOI
+        String doi = null;
+        if (identifierService != null)
+        {
+            doi = identifierService.lookup(UIUtil.obtainContext(request), item, DOI.class);
+        }
+        if (doi != null)
+        {
+            try
+            {
+                doi = doiService.DOIToExternalForm(doi);
+            }
+            catch (Exception ex)
+            {
+                doi = null;
+                log.error("Unable to convert DOI '" + doi + "' into external form.", ex);
+            }
+        }
+        
+        // use handle as preferred Identifier if not configured otherwise.    
+        String preferredIdentifier = null;
+        if (item.getHandle() != null) 
+        {
+            preferredIdentifier = handleService.getCanonicalForm(item.getHandle());
+        }
+        if ("doi".equalsIgnoreCase(configurationService.getProperty("webui.preferred.identifier")))
+        {
+            if (doi != null)
+            {
+                preferredIdentifier = doi;
+            }
+        }
+        
         // FIXME: we need to synchronise with the handle servlet to use the
         // display item JSP for both handled and un-handled items
         // Set attributes and display
@@ -116,6 +165,8 @@ public class ViewWorkspaceItemServlet
         request.setAttribute("item", item);
         request.setAttribute("collections", collections);
         request.setAttribute("workspace_id", wsItem.getID());
+        request.setAttribute("doi", doi);
+        request.setAttribute("preferred_identifier", preferredIdentifier);
         
         JSPManager.showJSP(request, response, "/display-item.jsp");
     }

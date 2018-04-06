@@ -105,7 +105,7 @@ public class DefaultItemVersionProvider extends AbstractVersionProvider implemen
             createBundlesAndAddBitstreams(c, itemNew, previousItem);
             try
             {
-                identifierService.reserve(c, itemNew);
+                identifierService.mint(c, itemNew);
             } catch (IdentifierException e) {
                 throw new RuntimeException("Can't create Identifier!", e);
             }
