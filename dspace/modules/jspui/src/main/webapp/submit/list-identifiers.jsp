@@ -99,55 +99,88 @@
         <% } %>
         <p><fmt:message key="jsp.submit.list-identifiers.info"/></p>
 
-        <% if (showDOIs) { %>
-            <div class="row">
-            <% if (StringUtils.isEmpty(doi)) {%>
-                    <div class="col-sm-12 alert alert-warning"><fmt:message key="jsp.submit.list-identifiers.no_doi_found"/></div>
-                <% } else { %>
-                    <% identifierListed = true; %>
-                    <div class="col-sm-2 col-sm-offset-2"><p><fmt:message key="jsp.submit.list-identifiers.doi"/></p></div>
-                    <div class="col-sm-8"><p><%= doi %></p></div>
-                <% } %>
-            </div>
-        <% } %>
+        <br/>
 
-        <% if (showHandles) { %>
-        <div class="row">
-            <% if (StringUtils.isEmpty(handle)) {%>
-            <div class="col-sm-12 alert alert-warning"><fmt:message key="jsp.submit.list-identifiers.no_handle_found"/></div>
-            <% } else { %>
-                <% identifierListed = true; %>
-                <div class="col-sm-2 col-sm-offset-2"><p><fmt:message key="jsp.submit.list-identifiers.handle"/></p></div>
-                <div class="col-sm-8"><p><%= handle %></p></div>
+        <table class="table table-striped table-bordered" style="margin: 0 auto; width: 50%;">
+            <colgroup>
+                <col class="col-md-2 text-left">
+                <col class="col-md-8 text-left">
+                <col class="col-md-2 text-left">
+            </colgroup>
+            <% if (showDOIs) { %>
+                <tr class="odd">
+                    <td>
+                        <fmt:message key="jsp.submit.list-identifiers.doi"/>
+                    </td>
+                    <td>
+                        <% if (StringUtils.isEmpty(doi)) {%>
+                            <fmt:message key="jsp.submit.list-identifiers.no_doi_found"/>
+                        <% } else { %>
+                            <% identifierListed = true; %>
+                            <%= doi %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <button class="copy-button" onclick="return false;" data-clipboard-text="<%= doi %>"
+                                title="Copy DOI to clipboard">Copy</button>
+                    </td>
+                </tr>
             <% } %>
-        </div>
-        <% } %>
 
-        <%-- We show other identifiers if configured and available.
-             We do not show any warning if there are no other identifiers.
-             This enables us to show all identifiers by default. --%>
-        <% if (showOtherIdentifiers && otherIdentifiers != null && !otherIdentifiers.isEmpty()) {%>
-            <div class="row">
+            <% if (showHandles) { %>
+                <tr>
+                    <td>
+                        <fmt:message key="jsp.submit.list-identifiers.handle"/>
+                    </td>
+                    <td>
+                        <% if (StringUtils.isEmpty(handle)) {%>
+                            <fmt:message key="jsp.submit.list-identifiers.no_handle_found"/>
+                        <% } else { %>
+                            <% identifierListed = true; %>
+                            <%= handle %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <button class="copy-button" onclick="return false;" data-clipboard-text="<%= handle %>"
+                                title="Copy Handle to clipboard">Copy</button>
+                    </td>
+                </tr>
+            <% } %>
+
+            <%-- We show other identifiers if configured and available.
+                 We do not show any warning if there are no other identifiers.
+                 This enables us to show all identifiers by default. --%>
+            <% if (showOtherIdentifiers && otherIdentifiers != null && !otherIdentifiers.isEmpty()) {%>
                 <% identifierListed = true; %>
-                <div class="metadataFieldLabel col-sm-2 col-sm-offset-2"><p><fmt:message key="jsp.submit.list-identifiers.other_identifiers"/></p></div>
-                <div class="metadataFieldValue col-sm-8"><p><%
-                    Iterator<String> identifiers = otherIdentifiers.iterator();
-                    while (identifiers.hasNext())
-                    {
-                        out.print(identifiers.next());
-                        if (identifiers.hasNext())
-                        {
-                            out.println(", ");
-                        }
-                    }
-                %></p>
-                </div>
-            </div>
-        <% } %>
+                <tr>
+                    <td>
+                        <fmt:message key="jsp.submit.list-identifiers.other_identifiers"/>
+                    </td>
+                    <td>
+                        <%
+                            Iterator<String> identifiers = otherIdentifiers.iterator();
+                            while (identifiers.hasNext())
+                            {
+                                out.print(identifiers.next());
+                                if (identifiers.hasNext())
+                                {
+                                    out.println("<br/>");
+                                }
+                            }
+                        %>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+
+        <br/><br/>
 
         <div class="row">
             <% if (!identifierListed) { %>
-                <div class="alert alert-warning"><fmt:message key="jsp.submit.list-identifiers.no_identifiers_found"/></div>
+                <div class="alert alert-danger"><fmt:message key="jsp.submit.list-identifiers.no_identifiers_found"/></div>
             <% } else { %>
                 <div class="alert alert-info"><fmt:message key="jsp.submit.list-identifiers.info2"/></div>
             <% } %>
@@ -156,19 +189,21 @@
         <%-- Hidden fields needed for SubmissionController servlet to know which step is next--%>
         <%= SubmissionController.getSubmissionParameters(context, request) %>
 
-        <%  //if not first step, show "Previous" button
-            if(!SubmissionController.isFirstStep(request, subInfo))
-            { %>
-        <div class="col-md-6 pull-right btn-group">
-            <input class="btn btn-default col-md-4" type="submit" name="<%=AbstractProcessingStep.PREVIOUS_BUTTON%>" value="<fmt:message key="jsp.submit.general.previous"/>" />
-            <input class="btn btn-default col-md-4" type="submit" name="<%=AbstractProcessingStep.CANCEL_BUTTON%>" value="<fmt:message key="jsp.submit.general.cancel-or-save.button"/>" />
-            <input class="btn btn-primary col-md-4" type="submit" name="<%=AbstractProcessingStep.NEXT_BUTTON%>" value="<fmt:message key="jsp.submit.general.next"/>" />
-
-                    <%  } else { %>
-            <div class="col-md-4 pull-right btn-group">
-                <input class="btn btn-default col-md-6" type="submit" name="<%=AbstractProcessingStep.CANCEL_BUTTON%>" value="<fmt:message key="jsp.submit.general.cancel-or-save.button"/>" />
-                <input class="btn btn-primary col-md-6" type="submit" name="<%=AbstractProcessingStep.NEXT_BUTTON%>" value="<fmt:message key="jsp.submit.general.next"/>" />
-                <%  }  %>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <!-- If not first step, show "Previous" button -->
+                    <% if(!SubmissionController.isFirstStep(request, subInfo)) { %>
+                        <input class="btn btn-default col-md-4" type="submit" name="<%=AbstractProcessingStep.PREVIOUS_BUTTON%>" value="<fmt:message key="jsp.submit.general.previous"/>" />
+                        <input class="btn btn-danger col-md-4" type="submit" name="<%=AbstractProcessingStep.CANCEL_BUTTON%>" value="<fmt:message key="jsp.submit.general.cancel-or-save.button"/>" />
+                        <input class="btn btn-success col-md-4" type="submit" name="<%=AbstractProcessingStep.NEXT_BUTTON%>" value="<fmt:message key="jsp.submit.general.next"/>" />
+                    <% } else { %>
+                        <input class="btn btn-danger col-md-4" type="submit" name="<%=AbstractProcessingStep.CANCEL_BUTTON%>" value="<fmt:message key="jsp.submit.general.cancel-or-save.button"/>" />
+                        <input class="btn btn-success col-md-4" type="submit" name="<%=AbstractProcessingStep.NEXT_BUTTON%>" value="<fmt:message key="jsp.submit.general.next"/>" />
+                    <% } %>
+                </div>
             </div>
+        </div>
     </form>
 </dspace:layout>

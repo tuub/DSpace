@@ -113,24 +113,26 @@ var headID = document.getElementsByTagName("head")[0];
     /************************************************************************
     * Remove "Help on Subject Categories" link in Submission Form
     ************************************************************************/
-    $('div.help-block').children().find('a').remove();
-    $('div.help-block').children().find('noscript').remove();
+    var $helpBlock = $('div.help-block');
+    $helpBlock.children().find('a').remove();
+    $helpBlock.children().find('noscript').remove();
 
     /************************************************************************
     * Move "Subject Categories" selection link to preceding div.help-block
     ************************************************************************/
-    var $controlledVocabularyLink = $('span.controlledVocabularyLink').parent();
-    var $helpBlock = $('span.controlledVocabularyLink').parent().closest('div.row');
+    //var $controlledVocabularyLink = $('span.controlledVocabularyLink').parent();
+    //var $helpBlock = $('span.controlledVocabularyLink').parent().closest('div.row');
     //$controlledVocabularyLink.appendTo( $helpBlock );
     //console.log( $helpBlock ); // .appendTo('div.help-block')
 
     /************************************************************************
     * Adjust Facets to fit (except responsive boxes)
     ************************************************************************/
-    $('.facetsBox').children().filter(function() { return this.className.match((/(^|\s)col-\S+/g)) }).css('padding','0');
-    $('.facetsBox').children('.panel').removeClass('panel-success').addClass('panel-default');
-    $('.facetsBox').removeClass('row panel').children('.facet').removeClass('col-md-12').addClass('panel panel-default');
-    $('.facetsBox').find('span.facetName').replaceWith(function(){
+    var $facetsBox = $('.facetsBox');
+    $facetsBox.children().filter(function() { return this.className.match((/(^|\s)col-\S+/g)) }).css('padding','0');
+    $facetsBox.children('.panel').removeClass('panel-success').addClass('panel-default');
+    $facetsBox.removeClass('row panel').children('.facet').removeClass('col-md-12').addClass('panel panel-default');
+    $facetsBox.find('span.facetName').replaceWith(function(){
         return $('<div class="panel-heading">').append($(this).contents());
     });
 
@@ -159,6 +161,34 @@ var headID = document.getElementsByTagName("head")[0];
     var $actionsPanelBox = $('div.panel-default > div.panel-heading:contains("Actions")').parent();
     $actionsPanelBox.addClass('facets');
     $actionsPanelBox.find('.panel-body > form').wrap('<ul class="list-group"></ul>').children('input.btn').removeClass('col-md-12 btn-default').addClass('btn-link').wrap('<li class="list-group-item"></li>');
+
+    /************************************************************************
+    * Add copy to clipboard
+    ************************************************************************/
+    var clipboard = new ClipboardJS('.copy-button');
+
+    // On success:
+    // - Change the "Copy" text to "Copied".
+    // - Swap it to "Copy" in 2s.
+    clipboard.on('success', function(event) {
+      var clipboardBtn = event.trigger.textContent;
+      event.clearSelection();
+      event.trigger.textContent = 'Copied';
+      window.setTimeout(function() {
+          event.trigger.textContent= clipboardBtn;
+      }, 2000);
+    });
+
+    // On error (Safari):
+    // - Change the  "Press Ctrl+C to copy"
+    // - Swap it to "Copy" in 2s.
+    clipboard.on('error', function(event) {
+        var clipboardBtn = event.trigger.textContent;
+        event.trigger.textContent = 'Press "Ctrl + C" to copy';
+        window.setTimeout(function() {
+            event.trigger.textContent = clipboardBtn;
+        }, 5000);
+    });
 
     /************************************************************************
     * Adjust Language Code Labels
@@ -234,7 +264,7 @@ var headID = document.getElementsByTagName("head")[0];
                         break;
                     default:
                         languageCodeReplacer += $languageCode.html();
-                };
+                }
                 if( i < languageCodeParts.length-1 )
                 {
                     languageCodeReplacer += '<br/>';
@@ -248,10 +278,10 @@ var headID = document.getElementsByTagName("head")[0];
     {
         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).next().remove();
         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).remove();
-    };
+    }
 
 
-      /************************************************************************
+    /************************************************************************
     * Adjust Type Version Labels (not used)
     ************************************************************************/
     var $typeVersion = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Version of published item:'; }).next();
@@ -326,6 +356,8 @@ var headID = document.getElementsByTagName("head")[0];
         //var pattern = /10\.[0-9]+\/[0-9a-zA-Z-]+/;
         var pattern = /10\.[0-9.]+\/[0-9a-zA-Z-.]+/;
         var resolver = 'https://doi.org/';
+
+        console.log(links);
 
         if( links.length > 0 ) {
             links.each(function(index) {

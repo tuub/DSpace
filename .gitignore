@@ -21,7 +21,7 @@ overlays/
 nbproject/private/
 build/
 nbbuild/
-dist/
+/dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml

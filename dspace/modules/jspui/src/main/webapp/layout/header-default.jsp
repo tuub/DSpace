@@ -80,6 +80,8 @@
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/tooltipster.css" type="text/css" />
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/tooltipster/css/themes/tooltipster-light.css" type="text/css" />
 
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/clipboard.js/dist/clipboard.min.js"></script>
+
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/js/bootstrap-select.js"></script>
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/css/bootstrap-select.min.css" type="text/css" />
 
