@@ -211,9 +211,6 @@
             <xsl:when test="$lang2 = 'dz' ">
                 <xsl:text>dzo</xsl:text>
             </xsl:when>
-            <xsl:when test="$lang2 = 'el' ">
-                <xsl:text>ell</xsl:text>
-            </xsl:when>
             <xsl:when test="$lang2 = 'eo' ">
                 <xsl:text>epo</xsl:text>
             </xsl:when>
@@ -229,9 +226,6 @@
             <xsl:when test="$lang2 = 'fo' ">
                 <xsl:text>fao</xsl:text>
             </xsl:when>
-            <xsl:when test="$lang2 = 'fa' ">
-                <xsl:text>fas</xsl:text>
-            </xsl:when>
             <xsl:when test="$lang2 = 'fj' ">
                 <xsl:text>fij</xsl:text>
             </xsl:when>
@@ -239,7 +233,7 @@
                 <xsl:text>fin</xsl:text>
             </xsl:when>
             <xsl:when test="$lang2 = 'fr' ">
-                <xsl:text>fra</xsl:text>
+                <xsl:text>fre</xsl:text>
             </xsl:when>
             <xsl:when test="$lang2 = 'fy' ">
                 <xsl:text>fry</xsl:text>
