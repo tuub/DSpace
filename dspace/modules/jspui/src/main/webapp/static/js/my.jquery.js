@@ -313,7 +313,7 @@ var headID = document.getElementsByTagName("head")[0];
     /************************************************************************
     * Add URN Linking
     ************************************************************************/
-    $('td.metadataFieldValue a').filter( function() { return this.text.match(/urn/); } ).each( function(){
+    $('td.metadataFieldValue a').filter( function() { return this.text.match(/urn:nbn/); } ).each( function(){
         $(this).attr( 'href', 'http://nbn-resolving.de/' + $(this).text() );
     });
 
