@@ -76,12 +76,35 @@
             <!-- OpenAIRE filter -->
             <Filter ref="tubOpenAireFilter"/>
             <!-- Just an alias, in fact it returns all items within the driver context -->
-            <Set ref="openaireSet"/>
+            <Set ref="openaireSet"/> 
             <!-- Metadata Formats -->
             <Format ref="oaidc_tub"/>
             <Format ref="mets"/>
             <Description>
                 This contexts complies with OpenAIRE Guidelines for Literature Repositories v3.0.
+            </Description>
+        </Context>
+        
+        <!--
+            OpenAIRE Guidelines 3.0:
+
+            - https://guidelines.openaire.eu/
+            
+            The embargoed items are handled as same as the OpenAIRE Context
+
+         -->
+        <Context baseurl="openaire_data" name="OpenAIRE Research Data Context">
+            <!-- Date format, field prefixes, etc are ensured by the transformer -->
+            <Transformer ref="tubOpenaireResearchDataTransformer"/>
+            <!-- OpenAIRE filter -->
+            <Filter ref="tubOpenAireResearchDataFilter"/>
+            <!-- Just an alias, in fact it returns all items within the driver context -->
+            <Set ref="openaireDataSet"/> 
+            <!-- Metadata Formats -->
+            <Format ref="oai_rd_tub"/> 
+            <Format ref="mets"/>
+            <Description>
+                This contexts complies with OpenAIRE Guidelines for Data Archives v3.0.
             </Description>
         </Context>
 
@@ -111,6 +134,12 @@
             <XSLT>metadataFormats/tub_oai_dc.xsl</XSLT>
             <Namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</Namespace>
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
+        </Format> 
+        <Format id="oai_rd_tub">
+            <Prefix>oai_dc</Prefix> 
+            <XSLT>metadataFormats/tub_oai_rd.xsl</XSLT>
+            <Namespace>http://schema.datacite.org/oai/oai-1.1/</Namespace>
+            <SchemaLocation>http://schema.datacite.org/oai/oai-1.1/oai.xsd</SchemaLocation>
         </Format>
         <Format id="oaidc">
             <Prefix>oai_dc</Prefix>
@@ -210,6 +239,9 @@
         </Transformer>
         <Transformer id="tubOpenaireTransformer">
             <XSLT>transformers/tub_openaire.xsl</XSLT>
+        </Transformer>
+        <Transformer id="tubOpenaireResearchDataTransformer">
+            <XSLT>transformers/tub_openaire_research_data.xsl</XSLT>
         </Transformer>
     </Transformers>
 
@@ -348,9 +380,9 @@
                                         <Custom ref="titleExistsCondition"/>
                                     </LeftCondition>
                                     <RightCondition>
-                                        <Custom ref="authorExistsCondition"/>
-                                    </RightCondition>
-                                </And>
+                                                <Custom ref="authorExistsCondition"/>
+                                            </RightCondition>
+                                        </And>
                             </LeftCondition>
                             <RightCondition>
                                 <Custom ref="tubPublicationDocumentTypeCondition"/>
@@ -360,8 +392,48 @@
                 </And>
             </Definition>
         </Filter>
-
-
+        
+        <!-- TUB OpenAIRE filter.
+             Return an Item record:
+               * If a Title & Author field both exist
+               * AND Item is either publicly accessible OR Withdrawn (for tombstones)
+               * AND a valid document type for publications exists
+             This filter is only used in the OpenAIRE context ([oai]/openaire).
+        -->
+        <Filter id="tubOpenAireResearchDataFilter">
+            <Definition>
+                <And>
+                    <LeftCondition>
+                        <Or>
+                            <LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="itemWithdrawnCondition"/>
+                            </RightCondition>
+                        </Or>
+                    </LeftCondition>
+                    <RightCondition>
+                        <And>
+                            <LeftCondition>
+                                <And>
+                                    <LeftCondition>
+                                        <Custom ref="titleExistsCondition"/>
+                                    </LeftCondition>
+                                    <RightCondition>
+                                                <Custom ref="authorExistsCondition"/>
+                                            </RightCondition>
+                                        </And>
+                            </LeftCondition>
+                            <RightCondition>
+                                <Custom ref="tubResearchDataDocumentTypeCondition"/>
+                            </RightCondition>
+                        </And>
+                    </RightCondition>
+                </And>
+            </Definition>
+        </Filter>
+        
         <Filter id="dnbFilter">
             <Definition>
                 <And>
@@ -416,15 +488,15 @@
             <Definition>
                 <Or>
                     <LeftCondition>
-                        <Custom ref="itemAccessCondition"/>
-                    </LeftCondition>
+                                <Custom ref="itemAccessCondition"/>
+                            </LeftCondition> 
                     <RightCondition>
                         <Custom ref="itemWithdrawnCondition"/>
                     </RightCondition>
                 </Or>
             </Definition>
         </Filter>
-
+        
         <!-- This condition determines if an Item has a "dc.type" field
              which contains "Thesis". -->
         <CustomCondition id="thesisDocumentTypeCondition">
@@ -451,7 +523,7 @@
                 <string name="field">dc.title</string>
             </Configuration>
         </CustomCondition>
-
+        
         <!-- This condition determines if an Item has a "dc.type" field
              specifying one of the valid DRIVER document types. -->
         <CustomCondition id="driverDocumentTypeCondition">
@@ -505,7 +577,26 @@
                 </list>
             </Configuration>
         </CustomCondition>
-
+        
+         <!-- TUB Condition for research data.  -->
+        <CustomCondition id="tubResearchDataDocumentTypeCondition">
+            <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+            <Configuration>
+                <string name="field">dc.type</string>
+                <string name="operator">equal</string>
+                <list name="values">
+                    <string>Generic Research Data</string>
+                    <string>Textual Data</string>
+                    <string>Audio</string>
+                    <string>Video</string>
+                    <string>Image</string>
+                    <string>Software</string>
+                    <string>3D Model</string>
+                    <string>Multimedia</string>
+                </list>
+            </Configuration>
+        </CustomCondition>
+        
         <!-- DNB access rights condition (no items in embargo or blocked) -->
         <CustomCondition id="dnbAccessCondition">
             <Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
@@ -568,7 +659,12 @@
             <Spec>openaire</Spec>
             <Name>OpenAIRE</Name>
             <!-- Just an alias -->
-        </Set>
+        </Set> 
+        <Set id="openaireDataSet">
+            <Spec>openaire_data</Spec>
+            <Name>OpenAIRE</Name>
+            <!-- Just an alias -->
+         </Set> 
         <Set id="dnbSet">
             <Spec>dnb</Spec>
             <Name>DNB</Name>
