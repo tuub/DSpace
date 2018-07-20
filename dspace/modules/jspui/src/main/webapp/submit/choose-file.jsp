@@ -520,14 +520,16 @@
                                 $('.progress-bar').css({width:Math.floor(r.progress()*100) + '%'});
                             });
 
-                            function resume() {
-                                // Show pause, hide resume
-                                $('.resumable-progress .progress-resume-link').hide();
-                                $('.resumable-progress .progress-pause-link').show();
-                                r.upload();
-                            }
+                            
                         }
                     });
+			
+                    function resume() {
+                        // Show pause, hide resume
+                        $('.resumable-progress .progress-resume-link').hide();
+                        $('.resumable-progress .progress-pause-link').show();
+                        r.upload();
+                    }
                 </script>
             <% } %>
 
