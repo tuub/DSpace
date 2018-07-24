@@ -442,7 +442,7 @@
                 </div>
                 <script>
                     $(document).ready(function(){
-                        var r = new Resumable({
+                        r = new Resumable({
                             target:'submit',
                             chunkSize:1024*1024,
                             simultaneousUploads:1,
