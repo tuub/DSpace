@@ -106,6 +106,19 @@
           <script src="<%= request.getContextPath() %>/static/js/html5shiv.js"></script>
           <script src="<%= request.getContextPath() %>/static/js/respond.min.js"></script>
         <![endif]-->
+        
+        <!-- PDF-Preview -->
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/pdf_preview.css" type="text/css" /> 
+
+        <% if (!"NONE".equals(feedRef)) {
+            for (int i = 0; i < parts.size(); i+= 3){ %>
+                <link rel="alternate" type="application/<%= (String)parts.get(i) %>" title="<%= (String)parts.get(i+1) %>" href="<%= request.getContextPath() %>/feed/<%= (String)parts.get(i+2) %>/<%= feedRef %>"/>
+            <%}
+           }
+        if (osLink){ %>
+            <link rel="search" type="application/opensearchdescription+xml" href="<%= request.getContextPath() %>/<%= osCtx %>description.xml" title="<%= osName %>"/>
+        <% }  %>
+        
     </head>
 
     <%-- HACK: leftmargin, topmargin: for non-CSS compliant Microsoft IE browser --%>

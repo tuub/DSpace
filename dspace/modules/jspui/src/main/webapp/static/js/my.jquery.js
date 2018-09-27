@@ -655,7 +655,7 @@ var headID = document.getElementsByTagName("head")[0];
     */
 
     // All Link Buttons To Default State
-    $('a.btn').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default btn-xs').css('font-weight', 'normal');
+    //$('a.btn').removeClass (function (index, css) { return (css.match (/(^|\s)btn-\S+/g) || []).join(' ') }).addClass('btn-default btn-xs').css('font-weight', 'normal');
 
     /************************************************************************
     * Smaller Buttons

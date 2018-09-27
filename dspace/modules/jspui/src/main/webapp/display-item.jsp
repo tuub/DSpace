@@ -122,7 +122,7 @@
     VersionHistoryService versionHistoryService = VersionServiceFactory.getInstance().getVersionHistoryService();
     VersionHistory history = (VersionHistory)request.getAttribute("versioning.history");
     List<Version> historyVersions = (List<Version>)request.getAttribute("versioning.historyversions");
-    
+
     // ExportManager
     ExportItemManager exportItemManager = new ExportItemManager();
 %>
@@ -381,6 +381,7 @@
         </tr>
         <% } %>
     </table>
+
     <div class="panel-footer"><fmt:message key="jsp.version.history.legend"/></div>
     </div>
 <%
@@ -405,7 +406,7 @@
                         <% }%>
                         <!-- Mendeley -->
                         <% if (ConfigurationManager
-                                    .getBooleanProperty("export.mendeley.isEnable", false)) 
+                                    .getBooleanProperty("export.mendeley.isEnable", false))
                         {%>
                             <a onclick="javascript:document.getElementsByTagName('body')[0].appendChild(document.createElement('script')).setAttribute('src','https://www.mendeley.com/minified/bookmarklet.js');" href="#">
                                 <img src="<%= request.getContextPath()%>/image/export/mendeley.png" title="<fmt:message key="export.mendeley.title" />" alt="<fmt:message key="export.mendeley.alt" />">
@@ -417,6 +418,7 @@
         </div>
     </div>
 <% } %>
+
 <br/>
     <%-- Create Commons Link --%>
 <%
@@ -437,3 +439,46 @@
     }
 %>
 </dspace:layout>
+
+<!-- PDF Preview -->
+<script>
+    // PDF Preview functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const previewBtns = document.getElementsByClassName('pdf_preview_btn');
+        const filesTable = getComputedStyle(document.getElementsByClassName('itemDisplayTable')[0]);
+        const previewerWidth = parseInt(filesTable.width) - 25;
+        const previewerHeight = '400';
+
+        for (let previewBtn of previewBtns) {
+            previewBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                $thisBtn = $(this);
+
+                let bitstreamUrl = event.target.href + '&viewOnLoad=1&defaultZoomValue=25';
+                let previewId = event.target.id.split(':')[1];
+                let previewer = document.querySelector('.pdf_previewer#pdf_' + previewId);
+
+                let iFrame = document.createElement("iframe");
+                iFrame.src = bitstreamUrl;
+                iFrame.width = '100%';
+                iFrame.height = '100%';
+                previewer.style.width = previewerWidth + 'px';
+                previewer.style.height = previewerHeight + 'px';
+                previewer.style.marginTop = '15px';
+                previewer.style.marginBottom = '15px';
+
+                if (previewer.childElementCount == 0) {
+                    previewer.appendChild(iFrame);
+                    $thisBtn.text('Close Preview');
+                } else {
+                    previewer.removeChild(previewer.firstChild);
+                    previewer.style.width = 0;
+                    previewer.style.height = 0;
+                    previewer.style.marginTop = 0;
+                    previewer.style.marginBottom = 0;
+                    $thisBtn.text('Show Preview');
+                }
+            });
+        }
+    });
+</script>

@@ -565,6 +565,43 @@ and (max-width: 767px)
     content:"*" !important;
 }
 
+
+
+
+
+div.file-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px #bbbbcc solid;
+}
+
+.file-row a.btn {
+    margin-right: 5px;
+}
+
+img.file-thumbnail {
+    outline: 1px #bbbbcc solid;
+    width: 84px;
+    height: 120px;
+}
+
+span.file-title {
+    margin-right: 5px;
+}
+
+span.file-label {
+    font-weight: 600;
+}
+
+span.file-restriction {
+    position: relative;
+    top: -2px;
+}
+
+p.file-description {
+    font-style: italic;
+}
+
 .doiAlert {
     display: flex;
     align-items: center;

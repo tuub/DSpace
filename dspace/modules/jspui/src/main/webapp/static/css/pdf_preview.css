@@ -1,0 +1,3 @@
+/* PDF viewer CSS overrides -- ensure dialog can float above navbar */
+.pdf-ui-dialog { z-index: 2000; }
+.pdf-ui-front { z-index: 2000;}
