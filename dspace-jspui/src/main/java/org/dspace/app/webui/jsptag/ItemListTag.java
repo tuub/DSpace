@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -775,6 +776,15 @@ public class ItemListTag extends TagSupport
             // 	read in bitstream's image
             buf = ImageIO.read(is);
             is.close();
+        }
+        catch (IIOException iioe)
+        {
+            // Exception of javax.imageio. Probably the image file could not be read. Maybe there is a problem
+            // with its format?
+            // If we throw an exception here, the browsing of complete collections is failing. So, log this in case
+            // somebody is debugging and return an empty String.
+            log.debug("Caught " + iioe.getClass().getName() + ": ", iioe);
+            return "";
         }
         catch (IOException | AuthorizeException | SQLException ex)
         {

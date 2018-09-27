@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -812,10 +813,20 @@ public class BrowseListTag extends TagSupport
         {
             throw new JspException(sqle.getMessage(), sqle);
         }
+        catch (IIOException iioe)
+        {
+            // Exception of javax.imageio. Probably the image file could not be read. Maybe there is a problem
+            // with its format?
+            // If we throw an exception here, the browsing of complete collections is failing. So, log this in case
+            // somebody is debugging and return an empty String.
+            log.debug("Caught " + iioe.getClass().getName() + ": ", iioe);
+            return "";
+        }
         catch (IOException ioe)
         {
             throw new JspException(ioe.getMessage(), ioe);
         }
+
 
         // now get the image dimensions
         float xsize = (float) buf.getWidth(null);
