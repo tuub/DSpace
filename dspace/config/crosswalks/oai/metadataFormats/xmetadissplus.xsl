@@ -237,11 +237,11 @@
                 </dcterms:dateAccepted>
             </xsl:for-each>
 
-            <!-- 12 Datum der Erstveröffentlichung dc.date.issued to dcterms:issued -->
+            <!-- 12 Datum der Online Erstveröffentlichung dc.date.available to dcterms:issued -->
             <xsl:for-each
-                    select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
+                    select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='available']/doc:element/doc:field[@name='value']">
                 <dcterms:issued xsi:type="dcterms:W3CDTF">
-                    <xsl:value-of select="."/>
+                    <xsl:value-of select="substring(., 1, 10)"/>
                 </dcterms:issued>
             </xsl:for-each>
 
