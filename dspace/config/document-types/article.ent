@@ -43,6 +43,20 @@
     <type-bind>Article</type-bind>
 </field>
 
+<!-- DCTERMS.CONTRIBUTOR.AFFILIATION --> 
+<field>
+    <dc-schema>dcterms</dc-schema>
+    <dc-element>contributor</dc-element>
+    <dc-qualifier>affiliation</dc-qualifier>
+    <repeatable>true</repeatable>
+    <label>Contributor affiliation</label>
+    <input-type>textarea</input-type>
+    <hint>You may enter the affiliation of a contributor, this information will not be displayed publicly.</hint>
+    <required></required>
+    <type-bind></type-bind>
+    <visibility>workflow</visibility>
+</field>
+
 <!-- DC.CONTRIBUTOR.OTHER-->
 <field>
     <dc-schema>dc</dc-schema>

@@ -211,6 +211,13 @@
     </dc-type>
 
     <!-- DCTERMS -->
+     <dc-type>
+        <schema>dcterms</schema>
+        <element>contributor</element>
+        <qualifier>affiliation</qualifier>
+        <scope-note></scope-note>
+    </dc-type>
+
     <dc-type>
         <schema>dcterms</schema>
         <element>bibliographicCitation</element>

@@ -25,7 +25,7 @@ fi
 BASECMD="mvn -B -Dmaven.repo.local=/tmp/.m2/repository"
 
 # default command
-CMD="$BASECMD clean package -P !dspace-lni,!dspace-xmlui,!dspace-rdf,!dspace-sword,!dspace-swordv2,!dspace-xmlui-mirage2"
+CMD="$BASECMD clean package -P !dspace-lni,!dspace-xmlui,!dspace-rdf,!dspace-sword,!dspace-xmlui-mirage2"
 
 function usage {
     echo "Usage: $0 [-t|-c]"

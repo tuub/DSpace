@@ -87,6 +87,12 @@
                     <list>
                         <value>dc.description.provenance</value>
                     </list>
+                </entry> 
+                <entry>
+                    <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
+                    <list>
+                        <value>dcterms.contributor.affiliation</value>
+                    </list>
                 </entry>
                 <entry>
                     <key><util:constant static-field="org.dspace.core.Constants.ITEM"/></key>
