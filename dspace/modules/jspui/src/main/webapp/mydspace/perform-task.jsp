@@ -22,16 +22,24 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet" %>
+<%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.content.Collection" %>
+<%@ page import="org.dspace.content.duplication.factory.DuplicationDetectionServiceFactory" %>
+<%@ page import="org.dspace.content.duplication.service.DuplicationDetectionService" %>
 <%@ page import="org.dspace.content.Item" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
 <%@ page import="org.dspace.workflowbasic.BasicWorkflowItem" %>
 <%@ page import="org.dspace.workflowbasic.service.BasicWorkflowService" %>
-<%@page import="org.dspace.app.webui.util.UIUtil"%>
 <%@ page import="org.dspace.app.util.CollectionDropDown" %>
 <%@ page import="org.dspace.core.Context" %>
 
-<%
+<%@ page import="java.util.List" %>
+
+<% 
+    // initialize the duplication detection service.
+    DuplicationDetectionService duplicationDetectionService =
+            DuplicationDetectionServiceFactory.getInstance().getDuplicationDetectionService();
+
     BasicWorkflowItem workflowItem =
         (BasicWorkflowItem) request.getAttribute("workflow.item");
     
@@ -39,6 +47,10 @@
     Item item = workflowItem.getItem();
     
     Context context = UIUtil.obtainContext(request);
+    
+    // detect possible duplicates
+    List<Item> duplicates = duplicationDetectionService.detectDuplicateReadableItems(context, item);
+
 %>
 
 <dspace:layout style="submission" locbar="link"
@@ -72,6 +84,35 @@
     </p>
     
     <dspace:item item="<%= item %>" />
+
+        <%
+        // if we found duplicates, we should print a warning using the item reference tag.
+        if (!duplicates.isEmpty()){
+    %>
+        <div class="panel panel-danger">
+            <% if (duplicates.size() == 1) { %>
+                <div class="panel-heading"><fmt:message key="jsp.mydspace.perform-task.single-duplicate.heading"/></div>
+                <div class="panel-body"><p><fmt:message key="jsp.mydspace.perform-task.single-duplicate.explaination"/></p>
+            <% } else { %>
+                <div class="panel-heading"><fmt:message key="jsp.mydspace.perform-task.duplicates.heading"/></div>
+                <div class="panel-body">
+                    <p><fmt:message key="jsp.mydspace.perform-task.duplicates.explaination"/></p>
+            <% } %>
+                <ul>
+                    <% for (Item candidate : duplicates) { %>
+                        <li><dspace:reference-item item="<%= candidate %>" /></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    <%
+        } else {
+        // inform the reviewer that we did not found any duplicates
+    %>
+        <div class="panel panel-success">
+            <div class="panel-heading"><p><fmt:message key="jsp.mydspace.perform-task.no-duplicates"/></p></div>
+        </div>
+    <% } %>
 
     <p>&nbsp;</p>
 
