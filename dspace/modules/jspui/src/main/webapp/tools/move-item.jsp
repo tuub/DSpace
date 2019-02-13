@@ -19,13 +19,15 @@
 <%@ page import="org.dspace.app.util.CollectionDropDown" %>
 <%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.core.Context" %>
+<%@ page import="java.util.UUID" %>
+<%@ page import="org.apache.commons.lang3.tuple.Pair" %>
 
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 <%
-	List<Collection> notLinkedCollections = (List<Collection> )request.getAttribute("notLinkedCollections");
-	List<Collection> linkedCollections = (List<Collection>)request.getAttribute("linkedCollections");
+	List<Pair<UUID, String>> notLinkedCollections = (List<Pair<UUID, String>>)request.getAttribute("notLinkedCollections");
+	List<Pair<UUID, String>> linkedCollections = (List<Pair<UUID, String>>)request.getAttribute("linkedCollections");
 	
 	Item item = (Item)request.getAttribute("item");
     Context context = UIUtil.obtainContext(request);
@@ -48,7 +50,7 @@
 					</span>
 					<select class="form-control selectpicker" name="collection_from_id" style="z-index: 1000001 !important;">
 						<% for (int i = 0; i < linkedCollections.size(); i++) { %>
-							<option value="<%= linkedCollections.get(i).getID() %>"><%= CollectionDropDown.collectionPath(context, linkedCollections.get(i)) %></option>
+							<option value="<%= linkedCollections.get(i).getLeft() %>"><%= linkedCollections.get(i).getRight() %></option>
 						<% } %>
 					</select>
 				</div>
@@ -61,7 +63,7 @@
 					<select class="form-control selectpicker" name="collection_to_id" style="z-index: 1000000 !important;">
 						<!-- Later on find a away to display in a tree format with the linked one disabled? -->
 						<% for (int i = 0; i < notLinkedCollections.size(); i++) { %>
-            				<option value="<%= notLinkedCollections.get(i).getID() %>"><%= CollectionDropDown.collectionPath(context, notLinkedCollections.get(i)) %></option>
+            				<option value="<%= notLinkedCollections.get(i).getLeft() %>"><%= notLinkedCollections.get(i).getRight() %></option>
 						<% } %>
 					</select>
 				</div>

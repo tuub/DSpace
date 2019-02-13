@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,8 +30,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadBase.FileSizeLimitExceededException;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.log4j.Logger;
 import org.dspace.app.util.AuthorizeUtil;
+import org.dspace.app.util.CollectionDropDown;
 import org.dspace.app.util.Util;
 import org.dspace.app.webui.servlet.DSpaceServlet;
 import org.dspace.app.webui.util.FileUploadRequest;
@@ -314,28 +318,39 @@ public class EditItemServlet extends DSpaceServlet
                         // Display move collection page with fields of collections and communities
                         List<Collection> allNotLinkedCollections = itemService.getCollectionsNotLinked(context, item);
                         List<Collection> allLinkedCollections = item.getCollections();
-                    
-                        // get only the collection where the current user has the right permission
-                        List<Collection> authNotLinkedCollections = new ArrayList<>();
+
+                        boolean userIsAdmin = authorizeService.isAdmin(context);
+
+                        // get ids and paths to the collection where the current user has the right permission
+                        List<Pair<UUID, String>> notLinkedCollectionIdsAndNames = new ArrayList<>();
                         for (Collection c : allNotLinkedCollections)
                         {
-                            if (authorizeService.authorizeActionBoolean(context, c, Constants.ADD))
+                            if (userIsAdmin || authorizeService.authorizeActionBoolean(context, c, Constants.ADD))
                             {
-                                authNotLinkedCollections.add(c);
+                                notLinkedCollectionIdsAndNames.add(
+                                        new ImmutablePair<>(c.getID(), CollectionDropDown.collectionMinIdentPath(context, c))
+                                );
                             }
+                            context.uncacheEntity(c);
                         }
 
-                List<Collection> authLinkedCollections = new ArrayList<>();
-                for (Collection c : allLinkedCollections)
-                {
-                    if (authorizeService.authorizeActionBoolean(context, c, Constants.REMOVE))
-                    {
-                        authLinkedCollections.add(c);
-                    }
-                }
-                        
-                        request.setAttribute("linkedCollections", authLinkedCollections);
-                        request.setAttribute("notLinkedCollections", authNotLinkedCollections);
+                        List<Pair<UUID, String>> linkedCollectionIdsAndNames = new ArrayList<>();
+                        for (Collection c : allLinkedCollections)
+                        {
+                            if (userIsAdmin || authorizeService.authorizeActionBoolean(context, c, Constants.ADD))
+                            {
+                                linkedCollectionIdsAndNames.add(
+                                        new ImmutablePair<>(c.getID(), CollectionDropDown.collectionMinIdentPath(context, c))
+                                );
+                            }
+                            context.uncacheEntity(c);
+                        }
+
+                        Collections.sort(linkedCollectionIdsAndNames, new CollectionNameComparator());
+                        Collections.sort(notLinkedCollectionIdsAndNames, new CollectionNameComparator());
+
+                        request.setAttribute("linkedCollections", linkedCollectionIdsAndNames);
+                        request.setAttribute("notLinkedCollections", notLinkedCollectionIdsAndNames);
                                     
                         JSPManager.showJSP(request, response, "/tools/move-item.jsp");
                 } else
@@ -1087,3 +1102,11 @@ public class EditItemServlet extends DSpaceServlet
         }
     }
 }
+
+class CollectionNameComparator implements Comparator<Pair<UUID, String>> {
+    @Override
+    public int compare(Pair<UUID, String> o1,Pair<UUID, String> o2){
+        return o1.getRight().compareTo(o2.getRight());
+    }
+}
+
