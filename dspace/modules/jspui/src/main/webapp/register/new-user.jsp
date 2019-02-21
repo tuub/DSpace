@@ -77,6 +77,8 @@
             </form>
         </div>
     </div>
-    <!--<dspace:include page="/components/contact-info.jsp" />-->
+    <% if (false) { %>
+        <dspace:include page="/components/contact-info.jsp" />
+    <% } %>
 
 </dspace:layout>
