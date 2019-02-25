@@ -263,17 +263,3 @@
     <visibility>workflow</visibility>
     <type-bind>Book</type-bind>
 </field>
-
-<!-- TUB.ACCESSRIGHTS.openAIRE -->
-<field>
-    <dc-schema>tub</dc-schema>
-    <dc-element>accessrights</dc-element>
-    <dc-qualifier>openaire</dc-qualifier>
-    <repeatable>false</repeatable>
-    <label>Access rights OpenAIRE</label>
-    <input-type value-pairs-name="accessrights_openaire">dropdown</input-type>
-    <hint>Choose the access rights for this item for OpenAIRE harvesting.</hint>
-    <required></required>
-    <visibility>workflow</visibility>
-    <type-bind>Book</type-bind>
-</field>
