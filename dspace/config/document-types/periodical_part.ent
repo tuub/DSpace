@@ -99,6 +99,33 @@
     <type-bind>Periodical Part</type-bind>
 </field>
 
+<!-- TUB.SERIES.NAME -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>series</dc-element>
+    <dc-qualifier>name</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Name of the series</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the name of the series.</hint>
+    <required></required>
+    <type-bind>Periodical Part</type-bind>
+</field>
+
+<!-- TUB.SERIES.ISSUENUMBER -->
+<field>
+    <dc-schema>tub</dc-schema>
+    <dc-element>series</dc-element>
+    <dc-qualifier>issuenumber</dc-qualifier>
+    <repeatable>false</repeatable>
+    <label>Issue of the series</label>
+    <input-type>onebox</input-type>
+    <hint>Enter the issue number of the series.</hint>
+    <required>You have to enter the number of the series.</required>
+    <type-bind>Periodical Part</type-bind>
+    <visibility>workflow</visibility>
+</field>
+
 <!-- DCTERMS.bibliographicCitation.VOLUME -->
 <field>
     <dc-schema>dcterms</dc-schema>
