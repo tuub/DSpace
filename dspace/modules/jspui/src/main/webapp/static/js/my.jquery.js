@@ -664,7 +664,9 @@ var headID = document.getElementsByTagName("head")[0];
     /************************************************************************
     * Select Picker Plugin (https://silviomoreto.github.io/bootstrap-select/)
     ************************************************************************/
-    $('select.selectpicker').selectpicker();
+    $('select.selectpicker').selectpicker({
+        liveSearch: true
+    });
 
     /************************************************************************
     * Community List via EasyTree
