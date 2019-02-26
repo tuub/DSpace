@@ -668,6 +668,8 @@ var headID = document.getElementsByTagName("head")[0];
         liveSearch: true
     });
 
+    $('button.selectpicker').removeAttr("title");
+
     /************************************************************************
     * Community List via EasyTree
     * IS DONE ON-SITE IN COMMUNITY-LIST.JSP SINCE WE NEED THE JSON DATA
