@@ -136,7 +136,7 @@
             <SchemaLocation>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</SchemaLocation>
         </Format> 
         <Format id="oai_rd_tub">
-            <Prefix>oai_dc</Prefix> 
+            <Prefix>oai_datacite</Prefix>
             <XSLT>metadataFormats/tub_oai_rd.xsl</XSLT>
             <Namespace>http://schema.datacite.org/oai/oai-1.1/</Namespace>
             <SchemaLocation>http://schema.datacite.org/oai/oai-1.1/oai.xsd</SchemaLocation>
