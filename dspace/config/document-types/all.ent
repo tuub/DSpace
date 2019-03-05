@@ -75,7 +75,7 @@
     <repeatable>false</repeatable>
     <label>Date of first publication</label>
     <input-type>date</input-type>
-    <hint>Enter the date of the first publication (year required).</hint>
+    <hint>Enter the date of the first publication (at least a 4 digit year is required).</hint>
     <required>You have to enter an issue date.</required>
     <type-bind></type-bind>
 </field>

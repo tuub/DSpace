@@ -441,7 +441,15 @@
          {
              sb.append("\" readonly=\"readonly\"");
          }
-         sb.append("\" size=\"4\" maxlength=\"4\" value=\"")
+
+          //"pattern="[0-9]{4}" "oninvalid="this.setCustomValidity('Please provide a 4-digit-year')" "onkeyup="setCustomValidity('')" "value="33"
+
+
+         sb.append("\" size=\"4\" maxlength=\"4\" ")
+            .append(" pattern=\"[0-9]{4}\"")
+            .append(" oninvalid=\"this.setCustomValidity('" + LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.invalid-year") + "')\" ")
+            .append(" onkeyup=\"setCustomValidity('')\" ")
+            .append(" value=\"")
             .append((dateIssued.getYear() > 0 ?
                  String.valueOf(dateIssued.getYear()) : "" ))
             .append("\"/></span></div></div>\n");
