@@ -37,7 +37,8 @@ docker-compose run --rm -T "$DEPONCE_SERVICE" bash -c "
     ant $ANT_TARGET"
 docker-compose run --rm -T "$DEPONCE_SERVICE" bash -c "
     rm -rf /usr/local/tomcat/webapps/*
-    ln -sf /var/dspace/webapps/* /usr/local/tomcat/webapps/"
+    ln -sf /var/dspace/webapps/* /usr/local/tomcat/webapps/
+    mv /usr/local/tomcat/webapps/jspui /usr/local/tomcat/webapps/ROOT"
 
 #docker-compose restart "$DEPONCE_SERVICE"
 
