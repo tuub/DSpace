@@ -88,12 +88,20 @@
 
     if (bi.hasNextPage())
     {
-        next = next + "&amp;offset=" + bi.getNextOffset();
+        next = next + "&amp;offset=" + bi.getNextOffset(); 
+        if (bi.isStartsWith())
+        {
+            next = next + "&amp;starts_with=" + bi.getFocus();
+        }
     }
 
     if (bi.hasPrevPage())
     {
         prev = prev + "&amp;offset=" + bi.getPrevOffset();
+        if (bi.isStartsWith())
+        {
+            prev = prev + "&amp;starts_with=" + bi.getFocus();
+        }
     }
 
     // prepare a url for use by form actions
@@ -178,9 +186,9 @@
             <input type="hidden" name="type" value="<%= bix.getName() %>"/>
             <%-- The following code can be used to force the browse around the current focus.  Without
             it the browse will revert to page 1 of the results each time a change is made --%>
-            <%-- if (!bi.hasItemFocus() && bi.hasFocus()) { %>
-                <input type="hidden" name="vfocus" value="<%= bi.getFocus() %>"/>
-            <% } --%>
+            <% if (!bi.hasItemFocus() && bi.hasFocus()) { %>
+                <input type="hidden" name="starts_with" value="<%= bi.getFocus() %>"/>
+            <% } %>
             <label for="order"><fmt:message key="browse.single.order"/></label>
             <select name="order">
                 <option value="ASC" <%= ascSelected %>><fmt:message key="browse.order.asc" /></option>

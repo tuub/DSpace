@@ -150,11 +150,19 @@
     if (bi.hasNextPage())
     {
         next = next + "&amp;offset=" + bi.getNextOffset();
+        if (bi.isStartsWith())
+        {
+            next = next + "&amp;starts_with=" + bi.getFocus();
+        }
     }
 
     if (bi.hasPrevPage())
     {
         prev = prev + "&amp;offset=" + bi.getPrevOffset();
+        if (bi.isStartsWith())
+        {
+            prev = prev + "&amp;starts_with=" + bi.getFocus();
+        }
     }
 
     // prepare a url for use by form actions
@@ -270,12 +278,12 @@
             <% } %>
             <%-- The following code can be used to force the browse around the current focus.  Without
                  it the browse will revert to page 1 of the results each time a change is made --%>
-            <%--
+            <%
                     if (!bi.hasItemFocus() && bi.hasFocus())
                     {
-                        %><input type="hidden" name="vfocus" value="<%= bi.getFocus() %>"/><%
+                        %><input type="hidden" name="starts_with" value="<%= bi.getFocus() %>"/><%
                     }
-            --%>
+            %>
             <%--
                     if (bi.hasItemFocus())
                     {
