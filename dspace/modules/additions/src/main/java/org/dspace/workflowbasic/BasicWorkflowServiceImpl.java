@@ -1087,6 +1087,7 @@ public class BasicWorkflowServiceImpl implements BasicWorkflowService
             Email email = Email.getEmail(I18nUtil.getEmailFilename(supportedLocale,"submit_reject"));
 
             email.addRecipient(workflowItem.getSubmitter().getEmail());
+            email.addBccRecipient(context.getCurrentUser().getEmail());
             email.addArgument(title);
             email.addArgument(coll.getName());
             email.addArgument(rejector);

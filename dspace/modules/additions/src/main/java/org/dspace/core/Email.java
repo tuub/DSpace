@@ -114,6 +114,9 @@ public class Email
 
     /** The recipients */
     private List<String> recipients;
+    
+    /** The bccRecipients */
+    private List<String> bccRecipients;
 
     /** Reply to field, if any */
     private String replyTo;
@@ -133,6 +136,7 @@ public class Email
     {
         arguments = new ArrayList<Object>(50);
         recipients = new ArrayList<String>(50);
+        bccRecipients = new ArrayList<String>(50);
         attachments = new ArrayList<FileAttachment>(10);
         moreAttachments = new ArrayList<InputStreamAttachment>(10);
         subject = "";
@@ -150,6 +154,16 @@ public class Email
     public void addRecipient(String email)
     {
         recipients.add(email);
+    }
+    
+    /**
+     * Add a bccRecipient
+     *
+     * @param email the bccRecipient's email address
+     */
+    public void addBccRecipient(String email) 
+    {
+        bccRecipients.add(email);
     }
 
     /**
@@ -214,13 +228,14 @@ public class Email
     }
 
     /**
-     * "Reset" the message. Clears the arguments and recipients, but leaves the
+     * "Reset" the message. Clears the arguments, bccRecipients and recipients, but leaves the
      * subject and content intact.
      */
     public void reset()
     {
         arguments = new ArrayList<Object>(50);
         recipients = new ArrayList<String>(50);
+        bccRecipients = new ArrayList<String>(50);
         attachments = new ArrayList<FileAttachment>(10);
         moreAttachments = new ArrayList<InputStreamAttachment>(10);
         replyTo = null;
@@ -260,6 +275,15 @@ public class Email
         while (i.hasNext())
         {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(
+                    i.next()));
+        }
+
+        // Set the bccRecipients of the message
+        i = bccRecipients.iterator();
+
+        while (i.hasNext())
+        {
+            message.addRecipient(Message.RecipientType.BCC, new InternetAddress(
                     i.next()));
         }
 
