@@ -223,7 +223,7 @@ var headID = document.getElementsByTagName("head")[0];
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "French";
                         break;
-                    case "sp":
+                    case "es":
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Spanish";
                         break;
@@ -356,8 +356,6 @@ var headID = document.getElementsByTagName("head")[0];
         //var pattern = /10\.[0-9]+\/[0-9a-zA-Z-]+/;
         var pattern = /10\.[0-9.]+\/[0-9a-zA-Z-.]+/;
         var resolver = 'https://doi.org/';
-
-        console.log(links);
 
         if( links.length > 0 ) {
             links.each(function(index) {
