@@ -94,14 +94,18 @@ public class FeedbackServlet extends DSpaceServlet
             EmailValidator ev = EmailValidator.getInstance();
             String feedback = request.getParameter("feedback");
 
+            // The honeypot if provided
+            String honeyPot = request.getParameter("donotfeedme");
+
             // Check all data is there
             if ((formEmail == null) || formEmail.equals("")
-                    || (feedback == null) || feedback.equals("") || !ev.isValid(formEmail))
+                    || (feedback == null) || feedback.equals("") || !ev.isValid(formEmail)
+                    || !honeyPot.equals(""))
             {
                 log.info(LogManager.getHeader(context, "show_feedback_form",
                         "problem=true"));
                 request.setAttribute("feedback.problem", Boolean.TRUE);
-                JSPManager.showJSP(request, response, "/feedback/form.jsp");
+                JSPManager.showJSP(request, response, "/feedback/error.jsp");
 
                 return;
             }

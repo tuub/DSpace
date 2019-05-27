@@ -80,6 +80,7 @@ if (problem)
     </div>
     <div class="form-group">
         <div class="col-md-12">
+            <input type="hidden" name="donotfeedme" value="" />
             <input type="submit" name="submit" class="btn btn-default" value="<fmt:message key="jsp.feedback.form.send"/>" />
             <input type="button" id="close" name="close" class="btn btn-link pull-right" value="<fmt:message key="jsp.feedback.form.close"/>" />
         </div>
