@@ -20,15 +20,21 @@
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
+<%@ page import="org.dspace.app.util.CollectionDropDown" %>
 <%@ page import="org.dspace.app.webui.servlet.MyDSpaceServlet" %>
+<%@ page import="org.dspace.app.webui.util.UIUtil" %>
 <%@ page import="org.dspace.content.Collection" %>
 <%@ page import="org.dspace.content.Item" %>
+<%@ page import="org.dspace.core.Context" %>
 <%@ page import="org.dspace.eperson.EPerson" %>
+<%@ page import="org.dspace.identifier.DOI" %>
+<%@ page import="org.dspace.identifier.service.IdentifierService" %>
+<%@ page import="org.dspace.identifier.factory.IdentifierServiceFactory" %>
+<%@ page import="org.dspace.services.factory.DSpaceServicesFactory" %>
 <%@ page import="org.dspace.workflowbasic.BasicWorkflowItem" %>
 <%@ page import="org.dspace.workflowbasic.service.BasicWorkflowService" %>
-<%@page import="org.dspace.app.webui.util.UIUtil"%>
-<%@ page import="org.dspace.app.util.CollectionDropDown" %>
-<%@ page import="org.dspace.core.Context" %>
+
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 
 
 <%
@@ -41,6 +47,20 @@
     Context context = UIUtil.obtainContext(request);
     boolean claimed = false;
     
+    IdentifierService identifierService = IdentifierServiceFactory.getInstance().getIdentifierService();
+    String doi = null;
+    try
+    {
+        doi = identifierService.lookup(context, item, DOI.class);
+        if (!StringUtils.isEmpty(doi))
+        { 
+            doi = IdentifierServiceFactory.getInstance().getDOIService().DOIToExternalForm(doi);   
+        }
+    }
+    catch (Exception ex)
+    {
+            // nothing to do here
+    }
 %>
 
 <dspace:layout style="submission"
@@ -79,6 +99,24 @@
     <fmt:param><%= CollectionDropDown.collectionPath(context, collection) %></fmt:param>
     </fmt:message>
 </p>
+
+<% if (!StringUtils.isEmpty(doi)) { %>
+    <table class="table table-striped table-bordered" style="margin: 0 auto; width: 100%;">
+        <colgroup>
+            <col class="col-md-4 text-left">
+            <col class="col-md-4 text-left">
+        </colgroup>
+        <tr class="odd">
+            <td>
+                <fmt:message key="jsp.mydspace.preview-task.show.DOI"/>
+            </td>
+            <td>
+                <%= doi %>
+            </td>
+        </tr>
+    </table>
+    <br/>
+<% } %>
     
     <dspace:item item="<%= item %>" />
 
