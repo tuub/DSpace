@@ -52,6 +52,20 @@ var headID = document.getElementsByTagName("head")[0];
     //$('table tr').css('padding-bottom', '10px');
 
     /************************************************************************
+    * Export buttons to DOI alert box
+    ************************************************************************/
+    var $exportBtn = $('div#export-bar').find('a');
+    $('div#export-bar').hide();
+    var $exportLinks = [];
+    $exportBtn.each(function () {
+        $exportLinks.push($(this).text($(this).find('img').attr('alt')));
+    });
+    $exportLinks = $exportLinks.map(function(el){
+        return el.get()[0].outerHTML;
+    });
+    $('span#citation').append($exportLinks.join(' | '));
+
+    /************************************************************************
     * Add <thead> wrapper to tables with <th>
     ************************************************************************/
     var tables = $('table');

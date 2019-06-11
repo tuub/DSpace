@@ -489,6 +489,11 @@
     <servlet-class>org.dspace.app.webui.servlet.admin.ResetAccountsServlet</servlet-class>
   </servlet>
 
+  <servlet>
+      <servlet-name>item-export</servlet-name>
+      <servlet-class>org.dspace.app.webui.servlet.ExportItemServlet</servlet-class>
+  </servlet>
+  
   <!-- Servlet Mappings -->
 
   <servlet-mapping>
@@ -839,6 +844,11 @@
   <servlet-mapping>
     <servlet-name>reset-accounts</servlet-name>
     <url-pattern>/tools/reset-accounts</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+      <servlet-name>item-export</servlet-name>
+      <url-pattern>/item-export/*</url-pattern>
   </servlet-mapping>
 
   <!-- Icon MIME type -->

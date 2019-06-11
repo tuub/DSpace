@@ -564,3 +564,22 @@ and (max-width: 767px)
 .label-required:after {
     content:"*" !important;
 }
+
+.doiAlert {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.doiAlertIcon {
+    padding: 1em;
+    margin-left: 1em;
+    flex-shrink: 1;
+}
+
+.doiAlertMsg {
+    padding: 1em;
+    flex-grow: 1;
+}

@@ -44,6 +44,8 @@
 <%@page import="java.util.List"%>
 <%@page import="org.dspace.core.Constants"%>
 <%@page import="org.dspace.eperson.EPerson"%>
+<%@page import="org.dspace.export.impl.ExportItemManager" %>
+<%@page import="org.dspace.export.api.ExportItemProvider" %>
 <%@page import="org.dspace.versioning.VersionHistory"%>
 <%@page import="org.dspace.plugin.PluginException"%>
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
@@ -120,6 +122,9 @@
     VersionHistoryService versionHistoryService = VersionServiceFactory.getInstance().getVersionHistoryService();
     VersionHistory history = (VersionHistory)request.getAttribute("versioning.history");
     List<Version> historyVersions = (List<Version>)request.getAttribute("versioning.historyversions");
+    
+    // ExportManager
+    ExportItemManager exportItemManager = new ExportItemManager();
 %>
 
 <dspace:layout title="<%= title %>">
@@ -142,10 +147,17 @@
             </div>
         <% } %>
 
-        <div class="alert alert-success">
-            <i class="glyphicon glyphicon-link" style="margin-right: 10px; font-size: 20px;"></i>
-            <strong><fmt:message key="jsp.display-item.identifier"/></strong>
-            <a style="color: #000;" href="<%= preferredIdentifier %>"><%= preferredIdentifier %></a>
+        <div class="doiAlert alert-success">
+            <div class="doiAlertIcon">
+                <i class="glyphicon glyphicon-link" style="margin-right: 10px; font-size: 20px;"></i>
+            </div>
+            <div class="doiAlertMsg">
+                <strong><fmt:message key="jsp.display-item.identifier"/></strong>
+                <a style="color: #000;" href="<%= preferredIdentifier %>"><%= preferredIdentifier %></a>
+                <br/>
+                <strong><fmt:message key="jsp.display-item.citation"/></strong>
+                <span id="citation"></span>
+            </div>
         </div>
 
 <%
@@ -375,6 +387,36 @@
         }
     }
 %>
+<%-- Export bar --%>
+<% if (exportItemManager.getProviders() != null && !exportItemManager.getProviders().isEmpty()) { %>
+    <div id="export-bar">
+        <div class="panel panel-info">
+            <div class="panel-heading"><fmt:message key="export-bar.info"/></div>
+            <div class="panel-body">
+                    <% if (exportItemManager.getProviders() != null && !exportItemManager.getProviders().isEmpty()) { %>
+                        <% for (ExportItemProvider p : exportItemManager.getProviders()) {%>
+                            <a target="_blank" href="<%= request.getContextPath()%>/item-export/<%=item.getHandle()%>/<%=p.getId()%>">
+                                <%
+                                    String altText = "export." + p.getId() + ".alt";
+                                    String titleText = "export." + p.getId() + ".title";
+                                %>
+                                <img alt="<fmt:message key="<%= altText%>" />" title="<fmt:message key="<%= titleText%>"/>" src="<%= request.getContextPath()%>/image/export/<%=p.getImage()%>" />
+                            </a>
+                        <% }%>
+                        <!-- Mendeley -->
+                        <% if (ConfigurationManager
+                                    .getBooleanProperty("export.mendeley.isEnable", false)) 
+                        {%>
+                            <a onclick="javascript:document.getElementsByTagName('body')[0].appendChild(document.createElement('script')).setAttribute('src','https://www.mendeley.com/minified/bookmarklet.js');" href="#">
+                                <img src="<%= request.getContextPath()%>/image/export/mendeley.png" title="<fmt:message key="export.mendeley.title" />" alt="<fmt:message key="export.mendeley.alt" />">
+                            </a>
+                        <% } %>
+                    <% } %>
+                    <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+<% } %>
 <br/>
     <%-- Create Commons Link --%>
 <%
