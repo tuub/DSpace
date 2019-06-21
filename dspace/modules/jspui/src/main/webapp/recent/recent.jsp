@@ -76,25 +76,16 @@
 
 <dspace:layout locbar="nolink" titlekey="jsp.collection-home.recentsub" feedData="<%= feedData %>">
 
-<% if (supportedLocales != null && supportedLocales.length > 1)
-{
-%>
-        <form method="get" name="repost" action="">
-          <input type ="hidden" name ="locale"/>
-        </form>
-<%
-for (int i = supportedLocales.length-1; i >= 0; i--)
-{
-%>
-        <a class ="langChangeOn"
-                  onclick="javascript:document.repost.locale.value='<%=supportedLocales[i].toString()%>';
-                  document.repost.submit();">
-                 <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i])%>
+<% if (supportedLocales != null && supportedLocales.length > 1) { %>
+    <form method="get" name="repost" action="">
+        <input type ="hidden" name ="locale"/>
+    </form>
+    <% for (int i = supportedLocales.length-1; i >= 0; i--) { %>
+        <a class ="langChangeOn" onclick="javascript:document.repost.locale.value='<%=supportedLocales[i].toString()%>'; document.repost.submit();">
+            <%= supportedLocales[i].getDisplayLanguage(supportedLocales[i])%>
         </a> &nbsp;
-<%
-}
-}
-%>
+    <% } %>
+<% } %>
 
 <h1>
     <fmt:message key="jsp.collection-home.recentsub"/>
@@ -107,93 +98,83 @@ for (int i = supportedLocales.length-1; i >= 0; i--)
                 <fmt:message key="jsp.collection-home.recentsub"/>
             </div>
             <div class="panel-body">
-                
-                
-                
                 <% if (submissions != null && submissions.count() > 0) { %>
-                    <%
-                    for (Item item : submissions.getRecentSubmissions())
-                    {
+                    <% for (Item item : submissions.getRecentSubmissions()) { %>
+                        <%
                         String displayTitle = itemService.getMetadataFirstValue(item, "dc", "title", null, Item.ANY);
-		        if (displayTitle == null)
-		        {
-		        	displayTitle = "Untitled";
-		        }
-		        String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
-		        if (displayAbstract == null)
-		        {
-		            displayAbstract = "";
-		        }
+                        if (displayTitle == null) {
+                            displayTitle = "Untitled";
+                        }
+                        
+                        String displayAbstract = itemService.getMetadataFirstValue(item, "dc", "description", "abstract", Item.ANY);
+                        if (displayAbstract == null) {
+                            displayAbstract = "";
+                        }
+                        
                         String displayDate = itemService.getMetadataFirstValue(item, "dc", "date", "issued", Item.ANY);
-		        if (displayDate == null)
-		        {
-		            displayDate = "";
-		        }
+                        if (displayDate == null) {
+                            displayDate = "";
+                        } else {
+                            displayDate = displayDate.substring(0,4);
+                        }
+
+                        String displayType = itemService.getMetadataFirstValue(item, "dc", "type", null, Item.ANY);
+                        if (displayType == null) {
+                            displayType = "Untyped";
+                        }
 
                         // Get the author(s)
                         List<MetadataValue> authors = itemService.getMetadata(item, "dc", "contributor", "author", Item.ANY);
                         String displayAuthor = "";
-                        for(MetadataValue author : authors)
-                        {   
-                            if (displayAuthor.length() != 0)
-                            {
+                        for (MetadataValue author : authors) {   
+                            if (displayAuthor.length() != 0) {
                                 displayAuthor = displayAuthor + "; ";
                             }
                             displayAuthor += author.getValue();
                         }
-
                         %>
-                    
+
                         <a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>"> 
                             <strong><%= Utils.addEntities(StringUtils.abbreviate(displayTitle, 400)) %></strong>
                         </a>
+                
                         <p>
                             <i><%= Utils.addEntities(StringUtils.abbreviate(displayAuthor, 500)) %></i>
-                            (<%= Utils.addEntities(StringUtils.abbreviate(displayDate, 500)) %>)
+                            <br/>
+                            <%= Utils.addEntities(StringUtils.abbreviate(displayDate, 500)) %>,
+                            <%= Utils.addEntities(StringUtils.abbreviate(displayType, 500)) %>
                         </p>
-                        
-                    <%
-                    }
-                    %>
+                    <% } %>
                 <% } %>
 		    </div>
-            <%
-            if(feedEnabled)
-            {
-            %>
+            <% if(feedEnabled) { %>
                 <div class="panel-footer">
                     <%
                     String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
                     String icon = null;
                     int width = 0;
-                    for (int j = 0; j < fmts.length; j++)
-                    {
-                        if ("rss_1.0".equals(fmts[j]))
-                        {
+                    %>
+                    <% for (int j = 0; j < fmts.length; j++) { %>
+                        <%
+                        if ("rss_1.0".equals(fmts[j])) {
                            icon = "rss1.gif";
                            width = 80;
-                        }
-                        else if ("rss_2.0".equals(fmts[j]))
-                        {
+                        } else if ("rss_2.0".equals(fmts[j])) {
                            icon = "rss2.gif";
                            width = 80;
-                        }
-                        else
-                        {
+                        } else {
                            icon = "rss.gif";
                            width = 36;
                         }
                         %>
-                        <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" vspace="3" border="0" /></a>
-                    <%
-                    }
-                    %>
+                        <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site">
+                            <img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" vspace="3" border="0" />
+                        </a>
+                    <% } %>
                 </div>
-            <%
-            }
-            %>
-            </div>
+            <% } %>
         </div>
+    </div>
 
     
 </dspace:layout>
