@@ -324,18 +324,28 @@ var headID = document.getElementsByTagName("head")[0];
     };
 
     /************************************************************************
-    * Adjust Abstract Display
+    * Adjust Abstract Display incl. read more/less
     ************************************************************************/
-    var $abstractField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Abstract:'; }).next();
+    var $abstractField = $('.metadataFieldValue.dc_description_abstract');
     if( $abstractField.size() > 0 )
     {
-        var abstractsHTML = $abstractField.html();
-        if( abstractsHTML !== null )
-        {
-            abstractsHTML = abstractsHTML.split("<br>").join("<hr class=\"splitter\" />");
-            abstractsHTML = abstractsHTML.replace(/\r/g, "<br/><br/>");
-        }
-        $abstractField.html( abstractsHTML );
+      var abstractsHTML = $abstractField.html();
+      if( abstractsHTML !== null )
+      {
+          abstractsHTML = abstractsHTML.split("<br>").join("<hr class=\"splitter\" />");
+          abstractsHTML = abstractsHTML.replace(/\r/g, "<br/><br/>");
+      }
+      $abstractField
+          .html( abstractsHTML )
+          .expander('destroy')
+          .expander({
+              slicePoint:       500,  // default is 100
+              expandPrefix:     ' ... ', // default is '... '
+              expandText:       '[More]', // default is 'read more'
+              collapseTimer:    0, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+              collaüsePrefix:   ' ',
+              userCollapseText: '[Less]',  // default is 'read less');
+          });
     }
 
     /************************************************************************

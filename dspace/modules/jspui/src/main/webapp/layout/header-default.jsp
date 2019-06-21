@@ -82,6 +82,8 @@
 
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/clipboard.js/dist/clipboard.min.js"></script>
 
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/expander/jquery.expander.min.js"></script>
+
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/js/bootstrap-select.js"></script>
         <link rel="stylesheet" href="<%= request.getContextPath() %>/static/js/vendor/bootstrap-select/css/bootstrap-select.min.css" type="text/css" />
 
