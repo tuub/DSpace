@@ -99,7 +99,7 @@
 <nav class="navbar navbar-default navbar-collapse" id="main-navbar">
     <div class="container">
         <a href="<%= request.getContextPath() %>/" class="navbar-brand navbar-right">
-            <img src="<%= request.getContextPath() %>/image/logo-do.png" alt="DepositOnce" class="thumb" title="DepositOnce" style="height: 38px; padding-top: 6px;" />
+            <img src="<%= request.getContextPath() %>/image/logo-do.svg" alt="DepositOnce" class="thumb" title="DepositOnce" style="height: 38px; padding-top: 6px;" />
         </a>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -109,7 +109,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="http://www.tu-berlin.de" target="_blank" class="navbar-brand navbar-right">
-                <img src="<%= request.getContextPath() %>/image/logo-tu.png" alt="TU Berlin" class="thumb" title="TU Berlin" style="height: 45px;" />
+                <img src="<%= request.getContextPath() %>/image/logo-tu.svg" alt="TU Berlin" class="thumb" title="TU Berlin" style="height: 45px;" />
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">

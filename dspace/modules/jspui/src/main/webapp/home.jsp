@@ -75,7 +75,7 @@
 
     <div class="row">
         <div class="text-center">
-            <img class="logo" src="<%= request.getContextPath() %>/image/logo-do.png" />
+            <img class="logo" src="<%= request.getContextPath() %>/image/logo-do.svg" />
             <div class="brand-heading"><fmt:message key="jsp.home.brand.heading" /></div>
         </div>
     </div>
