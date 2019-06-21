@@ -559,13 +559,11 @@ and (max-width: 767px)
     top: 3px;
 }
 
-
 .discovery-result-pagination ul.pagination {
     margin: 0 !important;
 }
 
 .discovery-result-pagination #result-count {
-    font-size: 0.8em;
+    font-size: 1em;
     margin-bottom: 0.8em;
-
 }
