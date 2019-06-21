@@ -360,13 +360,6 @@ footer a:last-of-type {
 }
 */
 
-
-.pull-right {
-    float: left !important;
-    /*float: none !important;*/
-}
-
-
 h1 .glyphicon {
     font-size: 60%;
 }
