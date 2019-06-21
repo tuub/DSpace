@@ -176,6 +176,7 @@
                 <input type="hidden" value="<%= rpp %>" name="rpp" />
                 <input type="hidden" value="<%= Utils.addEntities(sortedBy) %>" name="sort_by" />
                 <input type="hidden" value="<%= Utils.addEntities(order) %>" name="order" />
+                <input type="hidden" value="5" name="etal" />
 
                 <div class="row">
                     <div class="col-md-12">
@@ -299,41 +300,7 @@
                             <option value="ASC" <%= ascSelected %>><fmt:message key="search.order.asc" /></option>
                             <option value="DESC" <%= descSelected %>><fmt:message key="search.order.desc" /></option>
                         </select>
-                    </div>
-                    <div class="col-md-2" style="padding-left: 0px;">
-                        <label for="etal"><fmt:message key="search.results.etal" /></label>
-                        <select name="etal" id="etal" class="form-control">
-                            <% 
-                            String unlimitedSelect = "";
-                            if (etAl < 1) {
-                                unlimitedSelect = "selected=\"selected\"";
-                            }
-                            %>
-                            <option value="0" <%= unlimitedSelect %>><fmt:message key="browse.full.etal.unlimited"/></option>
-                            <% boolean insertedCurrent = false; %>
-                            <% for (int i = 0; i <= 50 ; i += 5) { %>
-                                <% // for the first one, we want 1 author, not 0 %>
-                                <% if (i == 0) { %>
-                                    <% String sel = (i + 1 == etAl ? "selected=\"selected\"" : ""); %>
-                                    <option value="1" <%= sel %>>1</option>
-                                <% } %>
-
-                                <% // if the current i is greated than that configured by the user, insert the one specified in the right place in the list %>
-                                <% if (i > etAl && !insertedCurrent && etAl > 1) { %>
-                                    <option value="<%= etAl %>" selected="selected"><%= etAl %></option>
-                                    <% insertedCurrent = true; %>
-                                <% } %>
-
-                                <% // determine if the current not-special case is selected %>
-                                <% String selected = (i == etAl ? "selected=\"selected\"" : ""); %>
-
-                                <% // do this for all other cases than the first and the current %>
-                                <% if (i != 0 && i != etAl) { %>
-                                    <option value="<%= i %>" <%= selected %>><%= i %></option>
-                                <% } %>
-                            <% } %>
-                        </select>
-                    </div>
+                    </div>                    
                     <% if (admin_button) { %>
                         <div class="col-md-2">
                             <!--<input class="btn btn-default form-control" type="submit" name="submit_search" value="<fmt:message key="search.update" />" />-->
@@ -491,7 +458,7 @@
                     <div class="panel-heading">
                         <fmt:message key="jsp.search.results.itemhits"/>
                     </div>
-                    <dspace:itemlist items="<%= items %>" authorLimit="<%= etAl %>" />
+                    <dspace:itemlist items="<%= items %>" authorLimit="5" />
                 </div>
             <% } %>
         </div>
@@ -578,6 +545,8 @@
                         <form action="simple-search" class="form" method="get">
                             <input type="hidden" value="<%= Utils.addEntities(searchScope) %>" name="location" />
                             <input type="hidden" value="<%= Utils.addEntities(query) %>" name="query" />
+                            <input type="hidden" value="5" name="etal" />
+
                             <% if (appliedFilterQueries.size() > 0 ) { %>
                                 <% int idx = 1; %>
                                 <% for (String[] filter : appliedFilters) { %>
