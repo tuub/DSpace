@@ -209,7 +209,7 @@
                                 <% for (String[] filter : appliedFilters) { %>
                                     <% boolean found = false; %>
 
-                                    <span class="label label-info" style="padding: 0.75em; padding-right: 0em; margin-right: 0.5em; font-size: 0.75em;">
+                                    <span class="label" style="background-color: #F5F5F5; color: #333; padding: 0.75em; outline: 1px #ddd solid; padding-right: 0em; margin-right: 0.5em; font-size: 0.75em;">
                                         <% for (DiscoverySearchFilter searchFilter : availableFilters) { %>
                                             <% if (searchFilter.getIndexFieldName().equals(filter[0])) { %>
                                                 <% String fkey = "jsp.search.filter." + Escape.uriParam(searchFilter.getIndexFieldName()); %>
@@ -567,21 +567,20 @@
                                     <% } %>
                                 </select>
                             </div>
-                            <% if (false) { %>
+                            <% if (true) { %>
                                 <div class="form-group">
-                                    <select id="filtertype" name="filtertype">
+                                    <select id="filtertype" name="filtertype" class="form-control">
                                         <% for (String opt : options) { %>
-                                            <% String fkey = "jsp.search.filter.op." + Escape.uriParam(opt); %>
-                                            <option value="<%= Utils.addEntities(opt) %>">
-                                                <fmt:message key="<%= fkey %>"/>
-                                            </option>
+                                        <% String fkey = "jsp.search.filter.op." + Escape.uriParam(opt); %>
+                                        <option value="<%= Utils.addEntities(opt) %>">
+                                            <fmt:message key="<%= fkey %>"/>
+                                        </option>
                                         <% } %>
                                     </select>
                                 </div>
                             <% } %>
 
                             <div class="input-group">
-                                <input type="hidden" value="contains" id="filtertype" name="filtertype" />
                                 <input type="hidden" value="<%= rpp %>" name="rpp" />
                                 <input type="hidden" value="<%= Utils.addEntities(sortedBy) %>" name="sort_by" />
                                 <input type="hidden" value="<%= Utils.addEntities(order) %>" name="order" />
