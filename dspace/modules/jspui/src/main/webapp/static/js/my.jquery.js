@@ -163,6 +163,14 @@ var headID = document.getElementsByTagName("head")[0];
     $actionsPanelBox.find('.panel-body > form').wrap('<ul class="list-group"></ul>').children('input.btn').removeClass('col-md-12 btn-default').addClass('btn-link').wrap('<li class="list-group-item"></li>');
 
     /************************************************************************
+    * Remove single breadcrumbs
+    ************************************************************************/
+    var $breadcrumbs = $('ol.breadcrumb li');
+    if ($breadcrumbs.length < 2) {
+        $breadcrumbs.remove();
+    }
+
+      /************************************************************************
     * Add copy to clipboard
     ************************************************************************/
     var clipboard = new ClipboardJS('.copy-button');
