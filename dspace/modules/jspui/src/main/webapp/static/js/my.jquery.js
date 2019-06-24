@@ -407,6 +407,52 @@ var headID = document.getElementsByTagName("head")[0];
       }
 
       /************************************************************************
+       * Add Authors Linking
+       ************************************************************************/
+      var $authorField = $('.metadataFieldValue.dc_contributor_author');
+      if( $authorField.size() > 0 )
+      {
+          var authors = $authorField.html().split('<br>');
+          $authorField.html(authors.join(' ; '));
+      }
+      /************************************************************************
+       * Contributors display
+       ************************************************************************/
+      var $contributorField = $('.metadataFieldValue.dc_contributor_other');
+      if( $contributorField.size() > 0 )
+      {
+          var contributors = $contributorField.html().split('<br>');
+          $contributorField.html(contributors.join(' ; '));
+      }
+      /************************************************************************
+       * Editors display
+       ************************************************************************/
+      var $editorField = $('.metadataFieldValue.dc_contributor_editor');
+      if( $editorField.size() > 0 )
+      {
+          var editors = $editorField.html().split('<br>');
+          $editorField.html(editors.join(' ; '));
+      }
+      /************************************************************************
+       * Referees display
+       ************************************************************************/
+      var $refereeField = $('.metadataFieldValue.dc_contributor_referee');
+      if( $refereeField.size() > 0 )
+      {
+          var referees = $refereeField.html().split('<br>');
+          $refereeField.html(referees.join(' ; '));
+      }
+      /************************************************************************
+       * Advisors display
+       ************************************************************************/
+      var $advisorField = $('.metadataFieldValue.dc_contributor_advisor');
+      if( $advisorField.size() > 0 )
+      {
+          var advisors = $advisorField.html().split('<br>');
+          $advisorField.html(advisors.join(' ; '));
+      }
+
+      /************************************************************************
        * Adjust DDC Display (since Configuration doesn't work)
        * Add DDC Class Linking
        ************************************************************************/
