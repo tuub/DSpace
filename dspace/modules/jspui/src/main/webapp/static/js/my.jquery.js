@@ -395,16 +395,15 @@ var headID = document.getElementsByTagName("head")[0];
       /************************************************************************
        * Add Subject Linking
        ************************************************************************/
-      var $subjectField = $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Subject(s):'; }).next();
+      var $subjectField = $('.metadataFieldValue.dc_subject_other');
       if( $subjectField.size() > 0 )
       {
-          var subjectsHTML = String();
           var subjectSearchURI = itemPageBaseUrl + 'browse?type=subject&order=ASC&rpp=20&value=';
           var subjects = $subjectField.html().split('<br>');
-          subjects.forEach(function(subject) {
-              subjectsHTML += '<a href="' + subjectSearchURI + subject + '">' + subject + '</a><br/>';
+          var subjectsHTML = subjects.map(function(subject) {
+              return '<a href="' + subjectSearchURI + subject + '">' + subject + '</a>';
           });
-          $subjectField.html(subjectsHTML);
+          $subjectField.html(subjectsHTML.join(' ; '));
       }
 
       /************************************************************************
