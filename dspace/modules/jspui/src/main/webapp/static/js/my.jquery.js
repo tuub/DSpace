@@ -78,6 +78,11 @@ var headID = document.getElementsByTagName("head")[0];
     */
 
     /************************************************************************
+    * Remove extra header classes, e.g. <h2 class="alert alert-info">Edit Bitstream Access</h2>
+    ************************************************************************/
+    $('h1,h2,h3').removeClass();
+
+      /************************************************************************
     * Remove all Well-Container
     ************************************************************************/
     $('.well').removeClass('well');
@@ -86,7 +91,6 @@ var headID = document.getElementsByTagName("head")[0];
     * Remove all paddings in nested containers
     ************************************************************************/
     //$('.container>.container').addClass('nopadding');
-
 
     /************************************************************************
     * Move Help Buttons beside to the right & hide (for now)
