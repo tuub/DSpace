@@ -28,6 +28,7 @@
 <%@ page import="org.dspace.content.Collection" %>
 
 <%  Collection collection = (Collection) request.getAttribute("collection"); %>
+
 <dspace:layout style="submission" locbar="off"
                navbar="admin"
                titlekey="jsp.dspace-admin.wizard-basicinfo.title"

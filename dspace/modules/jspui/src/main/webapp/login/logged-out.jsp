@@ -18,7 +18,7 @@
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
-<dspace:layout locbar="nolink" titlekey="jsp.login.logged-out.title">
+<dspace:layout navbar="default" locbar="nolink" titlekey="jsp.login.logged-out.title">
     <%-- <h1>Logged Out</h1> --%>
     
     <div class="col-md-6 col-md-offset-3 text-center">

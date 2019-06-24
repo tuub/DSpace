@@ -51,7 +51,7 @@
 
 <dspace:layout style="submission"
                locbar="off"
-               navbar="off"
+               navbar="default"
                titlekey="jsp.submit.duplicate-detection.title"
                nocache="true">
 
