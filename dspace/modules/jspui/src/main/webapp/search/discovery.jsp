@@ -283,7 +283,7 @@
                         <% if (sortOptions.size() > 0) { %>
                             <label for="sort_by"><fmt:message key="search.results.sort-by"/></label>
                             <select name="sort_by" id="sort_by" class="form-control">
-                                <option value="score"><fmt:message key="search.sort-by.relevance"/></option>
+                                <!--<option value="score"><fmt:message key="search.sort-by.relevance"/></option>-->
                                 <% for (String sortBy : sortOptions) { %>
                                     <% 
                                     String selected = (sortBy.equals(sortedBy) ? "selected=\"selected\"" : "");

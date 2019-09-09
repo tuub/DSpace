@@ -279,7 +279,7 @@
                 <property name="sortFields">
                     <list>
                         <ref bean="sortTitle" />
-                        <ref bean="sortType" />
+                        <!--<ref bean="sortType" />-->
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
