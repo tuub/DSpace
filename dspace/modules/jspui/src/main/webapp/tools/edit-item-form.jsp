@@ -84,7 +84,8 @@
     boolean bPolicy = (policy == null ? false : policy.booleanValue());
     
     Boolean delete = (Boolean)request.getAttribute("delete_button");
-    boolean bDelete = (delete == null ? false : delete.booleanValue());
+    //boolean bDelete = (delete == null ? false : delete.booleanValue());
+    boolean bDelete = false;
 
     Boolean createBits = (Boolean)request.getAttribute("create_bitstream_button");
     boolean bCreateBits = (createBits == null ? false : createBits.booleanValue());
