@@ -97,7 +97,6 @@
         <% if (!StringUtils.isEmpty(errormessage)) { %>
             <div class="alert alert-warning"><fmt:message key="<%= errormessage%>" /></div>
         <% } %>
-        <p><fmt:message key="jsp.submit.list-identifiers.info"/></p>
 
         <br/>
 
@@ -182,7 +181,10 @@
             <% if (!identifierListed) { %>
                 <div class="alert alert-danger"><fmt:message key="jsp.submit.list-identifiers.no_identifiers_found"/></div>
             <% } else { %>
-                <div class="alert alert-info"><fmt:message key="jsp.submit.list-identifiers.info2"/></div>
+                <div class="alert alert-info">
+                    <strong><fmt:message key="jsp.submit.list-identifiers.info"/></strong>
+                    <p><fmt:message key="jsp.submit.list-identifiers.info2"/></p>
+                </div>
             <% } %>
         </div>
 
