@@ -343,8 +343,10 @@ var headID = document.getElementsByTagName("head")[0];
               expandPrefix:     ' ... ', // default is '... '
               expandText:       '[More]', // default is 'read more'
               collapseTimer:    0, // re-collapses after 5 seconds; default is 0, so no re-collapsing
-              collaüsePrefix:   ' ',
+              collapsePrefix:   ' ',
               userCollapseText: '[Less]',  // default is 'read less');
+              expandEffect: 'fadeIn',
+              collapseEffect: 'fadeOut'
           });
     }
 
