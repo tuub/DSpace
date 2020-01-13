@@ -560,3 +560,7 @@ and (max-width: 767px)
     font-size: 1em;
     margin-bottom: 0.8em;
 }
+
+.label-required:after {
+    content:"*" !important;
+}
