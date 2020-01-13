@@ -405,7 +405,7 @@ var headID = document.getElementsByTagName("head")[0];
           var subjectsHTML = subjects.map(function(subject) {
               return '<a href="' + subjectSearchURI + subject + '">' + subject + '</a>';
           });
-          $subjectField.html(subjectsHTML.join(' ; '));
+          $subjectField.html(subjectsHTML.join('; '));
       }
 
       /************************************************************************
@@ -415,7 +415,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $authorField.size() > 0 )
       {
           var authors = $authorField.html().split('<br>');
-          $authorField.html(authors.join(' ; '));
+          $authorField.html(authors.join('; '));
       }
       /************************************************************************
        * Contributors display
@@ -424,7 +424,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $contributorField.size() > 0 )
       {
           var contributors = $contributorField.html().split('<br>');
-          $contributorField.html(contributors.join(' ; '));
+          $contributorField.html(contributors.join('; '));
       }
       /************************************************************************
        * Editors display
@@ -433,7 +433,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $editorField.size() > 0 )
       {
           var editors = $editorField.html().split('<br>');
-          $editorField.html(editors.join(' ; '));
+          $editorField.html(editors.join('; '));
       }
       /************************************************************************
        * Referees display
@@ -442,7 +442,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $refereeField.size() > 0 )
       {
           var referees = $refereeField.html().split('<br>');
-          $refereeField.html(referees.join(' ; '));
+          $refereeField.html(referees.join('; '));
       }
       /************************************************************************
        * Advisors display
@@ -451,7 +451,7 @@ var headID = document.getElementsByTagName("head")[0];
       if( $advisorField.size() > 0 )
       {
           var advisors = $advisorField.html().split('<br>');
-          $advisorField.html(advisors.join(' ; '));
+          $advisorField.html(advisors.join('; '));
       }
 
       /************************************************************************
