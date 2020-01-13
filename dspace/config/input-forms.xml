@@ -149,7 +149,7 @@
 
         <value-pairs value-pairs-name="common_licenses" dc-term="rights">
             <pair>
-                <displayed-value>N/A</displayed-value>
+                <displayed-value>--- Please select ---</displayed-value>
                 <stored-value></stored-value>
             </pair>
             <!-- Creative Commons -->
@@ -390,7 +390,7 @@
 
         <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
             <pair>
-                <displayed-value>N/A</displayed-value>
+                <displayed-value>--- Please select ---</displayed-value>
                 <stored-value></stored-value>
             </pair>
             <pair>
