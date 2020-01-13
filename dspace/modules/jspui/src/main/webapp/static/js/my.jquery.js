@@ -454,6 +454,15 @@ var headID = document.getElementsByTagName("head")[0];
           var advisors = $advisorField.html().split('<br>');
           $advisorField.html(advisors.join('; '));
       }
+      /************************************************************************
+       * Bibliographic Citations Editors display
+       ************************************************************************/
+      var $bcEditorField = $('.metadataFieldValue.dcterms_bibliographicCitation_editor');
+      if( $bcEditorField.size() > 0 )
+      {
+          var bcEditors = $bcEditorField.html().split('<br>');
+          $bcEditorField.html(bcEditors.join('; '));
+      }
 
       /************************************************************************
        * Adjust DDC Display (since Configuration doesn't work)
