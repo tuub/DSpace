@@ -258,6 +258,7 @@ var headID = document.getElementsByTagName("head")[0];
                     case "pl":
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Polish";
+                        break;
                     case "pt":
                         $('td.metadataFieldLabel').filter(function() { return $.trim( $(this).text() ) == 'Language Code:'; }).text('Language:');
                         languageCodeReplacer += "Portugese";
