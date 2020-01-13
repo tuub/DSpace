@@ -9,7 +9,7 @@
     <label>Translated title</label>
     <input-type>onebox</input-type>
     <language value-pairs-name="common_iso_languages">true</language>
-    <hint>Enter German translation if your preprint is written in English et vice versa.</hint>
+    <hint>Enter German translation if your report is written in English et vice versa.</hint>
     <required></required>
     <visibility></visibility>
     <type-bind>Report</type-bind>
@@ -24,7 +24,7 @@
     <label>Translated subtitle</label>
     <input-type>onebox</input-type>
     <language value-pairs-name="common_iso_languages">true</language>
-    <hint>Enter German translation of your subtitle if your preprint is written in English et vice versa.</hint>
+    <hint>Enter German translation of your subtitle if your report is written in English et vice versa.</hint>
     <required></required>
     <visibility>workflow</visibility>
     <type-bind>Report</type-bind>
@@ -108,7 +108,7 @@
     <repeatable>true</repeatable>
     <label>Edition</label>
     <input-type>onebox</input-type>
-    <hint>Enter the edition of the research paper (leave empty for 1st edition).</hint>
+    <hint>Enter the edition of the report (leave empty for 1st edition).</hint>
     <required></required>
     <visibility>workflow</visibility>
     <type-bind>Report</type-bind>
