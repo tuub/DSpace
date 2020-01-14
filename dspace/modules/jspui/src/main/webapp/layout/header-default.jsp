@@ -90,6 +90,8 @@
         <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.min.css"/>
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/datatables/datatables.js"></script>
 
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/linkify/linkify.min.js"></script>
+        <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/vendor/linkify/linkify.jquery.js"></script>
 
         <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/my.jquery.js"></script>
         <dspace:include page="/layout/google-analytics-snippet.jsp" />

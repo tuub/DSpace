@@ -598,6 +598,12 @@ var headID = document.getElementsByTagName("head")[0];
     }
 
     /************************************************************************
+    * Submission form links
+    * Converts links in xml-based field descriptions to links with Linkify
+    ************************************************************************/
+    $('div.help-block').linkify();
+
+    /************************************************************************
     * Button Colors based on values in their name/id attributes
     ************************************************************************/
 

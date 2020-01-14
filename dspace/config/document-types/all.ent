@@ -103,7 +103,7 @@
     <repeatable>false</repeatable>
     <label>License</label>
     <input-type value-pairs-name="common_licenses">dropdown</input-type>
-    <hint>Choose a license for your work.</hint>
+    <hint>Choose a license for your work. Consult our support page for more information: https://www.szf.tu-berlin.de/menue/beratung_information/lizenzen_nutzungsrechte/"</hint>
     <required>You have to choose a license.</required>
     <type-bind></type-bind>
 </field>
