@@ -183,7 +183,7 @@
                             </li>
                         <% } %>
                         <%-- End of dynamic browse indices --%>
-                        <% if (ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable")) { %>
+                        <% if (isAdmin && ConfigurationManager.getBooleanProperty("webui.controlledvocabulary.enable")) { %>
                             <li class="divider"></li>
                             <li>
                                 <a href="<%= request.getContextPath() %>/subject-search">
@@ -200,7 +200,7 @@
                     </a>
                 </li>
                 <!-- MY DEPOSITS -->
-                <li class="text-center <%= currentPage.endsWith("/mydspace")? "active" : "" %>"">
+                <li class="text-center <%= currentPage.endsWith("/mydspace")? "active" : "" %>">
                     <a href="<%= request.getContextPath() %>/mydspace">
                         <i class="glyphicon glyphicon-th" aria-hidden="true"></i><fmt:message key="jsp.layout.navbar-default.users"/>
                     </a>
