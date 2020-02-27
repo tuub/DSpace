@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG userid=1000
 
@@ -16,7 +16,8 @@ RUN apt-get update \
         ghostscript \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && locale-gen en_US.UTF-8
+    && locale-gen en_US.UTF-8 \
+    && sed -i -re 's#(<policy domain="resource"[^>]+>)#<!-- \1 -->#g' /etc/ImageMagick-6/policy.xml
 
 # add user running Tomcat and DepositOnce
 RUN useradd -u $userid dspace
@@ -24,7 +25,7 @@ RUN useradd -u $userid dspace
 ENV CATALINA_HOME="/usr/local/tomcat" \
     PATH="/usr/local/tomcat/bin:$PATH" \
     TOMCAT_MAJOR_VERSION=7 \
-    TOMCAT_MINOR_VERSION=7.0.82 \
+    TOMCAT_MINOR_VERSION=7.0.100 \
     APACHE_MIRROR="https://archive.apache.org/dist"
 
 # install Tomcat
@@ -38,7 +39,7 @@ WORKDIR $CATALINA_HOME
 
 EXPOSE 8080
 
-ENV JAVA_OPTS="-Xmx512M -Xms64M -Dfile.encoding=UTF-8"
+ENV JAVA_OPTS="-Xmx2G -Xms64M -Dfile.encoding=UTF-8"
 
 VOLUME "$CATALINA_HOME/conf"
 VOLUME "$CATALINA_HOME/webapps"
