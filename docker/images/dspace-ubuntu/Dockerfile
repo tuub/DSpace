@@ -16,7 +16,11 @@ RUN apt-get update \
         ghostscript \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && locale-gen en_US.UTF-8 \
+    && locale-gen en_US.UTF-8 
+
+# Setup JAVA_HOME to java-8
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
 
 # add user running Tomcat and DepositOnce
 RUN useradd -u $userid dspace
