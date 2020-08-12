@@ -69,6 +69,13 @@
         </step>
     </command>
     <command>
+        <name>delete-eperson-workspaceitems</name>
+        <description>Delete all workspaceitems of a normal user account</description>
+        <step>
+            <class>org.dspace.eperson.DeleteEPersonWorkspaceItemsCLITool</class>
+        </step>
+    </command>
+    <command>
         <name>doi-organiser</name>
         <description>Run the DOI organiser</description>
         <step>
