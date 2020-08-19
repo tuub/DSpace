@@ -108,7 +108,7 @@ public class ReferenceItemTag extends TagSupport
 
         // get the publication year
         String year = itemService.getMetadataFirstValue(this.item, "dc", "date", "issued", Item.ANY);
-        if (year.contains("-"))
+        if (!StringUtils.isEmpty(year) && year.contains("-"))
         {
             // ensure we only have the year
             year = year.substring(0, year.indexOf("-"));
@@ -143,10 +143,12 @@ public class ReferenceItemTag extends TagSupport
         // after must not be empty to include them.
         StringBuilder citation = new StringBuilder();
         citation.append(contributor);
-        if (citation.length() > 0 && year.length() > 0)
+        if (citation.length() > 0 && !StringUtils.isEmpty(year))
         {
             citation.append(", ").append(year);
-        } else {
+        }
+        else if (!StringUtils.isEmpty(year))
+        {
             citation.append(year);
         }
         if (citation.length() > 0)
