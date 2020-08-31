@@ -96,9 +96,11 @@
             <div class="col-md-8">
                 <h2>
                     <%= name %>
-                    <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
-                        <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.community-home.display-statistics"/>
-                    </a>
+                    <% if(editor_button || add_button) { %>
+                        <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= community.getHandle() %>/statistics">
+                            <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.community-home.display-statistics"/>
+                        </a>
+                    <% } %>
                 </h2>
                 <% if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
                     <%= ic.getCount(community) %> <fmt:message key="jsp.layout.navbar-admin.items"/>

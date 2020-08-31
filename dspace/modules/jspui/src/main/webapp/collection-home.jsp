@@ -120,9 +120,11 @@
                 <%= community.getName() %>
                 <h2>
                     <%= name %>
-                    <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
-                        <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.collection-home.display-statistics"/>
-                    </a>
+                    <% if(admin_button || editor_button ) { %>
+                        <a class="statisticsLink btn btn-xs btn-default" href="<%= request.getContextPath() %>/handle/<%= collection.getHandle() %>/statistics">
+                            <i class="glyphicon glyphicon-bar-chart" aria-hidden="true"></i><fmt:message key="jsp.collection-home.display-statistics"/>
+                        </a>
+                    <% } %>
 
                 <% if(configurationService.getBooleanProperty("webui.strengths.show")) { %>
                     <small><%= ic.getCount(collection) %> <fmt:message key="jsp.layout.navbar-admin.items"/></small>
