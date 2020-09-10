@@ -258,7 +258,7 @@
                     <a class="label label-default" href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
                 <% } %>
                 <br/><br/>
-                <span><fmt:message key="browse.nav.enter"/></span>
+                <label><fmt:message key="browse.nav.enter"/></label>
                 <input type="text" name="starts_with"/>
                 &nbsp;
                 <input type="submit" class="btn btn-default" value="<fmt:message key="browse.nav.go"/>" />
