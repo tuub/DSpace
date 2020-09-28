@@ -874,7 +874,12 @@ public class EditItemServlet extends DSpaceServlet
 
                     if (primaryBitstreamID != null)
                     {
-                        bundle.setPrimaryBitstreamID(bitstreamService.find(context, primaryBitstreamID));
+                        Bitstream primaryBitstream = bitstreamService.find(context, primaryBitstreamID);
+
+                        if(!primaryBitstream.isDeleted())
+                        {
+                            bundle.setPrimaryBitstreamID(primaryBitstream);
+                        }
                     }
 
                     if (userFormatDesc != null)
