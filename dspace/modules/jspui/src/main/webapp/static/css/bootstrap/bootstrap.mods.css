@@ -581,8 +581,10 @@ div.file-row {
 
 img.file-thumbnail {
     outline: 1px #bbbbcc solid;
-    width: 84px;
-    height: 120px;
+    width: auto;
+    height: auto;
+    max-width: 120px;
+    max-height: 120px;
 }
 
 span.file-title {
