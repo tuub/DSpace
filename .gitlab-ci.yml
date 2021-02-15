@@ -1,0 +1,12 @@
+image: maven:3.6-jdk-8
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode"
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
