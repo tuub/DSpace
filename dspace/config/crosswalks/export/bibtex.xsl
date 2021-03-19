@@ -42,6 +42,9 @@
             <xsl:when test="$type = 'Habilitation'">
                 <xsl:text>@phdthesis</xsl:text>
             </xsl:when>
+            <xsl:when test="$type = 'Bachelor Thesis'">
+                <xsl:text>@mastersthesis</xsl:text>
+            </xsl:when>
             <xsl:when test="$type = 'Master Thesis'">
                 <xsl:text>@mastersthesis</xsl:text>
             </xsl:when>
@@ -153,7 +156,7 @@
         </xsl:if>
         
         <!-- dc.contributor.grantor -->
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'">
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'">
             <xsl:text>,</xsl:text>
             <xsl:value-of select="$newline"></xsl:value-of>
             <xsl:value-of select="$tab"></xsl:value-of>      	
@@ -164,7 +167,7 @@
         
         <!-- dc.contributor.organisation or tub.publisher.universityorinstitution -->
         <xsl:if test="not($type = 'Article' or $type = 'Book' or $type = 'Book Part' or $type = 'Doctoral Thesis' 
-                          or $type = 'Habilitation' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
+                          or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
                           or $type = 'Conference Object' or $type = 'Preprint') and
                           (doc:metadata/doc:element[@name='tub']/doc:element[@name='publisher']/doc:element[@name='universityorinstitution'] 
                           or doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='organisation'])">
@@ -201,7 +204,7 @@
         </xsl:if>
         
         <!-- dc.publisher.name or dcterms.bibliographicCitation.originalpublishername --> 
-        <xsl:if test="(doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element[@name='name']/doc:element/doc:field[@name='value'][contains(text(), 'Universitätsverlag der TU Berlin')] and ($type = 'Book' or $type = 'Conference Proceedings' or $type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'))
+        <xsl:if test="(doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element[@name='name']/doc:element/doc:field[@name='value'][contains(text(), 'Universitätsverlag der TU Berlin')] and ($type = 'Book' or $type = 'Conference Proceedings' or $type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'))
                       or (doc:metadata/doc:element[@name='dcterms']/doc:element[@name='bibliographicCitation']/doc:element[@name='originalpublishername'] and ($type = 'Book Part' or $type = 'Conference Object'))">
             <xsl:text>,</xsl:text>
             <xsl:value-of select="$newline"></xsl:value-of>    
@@ -220,7 +223,7 @@
         </xsl:if>
         
         <!-- dc.type --> 
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'" >
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'" >
             <xsl:text>,</xsl:text>
             <xsl:value-of select="$newline"></xsl:value-of>    
             <xsl:value-of select="$tab"></xsl:value-of>
@@ -318,7 +321,7 @@
         </xsl:if>
         
         <!-- address hard coded -->
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'" >
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'" >
             <xsl:text>,</xsl:text> 
             <xsl:value-of select="$newline"></xsl:value-of>    
             <xsl:value-of select="$tab"></xsl:value-of>
@@ -350,7 +353,7 @@
         
         <!-- Periodical Part note: tub.series.name + " ; " + tub.series.issuenumber -->
         <xsl:if test="not($type = 'Article' or $type = 'Book' or $type = 'Book Part' or $type = 'Doctoral Thesis' 
-                          or $type = 'Habilitation' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
+                          or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
                           or $type = 'Conference Object' or $type = 'Report' or $type = 'Research Paper' or $type = 'Preprint')
                       and (doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='name']
                       and doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber'])"> 

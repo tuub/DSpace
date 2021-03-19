@@ -70,8 +70,8 @@ public class ArchiveOriginalBitstreams extends AbstractTubCurationTask
     private final static String BAGIT_DECLARATION_CONTENT = "BagIt-Version: 0.97\nTag-File-Character-Encoding: UTF-8";
 
     private final static List<String> PUBLICATION_TYPES
-            = Arrays.asList("Book", "Conference Proceedings", "Doctoral Thesis", "Habilitation", "Master Thesis",
-            "Other", "Periodical Part", "Preprint", "Report", "Research Paper", "Article", "Book Part",
+            = Arrays.asList("Book", "Conference Proceedings", "Doctoral Thesis", "Habilitation", "Bachelor Thesis",
+            "Master Thesis", "Other", "Periodical Part", "Preprint", "Report", "Research Paper", "Article", "Book Part",
             "Conference Object");
 
     private BitstreamService bitstreamService;

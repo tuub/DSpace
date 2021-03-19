@@ -503,6 +503,7 @@
                     <xsl:when test="string(text())='Conference Object'">Text</xsl:when>
                     <xsl:when test="string(text())='Conference Proceedings'">Text</xsl:when>
                     <xsl:when test="string(text())='Doctoral Thesis'">Text</xsl:when>
+                    <xsl:when test="string(text())='Bachelor Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Master Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Multimedia'">InteractiveResource</xsl:when>
                     <xsl:when test="string(text())='Periodical'">Text</xsl:when>

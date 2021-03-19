@@ -126,7 +126,7 @@
 			<xsl:if test="doc:metadata/doc:element[@name='others']/doc:field[@name='openAireAccess']
 						and not(doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element[@name='version']/doc:element/doc:field[@name='value'])">
 				<xsl:variable name="publType" select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']"/>
-				<xsl:if test="contains($publType, 'doctoralThesis') or contains($publType, 'masterThesis')">
+				<xsl:if test="contains($publType, 'doctoralThesis') or contains ($publType, 'bachelorThesis') or contains($publType, 'masterThesis')">
 					<xsl:choose>
 						<xsl:when test="doc:metadata/doc:element[@name='tub']/doc:element[@name='publisher']/doc:element[@name='universityorinstitution']/doc:element/doc:field[@name='value']">
 							<dc:type>info:eu-repo/semantics/publishedVersion</dc:type>

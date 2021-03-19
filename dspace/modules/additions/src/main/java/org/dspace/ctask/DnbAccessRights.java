@@ -43,8 +43,8 @@ public class DnbAccessRights extends AbstractTubCurationTask
             = Arrays.asList("Article", "Book Part", "Conference Object");
 
     private final static List<String> PUBLICATION_TYPES
-            = Arrays.asList("Book", "Conference Proceedings", "Doctoral Thesis", "Habilitation", "Master Thesis",
-                "Other", "Periodical Part", "Preprint", "Report", "Research Paper");
+            = Arrays.asList("Book", "Conference Proceedings", "Doctoral Thesis", "Habilitation", "Bachelor Thesis",
+            "Master Thesis", "Other", "Periodical Part", "Preprint", "Report", "Research Paper");
 
     //private AuthorizeService authorizeService;
     private ItemService itemService;

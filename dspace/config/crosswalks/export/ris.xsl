@@ -33,7 +33,7 @@
             <xsl:when test="$type = 'Article'">
                 <xsl:text>EJOUR</xsl:text>
             </xsl:when>
-            <xsl:when test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Master Thesis'">
+            <xsl:when test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'">
                 <xsl:text>THES</xsl:text>
             </xsl:when>
             <xsl:when test="$type = 'Book'">
@@ -140,7 +140,7 @@
         </xsl:if>
         
         <!-- dc.contributor.grantor -->
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Master Thesis'">
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'">
             <xsl:text>T2  - </xsl:text>
             <xsl:value-of select="doc:metadata/doc:element[@name='dc']/doc:element[@name='contributor']/doc:element[@name='grantor']/doc:element/doc:field[@name='value']/text()"></xsl:value-of>
             <xsl:value-of select="$newline"></xsl:value-of>
@@ -195,7 +195,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
-                <xsl:when test="(doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element[@name='name']/doc:element/doc:field[@name='value'][contains(text(), 'Universitätsverlag der TU Berlin')] and ($type = 'Book' or $type = 'Conference Proceedings' or $type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'))
+                <xsl:when test="(doc:metadata/doc:element[@name='dc']/doc:element[@name='publisher']/doc:element[@name='name']/doc:element/doc:field[@name='value'][contains(text(), 'Universitätsverlag der TU Berlin')] and ($type = 'Book' or $type = 'Conference Proceedings' or $type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or  $type = 'Master Thesis'))
                       or (doc:metadata/doc:element[@name='dcterms']/doc:element[@name='bibliographicCitation']/doc:element[@name='originalpublishername'] and ($type = 'Book Part' or $type = 'Conference Object'))">
                     <xsl:choose>
                         <!-- dcterms.bibliographicCitation.originalpublishername -->
@@ -220,7 +220,7 @@
         </xsl:if>
         
         <!-- dc.type --> 
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'" >
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'" >
             <xsl:text>M3  - </xsl:text>
             <xsl:value-of select="$type"></xsl:value-of> 
             <xsl:value-of select="$newline"></xsl:value-of>
@@ -292,7 +292,7 @@
         </xsl:if>
         
         <!-- address hard coded -->
-        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or  $type = 'Master Thesis'" >
+        <xsl:if test="$type = 'Doctoral Thesis' or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis'" >
             <xsl:text>CY  - Berlin</xsl:text>
             <xsl:value-of select="$newline"></xsl:value-of>
         </xsl:if>
@@ -315,7 +315,7 @@
         
         <!-- Periodical Part note: tub.series.name + " ; " + tub.series.issuenumber -->
         <xsl:if test="not($type = 'Article' or $type = 'Book' or $type = 'Book Part' or $type = 'Doctoral Thesis' 
-                          or $type = 'Habilitation' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
+                          or $type = 'Habilitation' or $type = 'Bachelor Thesis' or $type = 'Master Thesis' or $type = 'Conference Proceedings'
                           or $type = 'Conference Object' or $type = 'Report' or $type = 'Research Paper' or $type = 'Preprint')
                       and (doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='name']
                       and doc:metadata/doc:element[@name='tub']/doc:element[@name='series']/doc:element[@name='issuenumber'])"> 

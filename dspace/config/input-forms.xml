@@ -11,6 +11,7 @@
     <!ENTITY doctoral_thesis SYSTEM "document-types/doctoral_thesis.ent">
     <!ENTITY habilitation SYSTEM "document-types/habilitation.ent">
     <!ENTITY image SYSTEM "document-types/image.ent">
+    <!ENTITY bachelor_thesis SYSTEM "document-types/bachelor_thesis.ent">
     <!ENTITY master_thesis SYSTEM "document-types/master_thesis.ent">
     <!ENTITY model SYSTEM "document-types/model.ent">
     <!ENTITY multimedia SYSTEM "document-types/multimedia.ent">
@@ -80,7 +81,8 @@
                 &conference_object;
                 &conference_proceedings;
                 &doctoral_thesis;
-                &habilitation;
+		        &habilitation;
+		        &bachelor_thesis;
                 &master_thesis;
                 &periodical_part;
                 &preprint;
@@ -303,7 +305,11 @@
             <pair>
                 <displayed-value>Doctoral Thesis</displayed-value>
                 <stored-value>Doctoral Thesis</stored-value>
-            </pair>
+	        </pair>
+	        <pair>
+		        <displayed-value>Bachelor Thesis</displayed-value>
+                <stored-value>Bachelor Thesis</stored-value>    
+	        </pair>
             <pair>
                 <displayed-value>Master Thesis</displayed-value>
                 <stored-value>Master Thesis</stored-value>

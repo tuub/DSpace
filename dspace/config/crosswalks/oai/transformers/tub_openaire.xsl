@@ -114,6 +114,9 @@
             <xsl:when test="contains(., 'Habilitation')">
                 <xsl:text>info:eu-repo/semantics/doctoralThesis</xsl:text>
             </xsl:when>
+			<xsl:when test="contains(., 'Bachelor Thesis')">
+				<xsl:text>info:eu-repo/semantics/bachelorThesis</xsl:text>
+			</xsl:when>
 			<xsl:when test="contains(., 'Master Thesis')">
 				<xsl:text>info:eu-repo/semantics/masterThesis</xsl:text>
 			</xsl:when>
