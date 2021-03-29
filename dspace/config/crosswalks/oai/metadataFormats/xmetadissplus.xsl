@@ -281,7 +281,6 @@
                         <xsl:when test="string(text())='Doctoral Thesis'">doctoralThesis</xsl:when>
                         <xsl:when test="string(text())='Master Thesis'">masterThesis</xsl:when>
                         <xsl:when test="string(text())='Bachelor Thesis'">bachelorThesis</xsl:when>
-                        <xsl:when test="string(text())='Multimedia'">Other</xsl:when>
                         <xsl:when test="string(text())='Periodical'">Periodical</xsl:when>
                         <xsl:when test="string(text())='Periodical Part'">PeriodicalPart</xsl:when>
                         <xsl:when test="string(text())='Habilitation'">doctoralThesis</xsl:when>

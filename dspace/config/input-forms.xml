@@ -14,7 +14,6 @@
     <!ENTITY bachelor_thesis SYSTEM "document-types/bachelor_thesis.ent">
     <!ENTITY master_thesis SYSTEM "document-types/master_thesis.ent">
     <!ENTITY model SYSTEM "document-types/model.ent">
-    <!ENTITY multimedia SYSTEM "document-types/multimedia.ent">
     <!ENTITY periodical_part SYSTEM "document-types/periodical_part.ent">
     <!ENTITY preprint SYSTEM "document-types/preprint.ent">
     <!ENTITY report SYSTEM "document-types/report.ent">
@@ -68,7 +67,6 @@
                 &audio;
                 &image;
                 &model;
-                &multimedia;
                 &research_data;
                 &software;
                 &textual_data;
@@ -364,10 +362,6 @@
             <pair>
                 <displayed-value>3D Model</displayed-value>
                 <stored-value>3D Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Multimedia</displayed-value>
-                <stored-value>Multimedia</stored-value>
             </pair>
         </value-pairs>
 

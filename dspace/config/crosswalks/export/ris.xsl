@@ -63,9 +63,6 @@
             <xsl:when test="$type = 'Audio' ">
                 <xsl:text>SOUND</xsl:text>
             </xsl:when>
-            <xsl:when test="$type ='Multimedia'">
-                <xsl:text>MULTI</xsl:text>
-            </xsl:when>
             <xsl:when test="$type = 'Software'">
                 <xsl:text>Computer program</xsl:text>
             </xsl:when>

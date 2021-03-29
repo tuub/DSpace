@@ -505,7 +505,6 @@
                     <xsl:when test="string(text())='Doctoral Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Bachelor Thesis'">Text</xsl:when>
                     <xsl:when test="string(text())='Master Thesis'">Text</xsl:when>
-                    <xsl:when test="string(text())='Multimedia'">InteractiveResource</xsl:when>
                     <xsl:when test="string(text())='Periodical'">Text</xsl:when>
                     <xsl:when test="string(text())='Periodical Part'">Text</xsl:when>
                     <xsl:when test="string(text())='Habilitation'">Text</xsl:when>

@@ -593,7 +593,6 @@
                     <string>Image</string>
                     <string>Software</string>
                     <string>3D Model</string>
-                    <string>Multimedia</string>
                 </list>
             </Configuration>
         </CustomCondition>

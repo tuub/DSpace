@@ -22,7 +22,7 @@
     <input-type value-pairs-name="research_data_types">dropdown</input-type>
     <hint>Enter the type of the work.</hint>
     <required>You have to provide at least one type.</required>
-    <type-bind>Audio,Generic Research Data,Image,3D Model,Software,Textual Data,Video,Multimedia</type-bind>
+    <type-bind>Audio,Generic Research Data,Image,3D Model,Software,Textual Data,Video</type-bind>
     <visibility>workflow</visibility>
 </field>
 
@@ -133,7 +133,7 @@
     <language value-pairs-name="common_iso_languages">true</language>
     <hint>Please enter up to five keywords in German as well as in English. Please enter separate keywords by using "Add More".</hint>
     <required>You have to enter some keywords.</required>
-    <type-bind>Article,Book,Book Part,Conference Object,Conference Proceedings,Doctoral Thesis,Habilitation,Bachelor Thesis,Master Thesis,Multimedia,Periodical,Periodical Part,Preprint,Report,Research Paper</type-bind>
+    <type-bind>Article,Book,Book Part,Conference Object,Conference Proceedings,Doctoral Thesis,Habilitation,Bachelor Thesis,Master Thesis,Periodical,Periodical Part,Preprint,Report,Research Paper</type-bind>
 </field>
 <field>
     <dc-schema>dc</dc-schema>

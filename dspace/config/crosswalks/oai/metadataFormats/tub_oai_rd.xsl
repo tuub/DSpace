@@ -193,7 +193,7 @@
             </xsl:if>
                       
             <!-- dc.type --> 
-            <!-- Type: Generic Research Data, Textual Data, Audio, Video, Image, Software, 3D Model, Multimedia, ... -->
+            <!-- Type: Generic Research Data, Textual Data, Audio, Video, Image, Software, 3D Model, ... -->
             <xsl:if test="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']">
                 <xsl:for-each  select="doc:metadata/doc:element[@name='dc']/doc:element[@name='type']/doc:element/doc:field[@name='value']">
                     <xsl:variable name="resourceTypeGeneral" select="."/>
@@ -213,7 +213,7 @@
                                 <xsl:value-of select="$resourceTypeGeneral" />
                             </resourceType>
                         </xsl:when>
-                        <xsl:when test="contains($resourceTypeGeneral, 'Learning Object') or contains($resourceTypeGeneral, 'Multimedia')">
+                        <xsl:when test="contains($resourceTypeGeneral, 'Learning Object')">
                             <resourceType resourceTypeGeneral="InteractiveResource">
                                 <xsl:value-of select="$resourceTypeGeneral" />
                             </resourceType>
