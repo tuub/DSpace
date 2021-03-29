@@ -1148,25 +1148,25 @@ public class ItemTag extends TagSupport
                                         out.print(LocaleSupport.getLocalizedMessage(pageContext,"org.dspace.app.webui.jsptag.ItemTag.preview_pdf"));
                                         out.print("</a>");
 
-                                        try
+                                        // OTHER BUTTONS HERE, SEPARATED WITH " | "
+                                    }
+                                    // request copy button
+                                    try
                                         {
                                             if (showRequestCopy && !authorizeService.authorizeActionBoolean(context, b, Constants.READ))
                                             {
                                                 out.print("<a class=\"btn btn-primary btn-xs\" href=\""
-                                                        + request.getContextPath()
-                                                        + "/request-item?handle="
-                                                        + handle
-                                                        + "&bitstream-id="
-                                                        + b.getID()
-                                                        + "\">"
-                                                        + LocaleSupport.getLocalizedMessage(pageContext, "org.dspace.app.webui.jsptag.ItemTag.restrict")
-                                                        + "</a>");
+                                                    + request.getContextPath()
+                                                    + "/request-item?handle="
+                                                    + handle
+                                                    + "&bitstream-id="
+                                                    + b.getID()
+                                                    + "\">"
+                                                    + LocaleSupport.getLocalizedMessage(pageContext, "org.dspace.app.webui.jsptag.ItemTag.restrict")
+                                                    + "</a>");
                                             }
                                         }
                                         catch (Exception e) {}
-
-                                        // OTHER BUTTONS HERE, SEPARATED WITH " | "
-                                    }
 
                                     out.print("</div>");
 
