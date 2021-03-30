@@ -134,7 +134,7 @@
     <label>Issue of the series</label>
     <input-type>onebox</input-type>
     <hint>Enter the issue number of the series.</hint>
-    <required>You have to enter the number of the series.</required>
+    <required></required>
     <type-bind>Preprint</type-bind>
     <visibility>workflow</visibility>
 </field>

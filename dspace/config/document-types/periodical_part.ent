@@ -108,7 +108,7 @@
     <label>Name of the series</label>
     <input-type>onebox</input-type>
     <hint>Enter the name of the series.</hint>
-    <required></required>
+    <required>You have to enter the name of the series.</required>
     <type-bind>Periodical Part</type-bind>
 </field>
 

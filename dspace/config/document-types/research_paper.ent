@@ -136,7 +136,7 @@
     <label>Name of the series</label>
     <input-type>onebox</input-type>
     <hint>Enter the name of the series.</hint>
-    <required></required>
+    <required>You have to enter the name of the series.</required>
     <type-bind>Research Paper</type-bind>
 </field>
 
@@ -149,7 +149,7 @@
     <label>Issue of the series</label>
     <input-type>onebox</input-type>
     <hint>Enter the issue number of the series.</hint>
-    <required>You have to enter the number of the series.</required>
+    <required></required>
     <type-bind>Research Paper</type-bind>
 	<visibility>workflow</visibility>
 </field>

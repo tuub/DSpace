@@ -122,7 +122,7 @@
     <label>Proceedings title</label>
     <input-type>onebox</input-type>
     <hint>Enter the title of the proceedings.</hint>
-    <required></required>
+    <required>You have to enter the proceedings title.</required>
     <visibility></visibility>
     <type-bind>Conference Object</type-bind>
 </field>
