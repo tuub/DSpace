@@ -107,6 +107,7 @@ public class BitstreamServiceImpl extends DSpaceObjectServiceImpl<Bitstream> imp
         clonedBitstream.setSizeBytes(bitstream.getSize());
         clonedBitstream.setChecksum(bitstream.getChecksum());
         clonedBitstream.setChecksumAlgorithm(bitstream.getChecksumAlgorithm());
+        clonedBitstream.setFormat(bitstream.getBitstreamFormat());
         clonedBitstream.setStoreNumber(bitstream.getStoreNumber());
         List<MetadataValue> metadataValues = getMetadata(bitstream, Item.ANY, Item.ANY, Item.ANY, Item.ANY);
         for (MetadataValue metadataValue : metadataValues) 
