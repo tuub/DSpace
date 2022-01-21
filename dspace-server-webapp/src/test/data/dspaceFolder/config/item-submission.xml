@@ -119,6 +119,13 @@
             <processing-class>org.dspace.app.rest.submit.step.CCLicenseStep</processing-class>
 	       <type>cclicense</type> </step-definition>
 
+        <!-- New step for show / mint identifiers -->
+        <step-definition id="identifiers">
+            <heading>submit.progressbar.identifiers</heading>
+            <processing-class>org.dspace.app.rest.submit.step.ShowIdentifiersStep</processing-class>
+            <type>identifiers</type>
+        </step-definition>
+
         <!--Step will be to Check for potential duplicate -->
         <!-- <step-definition id="detect-duplicate"> <heading>submit.progressbar.detect.duplicate</heading>
             <processing-class>org.dspace.submit.step.DetectPotentialDuplicate</processing-class> 
@@ -193,6 +200,9 @@
             <!--<step id="sample"/> -->
 
             <step id="collection"/>
+
+            <!-- Test identifiers -->
+            <step id="identifiers" />
 
             <!--Step will be to Describe the item. -->
             <step id="traditionalpageone"/>

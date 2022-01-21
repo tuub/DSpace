@@ -163,6 +163,13 @@
             <type>extract</type>
         </step-definition>
 
+        <!-- New step for show / mint identifiers -->
+        <step-definition id="identifiers">
+            <heading>submit.progressbar.identifiers</heading>
+            <processing-class>org.dspace.app.rest.submit.step.ShowIdentifiersStep</processing-class>
+            <type>identifiers</type>
+        </step-definition>
+
         <!-- OpenAIRE submission steps/forms -->
         <step-definition id="openAIREProjectForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
@@ -220,6 +227,8 @@
             <!--<step id="sample"/> -->
 
             <step id="collection"/>
+
+            <step id="identifiers" />
 
             <!--Step will be to Describe the item. -->
             <step id="traditionalpageone"/>

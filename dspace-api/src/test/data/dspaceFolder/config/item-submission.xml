@@ -99,6 +99,13 @@
             <type>extract</type>
         </step-definition>
 
+        <!-- New step for show / mint identifiers -->
+        <step-definition id="identifiers">
+            <heading>submit.progressbar.identifiers</heading>
+            <processing-class>org.dspace.app.rest.submit.step.ShowIdentifiersStep</processing-class>
+            <type>identifiers</type>
+        </step-definition>
+
         <!-- Fake Steps to test parsing of all options -->
         <!-- <step-definition mandatory="false"> <heading>fake.submission.readonly</heading>
             <processing-class>org.dspace.submit.step.SampleStep</processing-class> <type>sample</type>
@@ -143,6 +150,9 @@
             <!--<step id="sample"/> -->
 
             <step id="collection"/>
+
+            <!-- Test identifiers -->
+            <step id="identifiers" />
 
             <!--Step will be to Describe the item. -->
             <step id="traditionalpageone"/>
