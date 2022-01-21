@@ -25,6 +25,7 @@ import { SubmissionSectionUploadFileComponent } from './sections/upload/file/sec
 import { SubmissionSectionUploadFileEditComponent } from './sections/upload/file/edit/section-upload-file-edit.component';
 import { SubmissionSectionUploadFileViewComponent } from './sections/upload/file/view/section-upload-file-view.component';
 import { SubmissionSectionUploadAccessConditionsComponent } from './sections/upload/accessConditions/submission-section-upload-access-conditions.component';
+import { SubmissionSectionIdentifiersComponent } from './sections/identifiers/section-identifiers.component';
 import { SubmissionSubmitComponent } from './submit/submission-submit.component';
 import { storeModuleConfig } from '../app.reducer';
 import { SubmissionImportExternalComponent } from './import-external/submission-import-external.component';
@@ -62,7 +63,8 @@ const DECLARATIONS = [
   ThemedSubmissionImportExternalComponent,
   SubmissionImportExternalSearchbarComponent,
   SubmissionImportExternalPreviewComponent,
-  SubmissionImportExternalCollectionComponent
+  SubmissionImportExternalCollectionComponent,
+  SubmissionSectionIdentifiersComponent
 ];
 
 @NgModule({
